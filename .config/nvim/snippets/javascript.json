@@ -1,0 +1,16 @@
+{
+  "console log": {
+    "prefix": "cl",
+    "body": [
+      "console.log($0);"
+    ],
+    "description": "console log"
+  },
+  "console log and trace": {
+    "prefix": "clt",
+    "body": [
+      "console.log($0);console.trace();"
+    ],
+    "description": "console log and trace"
+  }
+}

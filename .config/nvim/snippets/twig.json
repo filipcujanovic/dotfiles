@@ -1,0 +1,20 @@
+{
+  "list item": {
+    "prefix": "li",
+    "body": [
+      "<li>$0</li>"
+    ]
+  },
+  "unordered list": {
+    "prefix": "ul",
+    "body": [
+      "<ul>$0</ul>"
+    ]
+  },
+  "code": {
+    "prefix": "code",
+    "body": [
+      "<code>$0</code>"
+    ]
+  }
+}

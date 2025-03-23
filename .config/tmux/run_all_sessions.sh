@@ -1,0 +1,1 @@
+tmuxifier ls | while read layout; do tmuxifier load-session "$layout" >/dev/null 2>&1; done

@@ -1,0 +1,12 @@
+#SKHD STUFF
+
+# if you're having troubles finding key codes for a key just type skhd --observe in a terminal and type a key. Pretty cool! Or just check the wiki.
+
+## HYPER == SHIFT + CMD + ALT + OPTION
+
+## open terminal
+#hyper - return : /Applications/iTerm.app/Contents/MacOS/iTerm2
+
+## switch monitor input
+hyper - 1 : m1ddc display 1 set input 17
+hyper - 2 : m1ddc display 1 set input 27
