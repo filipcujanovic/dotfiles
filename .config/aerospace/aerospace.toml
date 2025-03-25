@@ -276,7 +276,6 @@ run = 'layout floating'
 if.window-title-regex-substring = 'LuLu Alert'
 run = 'layout floating'
 
-[
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.calibre'
 run = 'layout floating'
