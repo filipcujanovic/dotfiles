@@ -26,6 +26,7 @@ ln -s -f ~/dotfiles/.config/mycli/.myclirc ~/.myclirc
 ln -s -f ~/dotfiles/.config/zsh/.zshenv ~/.zshenv
 ln -s -f ~/dotfiles/.config/zsh/.zshrc ~/.zshrc
 ln -s -f ~/dotfiles/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
+ln -s -f ~/dotfiles/.config/lazygit/config.yaml ~/Library/Application\ Support/lazygit/config.yml
 
 # symlink bin dir
 ln -s -f ~/dotfiles/bin/tmux-sessionizer ~/bin/tmux-sessionizer

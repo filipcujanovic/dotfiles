@@ -130,25 +130,19 @@ alt-shift-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-a = 'workspace A'
-alt-n = 'workspace N'
-#alt-b = 'workspace B'
-alt-d = 'workspace D'
-#alt-f = 'workspace F'
+alt-s = 'workspace C'
 alt-m = 'workspace M'
+alt-f = 'workspace F'
 alt-p = 'workspace P'
-alt-s = 'workspace S'
 alt-t = 'workspace T'
 alt-w = 'workspace W'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-a = 'move-node-to-workspace A'
-alt-shift-n = 'move-node-to-workspace N'
-#alt-shift-b = 'move-node-to-workspace B'
-alt-shift-d = 'move-node-to-workspace D'
-#alt-shift-f = 'move-node-to-workspace F'
+alt-shift-c = 'move-node-to-workspace C'
 alt-shift-m = 'move-node-to-workspace M'
+alt-shift-f = 'move-node-to-workspace F'
 alt-shift-p = 'move-node-to-workspace P'
-alt-shift-s = 'move-node-to-workspace S'
 alt-shift-t = 'move-node-to-workspace T'
 alt-shift-w = 'move-node-to-workspace W'
 
@@ -175,11 +169,6 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
-if.app-id = 'org.mozilla.com.zen.browser'
-if.window-title-regex-substring = 'Picture-in-Picture'
-run = 'layout floating'
-
-[[on-window-detected]]
 if.app-id = 'com.insomnia.app'
 run = 'move-node-to-workspace A'
 
@@ -188,38 +177,24 @@ if.app-id = 'com.postmanlabs.mac'
 run = 'move-node-to-workspace A'
 
 [[on-window-detected]]
-if.app-id = 'md.obsidian'
-run = 'move-node-to-workspace N'
-
-[[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace M'
 
 [[on-window-detected]]
 if.app-id = 'org.whispersystems.signal-desktop'
-run = 'move-node-to-workspace S'
+run = 'move-node-to-workspace C'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
-run = 'move-node-to-workspace S'
+run = 'move-node-to-workspace C'
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
-run = 'move-node-to-workspace S'
+run = 'move-node-to-workspace C'
 
 [[on-window-detected]]
 if.app-id = 'com.viber.osx'
-run = 'move-node-to-workspace S'
-
-[[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm'
-if.window-title-regex-substring = 'logs'
-run = 'move-node-to-workspace D'
-
-[[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
-if.window-title-regex-substring = 'logs'
-run = 'move-node-to-workspace D'
+run = 'move-node-to-workspace C'
 
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
@@ -253,6 +228,11 @@ run = 'move-node-to-workspace P'
 
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
+if.window-title-regex-substring = 'fun'
+run = 'move-node-to-workspace F'
+
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
 if.window-title-regex-substring = 'Bitwarden'
 run = 'layout floating'
 
@@ -279,3 +259,12 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.calibre'
 run = 'layout floating'
+
+[workspace-to-monitor-force-assignment]
+    'A' = 'main'
+    'C' = 'main'
+    'M' = 'main'
+    'F' = 'secondary'
+    'P' = 'main'
+    'T' = 'main'
+    'W' = 'main'

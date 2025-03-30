@@ -8,7 +8,7 @@ table.insert(space_items.space_border_items, front_app_items.front_app.name)
 table.insert(space_items.space_border_items, front_app_items.separator.name)
 -- table.insert(space_items.space_border_items, timer_items.timer.name)
 sbar.add('bracket', space_items.space_border_items, {
-	background = opts.bracket_background,
+    background = opts.bracket_background,
 })
 
 table.remove(space_items.space_border_items, #space_items.space_border_items)

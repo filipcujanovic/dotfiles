@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
+current_session=$(tmux display-message -p '#S')
+tmux_session_list="tmux ls -F '#{session_name}' | grep -v \"^$current_session\""
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(tmux ls -F '#{session_name}' | grep -v "^$(tmux display-message -p '#S')" | fzf --no-preview )
+    selected=$(eval "$tmux_session_list" | fzf --no-preview \
+      --bind "ctrl-x:execute-silent(tmux kill-session -t {})+reload($tmux_session_list)")
 fi
 
 if [[ -z $selected ]]; then

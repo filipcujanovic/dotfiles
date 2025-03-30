@@ -11,6 +11,6 @@ local wezterm = require('wezterm')
 -- tabs - array of tables - one tab can have cwd, command, panes
 
 return {
-	primary_screen = {},
-	secondary_screen = {},
+    primary_screen = {},
+    secondary_screen = {},
 }

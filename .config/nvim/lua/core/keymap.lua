@@ -20,35 +20,46 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = '*',
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = '*',
 })
 
 vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
 
 -- Nvim tree
 local function minifiles_open_current()
-	if vim.fn.filereadable(vim.fn.bufname('%')) > 0 then
-		MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
-	else
-		MiniFiles.open()
-	end
+    if vim.fn.filereadable(vim.fn.bufname('%')) > 0 then
+        MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+    else
+        MiniFiles.open()
+    end
 end
 vim.keymap.set('n', '<leader>b', minifiles_open_current, {})
 
 vim.keymap.set('n', '<leader>gch', ':Ghdiffsplit!<cr>')
 vim.keymap.set('n', '<leader>gcv', ':Gvdiffsplit!<cr>')
 
--- open database in floaterm window
-vim.keymap.set('n', '<leader>db', ':FloatermNew! --width=0.8 --height=0.9 foxydb<cr>', { desc = 'open database' })
-vim.keymap.set('n', '<leader>tdb', ':FloatermNew! --width=0.8 --height=0.9 testfoxydb<cr>', { desc = 'open test database' })
--- open visidata in floaterm window
-vim.keymap.set('n', '<leader>vd', ':FloatermNew! --width=0.8 --height=0.9 visidata %<cr>', { desc = 'open visidata with current buffer' })
--- new floaterm window
-vim.keymap.set('n', '<leader>fn', ':FloatermNew<cr>', { desc = 'open new floater terminal' })
+local Terminal = require('toggleterm.terminal').Terminal
+
+vim.keymap.set('n', '<leader>vd', function()
+    local buffer = vim.fn.expand('%:p')
+    local visidata = Terminal:new({
+        cmd = 'visidata ' .. buffer,
+        direction = 'float',
+    })
+    visidata:toggle()
+end)
+
+vim.keymap.set('n', '<leader>lg', function()
+    local lazygit = Terminal:new({
+        cmd = 'lazygit',
+        direction = 'float',
+    })
+    lazygit:toggle()
+end)
 
 --custom commands
 vim.keymap.set('n', '<leader>rmj', ':RmJsonData<cr>', { desc = 'remove extra \\ from data' })
@@ -58,8 +69,8 @@ vim.keymap.set('n', '<leader>cj', ':ConvertToJson<cr>', { desc = 'convert string
 vim.keymap.set('n', '<leader>crp', ':CopyRelPath<cr>', { desc = 'copy relative path of buffer' })
 vim.keymap.set('n', '<leader>fc', ':FindConflict<cr>', { desc = 'find conflict' })
 vim.keymap.set('n', '<leader>gt', function()
-	local clip_content = vim.fn.getreg('+')
-	vim.api.nvim_command(':GBrowse ' .. clip_content)
+    local clip_content = vim.fn.getreg('+')
+    vim.api.nvim_command(':GBrowse ' .. clip_content)
 end, { desc = 'open git file in browser ' })
 
 vim.keymap.set('n', '<leader>ot', ':ObsidianTags<cr>', { desc = 'open obsidian tags' })

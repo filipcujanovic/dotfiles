@@ -1,8 +1,8 @@
 #!/usr/bin/env lua
 
 os.execute(
-	'[ ! -d $HOME/.local/share/sketchybar_lua/ ] && '
-		.. '(git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install)'
+    '[ ! -d $HOME/.local/share/sketchybar_lua/ ] && '
+        .. '(git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install)'
 )
 
 package.cpath = package.cpath .. ';' .. os.getenv('HOME') .. '/.local/share/sketchybar_lua/?.so'
