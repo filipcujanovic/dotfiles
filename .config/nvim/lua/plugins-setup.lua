@@ -18,7 +18,5 @@ require('lazy').setup({
     {
         import = 'plugins',
     },
-    'tpope/vim-rhubarb',
-    'tpope/vim-sleuth', -- auto configure `shiftwidth`
-    'lewis6991/gitsigns.nvim',
+    --'tpope/vim-sleuth', -- auto configure `shiftwidth`
 }, {})

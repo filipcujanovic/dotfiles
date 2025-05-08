@@ -123,7 +123,7 @@ function M.transform(palette)
     return function()
         return {
             transparent = 0x00000000,
-            visible = 0x10000000,
+            visible = 0x60000000,
             base = compute(palette.bg0),
             surface = compute(palette.fg0),
             surface0 = compute(palette.fg1),
@@ -137,9 +137,9 @@ function M.transform(palette)
             red = compute(palette.red),
             timer_active_color = compute(palette.green),
             timer_paused_color = compute(palette.yellow),
-            timer_inactive_color = compute(palette.base),
+            timer_inactive_color = compute(palette.bg0),
             active_color = compute(palette.orange),
-            inactive_color = compute(palette.text),
+            inactive_color = compute(palette.green),
         }
     end
 end

@@ -3,6 +3,7 @@ local battery_items = require('items.right_items.battery')
 local opts = require('opts')
 local sbar = require('sketchybar')
 local volume_items = require('items.right_items.volume')
+local timer_items = require('items.right_items.timer')
 local bracket = sbar.add('bracket', {
     volume_items.device_icon.name,
     volume_items.volume.name,

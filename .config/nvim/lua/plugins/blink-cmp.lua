@@ -35,16 +35,19 @@ return {
             end,
         },
         sources = {
-            default = { 'lsp', 'path', 'snippets', 'buffer', 'cmdline' },
+            default = { 'lsp', 'buffer', 'snippets', 'path', 'cmdline' },
+            providers = {
+                lsp = {
+                    fallbacks = {},
+                },
+            },
         },
         signature = { enabled = true, window = { show_documentation = false } },
         cmdline = {
             keymap = {
-                ['<Right>'] = { 'accept' },
                 ['<Up>'] = { 'select_prev', 'fallback' },
                 ['<Down>'] = { 'select_next', 'fallback' },
             },
         },
     },
-    opts_extend = { 'sources.default' },
 }

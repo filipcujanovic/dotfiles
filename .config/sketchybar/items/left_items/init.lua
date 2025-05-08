@@ -3,7 +3,6 @@ local sbar = require('sketchybar')
 
 local space_items = require('items.left_items.space')
 local front_app_items = require('items.left_items.front_app')
-local timer_items = require('items.left_items.timer')
 table.insert(space_items.space_border_items, front_app_items.front_app.name)
 table.insert(space_items.space_border_items, front_app_items.separator.name)
 -- table.insert(space_items.space_border_items, timer_items.timer.name)

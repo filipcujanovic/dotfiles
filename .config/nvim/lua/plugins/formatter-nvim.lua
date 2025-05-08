@@ -13,7 +13,8 @@ return {
                         return {
                             exe = 'jq',
                             args = {
-                                '--tab',
+                                --'--tab',
+                                '--indent 4',
                                 '.',
                             },
                             stdin = true,

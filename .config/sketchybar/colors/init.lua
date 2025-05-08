@@ -29,7 +29,7 @@ local themes = {
 }
 
 -- Set the default theme
-local selected = 'catppuccin-mocha'
+local selected = 'gruvbox-dark'
 
 -- Return the theme info
 return {

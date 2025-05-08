@@ -4,6 +4,7 @@
 
 -- Set highlight on search
 vim.o.hlsearch = false
+vim.o.shiftwidth = 4
 
 -- disable swap file
 vim.opt.swapfile = false

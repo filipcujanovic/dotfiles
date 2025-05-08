@@ -44,6 +44,13 @@ local on_attach = function(_, bufnr)
 end
 
 local servers = {
+    harper_ls = {
+        settings = {
+            linters = {
+                SentenceCapitalization = false,
+            },
+        },
+    },
     gopls = {
         settings = {
             telemetry = {
@@ -59,16 +66,6 @@ local servers = {
         },
         filetypes = { 'html', 'twig', 'hbs' },
     },
-    --phpactor = {
-    --	settings = {
-    --		telemetry = {
-    --			enabled = false,
-    --		},
-    --	},
-    --	filetypes = {
-    --		'php',
-    --	},
-    --},
     intelephense = {
         settings = {
             telemetry = {
@@ -112,9 +109,8 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
         -- Automatically install LSPs to stdpath for neovim
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
-        { 'j-hui/fidget.nvim', opts = {} },
+        'mason-org/mason.nvim',
+        'mason-org/mason-lspconfig.nvim',
         -- Additional lua configuration, makes nvim stuff amazing!
         'folke/neodev.nvim',
     },
@@ -167,19 +163,17 @@ return {
         local capabilities = require('blink.cmp').get_lsp_capabilities()
         local mason_lspconfig = require('mason-lspconfig')
         require('mason').setup()
+        local server_names = vim.tbl_keys(servers)
         mason_lspconfig.setup({
-            ensure_installed = vim.tbl_keys(servers),
+            ensure_installed = server_names,
         })
-
-        mason_lspconfig.setup_handlers({
-            function(server_name)
-                require('lspconfig')[server_name].setup({
-                    capabilities = capabilities,
-                    on_attach = on_attach,
-                    settings = servers[server_name],
-                    filetypes = (servers[server_name] or {}).filetypes,
-                })
-            end,
-        })
+        for key, server_name in pairs(server_names) do
+            vim.lsp.config(server_name, {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                settings = servers[server_name],
+                filetypes = (servers[server_name] or {}).filetypes,
+            })
+        end
     end,
 }

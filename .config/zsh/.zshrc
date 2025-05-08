@@ -26,7 +26,9 @@ alias dbuild="docker-compose build"
 alias dstop="docker stop"
 alias ls="eza --color=always --git --icons=always"
 
-set -o vi
+# use vi mode
+#set -o vi
+bindkey -e
 
 export VISUAL=nvim
 export EDITOR=nvim
@@ -46,17 +48,23 @@ export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
 export PATH="$(brew --prefix)/opt/mysql-client/bin:$PATH"
 #export PATH="/$PATH:$HOME/.cargo/bin"
 export PATH=$PATH:"$HOME/Library/Python/3.10/bin"
-export EDITOR="nvim"
 export NVM_DIR="$HOME/.nvm"
 export LESS="-XRFS"
 source $(brew --prefix nvm)/nvm.sh
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --style=numbers {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+# catppuccin
+#export FZF_DEFAULT_OPTS=" \
+#--color=spinner:#f5e0dc,hl:#f38ba8 \
+#--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+#--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+#--multi"
+# gruvbox
 export FZF_DEFAULT_OPTS=" \
---color=spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
---multi"
+ --color=spinner:#8ec07c,hl:#83a598 \
+ --color=fg:#bdae93,header:#83a598,info:#fabd2f,pointer:#8ec07c \
+ --color=marker:#8ec07c,fg+:#ebdbb2,prompt:#fabd2f,hl+:#83a598
+ --multi"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 bindkey "ç" fzf-cd-widget # atl + c
@@ -78,7 +86,7 @@ _fzf_comprun() {
 export ZVM_INIT_MODE=sourcing
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+#source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 # Check that the function `starship_zle-keymap-select()` is defined.
 # xref: https://github.com/starship/starship/issues/3418
 type starship_zle-keymap-select >/dev/null || \

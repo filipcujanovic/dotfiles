@@ -1,4 +1,4 @@
-theme = "dracula"
+theme = "gruvbox_dark"
 client_id = "65b708073fc0480ea92a077233ca87bd"
 client_port = 8080
 login_redirect_uri = "http://127.0.0.1:8989/login"
@@ -42,7 +42,6 @@ album_percent = 40
 [device]
 name = "spotify-player"
 device_type = "speaker"
-volume =
 bitrate = 320
 audio_cache = false
 normalization = false

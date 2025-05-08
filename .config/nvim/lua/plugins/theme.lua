@@ -30,6 +30,10 @@ return {
         require('gruvbox').setup({
             overrides = {
                 LineNr = { fg = '#b8bb26' },
+                DashboardHeader = { fg = '#d65d0e' },
+                DashboardKey = { fg = '#fb4934' },
+                DashboardDesc = { fg = '#fabd2f' },
+                DashboardIcon = { fg = '#83a598' },
             },
             contrast = 'hard',
             transparent_mode = true,

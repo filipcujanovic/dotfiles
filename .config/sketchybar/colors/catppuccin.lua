@@ -11,7 +11,7 @@ function M.transform(palette)
     return function()
         return {
             transparent = 0x00000000,
-            visible = 0x10000000,
+            visible = 0x60000000,
             base = compute(palette.base),
             surface = compute(palette.surface2),
             surface0 = compute(palette.surface0),

@@ -29,7 +29,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
 
--- Nvim tree
 local function minifiles_open_current()
     if vim.fn.filereadable(vim.fn.bufname('%')) > 0 then
         MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
@@ -37,31 +36,11 @@ local function minifiles_open_current()
         MiniFiles.open()
     end
 end
-vim.keymap.set('n', '<leader>b', minifiles_open_current, {})
+vim.keymap.set('n', '<leader>b', minifiles_open_current, { desc = 'open mini files' })
 
-vim.keymap.set('n', '<leader>gch', ':Ghdiffsplit!<cr>')
-vim.keymap.set('n', '<leader>gcv', ':Gvdiffsplit!<cr>')
+vim.keymap.set('n', '<leader>gch', ':Ghdiffsplit!<cr>', { desc = 'git conflict horizontal' })
+vim.keymap.set('n', '<leader>gcv', ':Gvdiffsplit!<cr>', { desc = 'git conflict vertical' })
 
-local Terminal = require('toggleterm.terminal').Terminal
-
-vim.keymap.set('n', '<leader>vd', function()
-    local buffer = vim.fn.expand('%:p')
-    local visidata = Terminal:new({
-        cmd = 'visidata ' .. buffer,
-        direction = 'float',
-    })
-    visidata:toggle()
-end)
-
-vim.keymap.set('n', '<leader>lg', function()
-    local lazygit = Terminal:new({
-        cmd = 'lazygit',
-        direction = 'float',
-    })
-    lazygit:toggle()
-end)
-
---custom commands
 vim.keymap.set('n', '<leader>rmj', ':RmJsonData<cr>', { desc = 'remove extra \\ from data' })
 vim.keymap.set('n', '<leader>pj', ':ParseJson<cr>', { desc = 'prettify json' })
 vim.keymap.set('n', '<leader>sj', ':SortJson<cr>', { desc = 'sort json' })
@@ -74,3 +53,19 @@ vim.keymap.set('n', '<leader>gt', function()
 end, { desc = 'open git file in browser ' })
 
 vim.keymap.set('n', '<leader>ot', ':ObsidianTags<cr>', { desc = 'open obsidian tags' })
+
+vim.keymap.set('n', '<leader>rr', function()
+    require('kulala').run()
+end, { desc = 'run request' })
+
+vim.keymap.set('n', '<leader>lg', function()
+    vim.fn.system('tmux display-popup -w 95% -h 90% -E -d ' .. vim.fn.shellescape(vim.fn.getcwd()) .. ' lazygit')
+end, { desc = 'lazygit' })
+
+vim.keymap.set('n', '<leader>vd', function()
+    vim.fn.system('tmux display-popup -w 95% -h 90% -E -d ' .. vim.fn.shellescape(vim.fn.getcwd()) .. '-- visidata ' .. vim.fn.expand('%:p'))
+end, { desc = 'visidata' })
+
+vim.keymap.set('n', '<leader>ra', function()
+    vim.fn.system('tmux display-popup -w 95% -h 90% -E -d ~/Projects/foxy-collection/ nvim')
+end, { desc = 'rest api' })

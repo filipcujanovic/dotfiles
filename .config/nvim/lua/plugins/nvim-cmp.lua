@@ -1,4 +1,5 @@
 return {
+    enabled = false,
     'hrsh7th/nvim-cmp',
     dependencies = {
         'hrsh7th/cmp-nvim-lsp',
@@ -19,9 +20,6 @@ return {
         luasnip.config.setup({})
         vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
         cmp.setup({
-            enabled = function()
-                return vim.tbl_contains({ 'markdown' }, vim.bo.filetype)
-            end,
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)

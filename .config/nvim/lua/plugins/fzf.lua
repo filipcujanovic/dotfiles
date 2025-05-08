@@ -7,6 +7,11 @@ return {
         local actions = require('fzf-lua.actions')
         require('fzf-lua').setup({
             'max-perf',
+            winopts = {
+                preview = {
+                    layout = 'vertical',
+                },
+            },
             keymap = {
                 fzf = {
                     ['ctrl-q'] = 'select-all+accept',

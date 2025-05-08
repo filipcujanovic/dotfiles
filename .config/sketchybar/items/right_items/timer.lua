@@ -36,7 +36,7 @@ time_counter = time_counter == nil and 0 or time_counter
 local run_on_start = time_counter ~= 0
 
 local timer = sbar.add('item', 'timer', {
-    position = 'q',
+    position = 'right',
     padding_right = 0,
     background = {
         color = opts.color.transparent,
