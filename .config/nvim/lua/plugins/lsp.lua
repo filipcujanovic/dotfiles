@@ -1,10 +1,4 @@
 local on_attach = function(_, bufnr)
-    -- NOTE: Remember that lua is a real programming language, and as such it is possible
-    -- to define small helper and utility functions so you don't have to repeat yourself
-    -- many times.
-    --
-    -- In this case, we create a function that lets us more easily define mappings specific
-    -- for LSP related items. It sets the mode, buffer and description for us each time.
     local nmap = function(keys, func, desc)
         if desc then
             desc = 'LSP: ' .. desc
@@ -37,7 +31,6 @@ local on_attach = function(_, bufnr)
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, '[W]orkspace [L]ist Folders')
 
-    -- Create a command `:Format` local to the LSP buffer
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
         vim.lsp.buf.format()
     end, { desc = 'Format current buffer with LSP' })
@@ -91,7 +84,6 @@ local servers = {
             telemetry = {
                 enable = false,
             },
-            -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
             diagnostics = { disable = { 'missing-fields' } },
         },
     },
@@ -115,49 +107,6 @@ return {
         'folke/neodev.nvim',
     },
     config = function()
-        local lsp_configurations = require('lspconfig.configs')
-
-        local server_config = {
-            ['doesItThrow'] = {
-                throwStatementSeverity = 'Hint',
-                functionThrowSeverity = 'Hint',
-                callToThrowSeverity = 'Hint',
-                callToImportedThrowSeverity = 'Hint',
-                includeTryStatementThrows = 'Hint',
-                maxNumberOfProblems = 10000,
-            },
-        }
-
-        -- Setup doesItThrow
-        if not lsp_configurations.does_it_throw_server then
-            lsp_configurations.does_it_throw_server = {
-                default_config = {
-                    cmd = { 'does-it-throw-lsp', '--stdio' },
-                    filetypes = { 'typescript', 'javascript' },
-                    root_dir = function(fname)
-                        return vim.fn.getcwd()
-                    end,
-                },
-            }
-        end
-
-        require('lspconfig').does_it_throw_server.setup({
-            on_init = function(client)
-                client.config.settings = server_config
-            end,
-            -- important to set this up so that the server can find your desired settings
-            handlers = {
-                ['workspace/configuration'] = function(_, params, _, _)
-                    local configurations = {}
-                    for _, item in ipairs(params.items) do
-                        if item.section then
-                            table.insert(configurations, server_config[item.section])
-                        end
-                    end
-                    return configurations
-                end,
-            },
-        })
         --local capabilities = vim.lsp.protocol.make_client_capabilities()
         --capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
         local capabilities = require('blink.cmp').get_lsp_capabilities()

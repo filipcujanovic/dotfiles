@@ -2,3 +2,4 @@
 .config/tmux/layouts/foxy-workspace-layout
 .config/tmux/.private.keybinds.conf
 .config/tmuxifier/foxy-*
+.config/files/

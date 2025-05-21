@@ -46,11 +46,11 @@ export PATH="$HOME/.tmuxifier/bin:$PATH"
 export PATH=$PATH":$HOME/.config/zfunc"
 export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
 export PATH="$(brew --prefix)/opt/mysql-client/bin:$PATH"
-#export PATH="/$PATH:$HOME/.cargo/bin"
+export PATH="/$PATH:$HOME/.cargo/bin"
 export PATH=$PATH:"$HOME/Library/Python/3.10/bin"
 export NVM_DIR="$HOME/.nvm"
 export LESS="-XRFS"
-source $(brew --prefix nvm)/nvm.sh
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#a89984"
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --style=numbers {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 # catppuccin
@@ -83,9 +83,10 @@ _fzf_comprun() {
   esac
 }
 
-export ZVM_INIT_MODE=sourcing
+source $(brew --prefix nvm)/nvm.sh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#export ZVM_INIT_MODE=sourcing
 #source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 # Check that the function `starship_zle-keymap-select()` is defined.
 # xref: https://github.com/starship/starship/issues/3418

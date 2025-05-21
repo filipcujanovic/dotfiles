@@ -6,6 +6,9 @@ local calendar = sbar.add('item', 'calendar', {
     position = 'right',
     padding_left = 5,
     update_freq = 1,
+    label = {
+        padding_right = 5,
+    },
 })
 
 local calendar_icon = sbar.add('item', 'calendar_icon', {

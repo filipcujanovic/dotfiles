@@ -21,6 +21,9 @@ return {
                         }
                     end,
                 },
+                rust = {
+                    require('formatter.filetypes.rust').rustfmt,
+                },
                 lua = {
                     require('formatter.filetypes.lua').stylua,
                     function()

@@ -6,10 +6,11 @@ vim.api.nvim_create_user_command('CopyRelPath', 'call setreg(\'+\', expand(\'%\'
 vim.api.nvim_create_user_command('RmJsonData', '%s/\\\\"/"/g', { desc = 'remove extra data from json' })
 vim.api.nvim_create_user_command('ConvertToJson', '%!jq -sR .', { desc = 'convert string to json' })
 vim.api.nvim_create_user_command('FindConflict', '/<<<<<<<', { desc = 'find conflict' })
-
---vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter' }, {
---	callback = function()
---		vim.cmd('checktime')
---	end,
---	desc = 'Auto-reload buffers on external changes',
---})
+vim.api.nvim_create_autocmd('VimEnter', {
+    once = true,
+    callback = function()
+        vim.schedule(function()
+            vim.cmd('clearjumps')
+        end)
+    end,
+})

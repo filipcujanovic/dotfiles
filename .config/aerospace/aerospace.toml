@@ -184,6 +184,10 @@ run = 'layout floating'
 if.app-id = 'net.kovidgoyal.calibre'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-name-regex-substring = 'blinktray'
+run = 'layout floating'
+
 [workspace-to-monitor-force-assignment]
     'B' = 'main'
     'C' = 'main'
