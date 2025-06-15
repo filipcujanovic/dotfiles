@@ -30,8 +30,8 @@ return {
                     },
                 },
                 mini = {
+                    --timeout = 5000,
                     timeout = 20000,
-                    --timeout = 2000,
                     align = 'center',
                     position = {
                         row = '95%',

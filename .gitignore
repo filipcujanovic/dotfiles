@@ -3,3 +3,5 @@
 .config/tmux/.private.keybinds.conf
 .config/tmuxifier/foxy-*
 .config/files/
+.config/nvim/lua/work-settings.lua
+.config/nvim/lua/core/work-keymap.lua

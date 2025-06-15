@@ -18,5 +18,4 @@ require('lazy').setup({
     {
         import = 'plugins',
     },
-    --'tpope/vim-sleuth', -- auto configure `shiftwidth`
 }, {})

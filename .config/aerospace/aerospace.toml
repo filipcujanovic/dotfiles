@@ -9,6 +9,7 @@ after-startup-command = ['exec-and-forget sketchybar']
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = ['/bin/bash', '-c',
     #'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE; aerospace list-windows --all | grep "Picture in Picture" | cut -d"|" -f1 | xargs aerospace move-node-to-workspace $AEROSPACE_FOCUSED_WORKSPACE --window-id',
+    #'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE; aerospace list-windows --all | grep "zsh" | cut -d"|" -f1 | xargs aerospace move-node-to-workspace $AEROSPACE_FOCUSED_WORKSPACE --window-id',
     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE;',
 ]
 
@@ -19,7 +20,7 @@ enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
-accordion-padding = 20
+accordion-padding = 0
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -36,9 +37,9 @@ on-focus-changed = ['move-mouse window-lazy-center']
 
 gaps.inner.horizontal = 10
 gaps.inner.vertical = 10
-gaps.outer.left = 10
-gaps.outer.right = 10
-gaps.outer.bottom = 10
+gaps.outer.left = 5
+gaps.outer.right = 5
+gaps.outer.bottom = 5
 gaps.outer.top = [
     { monitor."built-in" = 10 },
     { monitor.main = 47  }, # sketchybar height is 37 + 10 padding
@@ -82,16 +83,18 @@ alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-b = 'workspace B'
+alt-p = 'workspace P'
 alt-c = 'workspace C'
 alt-m = 'workspace M'
 alt-t = 'workspace T'
+alt-w = 'workspace W'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-b = 'move-node-to-workspace B'
+alt-shift-p = 'move-node-to-workspace P'
 alt-shift-c = 'move-node-to-workspace C'
 alt-shift-m = 'move-node-to-workspace M'
 alt-shift-t = 'move-node-to-workspace T'
+alt-shift-w = 'move-node-to-workspace W'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-enter = 'workspace-back-and-forth'
@@ -145,20 +148,30 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
-run = 'move-node-to-workspace B'
+run = 'move-node-to-workspace P'
 
 [[on-window-detected]]
 if.app-id = 'com.vivaldi.Vivaldi'
-run = 'move-node-to-workspace B'
+run = 'move-node-to-workspace P'
 
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
-run = 'move-node-to-workspace D'
+if.window-title-regex-substring = 'private'
+run = 'move-node-to-workspace P'
+
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
+if.window-title-regex-substring = 'work'
+run = 'move-node-to-workspace W'
 
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
 if.window-title-regex-substring = 'Bitwarden'
 run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'WhatsApp Web'
+run = 'move-node-to-workspace C'
 
 [[on-window-detected]]
 if.app-id = 'net.freemacsoft.AppCleaner'
@@ -185,11 +198,12 @@ if.app-id = 'net.kovidgoyal.calibre'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'blinktray'
+if.app-name-regex-substring = 'clipman'
 run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
-    'B' = 'main'
+    'P' = 'main'
     'C' = 'main'
     'M' = 'secondary'
     'T' = 'main'
+    'W' = 'main'

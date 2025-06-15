@@ -1,28 +1,3 @@
---return {
---    'catppuccin/nvim',
---    lazy = false,
---    priority = 1000,
---    config = function()
---        local catppuccin = require('catppuccin')
---        catppuccin.setup({
---            transparent_background = true,
---            term_colors = true,
---            integrations = {
---                mason = true,
---                nvim_surround = true,
---                which_key = true,
---            },
---            highlight_overrides = {
---                all = function(colors)
---                    return {
---                        LineNr = { fg = colors.text },
---                    }
---                end,
---            },
---        })
---        vim.cmd.colorscheme('catppuccin-mocha')
---    end,
---}
 return {
     'ellisonleao/gruvbox.nvim',
     priority = 1000,
@@ -34,10 +9,19 @@ return {
                 DashboardKey = { fg = '#fb4934' },
                 DashboardDesc = { fg = '#fabd2f' },
                 DashboardIcon = { fg = '#83a598' },
+                StatusLine = { fg = 'none', bg = 'none' },
+                StatusLineNC = { fg = 'none', bg = 'none' },
+                TabLine = { fg = 'none', bg = 'none' },
+                TabLineFill = { fg = 'none', bg = 'none' },
+                TabLineSel = { fg = 'none', bg = 'none' },
+                WinBar = { fg = 'none', bg = 'none' },
+                WinBarNC = { fg = 'none', bg = 'none' },
             },
             contrast = 'hard',
             transparent_mode = true,
             terminal_colors = true,
+            component_separators = '', -- Remove separators for cleaner look
+            section_separators = '',
         })
         vim.cmd('colorscheme gruvbox')
     end,

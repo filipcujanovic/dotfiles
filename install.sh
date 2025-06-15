@@ -27,6 +27,7 @@ ln -s -f ~/dotfiles/.config/hammerspoon/init.lua ~/.hammerspoon/init.lua
 ln -s -f ~/dotfiles/.config/mycli/.myclirc ~/.myclirc
 ln -s -f ~/dotfiles/.config/zsh/.zshenv ~/.zshenv
 ln -s -f ~/dotfiles/.config/zsh/.zshrc ~/.zshrc
+ln -s -f ~/dotfiles/.config/yazi/theme.toml ~/.config/yazi/theme.toml
 ln -s -f ~/dotfiles/.config/visidata/.visidatarc ~/.visidatarc
 ln -s -f ~/dotfiles/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 ln -s -f ~/dotfiles/.config/lazygit/config.yaml ~/Library/Application\ Support/lazygit/config.yml

@@ -7,6 +7,9 @@ vim.keymap.set('n', '<leader>lw', ':set wrap!<cr>', { desc = 'toggle line wrap' 
 vim.keymap.set('n', '<leader>ut', vim.cmd.UndotreeToggle)
 vim.keymap.set('n', '<leader>tn', ':tabnew<cr>', { desc = 'new tab' })
 vim.keymap.set('n', '<leader>sa', vim.cmd.wa, { desc = 'save all' })
+--vim.keymap.set('n', '<leader>x', function()
+--    vim.cmd('qa!')
+--end, { desc = 'quit without saving' })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', 'v:count == 0 ? \'gk\' : \'k\'', { expr = true, silent = true })
@@ -58,6 +61,10 @@ vim.keymap.set('n', '<leader>rr', function()
     require('kulala').run()
 end, { desc = 'run request' })
 
+vim.keymap.set('n', '<leader>re', function()
+    require('kulala').set_selected_env()
+end, { desc = 'run request' })
+
 vim.keymap.set('n', '<leader>lg', function()
     vim.fn.system('tmux display-popup -w 95% -h 90% -E -d ' .. vim.fn.shellescape(vim.fn.getcwd()) .. ' lazygit')
 end, { desc = 'lazygit' })
@@ -66,6 +73,8 @@ vim.keymap.set('n', '<leader>vd', function()
     vim.fn.system('tmux display-popup -w 95% -h 90% -E -d ' .. vim.fn.shellescape(vim.fn.getcwd()) .. '-- visidata ' .. vim.fn.expand('%:p'))
 end, { desc = 'visidata' })
 
-vim.keymap.set('n', '<leader>ra', function()
-    vim.fn.system('tmux display-popup -w 95% -h 90% -E -d ~/Projects/foxy-collection/ nvim')
-end, { desc = 'rest api' })
+vim.keymap.set('n', '<leader>pt', function()
+    local cmd = 'zsh -ic "source ~/.zshrc && rununittests"'
+    vim.fn.jobstart('osascript -e "display notification \\"Start\\" with title \\"Unit Tests\\""', { detach = true })
+    vim.fn.jobstart(cmd, { pty = true })
+end, { noremap = true, silent = true, desc = 'run unit tests' })

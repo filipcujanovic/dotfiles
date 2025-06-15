@@ -2,6 +2,7 @@ return {
     'mistweaverco/kulala.nvim',
     lazy = true,
     event = 'VeryLazy',
+    branch = 'develop',
     ft = { 'http', 'rest' },
     opts = {
         debug = true,
@@ -12,6 +13,9 @@ return {
             display_mode = 'split',
             icons = {
                 lualine = '',
+            },
+            win_opts = {
+                wo = { number = true, relativenumber = true },
             },
         },
     },

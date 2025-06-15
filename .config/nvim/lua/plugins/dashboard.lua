@@ -15,19 +15,13 @@ return {
             config = {
                 header = get_dir_ascii(),
                 center = {
-                    {
-                        action = 'SessionRestore',
-                        desc = ' Restore Session',
-                        icon = '󰦛',
-                        key = 'r',
-                    },
                     { action = 'Lazy update', desc = ' Lazy Update', icon = '󰚰', key = 'u' },
                     { action = 'Lazy', desc = ' Lazy', icon = '', key = 'l' },
                     { action = 'FzfLua files', desc = ' Files', icon = '󰈞', key = 'f' },
                     { action = 'lua MiniFiles.open()', desc = ' Browse Files', icon = '', key = 'b' },
                     {
                         action = function()
-                            vim.api.nvim_input('<cmd>qa<cr>')
+                            vim.api.nvim_input('<cmd>q<cr>')
                         end,
                         desc = ' Quit',
                         icon = '󰈆',

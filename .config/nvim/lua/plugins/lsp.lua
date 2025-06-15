@@ -43,6 +43,7 @@ local servers = {
                 SentenceCapitalization = false,
             },
         },
+        filetypes = { 'markdown' },
     },
     gopls = {
         settings = {
@@ -64,9 +65,6 @@ local servers = {
             telemetry = {
                 enabled = false,
             },
-        },
-        filetypes = {
-            'php',
         },
     },
     ts_ls = {
@@ -121,6 +119,7 @@ return {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 settings = servers[server_name],
+                init_options = (servers[server_name] or {}).init_options,
                 filetypes = (servers[server_name] or {}).filetypes,
             })
         end

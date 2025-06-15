@@ -31,3 +31,4 @@ border = { fg = "Green"}
 playback_status = { fg = "BrightRed" }
 playback_artists = { fg = "BrightYellow" }
 playlist_desc = { fg = "Green" }
+lyrics_played = { fg = "Green" }
