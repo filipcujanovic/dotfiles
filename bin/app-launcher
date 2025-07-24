@@ -1,5 +1,7 @@
 ##!/usr/bin/env bash
 
+settings_file=~/dotfiles/.config/aerospace/mac-os-settings-list.json
+
 applications=$(
     eza -1 -X --icons=never --color=never --no-quotes \
     ~/Applications/Brave\ Browser\ Apps.localized/ \
@@ -12,7 +14,7 @@ applications=$(
     | sed "s/\.app$//g"
 )
 
-settings=$(<~/dotfiles/.config/aerospace/mac-os-settings-list.txt)
+settings=$(jq -r 'keys[]' $settings_file)
 
 list=$(
     printf "%s\n" "$applications"
@@ -21,8 +23,10 @@ list=$(
 
 selected_item=$(echo "$list" | sort -f | choose -f SFMono-Regular -c "83A598" -b "B8BB26")
 
-if [[ "$selected_item" == "x-apple"* ]]; then
-    open "$selected_item"
+url=$(jq -r --arg key "${selected_item}" '.[$key]' "$settings_file")
+
+if [[ "$url" == "x-apple"* ]]; then
+    open "$url"
 else
     open -a "$selected_item"
 fi
