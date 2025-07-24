@@ -24,8 +24,8 @@ local themes = {
     ['tokyonight-moon'] = tok.transform(tok.moon),
     ['tokyonight-night'] = tok.transform(tok.night),
     ['tokyonight-storm'] = tok.transform(tok.storm),
-    ['gruvbox-dark'] = gruvbox.transform(gruvbox.dark),
-    ['gruvbox-light'] = gruvbox.transform(gruvbox.light),
+    ['gruvbox-dark'] = gruvbox.transform(gruvbox.dark, true),
+    ['gruvbox-light'] = gruvbox.transform(gruvbox.light, false),
 }
 
 -- Set the default theme

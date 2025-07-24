@@ -1,5 +1,5 @@
 require('plugins-setup')
+require('core.work-keymap')
 require('core.keymap')
 require('core.options')
 require('core.commands')
-require('work-settings')

@@ -25,6 +25,10 @@ local sf_symbols = {
     volume_full = '􀊦',
     volume_50 = '􀊤',
     volume_25 = '􀊠',
+    airpod_left = '􀲎',
+    airpod_right = '􀲍',
+    airpods_case = '􀹬',
+    keyboard = '􀇳',
     viber = '', --this one is taken from nerdfont
 }
 

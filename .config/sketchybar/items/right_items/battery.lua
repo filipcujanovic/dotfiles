@@ -7,24 +7,24 @@ local battery = sbar.add('item', 'battery', {
     label = {
         string = '%',
         font = opts.sf_pro_text_small,
+        padding_right = 5,
+        padding_left = 5,
     },
-    padding_right = 0,
-    padding_left = 8,
-    updates = true,
-})
-local battery_icon = sbar.add('item', 'battery_icon', {
-    position = 'right',
-    padding_right = 0,
     icon = {
         align = 'center',
-        font = opts.font.icon_font_small,
+        padding_right = 5,
+        padding_left = 5,
     },
+    padding_right = 5,
+    padding_left = 5,
+    updates = true,
+    background = opts.use_border and opts.background or {},
 })
 
 battery:subscribe('battery_change', function(env)
     battery:set({ label = { string = env.percentage .. '%' } })
     if env.charging == 'on' then
-        battery_icon:set({ icon = { string = icons.battery_charging } })
+        battery:set({ icon = { string = icons.battery_charging } })
     else
         local icon = icons.battery_empty
         local p = tonumber(env.percentage)
@@ -37,7 +37,7 @@ battery:subscribe('battery_change', function(env)
         elseif p > 19 then
             icon = icons.battery_25
         end
-        battery_icon:set({ icon = { string = icon } })
+        battery:set({ icon = { string = icon } })
     end
 end)
 

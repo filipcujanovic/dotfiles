@@ -7,7 +7,7 @@ local paused_color = opts.color.timer_paused_color
 local inactive_color = opts.color.timer_inactive_color
 
 local read_file = function(file_path)
-    local file = assert(io.open(time_counter_file_path, 'r'))
+    local file = assert(io.open(file_path, 'r'))
     local content = file:read('*a')
     file:close()
     return content
@@ -38,17 +38,19 @@ local run_on_start = time_counter ~= 0
 local timer = sbar.add('item', 'timer', {
     position = 'right',
     padding_right = 0,
-    background = {
-        color = opts.color.transparent,
-    },
+    padding_left = 0,
     label = {
         drawing = run_on_start,
         string = get_time_string(time_counter),
         color = run_on_start and active_color or inactive_color,
+        padding_right = 5,
+        width = 80,
     },
     icon = {
+        align = 'center',
         string = icons.clock,
-        padding_right = 10,
+        padding_right = 5,
+        padding_left = 5,
     },
     updates = true,
     update_freq = run_on_start and 1 or 0,
@@ -56,6 +58,7 @@ local timer = sbar.add('item', 'timer', {
         align = 'center',
         horizontal = true,
     },
+    background = opts.use_border and opts.background or {},
 })
 
 sbar.add('item', {

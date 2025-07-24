@@ -1,6 +1,6 @@
 local wezterm = require('wezterm')
 local wallpapers = {
-    ['beserk-mocha'] = 'berserk-mocha.png',
+    ['berserk-mocha'] = 'berserk-mocha.png',
     ['berserk'] = 'berserk.png',
     ['city'] = 'city.png',
     ['eclipse-mocha'] = 'eclipse-mocha.png',
@@ -30,8 +30,8 @@ local random_wallpaper = wallpapers[schemes[math.random(#schemes)]]
 
 return {
     {
-        source = { File = wezterm.home_dir .. '/.config/wezterm/wallpapers/' .. wallpapers['storm-animated'] },
+        source = { File = wezterm.home_dir .. '/.config/wezterm/wallpapers/' .. wallpapers['forest-road'] },
         -- source = { File = wezterm.home_dir .. "/.config/wezterm/wallpapers/" .. random_wallpaper },
-        opacity = 0.20,
+        opacity = 0.2,
     },
 }

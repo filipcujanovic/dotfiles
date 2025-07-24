@@ -1,9 +1,9 @@
 {
-	"filter unit test": {
-		"prefix": "ppf",
-		"body": [
-			"php phpunit --filter $0"
-		],
-		"description": "filter unit test"
-	}
+  "filter unit test": {
+    "prefix": "ppf",
+    "body": [
+      "php phpunit --filter $0"
+    ],
+    "description": "filter unit test"
+  }
 }

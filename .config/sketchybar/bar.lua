@@ -23,18 +23,12 @@ sbar.default({
         corner_radius = 5,
     },
     icon = {
-        --catppuccin
-        --color = opts.color.purple,
-        --tokyo
-        color = opts.color.blue,
-        font = opts.font.icon_font_small,
+        color = opts.color.icon_color,
+        font = opts.font.icon_font_normal,
         padding_left = 0,
         padding_right = 0,
     },
     label = {
-        -- catppuccing
-        --color = opts.color.orange,
-        -- tokyo
         color = opts.color.text,
         font = opts.font.default,
         y_offset = 0,

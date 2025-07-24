@@ -1,20 +1,11 @@
 add_newline = false
 
-#format = """$directory\
-#[](fg:color_yellow bg:color_green)\
-#$git_branch\
-#[](fg:color_green bg:color_blue)\
-#$time\
-#[](fg:color_blue)\
-#$character\
-#"""
 format = """$directory\
 [](fg:color_yellow bg:color_green)\
 $git_branch\
 [](fg:color_green)\
 $character\
 """
-
 
 palette = 'gruvbox_dark'
 

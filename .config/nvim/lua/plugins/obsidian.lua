@@ -8,8 +8,7 @@ return {
     },
     opts = {
         completion = {
-            nvim_cmp = false,
-            blink = true,
+            nvim_cmp = true,
             min_chars = 2,
         },
         workspaces = {
@@ -28,5 +27,12 @@ return {
                 ['x'] = { char = '', hl_group = 'ObsidianDone' },
             },
         },
+        note_path_func = function(spec)
+            local path = spec.dir / tostring(spec.title)
+            return path:with_suffix('.md')
+        end,
+        note_id_func = function(title)
+            return title
+        end,
     },
 }

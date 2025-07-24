@@ -20,7 +20,7 @@ return {
             contrast = 'hard',
             transparent_mode = true,
             terminal_colors = true,
-            component_separators = '', -- Remove separators for cleaner look
+            component_separators = '',
             section_separators = '',
         })
         vim.cmd('colorscheme gruvbox')

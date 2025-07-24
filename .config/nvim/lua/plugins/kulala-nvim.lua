@@ -2,7 +2,7 @@ return {
     'mistweaverco/kulala.nvim',
     lazy = true,
     event = 'VeryLazy',
-    branch = 'develop',
+    branch = 'main',
     ft = { 'http', 'rest' },
     opts = {
         debug = true,

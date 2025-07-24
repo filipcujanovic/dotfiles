@@ -36,6 +36,7 @@ end
 local volume = sbar.add('item', 'volume', {
     position = 'right',
     padding_left = 5,
+    padding_right = 5,
     icon = {
         width = 25,
         align = 'center',
@@ -45,14 +46,15 @@ local volume = sbar.add('item', 'volume', {
     },
 })
 
-local volume_slider = sbar.add('slider', 'volume_slider', 200, {
-    --position = 'right',
+local volume_slider = sbar.add('slider', 'volume_slider', 220, {
     position = 'popup.' .. volume.name,
     updates = true,
 })
 
 local device_icon = sbar.add('item', 'device_icon', {
     position = 'right',
+    padding_left = 5,
+    padding_right = 0,
     icon = {
         string = get_device_icon(current_device).string,
         width = 30,
@@ -126,9 +128,46 @@ local change_device = function()
     })
 end
 
+local show_device_battery_level = function()
+    local width = 120
+    if string.match(current_device, 'AirPods') then
+        sbar.exec(
+            'system_profiler SPBluetoothDataType -json -detailLevel basic 2>/dev/null | jq -rc \'.SPBluetoothDataType[0].device_connected[] | select ( .[] | .device_minorType == "Headphones")\' | jq \'.[]\'',
+            function(device_data, exit_code)
+                local battery_level_case = ''
+                if device_data.device_batteryLevelCase ~= nil then
+                    battery_level_case = icons.airpods_case .. device_data.device_batteryLevelCase
+                    width = 220
+                end
+                device_icon:set({
+                    icon = {
+                        string = icons.airpod_left
+                            .. device_data.device_batteryLevelLeft
+                            .. ' '
+                            .. device_data.device_batteryLevelRight
+                            .. icons.airpod_right
+                            .. battery_level_case,
+                        width = width,
+                    },
+                })
+            end
+        )
+    end
+end
+
+local hide_device_battery_level = function()
+    local icon_data = get_device_icon(current_device)
+    icon_data.font = opts.font.icon_font_normal
+    device_icon:set({
+        icon = icon_data,
+    })
+end
+
 device_icon:subscribe('mouse.clicked', show_all_devices)
 device_icon:subscribe('volume', change_device)
 device_icon:subscribe('volume_change', change_device)
+device_icon:subscribe('mouse.entered', show_device_battery_level)
+device_icon:subscribe('mouse.exited', hide_device_battery_level)
 device_icon:subscribe('mouse.exited.global', function()
     device_icon:set({ popup = { drawing = false } })
 end)
@@ -143,6 +182,15 @@ volume_slider:subscribe('volume_change', volume_changed)
 volume_slider:subscribe('mouse.clicked', function(env)
     sbar.exec('osascript -e \'set volume output volume ' .. env.PERCENTAGE .. '\'')
 end)
+
+if opts.use_border then
+    local bracket = sbar.add('bracket', {
+        device_icon.name,
+        volume.name,
+    }, {
+        background = opts.background,
+    })
+end
 
 return {
     device_icon = device_icon,

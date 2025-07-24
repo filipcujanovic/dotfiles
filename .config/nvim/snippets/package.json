@@ -1,43 +1,49 @@
 {
-	"name": "example-snippets",
-	"engines": {
-		"vscode": "^1.11.0"
-	},
-	"contributes": {
-		"snippets": [
-			{
-				"language": [
-					"php"
-				],
-				"path": "./php.json"
-			},
-			{
-				"language": [
-					"twig"
-				],
-				"path": "./twig.json"
-			},
-			{
-				"language": [
-					"typescript"
-				],
-				"path": "./typescript.json"
-			},
-			{
-				"language": [
-					"javascript"
-				],
-				"path": "./javascript.json"
-			},
-			{
-				"language": [
-					"shellscript",
-					"shell",
-					"sh",
-					"zsh"
-				],
-				"path": "./shell.json"
-			}
-		]
-	}
+  "name": "example-snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "php"
+        ],
+        "path": "./php.json"
+      },
+      {
+        "language": [
+          "twig"
+        ],
+        "path": "./twig.json"
+      },
+      {
+        "language": [
+          "typescript"
+        ],
+        "path": "./typescript.json"
+      },
+      {
+        "language": [
+          "javascript"
+        ],
+        "path": "./javascript.json"
+      },
+      {
+        "language": [
+          "lua"
+        ],
+        "path": "./lua.json"
+      },
+      {
+        "language": [
+          "shellscript",
+          "shell",
+          "sh",
+          "zsh"
+        ],
+        "path": "./shell.json"
+      }
+    ]
+  }
 }

@@ -39,8 +39,8 @@ end
 local servers = {
     harper_ls = {
         settings = {
-            linters = {
-                SentenceCapitalization = false,
+            ['harper-ls'] = {
+                userDictPath = '~/dotfiles/.config/nvim/spell/harper_dict.txt',
             },
         },
         filetypes = { 'markdown' },
@@ -75,14 +75,16 @@ local servers = {
         },
     },
     lua_ls = {
-        Lua = {
-            workspace = {
-                checkThirdParty = false,
+        settings = {
+            Lua = {
+                workspace = {
+                    checkThirdParty = false,
+                },
+                telemetry = {
+                    enable = false,
+                },
+                diagnostics = { disable = { 'missing-fields' } },
             },
-            telemetry = {
-                enable = false,
-            },
-            diagnostics = { disable = { 'missing-fields' } },
         },
     },
     pyright = {
@@ -92,22 +94,34 @@ local servers = {
             },
         },
     },
+    jdtls = {
+        settings = {
+            telemetry = {
+                enabled = false,
+            },
+        },
+    },
 }
 
 return {
-    -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
-        -- Automatically install LSPs to stdpath for neovim
-        'mason-org/mason.nvim',
         'mason-org/mason-lspconfig.nvim',
-        -- Additional lua configuration, makes nvim stuff amazing!
-        'folke/neodev.nvim',
+        'mason-org/mason.nvim',
+        {
+            'folke/lazydev.nvim',
+            ft = 'lua',
+            opts = {
+                library = {
+                    { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+                },
+            },
+        },
+        { 'Bilal2453/luvit-meta', lazy = true },
     },
     config = function()
-        --local capabilities = vim.lsp.protocol.make_client_capabilities()
-        --capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-        local capabilities = require('blink.cmp').get_lsp_capabilities()
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
         local mason_lspconfig = require('mason-lspconfig')
         require('mason').setup()
         local server_names = vim.tbl_keys(servers)
@@ -118,7 +132,7 @@ return {
             vim.lsp.config(server_name, {
                 capabilities = capabilities,
                 on_attach = on_attach,
-                settings = servers[server_name],
+                settings = servers[server_name].settings,
                 init_options = (servers[server_name] or {}).init_options,
                 filetypes = (servers[server_name] or {}).filetypes,
             })

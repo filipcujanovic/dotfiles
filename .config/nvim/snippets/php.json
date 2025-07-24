@@ -1,44 +1,44 @@
 {
-	"log function": {
-		"prefix": "lf",
-		"body": [
-			"l($0);"
-		],
-		"description": "log function"
-	},
-	"dump and die": {
-		"prefix": "dd",
-		"body": [
-			"die(var_dump($0));"
-		],
-		"description": "dump and die"
-	},
-	"console log": {
-		"prefix": "cl",
-		"body": [
-			"console.log($0);"
-		],
-		"description": "console log"
-	},
-	"var dump": {
-		"prefix": "vd",
-		"body": [
-			"var_dump($0);"
-		],
-		"description": "var dump"
-	},
-	"pretty var dump": {
-		"prefix": "pvd",
-		"body": [
-			"echo \"<pre>\"; \nvar_dump($0);"
-		],
-		"description": "pretty var dump"
-	},
-	"filter unit test": {
-		"prefix": "ppf",
-		"body": [
-			"php phpunit --filter $0"
-		],
-		"description": "filter unit test"
-	}
+  "log function": {
+    "prefix": "lf",
+    "body": [
+      "l($0);"
+    ],
+    "description": "log function"
+  },
+  "dump and die": {
+    "prefix": "dd",
+    "body": [
+      "die(var_dump($0));"
+    ],
+    "description": "dump and die"
+  },
+  "console log": {
+    "prefix": "cl",
+    "body": [
+      "console.log($0);"
+    ],
+    "description": "console log"
+  },
+  "var dump": {
+    "prefix": "vd",
+    "body": [
+      "var_dump($0);"
+    ],
+    "description": "var dump"
+  },
+  "pretty var dump": {
+    "prefix": "pvd",
+    "body": [
+      "echo \"<pre>\"; \nvar_dump($0);"
+    ],
+    "description": "pretty var dump"
+  },
+  "filter unit test": {
+    "prefix": "ppf",
+    "body": [
+      "php phpunit --filter $0"
+    ],
+    "description": "filter unit test"
+  }
 }

@@ -1,18 +1,18 @@
-# font
 font-family              = Liga SFMono Nerd Font
-font-size                = 14
+font-size                = 12
 font-style               = Medium
 window-inherit-font-size = true
 
-# display
-#theme                      = catppuccin-mocha
 theme                      = GruvboxDarkHard
 window-decoration          = false
 macos-titlebar-style       = hidden
 background-opacity         = 0.7
 background-blur-radius     = 20
-window-padding-x           = 10, 10
-window-padding-y           = 10, 10
+window-padding-x           = 10,10
+window-padding-y           = 10,10
 cursor-text                = 000000
 link-url                   = true
 confirm-close-surface      = false
+macos-option-as-alt        = true
+
+keybind = super+r=reload_config

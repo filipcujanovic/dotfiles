@@ -24,7 +24,7 @@ playback_track = { fg = "Blue" }
 playback_album = { fg = "Red" }
 playback_metadata = { fg = "#fe8019" }
 playback_progress_bar = { fg = "Green" }
-current_playing = { fg = "Green" }
+current_playing = { fg = "BrightYellow" }
 #page_desc = { fg = "Cyan", modifiers = ["Bold"] }
 #table_header = { fg = "Blue", modifiers = ["Bold"]}
 border = { fg = "Green"}

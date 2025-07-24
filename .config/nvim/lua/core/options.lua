@@ -9,7 +9,7 @@ vim.o.shiftwidth = 4
 -- disable swap file
 vim.opt.swapfile = false
 
-vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
+vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 
 vim.o.wrap = true
 
@@ -51,6 +51,7 @@ vim.opt.iskeyword:append('-')
 vim.o.smartindent = true
 vim.o.expandtab = true
 vim.o.tabstop = 4
+vim.o.shiftwidth = 4
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
@@ -80,3 +81,5 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+vim.g.sleuth_php_heuristics = 0

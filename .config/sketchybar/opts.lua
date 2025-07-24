@@ -2,6 +2,12 @@ local colors = require('colors')
 M = {}
 
 M.color = colors.current
+M.use_border = true
+M.background = {
+    border_width = 1,
+    border_color = M.color.border_color_inactive,
+    corner_radius = 5,
+}
 M.icon_font = 'Symbols Nerd Font Mono'
 M.fira_code = {
     family = 'Fira Code Nerd Font',
@@ -22,7 +28,7 @@ M.sf_pro_text = {
 M.sf_pro_text_small = {
     family = 'SF Pro Text',
     style = 'Bold',
-    size = 14.0,
+    size = 15.0,
 }
 
 M.sf_pro_text_large = {
@@ -38,7 +44,7 @@ M.font = {
         style = 'Regular',
         size = 30.0,
     },
-    icon_font_small = {
+    icon_font_normal = {
         family = M.icon_font,
         style = 'Regular',
         size = 22.0,
@@ -48,12 +54,22 @@ M.font = {
         style = 'Regular',
         size = 22.0,
     },
+    front_app_icon_small = {
+        family = 'sketchybar-app-font',
+        style = 'Regular',
+        size = 15.0,
+    },
+    icon_font_small = {
+        family = M.icon_font,
+        style = 'Regular',
+        size = 15.0,
+    },
 }
 
 M.bracket_background = {
     --color = M.color.surface0,
     --color = M.color.base,
-    color = M.color.transparent,
+    --color = M.color.transparent,
     height = 38,
 }
 

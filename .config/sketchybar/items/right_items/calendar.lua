@@ -8,30 +8,49 @@ local calendar = sbar.add('item', 'calendar', {
     update_freq = 1,
     label = {
         padding_right = 5,
+        padding_left = 5,
     },
-})
-
-local calendar_icon = sbar.add('item', 'calendar_icon', {
-    position = 'right',
-    padding_right = 0,
     icon = {
         string = icons.calendar,
-        font = opts.font.icon_font_small,
+        padding_right = 5,
+        padding_left = 5,
     },
+    background = opts.use_border and opts.background or {},
 })
 
-local function update_calendar()
-    local date = os.date('%a %d %b %H:%M')
+--local calendar_icon = sbar.add('item', 'calendar_icon', {
+--    position = 'right',
+--    padding_right = 0,
+--    padding_left = 5,
+--    icon = {
+--        string = icons.calendar,
+--    },
+--})
+
+local function update_time()
+    local date = os.date('%A %H:%M')
+    if calendar:query().scripting.update_freq == 0 then
+        calendar:set({ update_freq = 1 })
+    end
     calendar:set({ label = { string = date } })
 end
 
-calendar:subscribe('routine', update_calendar)
-calendar:subscribe('forced', update_calendar)
-calendar_icon:subscribe('mouse.clicked', function()
+local function show_date()
+    local date = os.date('%d %B')
+    calendar:set({ label = { string = date }, update_freq = 0 })
+end
+
+calendar:subscribe('routine', update_time)
+calendar:subscribe('forced', update_time)
+calendar:subscribe('mouse.clicked', show_date)
+calendar:subscribe('mouse.exited.global', update_time)
+calendar:subscribe('mouse.clicked', function()
     sbar.exec('open -a "Calendar"')
 end)
+--calendar_icon:subscribe('mouse.clicked', function()
+--    sbar.exec('open -a "Calendar"')
+--end)
 
 return {
     calendar = calendar,
-    calendar_icon = calendar_icon,
 }

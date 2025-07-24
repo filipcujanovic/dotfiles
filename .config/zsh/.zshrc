@@ -32,12 +32,13 @@ bindkey -e
 
 export VISUAL=nvim
 export EDITOR=nvim
-export HISTSIZE=100000
+export HISTSIZE=1000000
 export SAVEHIST=$HISTSIZE
 
 setopt HIST_IGNORE_SPACE # don't save when prefixed with space
 setopt HIST_IGNORE_DUPS # don't save duplicates
 setopt SHARE_HISTORY # share history between sessions
+setopt CHASE_LINKS
 
 export PATH=$PATH":$HOME/bin"
 export PATH="/Users/cujanovic/.local/bin:$PATH"
@@ -48,6 +49,7 @@ export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
 export PATH="$(brew --prefix)/opt/mysql-client/bin:$PATH"
 export PATH="/$PATH:$HOME/.cargo/bin"
 export PATH=$PATH:"$HOME/Library/Python/3.10/bin"
+export PATH="/Applications/flameshot.app/Contents/MacOS/:$PATH"
 export NVM_DIR="$HOME/.nvm"
 export LESS="-XRFS"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#a89984"

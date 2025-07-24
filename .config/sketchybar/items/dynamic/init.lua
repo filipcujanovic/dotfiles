@@ -1,1 +1,2 @@
---local media_items = require('items.dynamic.media')
+--require('items.dynamic.spotify-player')
+require("items.dynamic.spotify-app")

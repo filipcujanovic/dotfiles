@@ -9,7 +9,7 @@ function M.transform(palette)
         return 0xff000000 + (0x10000 * m.rgb[1]) + (0x100 * m.rgb[2]) + m.rgb[3]
     end
     return function()
-        return {
+        local colors = {
             transparent = 0x00000000,
             visible = 0x60000000,
             base = compute(palette.base),
@@ -24,12 +24,16 @@ function M.transform(palette)
             yellow = compute(palette.yellow),
             red = compute(palette.rosewater),
             black = compute(palette.crust),
-            timer_active_color = compute(palette.green),
-            timer_paused_color = compute(palette.yellow),
-            timer_inactive_color = compute(palette.text),
-            active_color = compute(palette.peach),
-            inactive_color = compute(palette.text),
         }
+        colors['timer_active_color'] = colors.green
+        colors['timer_paused_color'] = colors.yellow
+        colors['timer_inactive_color'] = cojors.text
+        colors['active_color'] = colors.orange
+        colors['inactive_color'] = colors.green
+        colors['border_color_inactive'] = colors.blue
+        colors['border_color_active'] = colors.orange
+        colors['icon_color'] = colors.purple
+        return colors
     end
 end
 return M

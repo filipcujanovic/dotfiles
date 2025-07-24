@@ -1,0 +1,28 @@
+##!/usr/bin/env bash
+
+applications=$(
+    eza -1 -X --icons=never --color=never --no-quotes \
+    ~/Applications/Brave\ Browser\ Apps.localized/ \
+    /Applications/ \
+    /Applications/Utilities/ \
+    /System/Applications/ \
+    /System/Applications/Utilities/ \
+    /System/Library/CoreServices \
+    | grep ".app$" \
+    | sed "s/\.app$//g"
+)
+
+settings=$(<~/dotfiles/.config/aerospace/mac-os-settings-list.txt)
+
+list=$(
+    printf "%s\n" "$applications"
+    printf "%s\n" "$settings"
+)
+
+selected_item=$(echo "$list" | sort -f | choose -f SFMono-Regular -c "83A598" -b "B8BB26")
+
+if [[ "$selected_item" == "x-apple"* ]]; then
+    open "$selected_item"
+else
+    open -a "$selected_item"
+fi

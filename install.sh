@@ -33,5 +33,7 @@ ln -s -f ~/dotfiles/.config/karabiner/karabiner.json ~/.config/karabiner/karabin
 ln -s -f ~/dotfiles/.config/lazygit/config.yaml ~/Library/Application\ Support/lazygit/config.yml
 ln -s -f ~/dotfiles/.config/lazysql/config.yaml ~/Library/Application\ Support/lazysql/config.toml
 
+cp ~/dotfiles/.config/mouseless/config.yaml ~/Library/Containers/net.sonuscape.mouseless/Data/.mouseless/configs/
+
 # symlink bin dir
  ln -s -f ~/dotfiles/bin/* ~/bin/

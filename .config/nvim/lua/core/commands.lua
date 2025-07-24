@@ -1,4 +1,5 @@
 vim.api.nvim_create_user_command('ParseJson', '%!jq .', { desc = 'parse json' })
+vim.api.nvim_create_user_command('ParseSelectedJson', '\'<,\'>!jq .', { desc = 'parse selected json' })
 vim.api.nvim_create_user_command('SortJson', '%!jq -S', { desc = 'sort json' })
 vim.api.nvim_create_user_command('EncodeJson', '%!jq \'.\'', { desc = 'encode json' })
 vim.api.nvim_create_user_command('DecodeJson', '%s/\\"/"/g', { desc = 'decode json' })
