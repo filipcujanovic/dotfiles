@@ -1,6 +1,7 @@
 local opts = require('opts')
 local sbar = require('sketchybar')
 local icons = require('icons')
+local utils = require('utils')
 local time_counter_file_path = '../files/time.txt'
 local active_color = opts.color.timer_active_color
 local paused_color = opts.color.timer_paused_color
@@ -35,22 +36,43 @@ local time_counter = tonumber(read_file(time_counter_file_path))
 time_counter = time_counter == nil and 0 or time_counter
 local run_on_start = time_counter ~= 0
 
+local icon_padding = opts.item_options.group_items and {
+    left = 10,
+    right = 5,
+} or {
+    left = 5,
+    right = 5,
+}
+
+local label_padding = opts.item_options.group_items and {
+    left = 5,
+    right = 1,
+} or {
+    left = 8,
+    right = 15,
+}
+
 local timer = sbar.add('item', 'timer', {
     position = 'right',
-    padding_right = 0,
     padding_left = 0,
-    label = {
+    padding_right = opts.item_options.group_items and 0 or 5,
+    icon = {
+        font = opts.font.default,
         drawing = run_on_start,
         string = get_time_string(time_counter),
         color = run_on_start and active_color or inactive_color,
-        padding_right = 5,
-        width = 80,
+        padding_left = icon_padding.left,
+        padding_right = icon_padding.right,
     },
-    icon = {
+    label = {
+        font = opts.font.icon_font_normal,
+        color = opts.color.icon_color,
         align = 'center',
         string = icons.clock,
-        padding_right = 5,
-        padding_left = 5,
+        padding_left = label_padding.left,
+        padding_right = label_padding.right,
+        drawing = not run_on_start,
+        y_offset = 1,
     },
     updates = true,
     update_freq = run_on_start and 1 or 0,
@@ -58,7 +80,6 @@ local timer = sbar.add('item', 'timer', {
         align = 'center',
         horizontal = true,
     },
-    background = opts.use_border and opts.background or {},
 })
 
 sbar.add('item', {
@@ -72,12 +93,13 @@ sbar.add('item', {
     write_to_file(time_counter_file_path, time_counter)
     timer:set({
         popup = { drawing = false },
-        label = {
+        icon = {
             string = get_time_string(time_counter),
             color = inactive_color,
         },
     })
 end)
+
 local playstop = sbar.add('item', {
     position = 'popup.' .. timer.name,
     icon = {
@@ -102,7 +124,7 @@ playstop:subscribe('mouse.clicked', function()
     })
     timer:set({
         popup = { drawing = false },
-        label = { color = color, drawing = drawing },
+        icon = { color = color, drawing = drawing },
         update_freq = update_freq,
     })
 end)
@@ -122,8 +144,13 @@ local showhide = sbar.add('item', 'showhide', {
 
 showhide:subscribe('mouse.clicked', function()
     timer:set({
-        label = {
+        icon = {
             drawing = 'toggle',
+        },
+    })
+    timer:set({
+        label = {
+            drawing = timer:query().icon.drawing ~= 'on',
         },
     })
     local icon = icons.show
@@ -140,7 +167,7 @@ end)
 local function update_timer(env)
     playstop:set({ icon = { string = icons.pause } })
     timer:set({
-        label = {
+        icon = {
             string = get_time_string(time_counter),
         },
     })

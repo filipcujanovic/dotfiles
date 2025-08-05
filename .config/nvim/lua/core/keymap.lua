@@ -13,8 +13,12 @@ vim.keymap.set('n', '<leader>sa', vim.cmd.wa, { desc = 'save all' })
 vim.keymap.set('n', 'k', 'v:count == 0 ? \'gk\' : \'k\'', { expr = true, silent = true })
 vim.keymap.set('n', 'j', 'v:count == 0 ? \'gj\' : \'j\'', { expr = true, silent = true })
 
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '[d', function()
+    vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', function()
+    vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
@@ -59,8 +63,6 @@ vim.keymap.set('n', '<leader>rr', function()
     require('kulala').run()
 end, { desc = 'run request' })
 
-vim.keymap.set('n', '<leader>W', '<Plug>(DBUI_SaveQuery)', { desc = 'save sql query file' })
-vim.keymap.set('n', '<leader>rq', '<Plug>(DBUI_ExecuteQuery)', { desc = 'run query' })
 vim.keymap.set('n', '<leader>db', ':Dbee toggle<CR>', { desc = 'open database editor' })
 
 vim.keymap.set('n', '<leader>re', function()

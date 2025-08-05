@@ -143,7 +143,7 @@ function M.transform(palette, is_dark)
             }
             colors['timer_active_color'] = colors.green
             colors['timer_paused_color'] = colors.yellow
-            colors['timer_inactive_color'] = colors.base
+            colors['timer_inactive_color'] = colors.blue
             colors['active_color'] = colors.orange
             colors['inactive_color'] = colors.green
             colors['border_color_inactive'] = colors.blue

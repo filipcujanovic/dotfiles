@@ -37,16 +37,12 @@ return {
         sbar.add('event', 'custom_space_windows_change')
         sbar.add('event', 'builtin_display_change')
         sbar.add('event', 'spotify_change', 'com.spotify.client.PlaybackStateChanged')
-        display_watcher = sbar.add('item', {
-            drawing = false,
-            updates = true,
-        })
         sbar.add('event', 'battery_change')
         battery_watcher = sbar.add('item', {
             drawing = false,
-            update_freq = 60, -- check battery once per minute
+            update_freq = 60,
         })
-        woke_watcher = sbar.add('item', {
+        display_watcher = sbar.add('item', {
             drawing = false,
             updates = true,
         })

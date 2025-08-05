@@ -11,7 +11,7 @@ return {
             },
             editor = {
                 mappings = {
-                    { key = 'BB', mode = 'v', action = 'run_selection' },
+                    { key = '<leader>rq', mode = 'v', action = 'run_selection' },
                     { key = 'BB', mode = 'n', action = 'run_file' },
                     { key = '<CR>', mode = 'n', action = 'run_under_cursor' },
                     {

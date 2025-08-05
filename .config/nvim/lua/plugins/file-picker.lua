@@ -124,6 +124,7 @@ return {
                     ['ctrl-d'] = {
                         fn = function(selected)
                             local bufnr = tonumber(selected[1]:match('%d+'))
+                            bufnr = bufnr == nil and 0 or bufnr + 0
                             vim.api.nvim_buf_delete(bufnr, { force = true })
                         end,
                         reload = true,

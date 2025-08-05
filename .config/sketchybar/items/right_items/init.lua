@@ -1,22 +1,30 @@
 local opts = require('opts')
+local seperator = require('items.right_items.separator')
 local sbar = require('sketchybar')
 local calendar_items = require('items.right_items.calendar')
-local timer_items = require('items.right_items.timer')
+seperator.generate_seperator('right', { left = 5, right = 10 })
+local keyboard_layout_items = require('items.right_items.keyboard-layout')
+seperator.generate_seperator('right', { left = 5, right = 10 })
+local aerospace_mode_items = require('items.right_items.aerospace-mode')
+seperator.generate_seperator('right', { left = 5, right = 5 })
 local battery_items = require('items.right_items.battery')
+seperator.generate_seperator('right', { left = 5, right = 5 })
 local volume_items = require('items.right_items.volume')
-local keyboard_layout = require('items.right_items.keyboard-layout')
-local aerospace_mode = require('items.right_items.aerospace-mode')
---local bracket = sbar.add('bracket', {
---    volume_items.device_icon.name,
---    volume_items.volume.name,
---    --volume_items.volume_slider.name,
---    battery_items.battery.name,
---    battery_items.battery_icon.name,
---    calendar_items.calendar.name,
---    calendar_items.calendar_icon.name,
---}, {
---    background = opts.bracket_background,
---})
+seperator.generate_seperator('right', { left = 5, right = 5 })
+local timer_items = require('items.right_items.timer')
+if opts.item_options.group_items then
+    local bracket = sbar.add('bracket', {
+        calendar_items.calendar.name,
+        timer_items.timer.name,
+        battery_items.battery.name,
+        volume_items.device_icon.name,
+        volume_items.volume.name,
+        keyboard_layout_items.keyboard_layout.name,
+        aerospace_mode_items.aerospace_mode.name,
+    }, {
+        background = opts.bracket_background_border,
+    })
+end
 
 --local show_border = function(env)
 --    bracket:set({ background = { drawing = 'toggle' } })

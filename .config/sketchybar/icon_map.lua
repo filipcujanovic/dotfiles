@@ -2,7 +2,7 @@ local opts = require('opts')
 local icons = require('icons')
 M = {}
 
-M.get_icon = function(app)
+M.get_icon = function(app, is_front_app)
     local icons_map = {
         --WezTerm = '􀩼',
         --Ghostty = '􀩼',
@@ -42,9 +42,13 @@ M.get_icon = function(app)
         ['App Store'] = ':app_store:',
         ['Default'] = ':default:',
     }
+    local fonts = {
+        viber = is_front_app and opts.font.icon_font_normal or opts.font.icon_font_small,
+        other = is_front_app and opts.font.front_app_icon or opts.font.front_app_icon_small,
+    }
     return {
         string = icons_map[app] ~= nil and icons_map[app] or ':default:',
-        font = app == 'Rakuten Viber' and opts.font.icon_font_normal or opts.font.front_app_icon,
+        font = app == 'Rakuten Viber' and fonts.viber or fonts.other,
     }
 end
 

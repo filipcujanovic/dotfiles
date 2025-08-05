@@ -35,10 +35,14 @@ export EDITOR=nvim
 export HISTSIZE=1000000
 export SAVEHIST=$HISTSIZE
 
-setopt HIST_IGNORE_SPACE # don't save when prefixed with space
-setopt HIST_IGNORE_DUPS # don't save duplicates
-setopt SHARE_HISTORY # share history between sessions
+setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_DUPS
+setopt SHARE_HISTORY
 setopt CHASE_LINKS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_REDUCE_BLANKS
 
 export PATH=$PATH":$HOME/bin"
 export PATH="/Users/cujanovic/.local/bin:$PATH"

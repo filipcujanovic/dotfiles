@@ -41,6 +41,9 @@ local servers = {
         settings = {
             ['harper-ls'] = {
                 userDictPath = '~/dotfiles/.config/nvim/spell/harper_dict.txt',
+                linters = {
+                    SentenceCapitalization = false,
+                },
             },
         },
         filetypes = { 'markdown' },
@@ -83,7 +86,10 @@ local servers = {
                 telemetry = {
                     enable = false,
                 },
-                diagnostics = { disable = { 'missing-fields' } },
+                diagnostics = {
+                    globals = { 'vim' },
+                    disable = { 'missing-fields' },
+                },
             },
         },
     },
@@ -128,7 +134,7 @@ return {
         mason_lspconfig.setup({
             ensure_installed = server_names,
         })
-        for key, server_name in pairs(server_names) do
+        for _, server_name in pairs(server_names) do
             vim.lsp.config(server_name, {
                 capabilities = capabilities,
                 on_attach = on_attach,

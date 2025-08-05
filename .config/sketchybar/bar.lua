@@ -2,21 +2,19 @@ local sbar = require('sketchybar')
 local opts = require('opts')
 
 sbar.bar({
-    height = 37,
+    height = opts.height,
     color = opts.color.visible,
     margin = 0,
     sticky = true,
     padding_left = 5,
     padding_right = 5,
-    notch_width = 220, -- resoulution 1512 x 982
-    --notch_width = 188, -- resoulution 1512 x 982
-    --notch_width = 145, -- resoulution 1352 x 878
+    notch_width = opts.notch_width.small,
     display = 'main',
 })
 
 sbar.default({
-    padding_left = 10,
-    padding_right = 10,
+    padding_left = 5,
+    padding_right = 5,
     background = {
         height = 26,
         color = opts.color.transparent,
@@ -25,15 +23,15 @@ sbar.default({
     icon = {
         color = opts.color.icon_color,
         font = opts.font.icon_font_normal,
-        padding_left = 0,
+        padding_left = 5,
         padding_right = 0,
     },
     label = {
         color = opts.color.text,
         font = opts.font.default,
         y_offset = 0,
-        padding_left = 0,
-        padding_right = 0,
+        padding_left = 5,
+        padding_right = 5,
     },
     popup = {
         background = {

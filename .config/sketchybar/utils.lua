@@ -8,10 +8,6 @@ end
 
 local json = { _version = '0.1.2' }
 
--------------------------------------------------------------------------------
--- Encode
--------------------------------------------------------------------------------
-
 local encode
 
 local escape_char_map = {
@@ -111,10 +107,6 @@ end
 function json.encode(val)
     return (encode(val))
 end
-
--------------------------------------------------------------------------------
--- Decode
--------------------------------------------------------------------------------
 
 local parse
 
@@ -368,8 +360,17 @@ function dump(o)
     end
 end
 
+local count = function(table)
+    local n = 0
+    for k, v in pairs(table) do
+        n = n + 1
+    end
+    return n
+end
+
 return {
     split_string = split_string,
     json = json,
     dump = dump,
+    count = count,
 }

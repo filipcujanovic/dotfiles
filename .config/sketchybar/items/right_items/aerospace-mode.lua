@@ -1,18 +1,24 @@
 local opts = require('opts')
 local sbar = require('sketchybar')
 
+local label_padding = opts.item_options.group_items and {
+    left = 0,
+    right = 0,
+} or {
+    left = 5,
+    right = 10,
+}
+
 local aerospace_mode = sbar.add('item', 'aerospace-mode', {
     position = 'right',
+    padding_left = 0,
+    padding_right = 0,
     label = {
         string = 'main',
-        font = opts.sf_pro_text_small,
-        padding_left = 5,
-        padding_right = 5,
+        padding_left = label_padding.left,
+        padding_right = label_padding.right,
     },
-    padding_right = 0,
-    padding_left = 8,
     updates = true,
-    background = opts.use_border and opts.background or {},
 })
 
 aerospace_mode:subscribe('aerospace_mode_change', function(env)

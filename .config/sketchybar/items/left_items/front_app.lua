@@ -4,33 +4,44 @@ local sbar = require('sketchybar')
 local icons = require('icons')
 
 local separator = sbar.add('item', 'separator', {
-    padding_left = 10,
+    padding_left = opts.item_options.group_items and 5 or -5,
+    padding_right = 0,
     icon = {
         string = icons.separator,
-        padding_right = 5,
-    },
-})
-local front_app = sbar.add('item', 'front_app', {
-    position = 'left',
-    padding_left = 0,
-    icon = {
-        padding_right = 5,
-        font = opts.font.front_app_icon,
-    },
-    label = {
-        string = '',
-        font = opts.font.default,
-        padding_left = 5,
-        padding_right = 8,
+        padding_right = 0,
+        padding_left = 0,
     },
 })
 
+local label = opts.item_options.front_app.show_label
+        and {
+            string = '',
+            font = opts.font.default,
+            padding_left = opts.item_options.front_app.show_icon and 5 or 0,
+            padding_right = 0,
+        }
+    or {}
+
+local icon = opts.item_options.front_app.show_icon and {
+    padding_right = 0,
+    padding_left = 0,
+    font = opts.font.front_app_icon,
+} or {}
+
+local front_app = sbar.add('item', 'front_app', {
+    position = 'left',
+    padding_left = -10,
+    padding_right = 0,
+    icon = icon,
+    label = label,
+})
+
 front_app:subscribe('front_app_switched', function(env)
+    label = opts.item_options.front_app.show_label and { string = env.INFO } or {}
+    icon = opts.item_options.front_app.show_icon and icon_map.get_icon(env.INFO, true) or {}
     front_app:set({
-        icon = icon_map.get_icon(env.INFO),
-        label = {
-            string = env.INFO,
-        },
+        icon = icon,
+        label = label,
     })
 end)
 
