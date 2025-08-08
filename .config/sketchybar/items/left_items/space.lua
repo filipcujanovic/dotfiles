@@ -242,21 +242,18 @@ for index, space_id in pairs(all_spaces) do
     end)
 
     space:subscribe('custom_space_windows_change', function(_)
-        if opts.item_options.space.app_focus then
-            change_focused_app()
-        else
-            space_apps_string = generate_app_icons_string(space_id)
-            space_name = string.len(space_apps_string) ~= 0 and space_id .. ' -' or space_id
-            space:set({
-                label = {
-                    drawing = string.len(space_apps_string) ~= 0,
-                    string = space_apps_string,
-                },
-                icon = {
-                    string = space_name,
-                },
-            })
-        end
+        change_focused_app()
+        space_apps_string = generate_app_icons_string(space_id)
+        space_name = string.len(space_apps_string) ~= 0 and space_id .. ' -' or space_id
+        space:set({
+            label = {
+                drawing = string.len(space_apps_string) ~= 0,
+                string = space_apps_string,
+            },
+            icon = {
+                string = space_name,
+            },
+        })
     end)
 
     space:subscribe('mouse.clicked', function(_)

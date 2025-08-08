@@ -3,6 +3,13 @@ return {
     priority = 1000,
     config = function()
         require('gruvbox').setup({
+            italic = {
+                strings = false,
+                emphasis = false,
+                comments = false,
+                operators = false,
+                folds = false,
+            },
             overrides = {
                 LineNr = { fg = '#b8bb26' },
                 DashboardHeader = { fg = '#d65d0e' },

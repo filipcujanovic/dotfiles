@@ -30,7 +30,7 @@ local random_wallpaper = wallpapers[schemes[math.random(#schemes)]]
 
 return {
     {
-        source = { File = wezterm.home_dir .. '/.config/wezterm/wallpapers/' .. wallpapers['forest-road'] },
+        source = { File = wezterm.home_dir .. '/.config/wallpapers/' .. wallpapers['forest-road'] },
         -- source = { File = wezterm.home_dir .. "/.config/wezterm/wallpapers/" .. random_wallpaper },
         opacity = 0.2,
     },

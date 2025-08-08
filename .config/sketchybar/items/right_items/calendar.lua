@@ -41,7 +41,7 @@ local calendar = sbar.add('item', 'calendar', {
 })
 
 local function update_time()
-    local date = os.date('%A %H:%M')
+    local date = string.lower(os.date('%A %H:%M'))
     if calendar:query().scripting.update_freq == 0 then
         calendar:set({ update_freq = 1 })
     end
@@ -51,7 +51,7 @@ end
 local function calendar_click(env)
     if env.INFO.button_code == 0 then
         if not date_is_visible then
-            local date = os.date('%d %B')
+            local date = string.lower(os.date('%d %B'))
             calendar:set({ label = { string = date }, update_freq = 0 })
         else
             update_time()

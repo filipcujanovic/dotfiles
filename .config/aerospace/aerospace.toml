@@ -59,6 +59,7 @@ gaps.outer.top = [
 # alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
 
 cmd-m = []
+#cmd-w = ['close', 'exec-and-forget sketchybar --trigger custom_space_windows_change']
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 alt-slash = 'layout tiles horizontal vertical'

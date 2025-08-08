@@ -7,7 +7,7 @@ config = {
     --background = wallpaper,
     keys = keys,
     max_fps = 120,
-    font_size = 14,
+    font_size = 16,
     front_end = 'WebGpu',
     animation_fps = 120,
     enable_tab_bar = false,
@@ -21,7 +21,11 @@ config = {
     macos_window_background_blur = 25,
     window_close_confirmation = 'NeverPrompt',
     webgpu_power_preference = 'HighPerformance',
-    font = wezterm.font('Liga SFMono Nerd Font'),
+    --font = wezterm.font('CaskaydiaCove Nerd Font'),
+    --font = wezterm.font('Liga SFono Nerd Font'),
+    --font = wezterm.font('Iosevka Nerd Font'),
+    --font = wezterm.font('FiraCode Nerd Font'),
+    font = wezterm.font('VictorMono Nerd Font', { weight = 'Medium' }),
 }
 
 return config

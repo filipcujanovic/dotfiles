@@ -37,7 +37,7 @@ local front_app = sbar.add('item', 'front_app', {
 })
 
 front_app:subscribe('front_app_switched', function(env)
-    label = opts.item_options.front_app.show_label and { string = env.INFO } or {}
+    label = opts.item_options.front_app.show_label and { string = string.lower(env.INFO) } or {}
     icon = opts.item_options.front_app.show_icon and icon_map.get_icon(env.INFO, true) or {}
     front_app:set({
         icon = icon,

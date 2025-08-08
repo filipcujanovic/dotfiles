@@ -10,13 +10,13 @@ local get_current_keyboard_layout = function()
         :gsub('%s+', '')
         :gsub('"', '')
     if layout == 'ABC' then
-        return 'US'
+        return 'us'
     end
     if layout == 'Serbian-Latin' then
-        return 'Ć'
+        return 'ć'
     end
     if layout == 'Serbian' then
-        return 'Ћ'
+        return 'ћ'
     end
 
     return layout
