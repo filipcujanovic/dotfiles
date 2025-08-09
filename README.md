@@ -65,21 +65,21 @@
 - [pearcleaner](https://github.com/alienator88/Pearcleaner) - mac app cleaner
 
 ### fonts
-- [caskaydia-cove-nerd-font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode) - install with `brew install --cask font-caskaydia-cove-nerd-font`
-- [caskaydia-mono-nerd-font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaMono) - install with `brew install --cask font-caskaydia-mono-nerd-font`
-- [fira-mono-nerd-font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraMono) - install with `brew install --cask font-fira-mono-nerd-font`
-- [iosevka-nerd-font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Iosevka) - install with `brew install --cask font-iosevka-nerd-font`
-- [sf-mono-nerd-font-ligaturized](https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized) - install with `brew install --cask font-sf-mono-nerd-font-ligaturized`
-- [sf-mono](https://developer.apple.com/fonts/) - install with ```brew install --cask font-sf-mono```
-- [sf-pro](https://developer.apple.com/fonts/) - install with `brew install --cask font-sf-pro`
-- [victor-mono-nerd-font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/VictorMono) - install with `brew install --cask font-victor-mono-nerd-font`
+- [caskaydia-cove-nerd-font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode) - `brew install --cask font-caskaydia-cove-nerd-font`
+- [caskaydia-mono-nerd-font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaMono) - `brew install --cask font-caskaydia-mono-nerd-font`
+- [fira-mono-nerd-font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraMono) - `brew install --cask font-fira-mono-nerd-font`
+- [iosevka-nerd-font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Iosevka) - `brew install --cask font-iosevka-nerd-font`
+- [sf-mono-nerd-font-ligaturized](https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized) - `brew install --cask font-sf-mono-nerd-font-ligaturized`
+- [sf-mono](https://developer.apple.com/fonts/) - ```brew install --cask font-sf-mono```
+- [sf-pro](https://developer.apple.com/fonts/) - `brew install --cask font-sf-pro`
+- [victor-mono-nerd-font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/VictorMono) - `brew install --cask font-victor-mono-nerd-font`
 
 ### symbol only fonts
-- [symbols-only-nerd-font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/NerdFontsSymbolsOnly) - install with `brew install --cask font-symbols-only-nerd-font`
-- [sf-symbols](https://developer.apple.com/sf-symbols/) - install with `brew install --cask sf-symbols`
+- [symbols-only-nerd-font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/NerdFontsSymbolsOnly) - `brew install --cask font-symbols-only-nerd-font`
+- [sf-symbols](https://developer.apple.com/sf-symbols/) - `brew install --cask sf-symbols`
 
 ## custom scripts
-- [app-launcher](bin/app-launcher) - using [choose](https://github.com/chipsenkbeil/choose) I created a simple app launcher, you can also search macOS settings and open them
+- [app-launcher](bin/app-launcher) - using [choose](https://github.com/chipsenkbeil/choose) I created a simple app launcher, you can also search macOS settings and open them ![choose](assets/images/choose.png)
 - [tmux-session-picker](bin/tmux-session-picker) - simple [fzf](https://github.com/junegunn/fzf) picker for tmux sessions
 - [tmuxifier-run-all](bin/tmuxifier-run-all) - a simple script to start all tmux sessions created with [tmuxifier](https://github.com/jimeh/tmuxifier)
 
