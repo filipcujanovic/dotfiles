@@ -7,6 +7,7 @@ if [ -f ~/dotfiles-private/.config/zsh/.zshrc-private ]; then
 fi
 
 alias jsonencode="awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' $0"
+alias fastfetch="fastfetch; printf '\n\n'"
 alias cat="bat"
 alias gdf="git diff"
 alias gc="git checkout"

@@ -37,3 +37,5 @@ cp ~/dotfiles/.config/mouseless/config.yaml ~/Library/Containers/net.sonuscape.m
 
 # symlink bin dir
  ln -s -f ~/dotfiles/bin/* ~/bin/
+
+curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/latest/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf

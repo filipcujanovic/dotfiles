@@ -4,7 +4,7 @@ local sbar = require('sketchybar')
 local icons = require('icons')
 
 local separator = sbar.add('item', 'separator', {
-    padding_left = opts.item_options.group_items and 5 or -5,
+    padding_left = opts.item_options.group_items and 5 or 0,
     padding_right = 0,
     icon = {
         string = icons.separator,

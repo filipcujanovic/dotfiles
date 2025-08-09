@@ -163,7 +163,7 @@ for index, space_id in pairs(all_spaces) do
     local icon = {
         align = 'center',
         padding_left = index == 1 and 10 or icon_padding.left,
-        padding_right = icon_padding.right,
+        padding_right = index == #all_spaces and string.len(space_apps_string) == 0 and 10 or icon_padding.right,
         string = space_name,
         font = opts.sf_pro_text_small,
         color = label_color,
