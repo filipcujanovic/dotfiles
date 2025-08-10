@@ -1,9 +1,7 @@
-local fts = { 'markdown', 'text' }
 return {
     'bullets-vim/bullets.vim',
-    event = 'VeryLazy',
     lazy = true,
-    ft = fts,
+    ft = { 'markdown' },
     config = function()
         -- Disable deleting the last empty bullet when pressing <cr> or 'o'
         -- default = 1

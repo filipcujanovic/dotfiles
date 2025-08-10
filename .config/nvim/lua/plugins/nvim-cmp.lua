@@ -1,26 +1,30 @@
 return {
+    enabled = false,
     'hrsh7th/nvim-cmp',
     dependencies = {
-        'L3MON4D3/LuaSnip',
+        {
+            'L3MON4D3/LuaSnip',
+            dependencies = {
+                'rafamadriz/friendly-snippets',
+            },
+        },
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-cmdline',
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-nvim-lua',
         'saadparwaiz1/cmp_luasnip',
-        'rafamadriz/friendly-snippets',
         'hrsh7th/cmp-nvim-lsp-signature-help',
         {
-            {
-                'MattiasMTS/cmp-dbee',
-                branch = 'ms/v2',
-            },
+            'MattiasMTS/cmp-dbee',
+            branch = 'ms/v2',
         },
     },
     config = function()
         local cmp = require('cmp')
         local luasnip = require('luasnip')
         require('luasnip.loaders.from_vscode').lazy_load({ paths = { '~/.config/nvim/snippets/' } })
+        require('luasnip.loaders.from_vscode').lazy_load()
 
         luasnip.config.setup({})
         vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
@@ -32,9 +36,6 @@ return {
             },
             completion = {
                 completeopt = 'menu,menuone,noinsert',
-            },
-            experimental = {
-                ghost_text = true,
             },
             mapping = cmp.mapping.preset.insert({
                 ['<C-n>'] = cmp.mapping.select_next_item(),

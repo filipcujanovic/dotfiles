@@ -3,6 +3,8 @@ return {
     dependencies = {
         'MunifTanjim/nui.nvim',
     },
+    lazy = true,
+    ft = { 'sql' },
     config = function()
         require('dbee').setup({
             default_connection = 'local',

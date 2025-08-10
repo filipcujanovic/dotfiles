@@ -17,11 +17,12 @@ return {
         custom_gruvbox.inactive.c.fg = '#b8bb26'
         require('lualine').setup({
             options = {
+                icons_enabled = false,
                 theme = custom_gruvbox,
             },
             sections = {
                 lualine_x = {
-                    'kulala',
+                    --'kulala',
                     'encoding',
                     'fileformat',
                     'filetype',

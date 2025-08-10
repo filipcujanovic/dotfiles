@@ -35,9 +35,9 @@ vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by 
 
 local function minifiles_open_current()
     if vim.fn.filereadable(vim.fn.bufname('%')) > 0 then
-        MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+        require('mini.files').open(vim.api.nvim_buf_get_name(0), false)
     else
-        MiniFiles.open()
+        require('mini.files').open()
     end
 end
 vim.keymap.set('n', '<leader>b', minifiles_open_current, { desc = 'open mini files' })

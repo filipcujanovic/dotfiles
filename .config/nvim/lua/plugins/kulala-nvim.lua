@@ -1,7 +1,6 @@
 return {
     'mistweaverco/kulala.nvim',
     lazy = true,
-    event = 'VeryLazy',
     branch = 'main',
     ft = { 'http', 'rest' },
     opts = {

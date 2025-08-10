@@ -56,6 +56,7 @@
 - [karabiner](https://github.com/pqrs-org/Karabiner-Elements) - keyboard customization for macOS
 - [kanata](https://github.com/jtroo/kanata) - cross platform keyboard customization
 - [mouseless](https://mouseless.click/) - mouse control via keyboard - paid app
+- [home row app](https://www.homerow.app/) - keyboard shortcuts for every button in macos - paid app but there is a free tier
 
 ### terminals
 - [ghostty](https://github.com/ghostty-org/ghostty) - terminal emulator

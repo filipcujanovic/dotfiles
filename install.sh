@@ -36,6 +36,6 @@ ln -s -f ~/dotfiles/.config/lazysql/config.yaml ~/Library/Application\ Support/l
 cp ~/dotfiles/.config/mouseless/config.yaml ~/Library/Containers/net.sonuscape.mouseless/Data/.mouseless/configs/
 
 # symlink bin dir
- ln -s -f ~/dotfiles/bin/* ~/bin/
+ln -s -f ~/dotfiles/bin/* ~/bin/
 
 curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/latest/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf

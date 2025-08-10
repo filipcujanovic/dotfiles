@@ -46,7 +46,6 @@ end
 
 local get_message_history_picker = function()
     local messages = format_messages(require('mini.notify').get_all())
-
     local opts = {
         prompt = false,
         winopts = {
@@ -76,7 +75,6 @@ end
 
 return {
     'ibhagwan/fzf-lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
         local fzf = require('fzf-lua')
         local actions = fzf.actions
