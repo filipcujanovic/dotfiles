@@ -54,6 +54,7 @@
 ### automation/scripting
 - [hammerspoon](https://github.com/Hammerspoon/hammerspoon) - tool for automation of macOS, uses Lua
 - [karabiner](https://github.com/pqrs-org/Karabiner-Elements) - keyboard customization for macOS
+- [kanata](https://github.com/jtroo/kanata) - cross platform keyboard customization
 - [mouseless](https://mouseless.click/) - mouse control via keyboard - paid app
 
 ### terminals
@@ -78,10 +79,13 @@
 - [symbols-only-nerd-font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/NerdFontsSymbolsOnly) - `brew install --cask font-symbols-only-nerd-font`
 - [sf-symbols](https://developer.apple.com/sf-symbols/) - `brew install --cask sf-symbols`
 
-## custom scripts
+### custom scripts
 - [app-launcher](bin/app-launcher) - using [choose](https://github.com/chipsenkbeil/choose) I created a simple app launcher, you can also search macOS settings and open them ![choose](assets/images/choose.png)
 - [tmux-session-picker](bin/tmux-session-picker) - simple [fzf](https://github.com/junegunn/fzf) picker for tmux sessions
 - [tmuxifier-run-all](bin/tmuxifier-run-all) - a simple script to start all tmux sessions created with [tmuxifier](https://github.com/jimeh/tmuxifier)
+
+### kanata macbook layout
+![keyboard-layout](assets/images/kanata-layout.svg)
 
 ### [wallpapers](wallpapers)
 
