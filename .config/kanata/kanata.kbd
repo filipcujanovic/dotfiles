@@ -1,4 +1,4 @@
-;; OS key code mappings
+;; os key code mappings
 ;; https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
 
 (defcfg
@@ -10,7 +10,7 @@
   )
 )
 
-;; Variables
+;; variables
 (defvar
     tap-time 300
     hold-time 300
@@ -29,7 +29,6 @@
     num (layer-while-held numbers)
 )
 
-
 (defsrc
   esc             f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
   IntlBackslash   1    2    3    4    5    6    7    8    9    0    -    =    bspc
@@ -40,94 +39,93 @@
 )
 
 ;; default layout
-(defchordsv2
-    (w e) ' $chord-time first-release ()
-    (e r) esc $chord-time first-release ()
-    (u i) bspc $chord-time first-release ()
-    (i o) enter $chord-time first-release ()
-    (z /) caps $chord-time first-release ()
-    (a s) C-s $chord-time first-release (symbol navigation numbers)
-    (lmet rmet) @num $chord-time-layers first-release ()
-)
-(deflayer main
-  XX      XX   XX   XX     XX    XX     XX     XX   XX   XX   XX   XX    XX
-  XX      XX   XX   XX     XX    XX     XX     XX   XX   XX   XX   XX    XX     XX
-  XX      q    w    e      r     t      y      u    i    o    p    XX    XX     XX
-  XX      a    s    d      f     g      h      j    k    l    ;    XX    XX
-  XX  XX  z    x    c      v     b      n      m    ,    .    /   XX    XX
-       XX    XX   @sym   spc   @nav   XX     XX   XX   XX
-)
-
-(deflayer symbol
-  XX      XX   XX     XX    XX    XX     XX     XX   XX   XX   XX    XX    XX
-  XX      XX   XX     XX    XX    XX     XX     XX   XX   XX   XX    XX    XX     XX
-  XX      `    S-,    S-.   _     S-/    apos   S-`  S-\  XX   XX    XX    XX     XX
-  XX      S-1  S-2    S-3   S-4   S-5    S-6    S-7  S-8  S-9  S-0   XX    XX
-  XX  XX  =    -      +     S-[   S-]    [      ]    '    S-;  \     XX    XX
-       XX    XX     XX    XX    XX     XX     XX   XX   XX
-)
-
-(deflayer navigation
-  XX    XX      XX      XX       XX        XX     XX     XX      XX    XX    XX      XX    XX
-  XX    XX      XX      XX       XX        XX     XX     XX      XX    XX    XX      XX    XX     XX
-  XX    XX      XX      XX       XX        XX     prev   voldwn  volu  next  pp      XX    XX     XX
-  XX    @sctl   @salt   @smeta   @sshift   tab    lft    down    up    rght  A-bspc  XX    XX
-  XX XX M-z     M-x     M-c      M-v       XX     XX     brdwn   bru   XX    XX      XX    XX
-        XX      XX      XX       XX        XX     XX     XX      XX    XX
-)
-
-(deflayer numbers
-  XX    XX      XX      XX       XX        XX     XX     XX      XX    XX    XX      XX    XX
-  XX    XX      XX      XX       XX        XX     XX     XX      XX    XX    XX     XX    XX     XX
-  XX    f1      f2      f3       f4        f5     f6     f7      f8    f9    f10  XX    XX     XX
-  XX    1       2       3        4         5      6      7       8     9     0    XX    XX
-  XX XX XX      XX      M-S-4    M-S-5        XX     XX     XX      XX    XX    XX      XX    XX
-        XX      XX      XX       XX        XX     XX     XX      XX    XX
-)
-
-;; layout shifted one row above
 ;;(defchordsv2
-;;    (2 3) ' $chord-time first-release ()
-;;    (3 4) esc $chord-time first-release ()
-;;    (7 8) bspc $chord-time first-release ()
-;;    (a ;) caps $chord-time first-release ()
-;;    (8 9) enter $chord-time first-release ()
-;;    (v n) @num $chord-time-layers first-release (symbol navigation numbersymbol navigation numberss)
-;;    (q w) C-s $chord-time first-release ()
+;;    (w e) ' $chord-time first-release ()
+;;    (e r) esc $chord-time first-release ()
+;;    (u i) bspc $chord-time first-release ()
+;;    (i o) enter $chord-time first-release ()
+;;    (z /) caps $chord-time first-release ()
+;;    (a s) C-s $chord-time first-release (symbol navigation numbers)
+;;    (lmet rmet) @num $chord-time-layers first-release ()
 ;;)
-;;
 ;;(deflayer main
-;;  XX    XX   XX   XX   XX    XX   XX     XX   XX   XX   XX   XX    XX
-;;  XX    q    w    e    r     t    y      u    i    o    p    XX    XX     XX
-;;  XX    a    s    d    f     g    h      j    k    l    ;    XX    XX     XX
-;;  XX    z    x    c    v     b    n      m    ,    .    /    XX    XX
-;;  XX    XX   XX   @sym    ret   XX   spc @nav XX   XX   XX   XX    XX
-;;  XX   XX    XX   XX   XX    XX   XX     XX   XX   XX
+;;  XX      XX   XX   XX     XX    XX     XX     XX   XX   XX   XX   XX    XX
+;;  XX      XX   XX   XX     XX    XX     XX     XX   XX   XX   XX   XX    XX     XX
+;;  XX      q    w    e      r     t      y      u    i    o    p    XX    XX     XX
+;;  XX      a    s    d      f     g      h      j    k    l    ;    XX    XX
+;;  XX  XX  z    x    c      v     b      n      m    ,    .    /   XX    XX
+;;       XX    XX   @sym   spc   @nav   XX     XX   XX   XX
 ;;)
 ;;
 ;;(deflayer symbol
-;;  XX    XX   XX     XX    XX    XX     XX     XX   XX   XX   XX    XX    XX
-;;  XX    `    S-,    S-.   _     S-/    apos   S-`  S-\  XX   XX    XX    XX     XX
-;;  XX    S-1  S-2    S-3   S-4   S-5    S-6    S-7  S-8  S-9  S-0   XX    XX     XX
-;;  XX    =    -      +     S-[   S-]    [      ]    '    S-;  \     XX    XX
-;;  XX    XX   XX     @sym  ret   XX     spc    @nav XX   XX   XX    XX    XX
-;;  XX    XX   XX     XX    XX    XX     XX     XX   XX   XX
+;;  XX      XX   XX     XX    XX    XX     XX     XX   XX   XX   XX    XX    XX
+;;  XX      XX   XX     XX    XX    XX     XX     XX   XX   XX   XX    XX    XX     XX
+;;  XX      `    S-,    S-.   _     S-/    apos   S-`  S-\  XX   XX    XX    XX     XX
+;;  XX      S-1  S-2    S-3   S-4   S-5    S-6    S-7  S-8  S-9  S-0   XX    XX
+;;  XX  XX  =    -      +     S-[   S-]    [      ]    '    S-;  \     XX    XX
+;;       XX    XX     XX    XX    XX     XX     XX   XX   XX
 ;;)
 ;;
 ;;(deflayer navigation
 ;;  XX    XX      XX      XX       XX        XX     XX     XX      XX    XX    XX      XX    XX
+;;  XX    XX      XX      XX       XX        XX     XX     XX      XX    XX    XX      XX    XX     XX
 ;;  XX    XX      XX      XX       XX        XX     prev   voldwn  volu  next  pp      XX    XX     XX
-;;  XX    @sctl   @salt   @smeta   @sshift   tab    lft    down    up    rght  A-bspc  XX    XX     XX
-;;  XX    M-z     M-x     M-c      M-v       XX     XX     brdwn   bru   XX    XX      XX    XX
-;;  XX    XX      XX      @sym     ret       XX     spc    @nav    XX    XX    XX      XX    XX
-;;  XX    XX      XX      XX       XX        XX     XX     XX      XX    XX
+;;  XX    @sctl   @salt   @smeta   @sshift   tab    lft    down    up    rght  A-bspc  XX    XX
+;;  XX XX M-z     M-x     M-c      M-v       XX     XX     brdwn   bru   XX    XX      XX    XX
+;;        XX      XX      XX       XX        XX     XX     XX      XX    XX
 ;;)
 ;;
 ;;(deflayer numbers
-;;  XX    XX      XX      XX       XX        XX     XX     XX      XX    XX    XX   XX    XX
+;;  XX    XX      XX      XX       XX        XX     XX     XX      XX    XX    XX      XX    XX
+;;  XX    XX      XX      XX       XX        XX     XX     XX      XX    XX    XX     XX    XX     XX
 ;;  XX    f1      f2      f3       f4        f5     f6     f7      f8    f9    f10  XX    XX     XX
-;;  XX    1       2       3        4         5      6      7       8     9     0    XX    XX     XX
-;;  XX    XX      XX      M-S-4    M-S-5     XX     XX     XX      XX    XX    XX   XX    XX
-;;  XX    XX      XX      @sym     ret       XX     spc    @nav    XX    XX    XX   XX    XX
-;;  XX    XX      XX      XX       XX        XX     XX     XX      XX    XX
+;;  XX    1       2       3        4         5      6      7       8     9     0    XX    XX
+;;  XX XX XX      XX      M-S-4    M-S-5        XX     XX     XX      XX    XX    XX      XX    XX
+;;        XX      XX      XX       XX        XX     XX     XX      XX    XX
 ;;)
+
+;; layout shifted one row above
+(defchordsv2
+    (2 3) ' $chord-time first-release ()
+    (3 4) esc $chord-time first-release ()
+    (7 8) bspc $chord-time first-release ()
+    (a ;) caps $chord-time first-release ()
+    (q w) C-s $chord-time first-release (symbol navigation numbers)
+    (c m) @num $chord-time-layers first-release ()
+)
+
+(deflayer main
+  XX      XX   XX   XX   XX    XX   XX     XX   XX   XX   XX   XX    XX
+  XX      q    w    e    r     t    y      u    i    o    p    XX    XX     XX
+  XX      a    s    d    f     g    h      j    k    l    ;    XX    XX     XX
+  XX      z    x    c    v     b    n      m    ,    .    /    XX    XX
+  XX  XX  XX   XX   @sym    ret   XX   spc @nav XX   XX   XX   XX    XX
+          XX    XX   XX   XX    XX   XX     XX   XX   XX
+)
+
+(deflayer symbol
+  XX     XX   XX     XX    XX    XX     XX     XX   XX   XX   XX    XX    XX
+  XX     `    S-,    S-.   _     S-/    apos   S-`  S-\  XX   XX    XX    XX     XX
+  XX     S-1  S-2    S-3   S-4   S-5    S-6    S-7  S-8  S-9  S-0   XX    XX     XX
+  XX     =    -      +     S-[   S-]    [      ]    '    S-;  \     XX    XX
+  XX XX  XX   XX     @sym  ret   XX     spc    @nav XX   XX   XX    XX    XX
+         XX   XX     XX    XX    XX     XX     XX   XX   XX
+)
+
+(deflayer navigation
+  XX     XX      XX      XX       XX        XX     XX     XX      XX    XX    XX      XX    XX
+  XX     XX      XX      XX       XX        XX     prev   voldwn  volu  next  pp      XX    XX     XX
+  XX     @sctl   @salt   @smeta   @sshift   tab    lft    down    up    rght  A-bspc  XX    XX     XX
+  XX     M-z     M-x     M-c      M-v       XX     XX     brdwn   bru   XX    XX      XX    XX
+  XX XX  XX      XX      @sym     ret       XX     spc    @nav    XX    XX    XX      XX    XX
+         XX      XX      XX       XX        XX     XX     XX      XX    XX
+)
+
+(deflayer numbers
+  XX     XX      XX      XX       XX        XX     XX     XX      XX    XX    XX   XX    XX
+  XX     f1      f2      f3       f4        f5     f6     f7      f8    f9    f10  XX    XX     XX
+  XX     1       2       3        4         5      6      7       8     9     0    XX    XX     XX
+  XX     XX      XX      M-S-4    M-S-5     XX     XX     XX      XX    XX    XX   XX    XX
+  XX XX  XX      XX      @sym     ret       XX     spc    @nav    XX    XX    XX   XX    XX
+         XX      XX      XX       XX        XX     XX     XX      XX    XX
+)

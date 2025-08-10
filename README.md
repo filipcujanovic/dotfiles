@@ -87,6 +87,9 @@
 ### kanata macbook layout
 ![keyboard-layout](assets/images/kanata-layout.svg)
 
+### kanata macbook layout shifted one row above
+![keyboard-layout-shifted](assets/images/kanata-layout-shifted.svg)
+
 ### [wallpapers](wallpapers)
 
 # Installation
