@@ -1,12 +1,13 @@
 # nvim
+ <!--![dotfiles](/assets/images/dotfiles.png)  ![code](/assets/images/code.png) ![file-search](/assets/images/file-search.png)  ![keymaps](/assets/images/keymaps.png)-->
+<style>
+  .fixed-size-img {
+    width: 49% !important;
+    height: 50% !important;
+  }
+</style>
 
-| ![dotfiles](/assets/images/dotfiles.png) | ![code](/assets/images/code.png) |
-|---|---|
-| ![file-search](/assets/images/file-search.png) | ![keymaps](/assets/images/keymaps.png) |
-
-
-# code preview
-
+<img src="/assets/images/dotfiles-smaller.png" class="fixed-size-img"> <img src="/assets/images/code.png" class="fixed-size-img"> <img src="/assets/images/file-search.png" class="fixed-size-img"> <img src="/assets/images/keymaps.png" class="fixed-size-img">
 
 # plugins
 

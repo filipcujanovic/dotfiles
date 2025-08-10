@@ -18,7 +18,7 @@ return {
                     { action = 'Lazy update', desc = ' Lazy Update', icon = '󰚰', key = 'u' },
                     { action = 'Lazy', desc = ' Lazy', icon = '', key = 'l' },
                     { action = 'FzfLua files', desc = ' Files', icon = '󰈞', key = 'f' },
-                    { action = 'lua MiniFiles.open()', desc = ' Browse Files', icon = '', key = 'b' },
+                    { action = 'lua require(\'mini.files\').open()', desc = ' Browse Files', icon = '', key = 'b' },
                     {
                         action = function()
                             vim.api.nvim_input('<cmd>q<cr>')
