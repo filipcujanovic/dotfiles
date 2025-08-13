@@ -1,7 +1,7 @@
 # desktop
 ![desktop](./assets/images/desktop.png)
 
-# [neovim](.config/nvim/README.md](.config/nvim/))
+# [neovim](.config/nvim/)
 ![dotfiles](./assets/images/dotfiles.png)
 
 # description
