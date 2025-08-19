@@ -87,7 +87,7 @@
 - [tmux-sessionizer](bin/tmux-session-picker) - based on [ThePrimeagen](https://github.com/ThePrimeagen/) [tmux-sessionizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer)
 - [tmuxifier-run-all](bin/tmuxifier-run-all) - a simple script to start all tmux sessions created with [tmuxifier](https://github.com/jimeh/tmuxifier)
 - [file-search](bin/file-search) - search files with [fzf](https://github.com/junegunn/fzf) in predefined directories in terminal
-- [terminal-file-search](bin/terminal-file-search) - spawn terminal window with [file-search](bin/file-search) script to search files on predefined directories in the script. I have a custom keymap to spawn it and make it float aerospace [config](.config/aerospace/aersopace.toml#L130)
+- [terminal-file-search](bin/terminal-file-search) - spawn terminal window with [file-search](bin/file-search) script to search files on predefined directories in the script. I have a custom keymap to spawn it and make it float aerospace [config](.config/aerospace/aerospace.toml#L130)
 ![file-search](assets/images/file-search.png)
 
 ### kanata macbook layout
