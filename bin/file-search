@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+if [ "$1" = "wezterm" ]; then
+    sleep 0.1
+    aerospace list-windows --all --format %{window-id}%{app-name} --json | jq ".[] | select(.\"app-name\" == \"wezterm-gui\") | .\"window-id\"" | xargs aerospace focus --window-id
+fi
+
+dirs=(~/Downloads/ ~/Documents/ ~/projects/)
+files=$(fd . ~/Documents ~/Downloads ~/projects)
+
+selected_item=$(
+    {
+        printf '%s\n' "${files}"
+        printf '%s\n' "${dirs[@]}"
+    } | fzf
+)
+
+if [ ! -z "${selected_item}" ]; then
+    open "$selected_item"
+fi

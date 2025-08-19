@@ -21,12 +21,7 @@ return {
         picker = {
             name = 'fzf-lua',
         },
-        ui = {
-            checkboxes = {
-                [' '] = { char = '󰄱', hl_group = 'ObsidianTodo' },
-                ['x'] = { char = '', hl_group = 'ObsidianDone' },
-            },
-        },
+        checkbox = { order = { ' ', 'x' } },
         note_path_func = function(spec)
             local path = spec.dir / tostring(spec.title)
             return path:with_suffix('.md')

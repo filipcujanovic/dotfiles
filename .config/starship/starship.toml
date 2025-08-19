@@ -30,14 +30,7 @@ symbol = ""
 style = "bg:color_green"
 format = '[[ $symbol $branch ](fg:color_fg0 bg:color_green)]($style)'
 
-[time]
-disabled = false
-time_format = "%R"
-style = "bg:color_bg1"
-format = '[[  $time ](fg:color_fg0 bg:color_blue)]($style)'
-
 [character]
-disabled = false
 success_symbol = '[ ](fg:color_green)'
 error_symbol = '[ ](fg:color_red)'
 vimcmd_symbol = '[ ](fg:color_green)'

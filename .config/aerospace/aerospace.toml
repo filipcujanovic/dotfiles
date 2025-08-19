@@ -127,6 +127,7 @@ alt-shift-w = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-
 #alt-shift-w = 'move-node-to-workspace --focus-follows-window work'
 
 cmd-space = 'exec-and-forget ~/bin/app-launcher'
+cmd-shift-s = 'exec-and-forget ~/bin/terminal-file-search wezterm'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-enter = 'workspace-back-and-forth'
@@ -227,6 +228,22 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.calibre'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iWork.Numbers'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'wezterm-gui'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.window-title-regex-substring = 'file-search'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'kitty'
 run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]

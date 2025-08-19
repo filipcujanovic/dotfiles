@@ -68,7 +68,7 @@ vim.keymap.set('n', '<leader>db', ':Dbee toggle<CR>', { desc = 'open database ed
 
 vim.keymap.set('n', '<leader>re', function()
     require('kulala').set_selected_env()
-end, { desc = 'run request' })
+end, { desc = 'select env' })
 
 vim.keymap.set('n', '<leader>lg', function()
     vim.fn.system('tmux display-popup -w 95% -h 90% -E -d ' .. vim.fn.shellescape(vim.fn.getcwd()) .. ' lazygit')
@@ -77,3 +77,14 @@ end, { desc = 'lazygit' })
 vim.keymap.set('n', '<leader>vd', function()
     vim.fn.system('tmux display-popup -w 95% -h 90% -E -d ' .. vim.fn.shellescape(vim.fn.getcwd()) .. '-- visidata ' .. vim.fn.expand('%:p'))
 end, { desc = 'visidata' })
+
+vim.keymap.set('n', 'gf', function()
+    if require('obsidian').util.cursor_link() then
+        return '<cmd>Obsidian follow_link<cr>'
+    else
+        return 'gf'
+    end
+end, {
+    expr = true,
+    desc = 'go to file',
+})

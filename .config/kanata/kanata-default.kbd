@@ -15,6 +15,7 @@
     tap-time 300
     hold-time 300
     chord-time 15
+    chord-default-time 60
     chord-time-layers 60
 )
 
@@ -42,10 +43,11 @@
 (defchordsv2
     (w e) ' $chord-time first-release ()
     (e r) esc $chord-time first-release ()
-    (u i) bspc $chord-time first-release ()
+    (u i) bspc $chord-default-time first-release ()
     (i o) enter $chord-time first-release ()
     (z /) caps $chord-time first-release ()
     (a s) C-s $chord-time first-release (symbol navigation numbers)
+    (s d) A-s $chord-time first-release (symbol navigation numbers)
     (lmet rmet) @num $chord-time-layers first-release ()
 )
 (deflayer main

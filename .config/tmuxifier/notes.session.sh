@@ -1,6 +1,6 @@
 session_root "/Users/cujanovic/Library/Mobile Documents/iCloud~md~obsidian/Documents/the never ending hole"
 
-if initialize_session "notes"; then
+if initialize_session "the never ending hole"; then
   new_window "notes"
   run_cmd "nvim"
 fi

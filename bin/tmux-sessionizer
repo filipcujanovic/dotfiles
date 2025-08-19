@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+if [ -f ~/dotfiles-private/.config/zsh/.work-dirs ]; then
+  source ~/dotfiles-private/.config/zsh/.work-dirs
+fi
+dotfiles=(~/dotfiles/ ~/dotfiles-private/)
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+selected=$(
+        {
+            eval "eza -1 -X --no-quotes --only-dirs --absolute ~/projects ~/library/mobile\ documents/icloud\~md\~obsidian/documents ${WORK_DIRS} | grep -v ':' | grep -v '^$'"
+            printf '%s\n' "${dotfiles[@]}"
+            printf '%s\n' "${ADDITIONAL_WORK_DIRS[@]}"
+        } | fzf --no-preview
+    )
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $selected_name -c $selected
+    exit 0
+fi
+
+if ! tmux has-session -t="$selected_name" 2> /dev/null; then
+    if [ "$selected_name" = "log" ]; then
+        tmux new-session -d -s "$selected_name" -c "$selected"
+        tmux send-keys -t $selected_name "locallogs"
+        tmux send-keys -t $selected_name "C-m"
+        tmux split-window -t "$selected_name:1"
+        tmux send-keys -t $selected_name "phplogs"
+        tmux send-keys -t $selected_name "C-m"
+    else
+        tmux new-session -d -s "$selected_name" -c "$selected" "nvim"
+    fi
+
+fi
+
+tmux switch-client -t "$selected_name"

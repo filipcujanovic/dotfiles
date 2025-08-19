@@ -12,6 +12,8 @@ ln -s -f ~/dotfiles/.config/delta ~/.config/
 ln -s -f ~/dotfiles/.config/figlet ~/.config/
 ln -s -f ~/dotfiles/.config/ghostty ~/.config/
 ln -s -f ~/dotfiles/.config/nvim/ ~/.config/
+ln -s -f ~/dotfiles/.config/kitty/ ~/.config/
+
 ln -s -f ~/dotfiles/.config/posting/ ~/.config/
 ln -s -f ~/dotfiles/.config/sketchybar ~/.config/
 ln -s -f ~/dotfiles/.config/skhd ~/.config/
