@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ "$1" = "wezterm" ]; then
-    wezterm start -- ~/bin/file-search wezterm &
+    wezterm -e ~/bin/file-search wezterm &
 elif [ "$1" = "kitty" ]; then
     kitty --title file-search -e ~/bin/file-search kitty &
 fi

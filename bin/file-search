@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 
 if [ "$1" = "wezterm" ]; then
-    sleep 0.1
-    aerospace list-windows --all --format %{window-id}%{app-name} --json | jq ".[] | select(.\"app-name\" == \"wezterm-gui\") | .\"window-id\"" | xargs aerospace focus --window-id
+    while :
+    do
+        window_id=$(aerospace list-windows --all --format %{window-id}%{app-name} --json | jq ".[] | select(.\"app-name\" == \"wezterm-gui\") | .\"window-id\"")
+        if [ ! -z "${window_id}" ]; then
+            $(aerospace focus --window-id "${window_id}")
+            break
+        fi
+    done
 fi
 
 dirs=(~/Downloads/ ~/Documents/ ~/projects/)

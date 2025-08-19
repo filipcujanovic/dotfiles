@@ -152,6 +152,10 @@ alt-k = ['join-with up', 'mode main', 'exec-and-forget sketchybar --trigger aero
 alt-l = ['join-with right', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'wezterm-gui'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'org.whispersystems.signal-desktop'
 run = 'move-node-to-workspace chats'
 
@@ -180,8 +184,12 @@ if.app-id = 'com.apple.finder'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'move-node-to-workspace misc'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.Safari'
-run = 'move-node-to-workspace personal'
+run = 'move-node-to-workspace work'
 
 [[on-window-detected]]
 if.app-id = 'com.vivaldi.Vivaldi'
@@ -232,10 +240,6 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iWork.Numbers'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'wezterm-gui'
 run = 'layout floating'
 
 [[on-window-detected]]
