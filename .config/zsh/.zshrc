@@ -90,12 +90,9 @@ _fzf_comprun() {
   esac
 }
 
-os_name=$(uname -s)
-if [[ "$os_name" == "Darwin" ]]; then
-  source $(brew --prefix nvm)/nvm.sh
-  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
+source $(brew --prefix nvm)/nvm.sh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 #export ZVM_INIT_MODE=sourcing
 #source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 # Check that the function `starship_zle-keymap-select()` is defined.
