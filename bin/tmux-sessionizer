@@ -37,6 +37,14 @@ if ! tmux has-session -t="$selected_name" 2> /dev/null; then
         tmux split-window -t "$selected_name:1"
         tmux send-keys -t $selected_name "phplogs"
         tmux send-keys -t $selected_name "C-m"
+    elif [ "$selected_name" = "test" ]; then
+        tmux new-session -d -s "$selected_name" -c "$selected"
+        tmux send-keys -t $selected_name "nvim"
+        tmux send-keys -t $selected_name "C-m"
+        tmux split-window -h -l 30% -c "$selected" -t "$selected_name:1"
+        tmux send-keys -t $selected_name "runlocalserver"
+        tmux send-keys -t $selected_name "C-m"
+        tmux split-window -v -l 50% -c "$selected" -t "$selected_name:1"
     else
         tmux new-session -d -s "$selected_name" -c "$selected" "nvim"
     fi

@@ -6,7 +6,7 @@
 
 - [auto-session](https://github.com/rmagatti/auto-session) - create nvim session for open dirs
 - [autoclose.nvim](https://github.com/m4xshen/autoclose.nvim) - auto pairs & closes brackets
-- [blink-cmo](https://github.com/Saghen/blink.cmp) - batteries included completion plugin
+- [blink-cmp](https://github.com/Saghen/blink.cmp) - batteries included completion plugin
 - [bullets.vim](https://github.com/bullets-vim/bullets.vim) - automated bullet lists
 - [comment.nvim](https://github.com/numToStr/Comment.nvim) - comment plugin - supports treesitter
 - [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim) - nvim dashboard
