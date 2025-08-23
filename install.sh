@@ -27,19 +27,5 @@ ln -s -f ~/dotfiles/.config/yazi/theme.toml ~/.config/yazi/theme.toml
 ln -s -f ~/dotfiles/.config/zsh/.zshenv ~/.zshenv
 ln -s -f ~/dotfiles/.config/zsh/.zshrc ~/.zshrc
 
-if [[ "$os_name" == "Darwin" ]]; then
-	ln -s -f ~/dotfiles/.config/aerospace ~/.config/
-	ln -s -f ~/dotfiles/.config/borders ~/.config/
-	ln -s -f ~/dotfiles/.config/hammerspoon/init.lua ~/.hammerspoon/init.lua
-	ln -s -f ~/dotfiles/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
-	ln -s -f ~/dotfiles/.config/lazygit/config.yaml ~/Library/Application\ Support/lazygit/config.yml
-	ln -s -f ~/dotfiles/.config/lazysql/config.yaml ~/Library/Application\ Support/lazysql/config.toml
-	ln -s -f ~/dotfiles/.config/sketchybar ~/.config/
-	ln -s -f ~/dotfiles/.config/skhd ~/.config/
-
-	cp ~/dotfiles/.config/mouseless/config.yaml ~/Library/Containers/net.sonuscape.mouseless/Data/.mouseless/configs/
-	curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/latest/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
-fi
-
 # symlink bin dir
 ln -s -f ~/dotfiles/bin/* ~/bin/

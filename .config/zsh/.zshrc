@@ -8,6 +8,7 @@ fi
 
 alias jsonencode="awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' $0"
 alias fastfetch="fastfetch; printf '\n\n'"
+alias docker-compose="docker compose"
 alias cat="bat"
 alias gdf="git diff"
 alias gc="git checkout"
@@ -31,6 +32,7 @@ alias ls="eza --color=always --git --icons=always"
 #set -o vi
 bindkey -e
 
+export HISTFILE=~/.zsh_history
 export VISUAL=nvim
 export EDITOR=nvim
 export HISTSIZE=1000000
@@ -50,8 +52,6 @@ export PATH="/Users/cujanovic/.local/bin:$PATH"
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 #export PATH=$PATH":$HOME/go/bin"
 export PATH=$PATH":$HOME/.config/zfunc"
-export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
-export PATH="$(brew --prefix)/opt/mysql-client/bin:$PATH"
 export PATH="/$PATH:$HOME/.cargo/bin"
 export PATH=$PATH:"$HOME/Library/Python/3.10/bin"
 export PATH="/Applications/flameshot.app/Contents/MacOS/:$PATH"
@@ -90,14 +90,9 @@ _fzf_comprun() {
   esac
 }
 
-os_name=$(uname -s)
-if [[ "$os_name" == "Darwin" ]]; then
-  source $(brew --prefix nvm)/nvm.sh
-  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #export ZVM_INIT_MODE=sourcing
-#source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 # Check that the function `starship_zle-keymap-select()` is defined.
 # xref: https://github.com/starship/starship/issues/3418
 type starship_zle-keymap-select >/dev/null || \
@@ -108,5 +103,4 @@ type starship_zle-keymap-select >/dev/null || \
 autoload -Uz compinit && compinit
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
-eval "$(tmuxifier init -)"
 zvm_after_init_commands+=('[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh')
