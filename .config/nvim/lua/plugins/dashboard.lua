@@ -15,18 +15,9 @@ return {
             config = {
                 header = get_dir_ascii(),
                 center = {
-                    { action = 'Lazy update', desc = ' Lazy Update', icon = '󰚰', key = 'u' },
-                    { action = 'Lazy', desc = ' Lazy', icon = '', key = 'l' },
-                    { action = 'FzfLua files', desc = ' Files', icon = '󰈞', key = 'f' },
-                    { action = 'lua require(\'mini.files\').open()', desc = ' Browse Files', icon = '', key = 'b' },
-                    {
-                        action = function()
-                            vim.api.nvim_input('<cmd>q<cr>')
-                        end,
-                        desc = ' Quit',
-                        icon = '󰈆',
-                        key = 'q',
-                    },
+                    { action = 'Lazy check', desc = 'lazy check', icon = '', key = 'c' },
+                    { action = 'Lazy', desc = 'lazy', icon = '', key = 'l' },
+                    { action = 'lua vim.cmd(\'q\')', desc = 'quit', icon = '', key = 'q' },
                 },
                 footer = {},
             },
