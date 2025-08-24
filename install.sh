@@ -3,9 +3,6 @@
 
 # brew bundle --file=~/dotfiles/Brewfile
 
-os_name=$(uname -s)
-
-# symlink .config dir
 ln -s -f ~/dotfiles/.config/bat ~/.config/
 ln -s -f ~/dotfiles/.config/btop ~/.config/
 ln -s -f ~/dotfiles/.config/delta ~/.config/
