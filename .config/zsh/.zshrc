@@ -53,6 +53,7 @@ export PATH="$HOME/.tmuxifier/bin:$PATH"
 #export PATH=$PATH":$HOME/go/bin"
 export PATH=$PATH":$HOME/.config/zfunc"
 export PATH="/$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:/home/cujanovic/.local/bin"
 export PATH=$PATH:"$HOME/Library/Python/3.10/bin"
 export PATH="/Applications/flameshot.app/Contents/MacOS/:$PATH"
 export NVM_DIR="$HOME/.nvm"
@@ -90,8 +91,8 @@ _fzf_comprun() {
   esac
 }
 
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #export ZVM_INIT_MODE=sourcing
 # Check that the function `starship_zle-keymap-select()` is defined.
 # xref: https://github.com/starship/starship/issues/3418

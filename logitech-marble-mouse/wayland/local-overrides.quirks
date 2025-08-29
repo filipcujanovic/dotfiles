@@ -1,0 +1,6 @@
+[Logitech Marble Mouse Trackball]
+MatchUdevType=mouse
+MatchBus=usb
+MatchVendor=0x046D
+MatchProduct=0xC408
+AttrEventCode=+BTN_MIDDLE

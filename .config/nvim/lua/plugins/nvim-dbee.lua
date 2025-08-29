@@ -5,6 +5,9 @@ return {
     },
     lazy = true,
     ft = { 'sql' },
+    build = function()
+        require('dbee').install()
+    end,
     config = function()
         require('dbee').setup({
             default_connection = 'local',

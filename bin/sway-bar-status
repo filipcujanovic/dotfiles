@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+time=$(date "+%A %H:%M")
+
+date=$(date "+%F")
+
+battery_status=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep percentage | awk '{print $2}')
+
+volume_level=$(pamixer --get-volume-human)
+
+echo  $date - b:$battery_status - v:$volume_level - $time

@@ -3,16 +3,7 @@
 
 # brew bundle --file=~/dotfiles/Brewfile
 
-ln -s -f ~/dotfiles/.config/bat ~/.config/
-ln -s -f ~/dotfiles/.config/btop ~/.config/
-ln -s -f ~/dotfiles/.config/delta ~/.config/
-ln -s -f ~/dotfiles/.config/figlet ~/.config/
-ln -s -f ~/dotfiles/.config/ghostty ~/.config/
-ln -s -f ~/dotfiles/.config/kitty/ ~/.config/
-ln -s -f ~/dotfiles/.config/nvim/ ~/.config/
-ln -s -f ~/dotfiles/.config/starship ~/.config/
-ln -s -f ~/dotfiles/.config/tmux/ ~/.config/
-ln -s -f ~/dotfiles/.config/wezterm ~/.config/
+ln -s -f ~/dotfiles/.config/* ~/.config/
 
 ln -s -f ~/dotfiles/.config/git/.gitconfig ~/.gitconfig
 ln -s -f ~/dotfiles/.config/gitmux/.gitmux.conf ~/.gitmux.conf

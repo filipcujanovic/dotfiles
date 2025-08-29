@@ -1,0 +1,9 @@
+customCommands:
+  - key: "c"
+    command: "git cz c"
+    description: "commit with commitizen"
+    context: "files"
+    loadingText: "opening commitizen commit tool"
+    output: terminal
+git:
+disableForcePushing: true
