@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+time=$(date "+%A %H:%M")
+
+date=$(date "+%F")
+
+battery_status=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep percentage | awk '{print $2}')
+
+volume_level=$(pamixer --get-volume-human)
+
+media_artist=$(playerctl metadata artist)
+media_song=$(playerctl metadata title)
+player_status=$(playerctl status)
+media=''
+
+if [ $player_status = "Playing" ]; then
+    media="<span foreground='#fe801e'>$media_artist - $media_song</span> |"
+fi
+
+echo  "$media $date | 󰁿 $battery_status |  $volume_level | $time"
