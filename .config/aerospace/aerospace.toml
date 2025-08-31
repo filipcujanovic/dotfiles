@@ -102,11 +102,6 @@ ctrl-shift-l = 'move right'
 #alt-shift-h = 'resize smart-opposite -50'
 #alt-shift-l = 'resize smart-opposite +50'
 
-alt-shift-h = 'resize smart -50'
-alt-shift-l = 'resize smart +50'
-alt-shift-j = 'resize smart-opposite -50'
-alt-shift-k = 'resize smart-opposite +50'
-
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-p = 'workspace personal'
 alt-c = 'workspace chats'
@@ -137,6 +132,18 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = ['mode service', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=service']
 
+alt-r = ['mode resize', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=resize']
+
+[mode.resize.binding]
+h = 'resize smart -50'
+l = 'resize smart +50'
+j = 'resize smart-opposite -50'
+k = 'resize smart-opposite +50'
+enter = ['mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
+esc = ['mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
+q = ['mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
+space = ['mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
+
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
@@ -150,6 +157,8 @@ alt-h = ['join-with left', 'mode main', 'exec-and-forget sketchybar --trigger ae
 alt-j = ['join-with down', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
 alt-k = ['join-with up', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
 alt-l = ['join-with right', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
+enter = 'mode main'
+q = 'mode main'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'wezterm-gui'

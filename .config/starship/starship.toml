@@ -1,4 +1,4 @@
-add_newline = false
+add_newline = true
 
 format = """$directory\
 [](fg:color_yellow bg:color_green)\

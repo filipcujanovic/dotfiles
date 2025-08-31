@@ -6,6 +6,13 @@
     ],
     "description": "console log"
   },
+  "console trace": {
+    "prefix": "ct",
+    "body": [
+      "console.trace($0);"
+    ],
+    "description": "console trace"
+  },
   "console log and trace": {
     "prefix": "clt",
     "body": [

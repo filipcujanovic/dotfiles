@@ -3,7 +3,7 @@ tmux:
     # of Git status displayed in tmux status string.
     symbols:
         # current branch name.
-        branch: " "
+        branch: "⎇ "
         # Git SHA1 hash (in 'detached' state).
         hashprefix: ":"
         # 'ahead count' when local and remote branch diverged.
@@ -31,9 +31,9 @@ tmux:
     # of Git status elements. See the STYLES section of tmux man page.
     # https://man7.org/linux/man-pages/man1/tmux.1.html#STYLES.
     styles:
-        clear: '#[bg=default]'
+        clear: '#[bg=#{@thm_bg2}]'
         state: '#[fg=#{@thm_red},bold]'
-        branch: '#[fg=#{@thm_green2},bold]'
+        branch: '#[fg=#{@thm_fg3},bold]'
         remote: '#[fg=#{@thm_aqua}]'
         divergence: '#[fg=#{@thm_fg}]'
         staged: '#[fg=#{@thm_red},bold]'

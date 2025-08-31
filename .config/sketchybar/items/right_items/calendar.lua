@@ -64,6 +64,7 @@ end
 
 calendar:subscribe('routine', update_time)
 calendar:subscribe('forced', update_time)
+calendar:subscribe('mouse.exited.global', update_time)
 calendar:subscribe('mouse.clicked', calendar_click)
 
 return {

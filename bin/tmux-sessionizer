@@ -4,17 +4,27 @@ if [ -f ~/dotfiles-private/.config/zsh/.work-dirs ]; then
   source ~/dotfiles-private/.config/zsh/.work-dirs
 fi
 dotfiles=(~/dotfiles/ ~/dotfiles-private/)
+input_session=$1
 
-if [[ $# -eq 1 ]]; then
-    selected=$1
+if [[ -z $input_session ]]; then
+        selected=$(
+            {
+                eval "eza -1 -X --no-quotes --only-dirs --absolute ~/projects ~/library/mobile\ documents/icloud\~md\~obsidian/documents ${WORK_DIRS} | grep -v ':' | grep -v '^$'"
+                printf '%s\n' "${dotfiles[@]}"
+                printf '%s\n' "${ADDITIONAL_WORK_DIRS[@]}"
+            } | fzf --no-preview
+        )
 else
-selected=$(
-        {
-            eval "eza -1 -X --no-quotes --only-dirs --absolute ~/projects ~/library/mobile\ documents/icloud\~md\~obsidian/documents ${WORK_DIRS} | grep -v ':' | grep -v '^$'"
-            printf '%s\n' "${dotfiles[@]}"
-            printf '%s\n' "${ADDITIONAL_WORK_DIRS[@]}"
-        } | fzf --no-preview
-    )
+    if [[ $input_session == 'foxy' ]]; then
+        input_session='src/foxy'
+    fi
+    selected=$(
+            {
+                eval "eza -1 -X --no-quotes --only-dirs --absolute ~/projects ~/library/mobile\ documents/icloud\~md\~obsidian/documents ${WORK_DIRS} | grep -v ':' | grep -v '^$'"
+                printf '%s\n' "${dotfiles[@]}"
+                printf '%s\n' "${ADDITIONAL_WORK_DIRS[@]}"
+            } | fzf --no-preview --query="$input_session" --select-1 --exact --bind 'start:first+accept'
+        )
 fi
 
 if [[ -z $selected ]]; then

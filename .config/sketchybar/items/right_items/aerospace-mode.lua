@@ -22,16 +22,20 @@ local aerospace_mode = sbar.add('item', 'aerospace-mode', {
 })
 
 aerospace_mode:subscribe('aerospace_mode_change', function(env)
-    local is_service_mode = env.MODE == 'service'
+    local is_main_mode = env.MODE == 'main'
     aerospace_mode:set({
         label = {
             string = env.MODE,
-            color = is_service_mode and opts.color.active_color or opts.color.inactive_color,
+            color = is_main_mode and opts.color.inactive_color or opts.color.active_color,
         },
         background = {
-            border_color = is_service_mode and opts.color.border_color_active or opts.color.border_color_inactive,
+            border_color = is_main_mode and opts.color.border_color_inactive or opts.color.border_color_active,
         },
     })
+end)
+
+aerospace_mode:subscribe('mouse.clicked', function(_)
+    sbar.exec('aerospace reload-config')
 end)
 
 return {
