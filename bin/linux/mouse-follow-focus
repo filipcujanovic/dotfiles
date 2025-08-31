@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+focused_window=$(xdotool getwindowfocus -f)
+geometry=$(xdotool getwindowgeometry --shell $focused_window)
+eval "$geometry"
+xdotool mousemove $((X+WIDTH/2)) $((Y+HEIGHT/2))
