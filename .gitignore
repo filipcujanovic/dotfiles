@@ -2,6 +2,7 @@
 .config/tmux/layouts/foxy-workspace-layout
 .config/tmux/.private.keybinds.conf
 .config/tmuxifier/foxy-*
+.config/macos/files/
 .config/files/
 .config/nvim/lua/work-settings.lua
 .config/nvim/lua/core/work-keymap.lua

@@ -1,0 +1,1 @@
+/Users/cujanovic/dotfiles-private/.config/tmuxifier/foxy-rest-client.session.sh

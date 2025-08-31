@@ -1,0 +1,1 @@
+/Users/cujanovic/dotfiles-private/.config/tmuxifier/foxy-serverless.session.sh
