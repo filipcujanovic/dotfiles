@@ -13,7 +13,7 @@ return {
         },
         workspaces = {
             {
-                name = 'the never ending hole',
+                name = 'the-never-ending-hole',
                 path = '~/projects/the-never-ending-hole/',
             },
         },

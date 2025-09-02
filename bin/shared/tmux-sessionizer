@@ -9,7 +9,7 @@ input_session=$1
 if [[ -z $input_session ]]; then
         selected=$(
             {
-                eval "eza -1 -X --no-quotes --only-dirs --absolute ~/projects ~/library/mobile\ documents/icloud\~md\~obsidian/documents ${WORK_DIRS} | grep -v ':' | grep -v '^$'"
+                eval "eza -1 -X --no-quotes --only-dirs --absolute ~/projects ${WORK_DIRS} | grep -v ':' | grep -v '^$'"
                 printf '%s\n' "${dotfiles[@]}"
                 printf '%s\n' "${ADDITIONAL_WORK_DIRS[@]}"
             } | fzf --no-preview
@@ -20,7 +20,7 @@ else
     fi
     selected=$(
             {
-                eval "eza -1 -X --no-quotes --only-dirs --absolute ~/projects ~/library/mobile\ documents/icloud\~md\~obsidian/documents ${WORK_DIRS} | grep -v ':' | grep -v '^$'"
+                eval "eza -1 -X --no-quotes --only-dirs --absolute ~/projects ${WORK_DIRS} | grep -v ':' | grep -v '^$'"
                 printf '%s\n' "${dotfiles[@]}"
                 printf '%s\n' "${ADDITIONAL_WORK_DIRS[@]}"
             } | fzf --no-preview --query="$input_session" --select-1 --exact --bind 'start:first+accept'
@@ -61,4 +61,8 @@ if ! tmux has-session -t="$selected_name" 2> /dev/null; then
 
 fi
 
-tmux switch-client -t "$selected_name"
+if [[ -z $input_session ]]; then
+    tmux switch-client -t "$selected_name"
+else
+    tmux a -t "$selected_name"
+fi
