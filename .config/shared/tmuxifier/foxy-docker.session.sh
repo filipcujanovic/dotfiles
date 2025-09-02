@@ -1,1 +1,0 @@
-/Users/cujanovic/dotfiles-private/.config/tmuxifier/foxy-docker.session.sh

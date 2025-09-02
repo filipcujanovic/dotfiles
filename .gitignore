@@ -3,6 +3,7 @@
 .config/tmux/.private.keybinds.conf
 .config/shared/tmux/.private.keybinds.conf
 .config/tmuxifier/foxy-*
+.config/shared/tmuxifier/foxy-*
 .config/macos/files/
 .config/files/
 .config/nvim/lua/work-settings.lua
