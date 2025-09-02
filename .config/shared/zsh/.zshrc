@@ -28,6 +28,7 @@ alias dup="docker-compose up -d"
 alias dbuild="docker-compose build"
 alias dstop="docker stop"
 alias ls="eza --color=always --git --icons=always"
+alias list-containers="docker ps --format '{{.Names}} - {{.Status}}'"
 
 # use vi mode
 #set -o vi

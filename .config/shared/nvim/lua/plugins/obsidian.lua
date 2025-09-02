@@ -14,7 +14,7 @@ return {
         workspaces = {
             {
                 name = 'the never ending hole',
-                path = '/Users/cujanovic/Library/Mobile Documents/iCloud~md~obsidian/Documents',
+                path = '~/projects/the-never-ending-hole/',
             },
         },
         new_notes_location = 'current_dir',
