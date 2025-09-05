@@ -1,6 +1,8 @@
 local function get_dir_ascii()
-    local _, result =
-        pcall(vim.fn.systemlist, string.format('figlet -w 200 -d ~/.config/figlet/fonts -f "ANSI Shadow" %s', vim.fn.fnamemodify(vim.fn.expand('%:p:h'), ':t')))
+    local _, result = pcall(
+        vim.fn.systemlist,
+        string.format('figlet -w 200 -d ~/projects/dotfiles/.config/shared/figlet/fonts/ -f "ANSI Shadow" %s', vim.fn.fnamemodify(vim.fn.expand('%:p:h'), ':t'))
+    )
     table.insert(result, 1, '')
     table.insert(result, '')
     return result
