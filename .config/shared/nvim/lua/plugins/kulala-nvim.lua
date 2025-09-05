@@ -16,6 +16,7 @@ return {
             win_opts = {
                 wo = { number = true, relativenumber = true },
             },
+            max_response_size = 1000000,
         },
     },
 }

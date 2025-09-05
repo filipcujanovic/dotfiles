@@ -61,7 +61,7 @@ if ! tmux has-session -t="$selected_name" 2> /dev/null; then
 
 fi
 
-if [[ -z $2 ]]; then
+if [[ -z $2 && $TERM == *"tmux"* ]]; then
     tmux switch-client -t "$selected_name"
 else
     tmux a -t "$selected_name"

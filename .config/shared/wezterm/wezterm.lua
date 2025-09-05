@@ -3,6 +3,16 @@ local keys = require('keymap')
 local wallpaper = require('wallpaper')
 local config = wezterm.config_builder()
 
+wezterm.on('window-config-reloaded', function(window)
+    local font_size = 16
+    if wezterm.gui.screens().active.height <= 1080 then
+        font_size = 12
+    end
+    window:set_config_overrides({
+        font_size = font_size,
+    })
+end)
+
 config = {
     --background = wallpaper,
     keys = keys,
