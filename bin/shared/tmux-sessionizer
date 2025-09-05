@@ -1,68 +1,53 @@
 #!/usr/bin/env bash
 
-if [ -f ~/dotfiles-private/.config/zsh/.work-dirs ]; then
-  source ~/dotfiles-private/.config/zsh/.work-dirs
+if [ -f ~/projects/dotfiles-private/.config/zsh/.work-dirs ]; then
+  source ~/projects/dotfiles-private/.config/zsh/.work-dirs
 fi
-dotfiles=(~/dotfiles/ ~/dotfiles-private/)
-input_session=$1
 
-if [[ -z $input_session ]]; then
-        selected=$(
-            {
-                eval "eza -1 -X --no-quotes --only-dirs --absolute ~/projects ${WORK_DIRS} | grep -v ':' | grep -v '^$'"
-                printf '%s\n' "${dotfiles[@]}"
-                printf '%s\n' "${ADDITIONAL_WORK_DIRS[@]}"
-            } | fzf --no-preview
-        )
-else
-    if [[ $input_session == 'foxy' ]]; then
-        input_session='src/foxy'
-    fi
-    selected=$(
-            {
-                eval "eza -1 -X --no-quotes --only-dirs --absolute ~/projects ${WORK_DIRS} | grep -v ':' | grep -v '^$'"
-                printf '%s\n' "${dotfiles[@]}"
-                printf '%s\n' "${ADDITIONAL_WORK_DIRS[@]}"
-            } | fzf --no-preview --query="$input_session" --select-1 --exact --bind 'start:first+accept'
-        )
+list=$(eval "eza -1 -X --no-quotes --only-dirs --absolute ~/projects ${WORK_DIRS} | grep -v ':' | grep -v '^$' ; printf '%s\n' ${ADDITIONAL_WORK_DIRS[@]}")
+
+selected=$1
+
+if [[ -z $selected ]]; then
+    selected=$(printf '%s\n' "${list}" | fzf --no-preview)
 fi
 
 if [[ -z $selected ]]; then
     exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+session_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
+    tmux new-session -s $session_name -c $selected
     exit 0
 fi
 
-if ! tmux has-session -t="$selected_name" 2> /dev/null; then
-    if [ "$selected_name" = "log" ]; then
-        tmux new-session -d -s "$selected_name" -c "$selected"
-        tmux send-keys -t $selected_name "locallogs"
-        tmux send-keys -t $selected_name "C-m"
-        tmux split-window -t "$selected_name:1"
-        tmux send-keys -t $selected_name "phplogs"
-        tmux send-keys -t $selected_name "C-m"
-    elif [ "$selected_name" = "test" ]; then
-        tmux new-session -d -s "$selected_name" -c "$selected"
-        tmux send-keys -t $selected_name "nvim"
-        tmux send-keys -t $selected_name "C-m"
-        tmux split-window -h -l 30% -c "$selected" -t "$selected_name:1"
-        tmux send-keys -t $selected_name "runlocalserver"
-        tmux send-keys -t $selected_name "C-m"
-        tmux split-window -v -l 50% -c "$selected" -t "$selected_name:1"
+if ! tmux has-session -t="$session_name" 2> /dev/null; then
+    if [ "$session_name" == "log" ]; then
+        tmux new-session -d -s "$session_name" -c "$selected"
+        tmux send-keys -t $session_name "locallogs"
+        tmux send-keys -t $session_name "C-m"
+        tmux split-window -t "$session_name:1"
+        tmux send-keys -t $session_name "phplogs"
+        tmux send-keys -t $session_name "C-m"
+    elif [ "$session_name" == "test" ]; then
+        tmux new-session -d -s "$session_name" -c "$selected"
+        tmux send-keys -t $session_name "nvim"
+        tmux send-keys -t $session_name "C-m"
+        tmux split-window -h -l 30% -c "$selected" -t "$session_name:1"
+        tmux send-keys -t $session_name "runlocalserver"
+        tmux send-keys -t $session_name "C-m"
+        tmux split-window -v -l 50% -c "$selected" -t "$session_name:1"
     else
-        tmux new-session -d -s "$selected_name" -c "$selected" "nvim"
+        tmux new-session -d -s "$session_name" -c "$selected" "nvim"
     fi
 
 fi
 
 if [[ -z $2 && $TERM == *"tmux"* ]]; then
-    tmux switch-client -t "$selected_name"
+    tmux switch-client -t "$session_name"
 else
-    tmux a -t "$selected_name"
+    tmux a -t "$session_name"
 fi

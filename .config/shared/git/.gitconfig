@@ -7,7 +7,7 @@
 	reflog = delta
 	show = delta
 [include]
-  path = ~/dotfiles/.config/delta/themes/themes.gitconfig
+  path = ~/projects/dotfiles/.config/delta/themes/themes.gitconfig
 [delta]
 	;features = catppuccin-mocha
 	features = gruvmax-fang

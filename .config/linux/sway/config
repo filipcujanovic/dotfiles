@@ -24,7 +24,7 @@ gaps inner 10
 smart_gaps on
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg "$HOME/dotfiles/wallpapers/forest-road-day.jpg" fill
+output * bg "$HOME/projects/dotfiles/wallpapers/forest-road-day.jpg" fill
 
 output eDP-1 {
    resolution 1920x1080

@@ -1,4 +1,4 @@
-session_root "~/dotfiles"
+session_root "~/projects/dotfiles"
 
 if initialize_session "dotfiles"; then
   new_window "dotfiles"

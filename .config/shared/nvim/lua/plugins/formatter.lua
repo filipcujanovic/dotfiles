@@ -47,7 +47,7 @@ return {
                         return {
                             exe = 'sql-formatter',
                             args = {
-                                '--config ~/dotfiles/.config/shared/nvim/formatters/sql-formatter/config.json',
+                                '--config ~/projects/dotfiles/.config/shared/nvim/formatters/sql-formatter/config.json',
                             },
                             stdin = true,
                         }

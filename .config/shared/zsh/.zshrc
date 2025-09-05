@@ -2,8 +2,8 @@ eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=25'
-if [ -f ~/dotfiles-private/.config/zsh/.zshrc-private ]; then
-  source ~/dotfiles-private/.config/zsh/.zshrc-private
+if [ -f ~/projects/dotfiles-private/.config/zsh/.zshrc-private ]; then
+  source ~/projects/dotfiles-private/.config/zsh/.zshrc-private
 fi
 
 os_name=$(uname -s)

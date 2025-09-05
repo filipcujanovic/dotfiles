@@ -1,6 +1,6 @@
 ##!/usr/bin/env bash
 
-settings_file=~/dotfiles/app-launcher/mac-os-settings-list.json
+settings_file=~/projects/dotfiles/app-launcher/mac-os-settings-list.json
 
 applications=$(
     eza -1 -X --no-quotes \

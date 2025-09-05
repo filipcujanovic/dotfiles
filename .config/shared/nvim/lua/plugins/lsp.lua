@@ -40,7 +40,7 @@ local servers = {
     harper_ls = {
         settings = {
             ['harper-ls'] = {
-                userDictPath = '~/dotfiles/.config/nvim/spell/harper_dict.txt',
+                userDictPath = '~/projects/dotfiles/.config/nvim/shared/spell/harper_dict.txt',
                 linters = {
                     SentenceCapitalization = false,
                 },
