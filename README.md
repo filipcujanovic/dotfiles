@@ -22,7 +22,6 @@
 - [nvim](https://github.com/neovim/neovim) - text editor
 - [skhd](https://github.com/koekeishiya/skhd) - hotkey daemon for macOS
 - [starship](https://github.com/starship/starship) - prompt for zsh (or any other shell)
-- [switchaudio-osx](https://github.com/deweller/switchaudio-osx) - change audio output via command line
 - [tldr](https://github.com/tldr-pages/tldr) - cheatsheet for console commands
 - [tmux](https://github.com/tmux/tmux) - terminal multiplexer
 - [tmuxifier](https://github.com/jimeh/tmuxifier) - tmux session, window, and pane management tool
@@ -33,6 +32,8 @@
         + [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) - fish-like autosuggestions for zsh
         + [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) - syntax highlighting for zsh
         + [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode) - better vim mode for zsh
+#### macos specific
+- [switchaudio-osx](https://github.com/deweller/switchaudio-osx) - change audio output via command line
 
 ### tuis
 - [btop](https://github.com/aristocratos/btop) - monitor resources
@@ -43,19 +44,27 @@
 - [yazi](https://github.com/sxyazi/yazi) - terminal file manager
 
 ### tiling manager
+#### macos
 - [aerospace](https://github.com/nikitabobko/AeroSpace) - tiling manager
 - [borders](https://github.com/FelixKratz/JankyBorders) - creating colored border around focused window
+#### linux
+- [sway](https://github.com/swaywm/sway) - i3-compatible wayland compositor
 
 ### guis
+#### macos specific
 - [choose](https://github.com/chipsenkbeil/choose) - cli fuzzy matcher that has native macOS GUI - using this as app launcher
 - [maccy](https://github.com/p0deje/Maccy) - clipboard history manager
 - [sketchybar](https://github.com/FelixKratz/SketchyBar) - customizable macOS status bar replacement - using [SbarLua](https://github.com/FelixKratz/SbarLua)
+#### linux specific
+- [swaybar](https://github.com/swaywm/sway)
+- [wofi](https://hg.sr.ht/~scoopta/wofi) - wofi is a launcher/menu program for wlroots based wayland compositors such as sway
 
 ### automation/scripting
-- [hammerspoon](https://github.com/Hammerspoon/hammerspoon) - tool for automation of macOS, uses Lua
-- [karabiner](https://github.com/pqrs-org/Karabiner-Elements) - keyboard customization for macOS
 - [kanata](https://github.com/jtroo/kanata) - cross platform keyboard customization
 - [mouseless](https://mouseless.click/) - mouse control via keyboard - paid app
+#### macos specific
+- [hammerspoon](https://github.com/Hammerspoon/hammerspoon) - tool for automation of macOS, uses Lua
+- [karabiner](https://github.com/pqrs-org/Karabiner-Elements) - keyboard customization for macOS
 - [home row app](https://www.homerow.app/) - keyboard shortcuts for every button in macos - paid app but there is a free tier
 
 ### terminals
@@ -64,6 +73,7 @@
 - [kitty](https://github.com/kovidgoyal/kitty)
 
 ### other
+#### macos specific
 - [lulu](https://github.com/objective-see/LuLu) - macOS firewall
 - [pearcleaner](https://github.com/alienator88/Pearcleaner) - mac app cleaner
 
@@ -82,13 +92,18 @@
 - [sf-symbols](https://developer.apple.com/sf-symbols/) - `brew install --cask sf-symbols`
 
 ### custom scripts
-- [app-launcher](bin/macos/app-launcher) - using [choose](https://github.com/chipsenkbeil/choose) I created a simple app launcher, you can also search macOS settings and open them ![choose](assets/images/choose.png)
 - [tmux-session-picker](bin/shared/tmux-session-picker) - simple [fzf](https://github.com/junegunn/fzf) picker for tmux sessions
 - [tmux-sessionizer](bin/shared/tmux-session-picker) - based on [ThePrimeagen](https://github.com/ThePrimeagen/) [tmux-sessionizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer)
 - [tmuxifier-run-all](bin/shared/tmuxifier-run-all) - a simple script to start all tmux sessions created with [tmuxifier](https://github.com/jimeh/tmuxifier)
+#### macos specific
+- [app-launcher](bin/macos/app-launcher) - using [choose](https://github.com/chipsenkbeil/choose) I created a simple app launcher, you can also search macOS settings and open them ![choose](assets/images/choose.png)
 - [file-search](bin/macos/file-search) - search files with [fzf](https://github.com/junegunn/fzf) in predefined directories in terminal
 - [terminal-file-search](bin/macos/terminal-file-search) - spawn terminal window with [file-search](bin/macos/file-search) script to search files on predefined directories in the script. I have a custom keymap to spawn it and make it float aerospace [config](.config/macos/aerospace/aerospace.toml#L130)
 ![file-search](assets/images/file-search.png)
+#### linux specific
+- [wofi-clipboard](bin/linux/wofi-clipboard) - wofi picer for clipbard history, history is managed with [cliphist](https://github.com/sentriz/cliphist)
+- [swaybar-status](bin/linux/swaybar-status) - shell script for swaybar status
+- [sway-clamshell-mode](bin/linux/sway-clamshell-mode) - shell script for disabling laptop display when using it in clamshell mode
 
 ### kanata macbook layout
 ![keyboard-layout](assets/images/kanata-layout.svg)
