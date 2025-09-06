@@ -246,9 +246,9 @@ bar {
 
     colors {
         background #ffffff00
-        statusline #62693e
-        focused_workspace #ffffff00 #ffffff00 #fe801e
-        inactive_workspace #ffffff00 #ffffff00 #62693e
+        statusline #b8bb26
+        focused_workspace #ffffff00 #ffffff00 #fe8019
+        inactive_workspace #ffffff00 #ffffff00 #b8bb26
     }
 }
 
