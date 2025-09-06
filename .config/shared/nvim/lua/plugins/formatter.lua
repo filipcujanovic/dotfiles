@@ -23,6 +23,9 @@ return {
                 rust = {
                     require('formatter.filetypes.rust').rustfmt,
                 },
+                xml = {
+                    require('formatter.filetypes.xml').xmllint,
+                },
                 lua = {
                     require('formatter.filetypes.lua').stylua,
                     function()
