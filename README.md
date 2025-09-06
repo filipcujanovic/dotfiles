@@ -1,7 +1,7 @@
 # desktop
 ![desktop](./assets/images/desktop.png)
 
-# [neovim](.config/nvim/)
+# [neovim](.config/shared/nvim/)
 ![dotfiles](./assets/images/dotfiles.png)
 
 # description
@@ -82,12 +82,12 @@
 - [sf-symbols](https://developer.apple.com/sf-symbols/) - `brew install --cask sf-symbols`
 
 ### custom scripts
-- [app-launcher](bin/app-launcher) - using [choose](https://github.com/chipsenkbeil/choose) I created a simple app launcher, you can also search macOS settings and open them ![choose](assets/images/choose.png)
-- [tmux-session-picker](bin/tmux-session-picker) - simple [fzf](https://github.com/junegunn/fzf) picker for tmux sessions
-- [tmux-sessionizer](bin/tmux-session-picker) - based on [ThePrimeagen](https://github.com/ThePrimeagen/) [tmux-sessionizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer)
-- [tmuxifier-run-all](bin/tmuxifier-run-all) - a simple script to start all tmux sessions created with [tmuxifier](https://github.com/jimeh/tmuxifier)
-- [file-search](bin/file-search) - search files with [fzf](https://github.com/junegunn/fzf) in predefined directories in terminal
-- [terminal-file-search](bin/terminal-file-search) - spawn terminal window with [file-search](bin/file-search) script to search files on predefined directories in the script. I have a custom keymap to spawn it and make it float aerospace [config](.config/aerospace/aerospace.toml#L130)
+- [app-launcher](bin/macos/app-launcher) - using [choose](https://github.com/chipsenkbeil/choose) I created a simple app launcher, you can also search macOS settings and open them ![choose](assets/images/choose.png)
+- [tmux-session-picker](bin/shared/tmux-session-picker) - simple [fzf](https://github.com/junegunn/fzf) picker for tmux sessions
+- [tmux-sessionizer](bin/shared/tmux-session-picker) - based on [ThePrimeagen](https://github.com/ThePrimeagen/) [tmux-sessionizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer)
+- [tmuxifier-run-all](bin/shared/tmuxifier-run-all) - a simple script to start all tmux sessions created with [tmuxifier](https://github.com/jimeh/tmuxifier)
+- [file-search](bin/macos/file-search) - search files with [fzf](https://github.com/junegunn/fzf) in predefined directories in terminal
+- [terminal-file-search](bin/macos/terminal-file-search) - spawn terminal window with [file-search](bin/macos/file-search) script to search files on predefined directories in the script. I have a custom keymap to spawn it and make it float aerospace [config](.config/macos/aerospace/aerospace.toml#L130)
 ![file-search](assets/images/file-search.png)
 
 ### kanata macbook layout
@@ -102,5 +102,5 @@
 
 - I would not suggest installing everything since this is a config that I personally use and many things here are tailored to my needs. You can check the code and use whatever you find here in your dotfiles. But if you really want to install them here are the steps:
 
-- go to `.config/brew` dir and run `brew bundle install`
+- go to `.config/macos/brew` dir and run `brew bundle install`
 - run the `install.sh` script that should install everything that's needed.
