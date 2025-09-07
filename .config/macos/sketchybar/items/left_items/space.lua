@@ -43,7 +43,7 @@ local generate_app_icons_string = function(space_id)
     for _, app in pairs(visible_apps) do
         local current_app = icon_map.get_icon(app)
         if current_app.string ~= icons.viber then
-            visible_apps_string = visible_apps_string .. current_app.string
+            visible_apps_string = visible_apps_string .. ' ' .. current_app.string
         else
             visible_apps_string = visible_apps_string .. ':default:'
         end
