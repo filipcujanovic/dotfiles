@@ -40,6 +40,10 @@ export EDITOR=nvim
 export HISTSIZE=1000000
 export SAVEHIST=$HISTSIZE
 
+#export SQL_EDITOR=lazy-sql-editor
+#export SQL_TERMINAL=lazy-sql-terminal
+export SQL_EDITOR=nvim
+
 setopt HIST_IGNORE_SPACE
 setopt HIST_IGNORE_DUPS
 setopt SHARE_HISTORY
@@ -52,7 +56,7 @@ setopt HIST_REDUCE_BLANKS
 export PATH=$PATH":$HOME/bin"
 export PATH="/Users/cujanovic/.local/bin:$PATH"
 export PATH="$HOME/.tmuxifier/bin:$PATH"
-#export PATH=$PATH":$HOME/go/bin"
+export PATH=$PATH":$HOME/go/bin"
 export PATH=$PATH":$HOME/.config/zfunc"
 export PATH="/$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:/home/cujanovic/.local/bin"

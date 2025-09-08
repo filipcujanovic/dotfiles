@@ -107,6 +107,13 @@ local servers = {
             },
         },
     },
+    sqls = {
+        settings = {
+            telemetry = {
+                enabled = false,
+            },
+        },
+    },
 }
 
 return {

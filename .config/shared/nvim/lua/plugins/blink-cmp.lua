@@ -59,9 +59,9 @@ return {
                 },
                 dbee = { name = 'dbee', module = 'blink.compat.source' },
             },
-            per_filetype = {
-                sql = { 'dbee', 'buffer' },
-            },
+            --per_filetype = {
+            --    sql = { 'dbee', 'buffer' },
+            --},
         },
         signature = { enabled = true, window = { show_documentation = false } },
         cmdline = {
