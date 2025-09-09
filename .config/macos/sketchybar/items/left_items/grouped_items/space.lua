@@ -9,14 +9,14 @@ local inactive_color = opts.color.inactive_color
 local space_border_items = {}
 local spaces = {}
 
-for _, space_id in pairs(all_spaces) do
+for index, space_id in pairs(all_spaces) do
     local visible_apps_number = tonumber(io.popen('aerospace list-windows --count --workspace ' .. space_id):read('*a'))
     spaces[space_id] = { drawing = visible_apps_number ~= 0 }
     local space = sbar.add('item', space_id, {
         drawing = spaces[space_id].drawing,
         position = 'left',
         padding_left = 0,
-        padding_right = 0,
+        padding_right = #all_spaces == index and 5 or 0,
         label = {
             align = 'center',
             string = space_id,
@@ -64,6 +64,10 @@ for _, space_id in pairs(all_spaces) do
     end)
     table.insert(space_border_items, space.name)
 end
+
+sbar.add('bracket', space_border_items, {
+    background = opts.bracket_background_border,
+})
 
 return {
     space_border_items = space_border_items,

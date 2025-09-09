@@ -141,9 +141,9 @@ function M.transform(palette, is_dark)
                 neutral_green = compute(palette.neutral_green),
                 dark_green = compute(palette.dark_green),
             }
-            colors['timer_active_color'] = colors.green
-            colors['timer_paused_color'] = colors.yellow
-            colors['timer_inactive_color'] = colors.blue
+            colors['timer_active_color'] = colors.orange
+            colors['timer_paused_color'] = colors.red
+            colors['timer_inactive_color'] = colors.green
             colors['active_color'] = colors.orange
             colors['inactive_color'] = colors.green
             colors['border_color_inactive'] = colors.blue
@@ -168,9 +168,9 @@ function M.transform(palette, is_dark)
                 neutral_green = compute(palette.neutral_green),
                 dark_green = compute(palette.dark_green),
             }
-            colors['timer_active_color'] = colors.green
+            colors['timer_active_color'] = colors.orange
             colors['timer_paused_color'] = colors.yellow
-            colors['timer_inactive_color'] = colors.base
+            colors['timer_inactive_color'] = colors.green
             colors['active_color'] = colors.neutral_yellow
             colors['inactive_color'] = colors.green
             colors['border_color_inactive'] = colors.green

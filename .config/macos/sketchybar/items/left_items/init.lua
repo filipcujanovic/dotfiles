@@ -1,21 +1,20 @@
 local opts = require('opts')
-local sbar = require('sketchybar')
 
-local space_items = require('items.left_items.space')
-if opts.item_options.front_app.enabled then
-    local front_app_items = require('items.left_items.front_app')
+if opts.item_options.group_items then
+    require('items.left_items.grouped_items')
+else
+    if opts.item_options.space.app_focus then
+        require('items.left_items.space-with-app-focus')
+    end
+    if opts.item_options.space.with_icons then
+        require('items.left_items.space-with-icons')
+    end
+    if opts.item_options.space.only_spaces_with_windows then
+        require('items.left_items.space')
+    end
+    if opts.item_options.front_app.enabled then
+        require('items.left_items.front_app')
+    end
+
+    require('items.left_items.aerospace-mode')
 end
---table.insert(space_items.space_border_items, front_app_items.front_app.name)
---table.insert(space_items.space_border_items, front_app_items.separator.name)
---table.insert(space_items.space_border_items, timer_items.timer.name)
---sbar.add('bracket', space_items.space_border_items, {
---    background = opts.bracket_background,
---})
-
---table.remove(space_items.space_border_items, #space_items.space_border_items)
---table.remove(space_items.space_border_items, #space_items.space_border_items)
--- table.remove(space_items.space_border_items, #space_items.space_border_items)
-
---sbar.add('bracket', space_items.space_border_items, {
---    background = opts.bracket_background_border,
---})

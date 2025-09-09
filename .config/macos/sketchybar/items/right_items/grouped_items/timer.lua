@@ -35,6 +35,16 @@ local time_counter = tonumber(read_file(time_counter_file_path))
 time_counter = time_counter == nil and 0 or time_counter
 local run_on_start = time_counter ~= 0
 
+local icon_padding = {
+    left = 10,
+    right = 5,
+}
+
+local label_padding = {
+    left = 5,
+    right = 1,
+}
+
 local timer = sbar.add('item', 'timer', {
     position = 'right',
     padding_left = 0,
@@ -44,17 +54,18 @@ local timer = sbar.add('item', 'timer', {
         drawing = run_on_start,
         string = get_time_string(time_counter),
         color = run_on_start and active_color or inactive_color,
-        padding_left = 0,
-        padding_right = 0,
+        padding_left = icon_padding.left,
+        padding_right = icon_padding.right,
     },
     label = {
         font = opts.font.icon_font_normal,
         color = opts.color.icon_color,
         align = 'center',
         string = icons.clock,
-        padding_left = 0,
-        padding_right = 1,
+        padding_left = label_padding.left,
+        padding_right = label_padding.right,
         drawing = not run_on_start,
+        y_offset = 1,
     },
     updates = true,
     update_freq = run_on_start and 1 or 0,
@@ -75,7 +86,6 @@ sbar.add('item', {
     write_to_file(time_counter_file_path, time_counter)
     timer:set({
         popup = { drawing = false },
-        label = { drawing = false },
         icon = {
             string = get_time_string(time_counter),
             color = inactive_color,
@@ -107,7 +117,6 @@ playstop:subscribe('mouse.clicked', function()
     })
     timer:set({
         popup = { drawing = false },
-        label = { drawing = false },
         icon = { color = color, drawing = drawing },
         update_freq = update_freq,
     })

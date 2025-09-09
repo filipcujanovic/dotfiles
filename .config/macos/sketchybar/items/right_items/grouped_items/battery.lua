@@ -2,19 +2,32 @@ local opts = require('opts')
 local sbar = require('sketchybar')
 local icons = require('icons')
 
+local icon_padding = {
+    left = 0,
+    right = 5,
+}
+
+local battery_icon = {
+    align = 'center',
+    padding_left = icon_padding.left,
+    padding_right = icon_padding.right,
+}
+
+local label_padding = {
+    left = 0,
+    right = 0,
+}
+
 local battery = sbar.add('item', 'battery', {
-    padding_left = 5,
+    padding_left = 0,
     padding_right = 0,
     position = 'right',
     label = {
         string = '%',
-        padding_left = 0,
-        padding_right = 0,
+        padding_left = label_padding.left,
+        padding_right = label_padding.right,
     },
-    icon = {
-        padding_left = 0,
-        padding_right = 5,
-    },
+    icon = battery_icon,
     updates = true,
 })
 
@@ -27,11 +40,12 @@ battery:subscribe('battery_change', function(env)
             string = '',
         },
     })
-    if opts.item_options.battery.enable_dynamic_icon then
+    if opts.item_options.battery.enable_icon then
         if env.charging == 'on' then
             battery:set({
                 icon = {
                     string = icons.battery_charging,
+                    drawing = true,
                 },
             })
         else
@@ -53,12 +67,17 @@ battery:subscribe('battery_change', function(env)
             battery:set({
                 icon = {
                     string = icons.charging,
+                    drawing = true,
+                    padding_left = 0,
                 },
             })
         else
             battery:set({
                 icon = {
-                    string = icons.battery,
+                    drawing = false,
+                },
+                label = {
+                    padding_left = 10,
                 },
             })
         end

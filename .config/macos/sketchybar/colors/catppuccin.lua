@@ -25,9 +25,9 @@ function M.transform(palette)
             red = compute(palette.rosewater),
             black = compute(palette.crust),
         }
-        colors['timer_active_color'] = colors.green
+        colors['timer_active_color'] = colors.orange
         colors['timer_paused_color'] = colors.yellow
-        colors['timer_inactive_color'] = cojors.text
+        colors['timer_inactive_color'] = colors.green
         colors['active_color'] = colors.orange
         colors['inactive_color'] = colors.green
         colors['border_color_inactive'] = colors.blue

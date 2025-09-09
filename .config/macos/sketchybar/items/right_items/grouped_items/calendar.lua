@@ -1,22 +1,35 @@
 local opts = require('opts')
 local sbar = require('sketchybar')
 local icons = require('icons')
+local utils = require('utils')
 
-local icon = opts.item_options.calendar.enable_icon and {
-    string = icons.calendar,
-    padding_right = 5,
-    padding_left = 0,
-} or { drawing = false }
+local label_padding = {
+    left = 0,
+    right = 15,
+}
+
+local icon_padding = {
+    left = 0,
+    right = 5,
+}
+
+local icon = opts.item_options.calendar.enable_icon
+        and {
+            string = icons.calendar,
+            padding_right = icon_padding.right,
+            padding_left = icon_padding.left,
+        }
+    or { drawing = false }
 local date_is_visible = false
 
 local calendar = sbar.add('item', 'calendar', {
     position = 'right',
-    padding_left = 10,
-    padding_right = 5,
+    padding_left = 0,
+    padding_right = 0,
     update_freq = 1,
     label = {
-        padding_left = 0,
-        padding_right = 0,
+        padding_left = label_padding.left,
+        padding_right = label_padding.right,
     },
     icon = icon,
 })

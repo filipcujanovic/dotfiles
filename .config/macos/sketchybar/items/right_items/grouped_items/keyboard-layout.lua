@@ -22,23 +22,34 @@ local get_current_keyboard_layout = function()
     return layout
 end
 
-local icon = opts.item_options.keyboard_layout.enable_icon and {
-    string = icons.keyboard,
-    drawing = true,
-    padding_right = 5,
-    padding_left = 0,
-} or { drawing = false }
+local label_padding = {
+    left = 0,
+    right = 0,
+}
+
+local icon_padding = {
+    left = 0,
+    right = 5,
+}
+local icon = opts.item_options.keyboard_layout.enable_icon
+        and {
+            string = icons.keyboard,
+            drawing = true,
+            padding_right = icon_padding.right,
+            padding_left = icon_padding.left,
+        }
+    or { drawing = false }
 
 local keyboard_layout_string = get_current_keyboard_layout()
 local keyboard_layout = sbar.add('item', 'keyboard_layout', {
-    --drawing = keyboard_layout_string ~= 'us',
+    drawing = keyboard_layout_string ~= 'us',
     position = 'right',
-    padding_left = 10,
+    padding_left = 0,
     padding_right = 0,
     label = {
         string = keyboard_layout_string,
-        padding_left = opts.item_options.keyboard_layout.enable_icon and 5 or 0,
-        padding_right = 0,
+        padding_left = label_padding.left,
+        padding_right = label_padding.right,
     },
     icon = icon,
     updates = true,

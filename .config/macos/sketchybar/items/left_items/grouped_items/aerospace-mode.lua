@@ -1,20 +1,17 @@
 local opts = require('opts')
 local sbar = require('sketchybar')
 
-local label_padding = opts.item_options.group_items and {
+local label_padding = {
     left = 0,
     right = 0,
-} or {
-    left = 5,
-    right = 10,
 }
 
 local aerospace_mode = sbar.add('item', 'aerospace-mode', {
-    position = 'right',
+    drawing = false,
+    position = 'left',
     padding_left = 0,
     padding_right = 0,
     label = {
-        string = 'main',
         padding_left = label_padding.left,
         padding_right = label_padding.right,
     },
@@ -24,6 +21,7 @@ local aerospace_mode = sbar.add('item', 'aerospace-mode', {
 aerospace_mode:subscribe('aerospace_mode_change', function(env)
     local is_main_mode = env.MODE == 'main'
     aerospace_mode:set({
+        drawing = not is_main_mode,
         label = {
             string = env.MODE,
             color = is_main_mode and opts.color.inactive_color or opts.color.active_color,

@@ -9,20 +9,29 @@ M.height = 37
 M.item_options = {
     group_items = false,
     front_app = {
-        enabled = true,
+        enabled = false,
         show_icon = false,
         show_label = true,
     },
+    volume = {
+        enabled = true,
+        enable_dynamic_icon = false,
+    },
     battery = {
-        enable_icon = false,
+        enabled = true,
+        enable_dynamic_icon = false,
     },
     keyboard_layout = {
+        enabled = true,
         enable_icon = false,
     },
     calendar = {
+        enabled = true,
         enable_icon = false,
     },
     space = {
+        only_spaces_with_windows = true,
+        with_icons = false,
         -- this is still in progress
         -- currently it's too taxing for the process since it needs to do a lot of aerospace calls
         -- things that do not work pproperlyroperly

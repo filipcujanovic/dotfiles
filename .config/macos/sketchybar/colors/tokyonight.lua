@@ -26,9 +26,9 @@ function M.transform(palette)
             red = compute(palette.red),
             black = compute(palette.black),
         }
-        colors['timer_active_color'] = colors.green
+        colors['timer_active_color'] = colors.orange
         colors['timer_paused_color'] = colors.yellow
-        colors['timer_inactive_color'] = colors.purple
+        colors['timer_inactive_color'] = colors.green
         colors['active_color'] = colors.green
         colors['inactive_color'] = colors.purple
         colors['border_color_active'] = colors.green
