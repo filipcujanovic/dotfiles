@@ -16,7 +16,7 @@ set $right l
 # Your preferred terminal emulator
 set $term wezterm
 # Your preferred application launcher
-set $menu wofi --show drun --prompt=''
+set $menu wofi -i --show drun --prompt=''
 
 mouse_warping container
 default_border none
@@ -102,7 +102,7 @@ bindsym Mod4+Shift+space exec ~/bin/wofi-clipboard | wl-copy && wtype -M ctrl -k
 floating_modifier $mod normal
 
 # Reload the configuration file
-bindsym $mod+Shift+1 reload
+bindsym $mod+Escape reload
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -229,6 +229,7 @@ bindsym Mod4+shift+4 exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
 for_window [app_id="org.wezfurlong.wezterm"] move to workspace $terminal
 for_window [title="personal"] move to workspace $personal
 for_window [title="work"] move to workspace $work
+for_window [title="WhatsApp Web"] move to workspace $chats
 
 #
 # Status Bar:
