@@ -12,6 +12,7 @@ return {
             },
             overrides = {
                 LineNr = { fg = '#b8bb26' },
+                CursorLineNr = { fg = '#fe8019' },
                 DashboardHeader = { fg = '#d65d0e' },
                 DashboardKey = { fg = '#fb4934' },
                 DashboardDesc = { fg = '#fabd2f' },

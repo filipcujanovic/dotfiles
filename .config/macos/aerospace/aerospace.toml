@@ -90,10 +90,10 @@ cmd-h = []
 #cmd-shift-s = 'focus-monitor secondary'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
-ctrl-shift-h = 'move left'
-ctrl-shift-j = 'move down'
-ctrl-shift-k = 'move up'
-ctrl-shift-l = 'move right'
+alt-left = 'move left'
+alt-down = 'move down'
+alt-up = 'move up'
+alt-right = 'move right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 # change this layout

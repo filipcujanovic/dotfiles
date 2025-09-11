@@ -53,6 +53,7 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 
+export XDG_CONFIG_HOME="$HOME/.config"
 export PATH=$PATH":$HOME/bin"
 export PATH="/Users/cujanovic/.local/bin:$PATH"
 export PATH="$HOME/.tmuxifier/bin:$PATH"

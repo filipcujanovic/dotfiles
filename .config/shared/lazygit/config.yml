@@ -6,4 +6,6 @@ customCommands:
     loadingText: "opening commitizen commit tool"
     output: terminal
 git:
-disableForcePushing: true
+  disableForcePushing: true
+gui:
+  showFileTree: false
