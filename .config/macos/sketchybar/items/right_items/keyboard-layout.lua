@@ -31,7 +31,7 @@ local icon = opts.item_options.keyboard_layout.enable_icon and {
 
 local keyboard_layout_string = get_current_keyboard_layout()
 local keyboard_layout = sbar.add('item', 'keyboard_layout', {
-    --drawing = keyboard_layout_string ~= 'us',
+    drawing = keyboard_layout_string ~= 'us',
     position = 'right',
     padding_left = 10,
     padding_right = 0,

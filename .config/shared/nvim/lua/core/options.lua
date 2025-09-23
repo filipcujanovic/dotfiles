@@ -1,6 +1,4 @@
--- [[ Setting options ]]
 -- See `:help vim.o`
--- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -8,6 +6,8 @@ vim.o.shiftwidth = 4
 
 -- disable swap file
 vim.opt.swapfile = false
+
+vim.o.winborder = 'rounded'
 
 vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 

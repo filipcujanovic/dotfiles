@@ -1,5 +1,5 @@
 return {
-    'echasnovski/mini.notify',
+    'nvim-mini/mini.notify',
     version = '*',
     config = function()
         local mini_notify = require('mini.notify')

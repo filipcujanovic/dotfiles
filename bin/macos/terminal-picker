@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+terminal="wezterm"
+
+export FZF_DEFAULT_OPTS=" \
+--color=spinner:#8ec07c,hl:#83a598 \
+--color=fg:#bdae93,header:#83a598,info:#fabd2f,pointer:#8ec07c \
+--color=marker:#8ec07c,fg+:#ebdbb2,prompt:#fabd2f,hl+:#83a598
+--multi"
+
+read width height < <(
+  osascript -e 'tell application "Finder" to get bounds of window of desktop' \
+    | awk -F', ' '{print $3, $4}'
+)
+
+if [ "$terminal" = "wezterm" ]; then
+    wezterm -e --position $width,$height $1 wezterm &
+elif [ "$terminal" = "kitty" ]; then
+    kitty -e $1 kitty &
+elif [ "$terminal" = "ghostty" ]; then
+  open -a "ghostty.app" $1
+fi

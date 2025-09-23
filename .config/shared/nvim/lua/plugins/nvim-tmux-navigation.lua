@@ -1,14 +1,26 @@
 return {
     'alexghergh/nvim-tmux-navigation',
-    config = function()
-        require('nvim-tmux-navigation').setup({
-            disable_when_zoomed = true,
-            keybindings = {
-                left = '<C-s>h',
-                down = '<C-s>j',
-                up = '<C-s>k',
-                right = '<C-s>l',
-            },
-        })
-    end,
+    keys = {
+        {
+            '<C-s>h',
+            '<Cmd>NvimTmuxNavigateLeft<cr>',
+            desc = 'Navigate left',
+        },
+        {
+            '<C-s>j',
+            '<Cmd>NvimTmuxNavigateDown<cr>',
+            desc = 'Navigate down',
+        },
+        {
+            '<C-s>k',
+            '<Cmd>NvimTmuxNavigateUp<cr>',
+            desc = 'Navigate up',
+        },
+        {
+            '<C-s>l',
+            '<Cmd>NvimTmuxNavigateRight<cr>',
+            desc = 'Navigate right',
+        },
+    },
+    config = true,
 }

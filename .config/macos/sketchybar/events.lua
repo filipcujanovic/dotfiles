@@ -35,6 +35,8 @@ return {
         sbar.add('event', 'aerospace_workspace_change')
         sbar.add('event', 'aerospace_mode_change')
         sbar.add('event', 'custom_space_windows_change')
+        sbar.add('event', 'timew-start')
+        sbar.add('event', 'timew-stop')
         sbar.add('event', 'builtin_display_change')
         sbar.add('event', 'spotify_change', 'com.spotify.client.PlaybackStateChanged')
         sbar.add('event', 'battery_change')

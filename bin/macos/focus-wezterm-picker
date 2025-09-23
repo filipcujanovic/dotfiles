@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [ "$1" = "wezterm" ]; then
+    while :
+    do
+        window_id=$(aerospace list-windows --all --format %{window-id}%{app-name} --json | jq ".[] | select(.\"app-name\" == \"wezterm-gui\") | .\"window-id\"")
+        if [ ! -z "${window_id}" ]; then
+            $(aerospace focus --window-id "${window_id}")
+            break
+        fi
+    done
+fi

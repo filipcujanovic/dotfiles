@@ -27,3 +27,7 @@ function zvm_vi_yank() {
 	echo ${CUTBUFFER} | pbcopy
 	zvm_exit_visual_mode
 }
+
+function git_branch() {
+    git rev-parse --abbrev-ref HEAD 2> /dev/null
+}

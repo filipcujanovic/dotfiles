@@ -1,48 +1,18 @@
-eval "$(starship init zsh)"
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
-
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=25'
 if [ -f ~/projects/dotfiles-private/.config/zsh/.zshrc-private ]; then
   source ~/projects/dotfiles-private/.config/zsh/.zshrc-private
 fi
 
-os_name=$(uname -s)
+if [ -f ~/projects/dotfiles/.config/shared/zsh/alias ]; then
+  source ~/projects/dotfiles/.config/shared/zsh/alias
+fi
 
-alias jsonencode="awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' $0"
-alias fastfetch="fastfetch; printf '\n\n'"
-alias cat="bat"
-alias gdf="git diff"
-alias gc="git checkout"
-alias gs="git status"
-alias ga="git add"
-alias gp="git push origin"
-alias gpl="git pull origin"
-alias gsp="git stash pop"
-alias gst="git stash"
-alias gsts="git_stash_show"
-alias gstsm="git_stash_show_m"
-alias gstd="git_stash_drop"
-alias gstl="git stash list"
-alias gsta="git_stash_apply"
-alias dup="docker-compose up -d"
-alias dbuild="docker-compose build"
-alias dstop="docker stop"
-alias ls="eza --color=always --git --icons=always"
-alias list-containers="docker ps --format '{{.Names}} - {{.Status}}'"
+source $NVM_DIR/nvm.sh
+source $ZSH_SYNTAX_HIGHLIGHTING/zsh-syntax-highlighting.zsh
+source $ZSH_AUTOSUGGESTIONS/zsh-autosuggestions.zsh
 
 # use vi mode
 #set -o vi
 bindkey -e
-
-export HISTFILE=~/.zsh_history
-export VISUAL=nvim
-export EDITOR=nvim
-export HISTSIZE=1000000
-export SAVEHIST=$HISTSIZE
-
-#export SQL_EDITOR=lazy-sql-editor
-#export SQL_TERMINAL=lazy-sql-terminal
-export SQL_EDITOR=nvim
 
 setopt HIST_IGNORE_SPACE
 setopt HIST_IGNORE_DUPS
@@ -53,71 +23,17 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 
-export XDG_CONFIG_HOME="$HOME/.config"
-export PATH=$PATH":$HOME/bin"
-export PATH="/Users/cujanovic/.local/bin:$PATH"
-export PATH="$HOME/.tmuxifier/bin:$PATH"
-export PATH=$PATH":$HOME/go/bin"
-export PATH=$PATH":$HOME/.config/zfunc"
-export PATH="/$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:/home/cujanovic/.local/bin"
-export PATH=$PATH:"$HOME/Library/Python/3.10/bin"
-export NVM_DIR="$HOME/.nvm"
-export LESS="-XRFS"
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#a89984"
-export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --style=numbers {}'"
-export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
-# catppuccin
-#export FZF_DEFAULT_OPTS=" \
-#--color=spinner:#f5e0dc,hl:#f38ba8 \
-#--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-#--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
-#--multi"
-# gruvbox
-export FZF_DEFAULT_OPTS=" \
- --color=spinner:#8ec07c,hl:#83a598 \
- --color=fg:#bdae93,header:#83a598,info:#fabd2f,pointer:#8ec07c \
- --color=marker:#8ec07c,fg+:#ebdbb2,prompt:#fabd2f,hl+:#83a598
- --multi"
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-bindkey "ç" fzf-cd-widget # atl + c
-# Advanced customization of fzf options via _fzf_comprun function
-# - The first argument to the function is the name of the command.
-# - You should make sure to pass the rest of the arguments to fzf.
-_fzf_comprun() {
-  local command=$1
-  shift
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '%b'
 
-  case "$command" in
-    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
-    ssh)          fzf --preview 'dig {}'                   "$@" ;;
-    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
-  esac
-}
+setopt PROMPT_SUBST
 
-if [[ $os_name == "Darwin" ]]; then
-  alias docker-compose="docker compose"
-  export PATH="/Applications/flameshot.app/Contents/MacOS/:$PATH"
-  source $(brew --prefix nvm)/nvm.sh
-  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-else
-  bindkey '^H' backward-kill-word
-  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+NEWLINE=$'\n'
+#PROMPT='${NEWLINE}%F{#5a633a}%f%K{#5a633a}%~ %f%k%K{#b57614}%F{#5a633a}%f%k%F{#b57614}%f%K{#b57614}${vcs_info_msg_0_}%k%F{#b57614}%f %F{#b8bb26} %f'
+PROMPT='${NEWLINE}%F{#5a633a}%f%K{#5a633a} %~ %f%k%K{#b57614}%F{#5a633a}%f%k%F{#b57614}%f%K{#b57614} ${vcs_info_msg_0_} %k%F{#b57614}%f %F{#b8bb26} %f'
 
-#export ZVM_INIT_MODE=sourcing
-# Check that the function `starship_zle-keymap-select()` is defined.
-# xref: https://github.com/starship/starship/issues/3418
-type starship_zle-keymap-select >/dev/null || \
-  {
-    echo "Load starship"
-    eval "$(/usr/local/bin/starship init zsh)"
-  }
 autoload -Uz compinit && compinit
+autoload -U colors && colors
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
-zvm_after_init_commands+=('[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh')

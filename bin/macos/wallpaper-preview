@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+dim=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}
+
+if [[ $KITTY_WINDOW_ID ]] || [[ $GHOSTTY_RESOURCES_DIR ]] && command -v kitten > /dev/null; then
+  kitten icat --clear --transfer-mode=memory --unicode-placeholder --stdin=no --place="$dim@0x0" "$1" | sed '$d' | sed $'$s/$/\e[m/'
+else
+  chafa -s "$dim" "$1"
+  echo
+fi

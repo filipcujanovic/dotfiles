@@ -23,6 +23,12 @@ local get_device_icon = function(device)
         }
     end
 
+    if string.match(device, 'EMBERTON') then
+        return {
+            string = icons.speaker,
+        }
+    end
+
     return {
         string = icons.monitor,
     }

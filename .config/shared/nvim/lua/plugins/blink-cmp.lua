@@ -10,14 +10,11 @@ return {
             lazy = true,
             opts = {},
         },
-        {
-            'MattiasMTS/cmp-dbee',
-            branch = 'ms/v2',
-        },
     },
     version = 'v1.*',
     opts = {
         completion = {
+            accept = { auto_brackets = { enabled = true } },
             list = {
                 selection = {
                     preselect = function(ctx)
@@ -55,13 +52,9 @@ return {
             providers = {
                 lsp = {
                     async = true,
-                    --fallbacks = {},
+                    fallbacks = {},
                 },
-                dbee = { name = 'dbee', module = 'blink.compat.source' },
             },
-            --per_filetype = {
-            --    sql = { 'dbee', 'buffer' },
-            --},
         },
         signature = { enabled = true, window = { show_documentation = false } },
         cmdline = {

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+~/bin/focus-wezterm-picker $1
+
+selected_wallpaper=$(eza -1 -X --no-quotes --absolute ~/projects/dotfiles/wallpapers/ | fzf --preview="~/bin/wallpaper-preview {}")
+
+if [ ! -z "${selected_wallpaper}" ]; then
+    osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$selected_wallpaper\""
+fi

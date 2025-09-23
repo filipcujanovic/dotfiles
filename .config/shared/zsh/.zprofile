@@ -1,0 +1,79 @@
+os_name=$(uname -s)
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
+
+export HISTFILE=~/.zsh_history
+export VISUAL=nvim
+export EDITOR=nvim
+export HISTSIZE=1000000
+export SAVEHIST=$HISTSIZE
+
+#export SQL_EDITOR=lazy-sql-editor
+#export SQL_TERMINAL=lazy-sql-terminal
+export SQL_EDITOR=nvim
+
+
+if [[ $os_name == "Darwin" ]]; then
+  export NVM_DIR=$(brew --prefix nvm)
+  export ZSH_SYNTAX_HIGHLIGHTING=$(brew --prefix)/share/zsh-syntax-highlighting
+  export ZSH_AUTOSUGGESTIONS=$(brew --prefix)/share/zsh-autosuggestions
+else
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+  bindkey '^H' backward-kill-word
+  export ZSH_SYNTAX_HIGHLIGHTING=/usr/share/zsh/plugins/zsh-autosuggestions
+  export ZSH_AUTOSUGGESTIONS=/usr/share/zsh/plugins/zsh-syntax-highlighting
+fi
+
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export PATH=$PATH":$HOME/bin"
+export PATH="/Users/cujanovic/.local/bin:$PATH"
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+export PATH=$PATH":$HOME/go/bin"
+export PATH=$PATH":$HOME/.config/zfunc"
+export PATH="/$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:/home/cujanovic/.local/bin"
+export PATH=$PATH:"$HOME/Library/Python/3.10/bin"
+export LESS="-XRFS"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#a89984"
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --style=numbers {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+# catppuccin
+#export FZF_DEFAULT_OPTS=" \
+#--color=spinner:#f5e0dc,hl:#f38ba8 \
+#--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+#--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+#--multi"
+# gruvbox
+export FZF_DEFAULT_OPTS=" \
+ --color=spinner:#8ec07c,hl:#83a598 \
+ --color=fg:#bdae93,header:#83a598,info:#fabd2f,pointer:#8ec07c \
+ --color=marker:#8ec07c,fg+:#ebdbb2,prompt:#fabd2f,hl+:#83a598
+ --multi"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+if [[ $os_name == "Darwin" ]]; then
+  export PATH="/Applications/flameshot.app/Contents/MacOS/:$PATH"
+  export PATH="/Applications/CopyQ.app/Contents/MacOS/:$PATH"
+fi
+
+
+bindkey "ç" fzf-cd-widget # atl + c
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
+  esac
+}
+
+#zvm_after_init_commands+=('[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh')

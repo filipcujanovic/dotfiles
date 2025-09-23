@@ -7,5 +7,5 @@ else
     require('items.right_items.keyboard-layout')
     require('items.right_items.battery')
     require('items.right_items.volume')
-    require('items.right_items.timer')
+    require('items.right_items.timew')
 end

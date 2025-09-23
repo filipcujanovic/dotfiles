@@ -25,11 +25,11 @@ local on_attach = function(_, bufnr)
 
     -- Lesser used LSP functionality
     nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-    nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-    nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-    nmap('<leader>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, '[W]orkspace [L]ist Folders')
+    --nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
+    --nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
+    --nmap('<leader>wl', function()
+    --    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    --end, '[W]orkspace [L]ist Folders')
 
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
         vim.lsp.buf.format()
@@ -82,13 +82,10 @@ local servers = {
             Lua = {
                 workspace = {
                     checkThirdParty = false,
+                    library = vim.api.nvim_get_runtime_file('', true),
                 },
                 telemetry = {
                     enable = false,
-                },
-                diagnostics = {
-                    globals = { 'vim' },
-                    disable = { 'missing-fields' },
                 },
             },
         },
@@ -121,16 +118,6 @@ return {
     dependencies = {
         'mason-org/mason-lspconfig.nvim',
         'mason-org/mason.nvim',
-        {
-            'folke/lazydev.nvim',
-            ft = 'lua',
-            opts = {
-                library = {
-                    { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-                },
-            },
-        },
-        { 'Bilal2453/luvit-meta', lazy = true },
     },
     config = function()
         --local capabilities = vim.lsp.protocol.make_client_capabilities()

@@ -122,7 +122,10 @@ alt-shift-w = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-
 #alt-shift-w = 'move-node-to-workspace --focus-follows-window work'
 
 cmd-space = 'exec-and-forget ~/bin/app-launcher'
-cmd-shift-s = 'exec-and-forget ~/bin/terminal-file-search wezterm'
+cmd-shift-w = 'exec-and-forget ~/bin/terminal-picker ~/bin/change-wallpaper'
+cmd-shift-s = 'exec-and-forget ~/bin/terminal-picker ~/bin/file-search'
+#cmd-shift-space = 'exec-and-forget ~/bin/terminal-picker ~/bin/clipboard-manager'
+#cmd-space = 'exec-and-forget ~/bin/terminal-picker ~/bin/app-launcher'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-enter = 'workspace-back-and-forth'

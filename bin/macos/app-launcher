@@ -1,4 +1,6 @@
-##!/usr/bin/env bash
+#!/usr/bin/env bash
+
+~/bin/focus-wezterm-picker $1
 
 settings_file=~/projects/dotfiles/app-launcher/mac-os-settings-list.json
 
@@ -23,11 +25,16 @@ list=$(
 )
 
 selected_item=$(echo "$list" | sort -f | choose -f SFMono-Regular -c "83A598" -b "B8BB26")
+#selected_item=$(echo "$list" | sort -f | fzf)
 
-url=$(jq -r --arg key "${selected_item}" '.[$key]' "$settings_file")
+if [ ! -z "${selected_item}" ]; then
+    url=$(jq -r --arg key "${selected_item}" '.[$key]' "$settings_file")
 
-if [[ "$url" == "x-apple"* ]]; then
-    open "$url"
-else
-    open -a "$selected_item"
+    if [[ "$url" == "x-apple"* ]]; then
+        open "$url"
+    else
+        open -a "$selected_item"
+    fi
 fi
+
+#aerospace list-windows --all --format %{window-id} | sort | tail -n 1 | xargs aerospace focus --window-id $1

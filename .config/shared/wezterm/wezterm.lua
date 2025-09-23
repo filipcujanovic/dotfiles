@@ -1,7 +1,8 @@
 local wezterm = require('wezterm')
 local keys = require('keymap')
-local wallpaper = require('wallpaper')
+--local wallpaper = require('wallpaper')
 local config = wezterm.config_builder()
+local mux = wezterm.mux
 
 wezterm.on('window-config-reloaded', function(window)
     local font_size = 16
@@ -11,6 +12,12 @@ wezterm.on('window-config-reloaded', function(window)
     window:set_config_overrides({
         font_size = font_size,
     })
+end)
+
+wezterm.on('gui-startup', function(cmd)
+    local tab, pane, window = mux.spawn_window(cmd or {})
+    -- size of window width - height
+    window:gui_window():set_inner_size(2000, 1000)
 end)
 
 config = {
@@ -23,7 +30,7 @@ config = {
     enable_tab_bar = false,
     --background = wallpaper,
     default_cursor_style = 'SteadyBar',
-    --enable_kitty_graphics = true,
+    enable_kitty_graphics = true,
     --term = 'xkitty-term',
     window_decorations = 'RESIZE',
     window_background_opacity = 0.7,
