@@ -22,18 +22,20 @@ end)
 
 config = {
     --background = wallpaper,
+    window_padding = {
+        bottom = 0,
+    },
     keys = keys,
     max_fps = 120,
     font_size = 14,
     front_end = 'WebGpu',
     animation_fps = 120,
     enable_tab_bar = false,
-    --background = wallpaper,
     default_cursor_style = 'SteadyBar',
     enable_kitty_graphics = true,
-    --term = 'xkitty-term',
     window_decorations = 'RESIZE',
-    window_background_opacity = 0.7,
+    window_background_opacity = 1.0,
+    --window_background_opacity = 0.7,
     color_scheme = 'GruvboxDarkHard',
     macos_window_background_blur = 25,
     window_close_confirmation = 'NeverPrompt',

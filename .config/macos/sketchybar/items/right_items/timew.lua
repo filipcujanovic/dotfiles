@@ -18,9 +18,11 @@ local timew = sbar.add('item', 'timew', {
         font = opts.font.default,
         drawing = run_on_start,
         string = current_timer,
-        color = opts.color.timer_active_color,
+        color = opts.color.blue,
         padding_left = 0,
         padding_right = 0,
+        width = 130,
+        align = 'right',
     },
     updates = true,
     update_freq = run_on_start and 1 or 0,
@@ -51,10 +53,19 @@ end
 timew:subscribe('timew-start', timew_start)
 timew:subscribe('timew-stop', timew_stop)
 
-local function update_timew()
+local update_timew = function()
+    current_timer = get_current_timer()
+    local color = opts.color.blue
+    if string.match(current_timer, 'waste') then
+        color = opts.color.red
+    end
+    if string.match(current_timer, 'dotfiles') then
+        color = opts.color.yellow
+    end
     timew:set({
         label = {
-            string = get_current_timer(),
+            string = current_timer,
+            color = color,
         },
     })
 end

@@ -24,6 +24,7 @@ return {
                 TabLineSel = { fg = 'none', bg = 'none' },
                 WinBar = { fg = 'none', bg = 'none' },
                 WinBarNC = { fg = 'none', bg = 'none' },
+                --Whitespace = { fg = '#fb4934' },
             },
             contrast = 'hard',
             transparent_mode = true,

@@ -124,6 +124,8 @@ alt-shift-w = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-
 cmd-space = 'exec-and-forget ~/bin/app-launcher'
 cmd-shift-w = 'exec-and-forget ~/bin/terminal-picker ~/bin/change-wallpaper'
 cmd-shift-s = 'exec-and-forget ~/bin/terminal-picker ~/bin/file-search'
+alt-f = 'exec-and-forget open -a "Finder"'
+
 #cmd-shift-space = 'exec-and-forget ~/bin/terminal-picker ~/bin/clipboard-manager'
 #cmd-space = 'exec-and-forget ~/bin/terminal-picker ~/bin/app-launcher'
 
@@ -227,6 +229,10 @@ if.app-name-regex-substring = 'WhatsApp Web'
 run = 'move-node-to-workspace chats'
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'YouTube'
+run = 'move-node-to-workspace misc'
+
+[[on-window-detected]]
 if.app-id = 'com.alienator88.Pearcleaner'
 run = 'layout floating'
 
@@ -267,4 +273,4 @@ run = 'layout floating'
     'chats' = 'main'
     'terminal' = 'main'
     'work' = 'main'
-    'misc' = 'secondary'
+    'misc' = 'main'

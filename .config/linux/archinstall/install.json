@@ -1,0 +1,162 @@
+{
+  "app_config": {
+    "audio_config": {
+      "audio": "pipewire"
+    },
+    "bluetooth_config": {
+      "enabled": true
+    }
+  },
+  "archinstall-language": "English",
+  "auth_config": {},
+  "bootloader": "Systemd-boot",
+  "custom_commands": [],
+  "disk_config": {
+    "btrfs_options": {
+      "snapshot_config": null
+    },
+    "config_type": "default_layout",
+    "device_modifications": [
+      {
+        "device": "/dev/nvme0n1",
+        "partitions": [
+          {
+            "btrfs": [],
+            "dev_path": null,
+            "flags": [
+              "boot",
+              "esp"
+            ],
+            "fs_type": "fat32",
+            "mount_options": [],
+            "mountpoint": "/boot",
+            "obj_id": "4bd833bb-e496-4830-a3ce-ef84d619bf77",
+            "size": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "GiB",
+              "value": 1
+            },
+            "start": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "MiB",
+              "value": 1
+            },
+            "status": "create",
+            "type": "primary"
+          },
+          {
+            "btrfs": [],
+            "dev_path": null,
+            "flags": [],
+            "fs_type": "ext4",
+            "mount_options": [],
+            "mountpoint": "/",
+            "obj_id": "cf4c7ab0-0e90-495e-97de-49537e1b8f6b",
+            "size": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "GiB",
+              "value": 47
+            },
+            "start": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "B",
+              "value": 1074790400
+            },
+            "status": "create",
+            "type": "primary"
+          },
+          {
+            "btrfs": [],
+            "dev_path": null,
+            "flags": [
+              "linux-home"
+            ],
+            "fs_type": "ext4",
+            "mount_options": [],
+            "mountpoint": "/home",
+            "obj_id": "ad786ce3-1284-4b12-aa52-50eb81b900cb",
+            "size": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "B",
+              "value": 460568133632
+            },
+            "start": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "B",
+              "value": 51540656128
+            },
+            "status": "create",
+            "type": "primary"
+          }
+        ],
+        "wipe": true
+      }
+    ]
+  },
+  "hostname": "archlinux",
+  "kernels": [
+    "linux"
+  ],
+  "locale_config": {
+    "kb_layout": "us",
+    "sys_enc": "UTF-8",
+    "sys_lang": "en_US.UTF-8"
+  },
+  "mirror_config": {
+    "custom_repositories": [],
+    "custom_servers": [],
+    "mirror_regions": {
+      "Worldwide": [
+        "http://mirror.rackspace.com/archlinux/$repo/os/$arch",
+        "https://mirror.rackspace.com/archlinux/$repo/os/$arch",
+        "https://ftpmirror.infania.net/mirror/archlinux/$repo/os/$arch",
+        "https://geo.mirror.pkgbuild.com/$repo/os/$arch"
+      ]
+    },
+    "optional_repositories": []
+  },
+  "network_config": {
+    "type": "iso"
+  },
+  "ntp": true,
+  "packages": [],
+  "parallel_downloads": 0,
+  "profile_config": {
+    "gfx_driver": "All open-source",
+    "greeter": "ly",
+    "profile": {
+      "custom_settings": {
+        "Sway": {
+          "seat_access": "polkit"
+        }
+      },
+      "details": [
+        "Sway"
+      ],
+      "main": "Desktop"
+    }
+  },
+  "script": null,
+  "services": [],
+  "swap": true,
+  "timezone": "UTC",
+  "version": "3.0.11"
+}

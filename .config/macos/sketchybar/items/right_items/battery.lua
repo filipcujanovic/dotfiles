@@ -8,7 +8,7 @@ local battery = sbar.add('item', 'battery', {
     position = 'right',
     label = {
         string = '%',
-        padding_left = 0,
+        padding_left = 2,
         padding_right = 0,
     },
     icon = {

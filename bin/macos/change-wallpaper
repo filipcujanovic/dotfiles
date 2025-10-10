@@ -5,5 +5,5 @@
 selected_wallpaper=$(eza -1 -X --no-quotes --absolute ~/projects/dotfiles/wallpapers/ | fzf --preview="~/bin/wallpaper-preview {}")
 
 if [ ! -z "${selected_wallpaper}" ]; then
-    osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$selected_wallpaper\""
+    osascript -e "tell application \"System Events\" to tell every desktop to set picture to POSIX file \"$selected_wallpaper\""
 fi

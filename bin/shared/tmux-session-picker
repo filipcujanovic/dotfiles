@@ -7,7 +7,7 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
     selected=$(eval "$tmux_session_list" | fzf --no-preview \
-      --bind "ctrl-x:execute-silent(tmux kill-session -t {})+reload($tmux_session_list)")
+        --bind "ctrl-x:execute-silent(tmux kill-session -t {})+reload($tmux_session_list)")
 fi
 
 if [[ -z $selected ]]; then

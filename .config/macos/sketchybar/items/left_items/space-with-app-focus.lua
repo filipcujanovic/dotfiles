@@ -3,7 +3,7 @@ local opts = require('opts')
 local sbar = require('sketchybar')
 local utils = require('utils')
 local icons = require('icons')
-local separator = require('items.right_items.grouped_items.separator')
+local separator = require('items.right_items.separator')
 
 local focused_space = io.popen('aerospace list-workspaces --focused'):read('*a'):gsub('%s+', '')
 local all_spaces = utils.split_string(io.popen('aerospace list-workspaces --all'):read('*a'), '[^%s]+')

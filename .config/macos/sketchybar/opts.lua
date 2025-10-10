@@ -7,7 +7,6 @@ M.laptop_resolution = 1512
 M.height = 37
 
 M.item_options = {
-    group_items = false,
     front_app = {
         enabled = false,
         show_icon = false,
@@ -29,16 +28,12 @@ M.item_options = {
         enabled = true,
         enable_icon = false,
     },
+    spotify = {
+        use_app = true,
+    },
     space = {
         only_spaces_with_windows = true,
         with_icons = false,
-        -- this is still in progress
-        -- currently it's too taxing for the process since it needs to do a lot of aerospace calls
-        -- things that do not work pproperlyroperly
-        -- 1. when removing an app the workspace label needs to be updated to remove
-        -- 2. when moving an app from one workspace to another i need to move the item instead of removing
-        -- probably need to create state data and check against that instead of querying aerospace
-        app_focus = false,
     },
 }
 
@@ -102,28 +97,6 @@ M.font = {
         style = 'Regular',
         size = 15.0,
     },
-}
-
-M.bracket_background = {
-    --color = M.color.surface0,
-    --color = M.color.base,
-    --color = M.color.transparent,
-    height = 38,
-}
-
-M.background = {
-    border_width = 1,
-    border_color = M.color.border_color_inactive,
-    corner_radius = 20,
-    --padding_right = 5,
-    --padding_left = 5,
-}
-
-M.bracket_background_border = {
-    border_color = M.color.border_color_inactive,
-    border_width = 1,
-    height = 34,
-    corner_radius = 50,
 }
 
 return M

@@ -48,13 +48,6 @@ local servers = {
         },
         filetypes = { 'markdown' },
     },
-    gopls = {
-        settings = {
-            telemetry = {
-                enabled = false,
-            },
-        },
-    },
     html = {
         settings = {
             telemetry = {
@@ -97,7 +90,7 @@ local servers = {
             },
         },
     },
-    jdtls = {
+    marksman = {
         settings = {
             telemetry = {
                 enabled = false,

@@ -40,7 +40,24 @@ local function minifiles_open_current()
         require('mini.files').open()
     end
 end
-vim.keymap.set('n', '<leader>b', minifiles_open_current, { desc = 'open mini files' })
+--vim.keymap.set('n', '<leader>b', minifiles_open_current, { desc = 'open mini files' })
+--vim.keymap.set('n', '<leader>b', ':Lexplore %:p:h<CR>', { desc = 'open netrw' })
+vim.keymap.set('n', '<leader>b', function()
+    local is_netrw_open = false
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local buf = vim.api.nvim_win_get_buf(win)
+        if vim.api.nvim_get_option_value('filetype', { buf = buf }) == 'netrw' then
+            is_netrw_open = true
+        end
+    end
+    print(vim.inspect(is_netrw_open))
+
+    if is_netrw_open then
+        vim.cmd('Lexplore')
+    else
+        vim.cmd('Lexplore %:p:h')
+    end
+end, { desc = 'open netrw' })
 
 vim.keymap.set('n', '<leader>gch', ':Ghdiffsplit!<cr>', { desc = 'git conflict horizontal' })
 vim.keymap.set('n', '<leader>gcv', ':Gvdiffsplit!<cr>', { desc = 'git conflict vertical' })
@@ -56,7 +73,8 @@ vim.keymap.set('n', '<leader>mp', ':MarkdownPreviewToggle<cr>', { desc = 'markdo
 vim.keymap.set('n', '<leader>gt', function()
     local line_num = vim.fn.line('.')
     local file_path = vim.fn.expand('%:p')
-    local commit = vim.fn.system(string.format('git log -1 --pretty=format:"%%H" -L %s,%s:%s | head -n1 | awk "{print $1}"', line_num, line_num, file_path))
+    --local commit = vim.fn.system(string.format('git log -1 --pretty=format:"%%H" -L %s,%s:%s | head -n1 | awk "{print $1}"', line_num, line_num, file_path))
+    local commit = vim.fn.getreg('+')
 
     local origin = vim.fn.system('git config --get remote.origin.url')
     origin = origin:gsub('%s+$', '')

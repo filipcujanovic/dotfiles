@@ -9,7 +9,7 @@ vim.opt.swapfile = false
 
 vim.o.winborder = 'rounded'
 
-vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
+vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
 
 vim.o.wrap = true
 
@@ -49,6 +49,7 @@ vim.opt.iskeyword:append('-')
 
 -- Enable smart indent
 vim.o.smartindent = true
+vim.o.autoindent = true
 vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
@@ -79,7 +80,13 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- netrw config
+vim.g.netrw_localcopydircmd = 'cp -r'
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 15
+vim.g.netrw_liststyle = 0
+vim.g.netrw_browse_split = 0
 
 vim.g.sleuth_php_heuristics = 0
+
+vim.cmd('filetype indent off')

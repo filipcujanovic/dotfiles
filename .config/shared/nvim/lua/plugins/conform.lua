@@ -2,25 +2,40 @@ return {
     'stevearc/conform.nvim',
     config = function()
         local conform = require('conform')
-        conform.formatters.shfmt = {
-            append_args = { '-i', '4' },
-        }
-        conform.formatters.jq = {
-            append_args = { '--indent', '2' },
-        }
-        conform.formatters.sql_formatter = {
-            append_args = { '--config', vim.fn.expand('~/projects/dotfiles/.config/shared/nvim/formatters/sql-formatter/config.json') },
+        conform.formatters = {
+            shfmt = {
+                append_args = {
+                    '-i',
+                    '4',
+                },
+            },
+            jq = {
+                append_args = {
+                    '--indent',
+                    '2',
+                },
+            },
+            sql_formatter = {
+                append_args = {
+                    '--config',
+                    vim.fn.expand('~/projects/dotfiles/.config/shared/nvim/formatters/sql-formatter/config.json'),
+                },
+            },
+            --black = {
+            --    timeout_ms = 10000,
+            --},
         }
         conform.setup({
             log_level = vim.log.levels.DEBUG,
             formatters_by_ft = {
-                lua = { 'stylua' },
-                xml = { 'xmllint' },
-                rust = { 'rustfmt' },
                 json = { 'jq' },
+                lua = { 'stylua' },
+                --python = { 'black' },
+                rust = { 'rustfmt' },
                 sh = { 'shfmt' },
                 sql = { 'sql_formatter' },
-                ['*'] = { 'trim_whitespace' },
+                xml = { 'xmllint' },
+                ['*'] = { 'trim_whitespace', 'trim_newlines' },
             },
         })
         vim.api.nvim_create_autocmd('BufWritePre', {

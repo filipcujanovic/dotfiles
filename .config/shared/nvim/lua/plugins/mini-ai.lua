@@ -1,6 +1,6 @@
 return {
     'nvim-mini/mini.ai',
-    version = '*',
+    branch = 'main',
     config = function()
         require('mini.ai').setup()
     end,

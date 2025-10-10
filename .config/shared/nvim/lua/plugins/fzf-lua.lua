@@ -1,78 +1,3 @@
-local parse_entry = function(messages, entry_str)
-    local id = tonumber(entry_str:match('^%d+'))
-    local entry = messages[id]
-    return entry
-end
-local previewer = function(messages)
-    local previewer = require('fzf-lua.previewer.builtin').buffer_or_file:extend()
-    function previewer:new(o, opts, fzf_win)
-        previewer.super.new(self, o, opts, fzf_win)
-        self.title = 'Message'
-        setmetatable(self, previewer)
-        return self
-    end
-
-    function previewer:populate_preview_buf(entry_str)
-        local buf = self:get_tmp_buffer()
-        local entry = parse_entry(messages, entry_str)
-        vim.api.nvim_buf_set_lines(buf, 0, -1, false, { entry.original })
-
-        self:set_preview_buf(buf)
-        self.win:update_preview_title(' Message ')
-        self.win:update_preview_scrollbar()
-        self.win:set_winopts(self.win.preview_winid, { wrap = true })
-    end
-
-    return previewer
-end
-local format_message = function(message, message_id)
-    local hl_group = message.hl_group
-    local time = vim.fn.strftime('%H:%M:%S', math.floor(message.ts_update))
-    local level = require('fzf-lua.utils').ansi_from_hl(hl_group, message.level)
-
-    return {
-        message = message,
-        original = message.msg:gsub('[\n\r]', ' '),
-        display = string.format('%s %s %s %s', message_id, time, level, message.msg):gsub('[\n\r]', ' '),
-    }
-end
-local format_messages = function(messages)
-    local ret = {}
-    for message_id, message in ipairs(messages) do
-        ret[message_id] = format_message(message, message_id)
-    end
-    return ret
-end
-
-local get_message_history_picker = function()
-    local messages = format_messages(require('mini.notify').get_all())
-    local opts = {
-        prompt = false,
-        winopts = {
-            title = ' Filter Notifications ',
-            title_pos = 'center',
-            preview = {
-                title = ' Message ',
-                title_pos = 'center',
-            },
-        },
-        previewer = previewer(messages),
-        fzf_opts = {
-            ['--no-multi'] = '',
-            ['--with-nth'] = '2..',
-        },
-        actions = {
-            default = function(selected)
-                print(vim.inspect(selected))
-            end,
-        },
-    }
-    local lines = vim.tbl_map(function(entry)
-        return entry.display
-    end, vim.tbl_values(messages))
-    return require('fzf-lua').fzf_exec(lines, opts)
-end
-
 return {
     'ibhagwan/fzf-lua',
     config = function()
@@ -105,9 +30,6 @@ return {
                 -- '.git*',
             },
             defaults = {
-                git_icons = false,
-                file_icons = false,
-                color_icons = false,
                 actions = {
                     ['ctrl-x'] = actions.file_split,
                     ['ctrl-s'] = false,
@@ -148,8 +70,5 @@ return {
         vim.keymap.set('n', '<leader>/', function()
             fzf.grep_curbuf({ previewer = false })
         end, { desc = '[/] Fuzzily search in current buffer' })
-        vim.keymap.set('n', '<leader>fn', function()
-            return get_message_history_picker()
-        end, { desc = 'Find Notifications' })
     end,
 }

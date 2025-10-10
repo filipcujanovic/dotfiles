@@ -10,3 +10,4 @@
 .config/nvim/lua/core/work-keymap.lua
 .config/shared/nvim/lua/work-settings.lua
 .config/shared/nvim/lua/core/work-keymap.lua
+.config/shared/espanso/match/private.yml

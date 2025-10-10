@@ -2,6 +2,7 @@
 
 CATEGORIES=(
     "dotfiles"
+    "projects"
     "stop"
     "waste"
     "work"

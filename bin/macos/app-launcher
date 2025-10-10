@@ -6,15 +6,16 @@ settings_file=~/projects/dotfiles/app-launcher/mac-os-settings-list.json
 
 applications=$(
     eza -1 -X --no-quotes \
-    ~/Applications/Brave\ Browser\ Apps.localized/ \
-    ~/Applications/ \
-    /Applications/ \
-    /Applications/Utilities/ \
-    /System/Applications/ \
-    /System/Applications/Utilities/ \
-    /System/Library/CoreServices \
-    | grep ".app$" \
-    | sed "s/\.app$//g"
+        ~/Applications/Brave\ Browser\ Apps.localized/ \
+        ~/Applications/ \
+        /Applications/ \
+        /Applications/Utilities/ \
+        /System/Applications/ \
+        /System/Volumes/Data/Applications/KiCad/ \
+        /System/Applications/Utilities/ \
+        /System/Library/CoreServices |
+        grep ".app$" |
+        sed "s/\.app$//g"
 )
 
 settings=$(jq -r 'keys[]' $settings_file)
