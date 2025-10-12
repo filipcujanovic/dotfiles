@@ -16,15 +16,12 @@ export SQL_EDITOR=nvim
 
 if [[ $os_name == "Darwin" ]]; then
   export NVM_DIR=$(brew --prefix nvm)
-  export ZSH_SYNTAX_HIGHLIGHTING=$(brew --prefix)/share/zsh-syntax-highlighting
-  export ZSH_AUTOSUGGESTIONS=$(brew --prefix)/share/zsh-autosuggestions
 else
   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
   bindkey '^H' backward-kill-word
   export ZSH_SYNTAX_HIGHLIGHTING=/usr/share/zsh/plugins/zsh-autosuggestions
   export ZSH_AUTOSUGGESTIONS=/usr/share/zsh/plugins/zsh-syntax-highlighting
 fi
-
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export PATH=$PATH":$HOME/bin"

@@ -80,6 +80,7 @@ brew "neovim"
 brew "nghttp2"
 brew "ninja"
 brew "nvm"
+brew "p7zip"
 brew "php"
 brew "php@8.1"
 brew "pipx"
@@ -118,6 +119,7 @@ brew "koekeishiya/formulae/skhd"
 brew "saulpw/vd/visidata"
 cask "aerospace"
 cask "db-browser-for-sqlite"
+cask "espanso"
 cask "font-caskaydia-cove-nerd-font"
 cask "font-caskaydia-mono-nerd-font"
 cask "font-fira-code"
@@ -158,3 +160,4 @@ mas "The Unarchiver", id: 425424353
 mas "Wipr", id: 1662217862
 mas "WireGuard", id: 1451685025
 mas "Xcode", id: 497799835
+go "github.com/sqls-server/sqls"

@@ -35,6 +35,7 @@ return {
                 sh = { 'shfmt' },
                 sql = { 'sql_formatter' },
                 xml = { 'xmllint' },
+                nix = { 'nixfmt' },
                 ['*'] = { 'trim_whitespace', 'trim_newlines' },
             },
         })

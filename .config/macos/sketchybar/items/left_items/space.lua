@@ -20,7 +20,7 @@ for _, space_id in pairs(all_spaces) do
         label = {
             align = 'center',
             string = space_id,
-            font = opts.sf_pro_text_small,
+            font = opts.font.default,
             color = space_id == focused_space and active_color or inactive_color,
         },
     })

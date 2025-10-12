@@ -16,6 +16,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     end
 end
 vim.opt.rtp:prepend(lazypath)
+--vim.opt.rtp:prepend('/run/current-system/sw/bin/')
 
 require('lazy').setup({
     spec = {

@@ -62,6 +62,7 @@ local servers = {
                 enabled = false,
             },
         },
+        filetypes = { 'php' },
     },
     ts_ls = {
         settings = {
@@ -69,6 +70,7 @@ local servers = {
                 enabled = false,
             },
         },
+        filetypes = { 'javascript', 'typescript' },
     },
     lua_ls = {
         settings = {
@@ -82,6 +84,7 @@ local servers = {
                 },
             },
         },
+        filetypes = { 'lua' },
     },
     pyright = {
         settings = {
@@ -89,6 +92,7 @@ local servers = {
                 enabled = false,
             },
         },
+        filetypes = { 'python' },
     },
     marksman = {
         settings = {
@@ -96,6 +100,7 @@ local servers = {
                 enabled = false,
             },
         },
+        filetype = { 'markdown' },
     },
     sqls = {
         settings = {
@@ -103,33 +108,26 @@ local servers = {
                 enabled = false,
             },
         },
+        filetypes = { 'sql' },
     },
 }
 
 return {
     'neovim/nvim-lspconfig',
-    dependencies = {
-        'mason-org/mason-lspconfig.nvim',
-        'mason-org/mason.nvim',
-    },
     config = function()
         --local capabilities = vim.lsp.protocol.make_client_capabilities()
         --capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
         local capabilities = require('blink.cmp').get_lsp_capabilities()
-        local mason_lspconfig = require('mason-lspconfig')
-        require('mason').setup()
         local server_names = vim.tbl_keys(servers)
-        mason_lspconfig.setup({
-            ensure_installed = server_names,
-        })
         for _, server_name in pairs(server_names) do
             vim.lsp.config(server_name, {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 settings = servers[server_name].settings,
-                init_options = (servers[server_name] or {}).init_options,
+                --init_options = (servers[server_name] or {}).init_options,
                 filetypes = (servers[server_name] or {}).filetypes,
             })
+            vim.lsp.enable(server_name)
         end
     end,
 }
