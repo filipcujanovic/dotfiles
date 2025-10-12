@@ -42,16 +42,19 @@ M.notch_width = {
     small = 180,
     disabled = 0,
 }
+
 M.fira_code = {
     family = 'Fira Code Nerd Font',
     style = 'Medium',
     size = 16.0,
 }
+
 M.jet_brains = {
     family = 'JetBrainsMono Nerd Font',
     style = 'Medium',
     size = 16.0,
 }
+
 M.sf_pro_text = {
     family = 'SF Pro Text',
     style = 'Bold',
@@ -70,8 +73,14 @@ M.sf_pro_text_large = {
     size = 19.0,
 }
 
+M.victor_mono = {
+    family = 'VictorMono Nerd Font',
+    style = 'Bold',
+    size = 16.0,
+}
+
 M.font = {
-    default = M.sf_pro_text,
+    default = M.victor_mono,
     icon_font_large = {
         family = 'Symbols Nerd Font Mono',
         style = 'Regular',

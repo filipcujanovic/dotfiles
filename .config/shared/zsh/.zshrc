@@ -7,8 +7,6 @@ if [ -f ~/projects/dotfiles/.config/shared/zsh/alias ]; then
 fi
 
 source $NVM_DIR/nvm.sh
-source $ZSH_SYNTAX_HIGHLIGHTING/zsh-syntax-highlighting.zsh
-source $ZSH_AUTOSUGGESTIONS/zsh-autosuggestions.zsh
 
 # use vi mode
 #set -o vi
