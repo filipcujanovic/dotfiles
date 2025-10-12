@@ -16,30 +16,17 @@
       nix-homebrew,
     }:
     let
-      darwinConfigurations.macbook = {
-        modules = [
-          nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              enable = true;
-              enableRosetta = true;
-              user = "cujanovic";
-              autoMigrate = true;
-            };
-          }
-        ];
-      };
       configuration =
         { pkgs, config, ... }:
         {
           nixpkgs.config.allowUnfree = true;
 
           environment.systemPackages = [
-            pkgs.aerospace
             pkgs.bash-language-server
             pkgs.bat
             pkgs.btop
             pkgs.chafa
+            pkgs.choose-gui
             pkgs.espanso
             pkgs.eza
             pkgs.fd
@@ -106,13 +93,17 @@
 
           homebrew = {
             enable = true;
-            taps = [ "FelixKratz/formulae" ];
+            taps = [
+              "FelixKratz/formulae"
+              "nikitabobko/tap"
+            ];
             brews = [
               "choose-gui"
-              "sketchybar"
               "nvm"
+              "sketchybar"
             ];
             casks = [
+              "nikitabobko/tap/aerospace"
               "hammerspoon"
               "font-sf-pro"
               "font-sf-mono-nerd-font-ligaturized"
@@ -133,21 +124,14 @@
             enableCompletion = true;
           };
 
-          services.aerospace.enable = true;
-
-          # Necessary for using flakes on this system.
           nix.settings.experimental-features = "nix-command flakes";
 
           system.primaryUser = "cujanovic";
 
-          # Set Git commit hash for darwin-version.
           system.configurationRevision = self.rev or self.dirtyRev or null;
 
-          # Used for backwards compatibility, please read the changelog before changing.
-          # $ darwin-rebuild changelog
           system.stateVersion = 6;
 
-          # The platform the configuration will be used on.
           nixpkgs.hostPlatform = "aarch64-darwin";
         };
     in
@@ -155,7 +139,18 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#simple
       darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
-        modules = [ configuration ];
+        modules = [
+          configuration
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              enableRosetta = true;
+              user = "cujanovic";
+              autoMigrate = true;
+            };
+          }
+        ];
       };
     };
 }

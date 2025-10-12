@@ -165,8 +165,8 @@ alt-l = ['join-with right', 'mode main', 'exec-and-forget sketchybar --trigger a
 enter = 'mode main'
 q = 'mode main'
 
-#[exec.env-vars]
-#PATH = '${HOME}/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/run/current-system/sw/bin/:${PATH}:'
+[exec.env-vars]
+PATH = '${HOME}/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/run/current-system/sw/bin/:${PATH}:'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'wezterm-gui'
