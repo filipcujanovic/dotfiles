@@ -89,10 +89,6 @@ vim.keymap.set('n', '<leader>rr', function()
     require('kulala').run()
 end, { desc = 'run request' })
 
-vim.keymap.set('n', '<leader>db', function()
-    require('dbee').toggle()
-end, { desc = 'open database editor' })
-
 vim.keymap.set('n', '<leader>re', function()
     require('kulala').set_selected_env()
 end, { desc = 'select env' })

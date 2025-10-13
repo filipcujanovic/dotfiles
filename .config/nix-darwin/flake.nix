@@ -20,8 +20,8 @@
         { pkgs, config, ... }:
         {
           nixpkgs.config.allowUnfree = true;
-
           environment.systemPackages = [
+            pkgs.aerospace
             pkgs.bash-language-server
             pkgs.bat
             pkgs.btop
@@ -49,10 +49,10 @@
             pkgs.lua-language-server
             pkgs.lua5_4_compat
             pkgs.maccy
-            pkgs.mariadb
             pkgs.marksman
             pkgs.mkcert
             pkgs.mycli
+            pkgs.mysql84
             pkgs.neovim
             pkgs.ngrok
             pkgs.nixfmt
@@ -63,6 +63,7 @@
             pkgs.ripgrep
             pkgs.rust-analyzer
             pkgs.shfmt
+            pkgs.sketchybar
             pkgs.spotify-player
             pkgs.sql-formatter
             pkgs.sqlitebrowser
@@ -95,15 +96,13 @@
             enable = true;
             taps = [
               "FelixKratz/formulae"
-              "nikitabobko/tap"
             ];
             brews = [
               "choose-gui"
               "nvm"
-              "sketchybar"
             ];
             casks = [
-              "nikitabobko/tap/aerospace"
+              "mysql-shell"
               "hammerspoon"
               "font-sf-pro"
               "font-sf-mono-nerd-font-ligaturized"
@@ -114,7 +113,21 @@
               "pearcleaner"
               "sf-symbols"
             ];
+            masApps = {
+              "AdBlock Pro" = 1018301773;
+              "AdGuard for Safari" = 1440147259;
+              "Adblock Plus" = 1432731683;
+              "Noko" = 879917538;
+              "Numbers" = 409203825;
+              "Pages" = 409201541;
+              "The Unarchiver" = 425424353;
+              "Wipr" = 1662217862;
+              "WireGuard" = 1451685025;
+              "Xcode" = 497799835;
+            };
             onActivation.cleanup = "zap";
+            onActivation.autoUpdate = true;
+            onActivation.upgrade = true;
           };
 
           programs.zsh = {
@@ -124,20 +137,78 @@
             enableCompletion = true;
           };
 
+          services = {
+            aerospace = {
+              enable = true;
+              settings = pkgs.lib.importTOML ../macos/aerospace/aerospace.toml;
+            };
+            sketchybar = {
+              enable = true;
+            };
+            jankyborders = {
+              enable = true;
+              style = "round";
+              #width = 6.0;
+              width = 2.5;
+              hidpi = true;
+              active_color = "0xffb8bb26";
+              inactive_color = "0x00000000";
+            };
+          };
+
+          system = {
+            defaults = {
+              dock = {
+                autohide = true;
+                orientation = "left";
+                show-process-indicators = false;
+                show-recents = false;
+                launchanim = false;
+                static-only = true;
+                tilesize = 1;
+                wvous-bl-corner = 1;
+                wvous-br-corner = 1;
+                wvous-tl-corner = 1;
+                wvous-tr-corner = 1;
+              };
+              finder = {
+                AppleShowAllExtensions = true;
+                CreateDesktop = false;
+                FXEnableExtensionChangeWarning = false;
+                FXPreferredViewStyle = "Nlsv";
+                QuitMenuItem = true;
+                ShowPathbar = true;
+                ShowStatusBar = true;
+              };
+              loginwindow.GuestEnabled = false;
+              menuExtraClock = {
+                Show24Hour = true;
+                ShowSeconds = true;
+              };
+              trackpad = {
+                ActuationStrength = 0;
+              };
+              universalaccess.reduceTransparency = true;
+              NSGlobalDomain = {
+                AppleInterfaceStyle = "Dark";
+                _HIHideMenuBar = true;
+                KeyRepeat = 2;
+                InitialKeyRepeat = 12;
+                ApplePressAndHoldEnabled = false;
+              };
+            };
+            configurationRevision = self.rev or self.dirtyRev or null;
+            primaryUser = "cujanovic";
+            stateVersion = 6;
+            startup.chime = false;
+          };
+
           nix.settings.experimental-features = "nix-command flakes";
-
-          system.primaryUser = "cujanovic";
-
-          system.configurationRevision = self.rev or self.dirtyRev or null;
-
-          system.stateVersion = 6;
 
           nixpkgs.hostPlatform = "aarch64-darwin";
         };
     in
     {
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#simple
       darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
         modules = [
           configuration
