@@ -9,7 +9,6 @@
 # plugins
 
 - [blink.cmp](https://github.com/saghen/blink.cmp)
-- [Comment.nvim](https://github.com/numToStr/Comment.nvim)
 - [conform.nvim](https://github.com/stevearc/conform.nvim)
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
@@ -19,7 +18,6 @@
 - [lazy.nvim](https://github.com/folke/lazy.nvim)
 - [mini.ai](https://github.com/nvim-mini/mini.ai)
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
-- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 - [nvim-surround](https://github.com/kylechui/nvim-surround)
 - [nvim-tmux-navigation](https://github.com/alexghergh/nvim-tmux-navigation)
 - [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
