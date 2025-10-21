@@ -87,6 +87,15 @@ vim.g.netrw_winsize = 15
 vim.g.netrw_liststyle = 0
 vim.g.netrw_browse_split = 0
 
-vim.g.sleuth_php_heuristics = 0
+vim.o.list = true
+-- Set the char for the indent line
+vim.g.indentline_char = '│'
+-- By default I am using space style indentation and 2 spaces for it
+vim.opt.listchars = {
+    trail = ' ',
+    nbsp = '.',
+    precedes = '‹',
+    extends = '›',
+}
 
 vim.cmd('filetype indent off')

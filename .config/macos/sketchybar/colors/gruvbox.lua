@@ -1,6 +1,7 @@
 local M = {}
 
 M.gruvbox = {
+    dark = '#1b1b1b',
     dark0_hard = '#1d2021',
     dark0 = '#282828',
     dark0_soft = '#32302f',
@@ -58,6 +59,7 @@ M.gruvbox = {
 }
 
 M.dark = {
+    dark = M.gruvbox.dark,
     bg0 = M.gruvbox.dark0,
     bg1 = M.gruvbox.dark1,
     bg2 = M.gruvbox.dark2,
@@ -127,6 +129,7 @@ function M.transform(palette, is_dark)
                 transparent = 0x00000000,
                 visible = 0x60000000,
                 base = compute(palette.bg0),
+                dark = compute(palette.dark),
                 surface = compute(palette.fg0),
                 surface0 = compute(palette.fg1),
                 text = compute(palette.green),

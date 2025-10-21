@@ -37,6 +37,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#a89984"
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --style=numbers {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 export MANPAGER='nvim +Man!'
+export BROWSER="open %u"
 # catppuccin
 #export FZF_DEFAULT_OPTS=" \
 #--color=spinner:#f5e0dc,hl:#f38ba8 \

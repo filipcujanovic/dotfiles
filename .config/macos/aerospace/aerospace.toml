@@ -4,7 +4,7 @@ after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
  #after-startup-command = []
 
-after-startup-command = ['exec-and-forget sketchybar']
+#after-startup-command = ['exec-and-forget sketchybar']
 
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = ['/bin/bash', '-c',
@@ -40,12 +40,12 @@ on-focus-changed = ['exec-and-forget sketchybar --trigger custom_space_windows_c
 
 gaps.inner.horizontal = 5
 gaps.inner.vertical = 5
-gaps.outer.left = 5
-gaps.outer.right = 5
-gaps.outer.bottom = 5
+gaps.outer.left = 0
+gaps.outer.right = 0
+gaps.outer.bottom = 0
 gaps.outer.top = [
     { monitor."built-in" = 10 },
-    { monitor.main = 42  }, # sketchybar height is 37 + 5 padding
+    { monitor.main = 37 }, # sketchybar height is 37
     { monitor.secondary = 5 },
     20
 ]

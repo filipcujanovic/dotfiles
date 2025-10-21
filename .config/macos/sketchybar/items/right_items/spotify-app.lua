@@ -3,20 +3,11 @@ local sbar = require('sketchybar')
 local icons = require('icons')
 local utils = require('utils')
 
-local resolution = utils.split_string(
-    io.popen('osascript -e \'tell application "Finder" to get bounds of window of desktop\' | awk -F\', \' \'{print $3 " " $4}\''):read('*a'),
-    '[^%s]+'
-)
-
 local current_track = io.popen(
     'osascript -e \'tell application "Spotify" to return artist of current track & " - " & name of current track\' | tr \'[:upper:]\' \'[:lower:]\''
 ):read('*a')
 local current_state = io.popen('osascript -e \'tell application "Spotify" to get player state\''):read('*a'):gsub('%s+', '')
 local current_volume = io.popen('osascript -e \'tell application "Spotify" to get sound volume\''):read('*a')
-
-local get_max_chars = function(resolution_width)
-    return opts.item_options.group_items and 20 or (tonumber(resolution_width) > opts.laptop_resolution and 30 or 12)
-end
 
 local media = sbar.add('item', 'media', {
     position = 'right',
@@ -35,7 +26,7 @@ local media = sbar.add('item', 'media', {
         padding_left = 0,
         padding_right = 0,
         color = opts.color.orange,
-        max_chars = get_max_chars(resolution[1]),
+        max_chars = 30,
         string = current_state == 'paused' and '' or current_track,
     },
     popup = {
@@ -122,18 +113,6 @@ media:subscribe('spotify_change', function(env)
         },
         icon = {
             drawing = icon_drawing,
-        },
-    })
-end)
-
-media:subscribe('display_change', function(env)
-    resolution = utils.split_string(
-        io.popen('osascript -e \'tell application "Finder" to get bounds of window of desktop\' | awk -F\', \' \'{print $3 " " $4}\''):read('*a'),
-        '[^%s]+'
-    )
-    media:set({
-        label = {
-            max_chars = get_max_chars(resolution[1]),
         },
     })
 end)

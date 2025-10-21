@@ -6,7 +6,6 @@ ln -s -f ~/projects/dotfiles/.config/shared/* ~/.config/
 ln -s -f ~/projects/dotfiles/.config/shared/git/.gitconfig ~/.gitconfig
 ln -s -f ~/projects/dotfiles/.config/shared/gitmux/.gitmux.conf ~/.gitmux.conf
 ln -s -f ~/projects/dotfiles/.config/shared/mycli/.myclirc ~/.myclirc
-ln -s -f ~/projects/dotfiles/.config/tmux/.tmux.conf ~/.tmux.conf
 #ln -s -f ~/projects/dotfiles/.config/shared/tmuxifier/* ~/.tmuxifier/layouts/
 ln -s -f ~/projects/dotfiles/.config/shared/tmux/.tmux.conf ~/.tmux.conf
 ln -s -f ~/projects/dotfiles/.config/shared/visidata/.visidatarc ~/.visidatarc

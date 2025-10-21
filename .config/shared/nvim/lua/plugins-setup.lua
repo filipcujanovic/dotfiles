@@ -29,7 +29,6 @@ require('lazy').setup({
         custom_keys = {
             ['<localleader>r'] = {
                 function(_)
-                    print('testaaa')
                     local plugins = require('lazy.core.config').plugins
                     local file_content = {
                         [[

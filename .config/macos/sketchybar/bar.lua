@@ -1,9 +1,11 @@
 local sbar = require('sketchybar')
 local opts = require('opts')
 
+print(opts.color.base)
+
 sbar.bar({
     height = opts.height,
-    color = opts.color.visible,
+    color = opts.color.dark,
     margin = 0,
     sticky = true,
     padding_left = 5,

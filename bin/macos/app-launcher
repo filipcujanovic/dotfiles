@@ -26,7 +26,9 @@ list=$(
     printf "%s\n" "$settings"
 )
 
-selected_item=$(echo "$list" | sort -f | choose -f SFMono-Regular -c "83A598" -b "B8BB26" - 30)
+#selected_item=$(echo "$list" | sort -f | choose -f SFMono-Regular -c "83A598" -b "B8BB26" - 30)
+#selected_item=$(echo "$list" | sort -f | dmenu -p "" -m --font SFMono-Regular --bg-color "#FFFFFF" --highlight-color "#fe8019" --text-color "#B8BB26")
+selected_item=$(echo "$list" | sort -f | dmenu -p "" -m --font SFMono-Regular --bg-color "#FFFFFF" --highlight-color "#fe8019" --text-color "#B8BB26")
 #selected_item=$(echo "$list" | sort -f | fzf)
 
 if [ ! -z "${selected_item}" ]; then

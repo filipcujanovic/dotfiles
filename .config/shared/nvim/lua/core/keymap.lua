@@ -41,7 +41,6 @@ vim.keymap.set('n', '<leader>b', function()
             is_netrw_open = true
         end
     end
-    print(vim.inspect(is_netrw_open))
 
     if is_netrw_open then
         vim.cmd('Lexplore')

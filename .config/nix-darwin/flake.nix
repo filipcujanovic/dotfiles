@@ -96,20 +96,24 @@
             enable = true;
             taps = [
               "FelixKratz/formulae"
+              "acsandmann/tap"
             ];
             brews = [
+              "acsandmann/tap/dmenu"
               "choose-gui"
+              "newsboat"
               "nvm"
             ];
             casks = [
-              "mysql-shell"
-              "hammerspoon"
-              "font-sf-pro"
-              "font-sf-mono-nerd-font-ligaturized"
+              "espanso"
               "font-sf-mono"
+              "font-sf-mono-nerd-font-ligaturized"
+              "font-sf-pro"
+              "hammerspoon"
               "hiddenbar"
               "lulu"
               "mouseless"
+              "mysql-shell"
               "pearcleaner"
               "sf-symbols"
             ];
@@ -146,10 +150,9 @@
               enable = true;
             };
             jankyborders = {
-              enable = true;
+              enable = false;
               style = "round";
-              #width = 6.0;
-              width = 2.5;
+              width = 6.0;
               hidpi = true;
               active_color = "0xffb8bb26";
               inactive_color = "0x00000000";
@@ -165,7 +168,7 @@
                 show-recents = false;
                 launchanim = false;
                 static-only = true;
-                tilesize = 1;
+                tilesize = 10;
                 wvous-bl-corner = 1;
                 wvous-br-corner = 1;
                 wvous-tl-corner = 1;
@@ -173,7 +176,7 @@
               };
               finder = {
                 AppleShowAllExtensions = true;
-                CreateDesktop = false;
+                CreateDesktop = true;
                 FXEnableExtensionChangeWarning = false;
                 FXPreferredViewStyle = "Nlsv";
                 QuitMenuItem = true;
@@ -188,7 +191,7 @@
               trackpad = {
                 ActuationStrength = 0;
               };
-              universalaccess.reduceTransparency = true;
+              universalaccess.reduceTransparency = false;
               NSGlobalDomain = {
                 AppleInterfaceStyle = "Dark";
                 _HIHideMenuBar = true;

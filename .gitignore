@@ -2,6 +2,8 @@
 .config/tmux/layouts/foxy-workspace-layout
 .config/tmux/.private.keybinds.conf
 .config/shared/tmux/.private.keybinds.conf
+.config/shared/tmux/private.keybinds.conf
+.config/shared/tmux/plugins/
 .config/tmuxifier/foxy-*
 .config/shared/tmuxifier/foxy-*
 .config/macos/files/
