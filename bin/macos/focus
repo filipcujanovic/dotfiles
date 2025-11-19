@@ -18,24 +18,4 @@ if [[ "$selected" == "stop" ]]; then
     timew stop | sketchybar --trigger timew-stop
 else
     timew start "$selected" | sketchybar --trigger timew-start
-    if [[ "$selected" == "waste" ]]; then
-        sudo hostess rm www.facebook.com
-        sudo hostess rm www.instagram.com
-        sudo hostess rm www.reddit.com
-        sudo hostess rm www.x.com
-        sudo hostess rm www.youtube.com
-    elif [[ "$selected" == "work" ]]; then
-        sudo hostess add www.facebook.com 127.0.0.1
-        sudo hostess add www.instagram.com 127.0.0.1
-        sudo hostess add www.reddit.com 127.0.0.1
-        sudo hostess add www.x.com 127.0.0.1
-        sudo hostess add www.youtube.com 127.0.0.1
-    elif [[ "$selected" == "dotfiles" ]]; then
-        sudo hostess add www.facebook.com 127.0.0.1
-        sudo hostess add www.instagram.com 127.0.0.1
-        sudo hostess add www.x.com 127.0.0.1
-        sudo hostess rm www.reddit.com
-        sudo hostess rm www.youtube.com
-    fi
-
 fi

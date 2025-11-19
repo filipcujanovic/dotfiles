@@ -21,10 +21,8 @@
 - [mycli](https://github.com/dbcli/mycli) - terminal client for MySQL
 - [nvim](https://github.com/neovim/neovim) - text editor
 - [skhd](https://github.com/koekeishiya/skhd) - hotkey daemon for macOS
-- [starship](https://github.com/starship/starship) - prompt for zsh (or any other shell)
 - [tldr](https://github.com/tldr-pages/tldr) - cheatsheet for console commands
 - [tmux](https://github.com/tmux/tmux) - terminal multiplexer
-- [tmuxifier](https://github.com/jimeh/tmuxifier) - tmux session, window, and pane management tool
 - [zoxide](https://github.com/ajeetdsouza/zoxide) - smart cd command
 - [zsh](https://github.com/zsh-users/zsh) - z shell
     * plugins
@@ -51,11 +49,11 @@
 - [sway](https://github.com/swaywm/sway) - i3-compatible wayland compositor
 
 ### guis
-#### macos specific
+#### macos
 - [choose](https://github.com/chipsenkbeil/choose) - cli fuzzy matcher that has native macOS GUI - using this as app launcher
 - [maccy](https://github.com/p0deje/Maccy) - clipboard history manager
 - [sketchybar](https://github.com/FelixKratz/SketchyBar) - customizable macOS status bar replacement - using [SbarLua](https://github.com/FelixKratz/SbarLua)
-#### linux specific
+#### linux
 - [swaybar](https://github.com/swaywm/sway)
 - [wofi](https://hg.sr.ht/~scoopta/wofi) - wofi is a launcher/menu program for wlroots based wayland compositors such as sway
 
@@ -70,7 +68,6 @@
 ### terminals
 - [ghostty](https://github.com/ghostty-org/ghostty)
 - [wezterm](https://github.com/wezterm/wezterm)
-- [kitty](https://github.com/kovidgoyal/kitty)
 
 ### other
 #### macos specific
@@ -94,10 +91,11 @@
 ### custom scripts
 - [tmux-session-picker](bin/shared/tmux-session-picker) - simple [fzf](https://github.com/junegunn/fzf) picker for tmux sessions
 - [tmux-sessionizer](bin/shared/tmux-session-picker) - based on [ThePrimeagen](https://github.com/ThePrimeagen/) [tmux-sessionizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer)
-- [tmuxifier-run-all](bin/shared/tmuxifier-run-all) - a simple script to start all tmux sessions created with [tmuxifier](https://github.com/jimeh/tmuxifier)
 #### macos specific
 - [app-launcher](bin/macos/app-launcher) - using [choose](https://github.com/chipsenkbeil/choose) I created a simple app launcher, you can also search macOS settings and open them ![choose](assets/images/choose.png)
+- [change-wallpaper](bin/macos/change-wallpaper) - [fzf](https://github.com/junegunn/fzf) picker for wallpaper
 - [file-search](bin/macos/file-search) - search files with [fzf](https://github.com/junegunn/fzf) in predefined directories in terminal
+- [focus](bin/focus) - scrit for starting timer using [timewarrior](https://github.com/GothenburgBitFactory/timewarrior)
 - [terminal-file-search](bin/macos/terminal-file-search) - spawn terminal window with [file-search](bin/macos/file-search) script to search files on predefined directories in the script. I have a custom keymap to spawn it and make it float aerospace [config](.config/macos/aerospace/aerospace.toml#L130)
 ![file-search](assets/images/file-search.png)
 #### linux specific
@@ -117,5 +115,5 @@
 
 - I would not suggest installing everything since this is a config that I personally use and many things here are tailored to my needs. You can check the code and use whatever you find here in your dotfiles. But if you really want to install them here are the steps:
 
-- go to `.config/macos/brew` dir and run `brew bundle install`
+- install [nix](https://github.com/NixOS/nix) and [nix-darwin](https://github.com/nix-darwin/nix-darwin) - run `sudo darwin-rebuild switch --flake ~/projects/dotfiles/.config/nix-darwin#macbook`
 - run the `install.sh` script that should install everything that's needed.

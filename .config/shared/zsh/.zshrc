@@ -6,6 +6,10 @@ if [ -f ~/projects/dotfiles/.config/shared/zsh/alias ]; then
   source ~/projects/dotfiles/.config/shared/zsh/alias
 fi
 
+if [ -f ~/projects/dotfiles/.config/shared/zsh/.zsh-settings ]; then
+  source ~/projects/dotfiles/.config/shared/zsh/.zsh-settings
+fi
+
 source $NVM_DIR/nvm.sh
 
 # use vi mode

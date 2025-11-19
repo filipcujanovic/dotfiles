@@ -14,6 +14,10 @@ bind-key k up
 bind-key l open
 bind-key ^U halfpageup
 bind-key ^D halfpagedown
+bind-key B bookmark
+
+bookmark-cmd ~/projects/dotfiles/bin/shared/bookmark-cmd
+bookmark-autopilot yes
 
 
 highlight article     "^Feed:.*"            color175 color237
@@ -26,3 +30,5 @@ highlight articlelist "^ +[0-9]+\. "        color242 color235
 
 feed-sort-order latestunread
 refresh-on-startup yes
+
+ignore-article "*" "link =~ \"youtube\.com/shorts\""

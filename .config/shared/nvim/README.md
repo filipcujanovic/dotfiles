@@ -13,7 +13,6 @@
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 - [gruvbox.nvim](https://github.com/ellisonleao/gruvbox.nvim)
-- [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
 - [kulala.nvim](https://github.com/mistweaverco/kulala.nvim)
 - [lazy.nvim](https://github.com/folke/lazy.nvim)
 - [mini.ai](https://github.com/nvim-mini/mini.ai)

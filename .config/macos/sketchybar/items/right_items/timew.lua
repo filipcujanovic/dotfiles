@@ -21,7 +21,7 @@ local timew = sbar.add('item', 'timew', {
         color = opts.color.blue,
         padding_left = 0,
         padding_right = 0,
-        width = 130,
+        width = 140,
         align = 'right',
     },
     updates = true,

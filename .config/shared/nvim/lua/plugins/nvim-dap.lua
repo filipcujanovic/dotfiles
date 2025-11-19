@@ -21,7 +21,7 @@ return {
         dap.adapters.php = {
             type = 'executable',
             command = 'node',
-            args = { table.concat(work_settings.phpDebugAdapter) .. 'extension/out/phpDebug.js' },
+            args = work_settings.phpDebugAdapter(true),
         }
 
         dap.configurations.php = {

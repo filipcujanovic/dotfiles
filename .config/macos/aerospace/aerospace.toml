@@ -2,7 +2,7 @@
 after-login-command = []
 
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
- #after-startup-command = []
+after-startup-command = []
 
 #after-startup-command = ['exec-and-forget sketchybar']
 
@@ -62,7 +62,7 @@ cmd-m = []
 #cmd-w = ['close', 'exec-and-forget sketchybar --trigger custom_space_windows_change']
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-alt-slash = 'layout tiles horizontal vertical'
+alt-period = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
@@ -108,6 +108,7 @@ alt-c = 'workspace chats'
 alt-m = 'workspace misc'
 alt-t = 'workspace terminal'
 alt-w = 'workspace work'
+alt-q = 'workspace q'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-p = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window personal && sketchybar --trigger custom_space_windows_change'
@@ -115,6 +116,7 @@ alt-shift-c = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-
 alt-shift-m = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window misc && sketchybar --trigger custom_space_windows_change'
 alt-shift-t = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window terminal && sketchybar --trigger custom_space_windows_change'
 alt-shift-w = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window work && sketchybar --trigger custom_space_windows_change'
+alt-shift-q = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window q && sketchybar --trigger custom_space_windows_change'
 #alt-shift-p = 'move-node-to-workspace --focus-follows-window personal'
 #alt-shift-c = 'move-node-to-workspace --focus-follows-window chats'
 #alt-shift-m = 'move-node-to-workspace --focus-follows-window misc'
@@ -205,6 +207,10 @@ if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace misc'
 
 [[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'move-node-to-workspace misc'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.Safari'
 run = 'move-node-to-workspace work'
 
@@ -277,3 +283,4 @@ run = 'layout floating'
     'terminal' = 'main'
     'work' = 'main'
     'misc' = 'main'
+    'q' = 'secondary'

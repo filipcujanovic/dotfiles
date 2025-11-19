@@ -21,12 +21,15 @@
         {
           nixpkgs.config.allowUnfree = true;
           environment.systemPackages = [
+            pkgs.android-tools
             pkgs.aerospace
             pkgs.bash-language-server
             pkgs.bat
             pkgs.btop
             pkgs.chafa
             pkgs.choose-gui
+            pkgs.coreutils
+            pkgs.delta
             pkgs.espanso
             pkgs.eza
             pkgs.fd
@@ -37,7 +40,6 @@
             pkgs.git-extras
             pkgs.gopls
             pkgs.harper
-            pkgs.hostess
             pkgs.htop
             pkgs.intelephense
             pkgs.jankyborders
@@ -95,14 +97,15 @@
           homebrew = {
             enable = true;
             taps = [
-              "FelixKratz/formulae"
               "acsandmann/tap"
             ];
             brews = [
-              "acsandmann/tap/dmenu"
               "choose-gui"
+              "gitmux"
+              "lua"
               "newsboat"
               "nvm"
+              "pipx"
             ];
             casks = [
               "espanso"

@@ -1,7 +1,7 @@
 local M = {}
 
 M.gruvbox = {
-    dark = '#1b1b1b',
+    dark = '#1a1a1a',
     dark0_hard = '#1d2021',
     dark0 = '#282828',
     dark0_soft = '#32302f',

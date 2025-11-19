@@ -20,7 +20,7 @@ return {
             },
             file_ignore_patterns = {
                 '.obsidian/',
-                'node_modules',
+                --'node_modules',
                 --'vendor',
                 '^adminrebuild',
                 -- '^admin/',

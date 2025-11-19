@@ -1,2 +1,4 @@
 [tasks]
 image_bound = [ 10000, 10000 ]
+[mgr]
+show_hidden = true

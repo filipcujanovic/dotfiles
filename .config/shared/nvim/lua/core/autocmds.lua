@@ -9,27 +9,27 @@ vim.api.nvim_create_autocmd('VimEnter', {
 })
 
 -- auto create git commit and push for notes dir and update icloud notes
-vim.api.nvim_create_autocmd('BufWritePost', {
-    once = true,
-    callback = function()
-        vim.fn.jobstart('git rev-parse --show-toplevel', {
-            --on_exit = some_function,
-            --on_stderr = some_third_function,
-            on_stdout = function(_, data, _)
-                local root_dir_table = vim.split(data[1], '/')
-                local root_dir = root_dir_table[#root_dir_table]
-                local os_name = vim.loop.os_uname().sysname == 'Darwin' and 'macos' or 'linux'
-                local icloud_notes_dir = '/Users/cujanovic/Library/Mobile Documents/iCloud~md~obsidian/Documents/the-never-ending-hole-backup/'
-                if root_dir == 'the-never-ending-hole' then
-                    vim.fn.jobstart(
-                        string.format('git add . && git commit -m "vault backup (%s): %s" && git push origin main', os_name, os.date('%Y-%m-%d %X'))
-                    )
-                    vim.fn.jobstart(string.format('cp -R * "%s"', icloud_notes_dir))
-                end
-            end,
-        })
-    end,
-})
+--vim.api.nvim_create_autocmd('BufWritePost', {
+--    once = true,
+--    callback = function()
+--        vim.fn.jobstart('git rev-parse --show-toplevel', {
+--            --on_exit = some_function,
+--            --on_stderr = some_third_function,
+--            on_stdout = function(_, data, _)
+--                local root_dir_table = vim.split(data[1], '/')
+--                local root_dir = root_dir_table[#root_dir_table]
+--                local os_name = vim.loop.os_uname().sysname == 'Darwin' and 'macos' or 'linux'
+--                local icloud_notes_dir = '/Users/cujanovic/Library/Mobile Documents/iCloud~md~obsidian/Documents/the-never-ending-hole-backup/'
+--                if root_dir == 'the-never-ending-hole' then
+--                    vim.fn.jobstart(
+--                        string.format('git add . && git commit -m "vault backup (%s): %s" && git push origin main', os_name, os.date('%Y-%m-%d %X'))
+--                    )
+--                    vim.fn.jobstart(string.format('cp -R * "%s"', icloud_notes_dir))
+--                end
+--            end,
+--        })
+--    end,
+--})
 
 -- highlight what is yanked
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -87,7 +87,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- remove padding from comment strings
 vim.api.nvim_create_autocmd('FileType', {
     callback = function()
-        if vim.bo.filetype == 'php' then
+        if vim.tbl_contains({ 'php', 'dts' }, vim.bo.filetype) then
             vim.opt_local.commentstring = '//%s'
         else
             local previous_comment_string = vim.opt_local.commentstring:get()
@@ -155,5 +155,16 @@ vim.api.nvim_create_autocmd({ 'VimEnter' }, {
     group = 'indent_line',
     callback = function()
         update(false)
+    end,
+})
+
+vim.api.nvim_create_autocmd({ 'VimResized' }, {
+    command = 'wincmd =',
+})
+
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+    group = vim.api.nvim_create_augroup('no_auto_comment', {}),
+    callback = function()
+        vim.opt_local.formatoptions:remove({ 'c', 'r', 'o' })
     end,
 })

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+title=$(echo $2 | tr '[:upper:]' '[:lower:]')
+url=$1
+
+echo "- [ ] - $title - $url" >> ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/the-never-ending-hole/personal/bookmarks.md

@@ -88,6 +88,7 @@ return {
             ensure_installed = {
                 'bash',
                 'cpp',
+                'devicetree',
                 'git_config',
                 'gitignore',
                 'graphql',

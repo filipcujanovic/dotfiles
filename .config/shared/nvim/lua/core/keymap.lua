@@ -24,30 +24,72 @@ vim.keymap.set('n', '<leader>d', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
 
-local function minifiles_open_current()
-    if vim.fn.filereadable(vim.fn.bufname('%')) > 0 then
-        require('mini.files').open(vim.api.nvim_buf_get_name(0), false)
-    else
-        require('mini.files').open()
-    end
-end
---vim.keymap.set('n', '<leader>b', minifiles_open_current, { desc = 'open mini files' })
---vim.keymap.set('n', '<leader>b', ':Lexplore %:p:h<CR>', { desc = 'open netrw' })
-vim.keymap.set('n', '<leader>b', function()
-    local is_netrw_open = false
-    for _, win in ipairs(vim.api.nvim_list_wins()) do
-        local buf = vim.api.nvim_win_get_buf(win)
-        if vim.api.nvim_get_option_value('filetype', { buf = buf }) == 'netrw' then
-            is_netrw_open = true
-        end
-    end
+--vim.keymap.set('n', '<leader>b', function()
+--    local is_netrw_open = false
+--    for _, win in ipairs(vim.api.nvim_list_wins()) do
+--        local buf = vim.api.nvim_win_get_buf(win)
+--        if vim.api.nvim_get_option_value('filetype', { buf = buf }) == 'netrw' then
+--            is_netrw_open = true
+--        end
+--    end
+--
+--    if is_netrw_open then
+--        vim.cmd('Lexplore')
+--    else
+--        vim.cmd('Lexplore %:p:h')
+--    end
+--end, { desc = 'open netrw' })
 
-    if is_netrw_open then
-        vim.cmd('Lexplore')
-    else
-        vim.cmd('Lexplore %:p:h')
-    end
-end, { desc = 'open netrw' })
+vim.keymap.set('n', '<leader>b', function()
+    local yazi_current_file = '/tmp/current-yazi-file'
+    local current_file_path = vim.fn.expand('%')
+    vim.fn.delete(yazi_current_file)
+
+    local width = math.floor(vim.o.columns * 0.9)
+    local height = math.floor(vim.o.lines * 0.9)
+    local row = math.floor((vim.o.lines - height) / 2)
+    local col = math.floor((vim.o.columns - width) / 2)
+
+    local buf = vim.api.nvim_create_buf(false, true)
+
+    local win = vim.api.nvim_open_win(buf, true, {
+        relative = 'editor',
+        width = width,
+        height = height,
+        row = row,
+        col = col,
+        style = 'minimal',
+        border = 'rounded',
+    })
+
+    vim.fn.jobstart(string.format('yazi --chooser-file=%s %s', yazi_current_file, current_file_path), {
+        term = true,
+        on_exit = function()
+            if vim.api.nvim_win_is_valid(win) then
+                vim.api.nvim_win_close(win, true)
+            end
+
+            if vim.api.nvim_buf_is_valid(buf) then
+                vim.api.nvim_buf_delete(buf, { force = true })
+            end
+
+            if vim.api.nvim_win_is_valid(win) then
+                vim.api.nvim_win_close(win, true)
+            end
+
+            if vim.fn.filereadable(yazi_current_file) == 1 then
+                local selection = vim.fn.readfile(yazi_current_file)
+                vim.fn.delete(yazi_current_file)
+                if selection and #selection > 0 and selection[1] ~= '' then
+                    local file_to_open = vim.fn.fnameescape(selection[1])
+                    vim.cmd(string.format('edit %s', file_to_open))
+                end
+            end
+        end,
+    })
+
+    vim.cmd('startinsert')
+end, { desc = 'Open yazi in floating window' })
 
 vim.keymap.set('n', '<leader>gch', ':Ghdiffsplit!<cr>', { desc = 'git conflict horizontal' })
 vim.keymap.set('n', '<leader>gcv', ':Gvdiffsplit!<cr>', { desc = 'git conflict vertical' })
@@ -63,8 +105,10 @@ vim.keymap.set('n', '<leader>mp', ':MarkdownPreviewToggle<cr>', { desc = 'markdo
 vim.keymap.set('n', '<leader>gt', function()
     local line_num = vim.fn.line('.')
     local file_path = vim.fn.expand('%:p')
-    --local commit = vim.fn.system(string.format('git log -1 --pretty=format:"%%H" -L %s,%s:%s | head -n1 | awk "{print $1}"', line_num, line_num, file_path))
-    local commit = vim.fn.getreg('+')
+    local commit = vim.fn.system(string.format('git blame -L %d,%d --porcelain -- %s | sed -n "1s/ .*//p"', line_num, line_num, file_path)):gsub('\n', '')
+    if commit:match('^0+$') ~= nil or #commit ~= 40 then
+        return
+    end
 
     local origin = vim.fn.system('git config --get remote.origin.url')
     origin = origin:gsub('%s+$', '')
@@ -92,8 +136,10 @@ vim.keymap.set('n', '<leader>vd', function()
 end, { desc = 'visidata' })
 
 vim.keymap.set('n', 'gf', function()
-    if require('obsidian').util.cursor_link() then
-        return '<cmd>Obsidian follow_link<cr>'
+    local word = vim.fn.expand('<cWORD>')
+    local match = word:match('https?://[%w-_%.%?%.:/%+=&]+')
+    if match ~= nil then
+        vim.fn.system(string.format('open %s', match))
     else
         return 'gf'
     end

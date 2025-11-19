@@ -1,8 +1,6 @@
 local sbar = require('sketchybar')
 local opts = require('opts')
 
-print(opts.color.base)
-
 sbar.bar({
     height = opts.height,
     color = opts.color.dark,
