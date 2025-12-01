@@ -88,98 +88,39 @@ M.dark = {
     dark_aqua = M.gruvbox.dark_aqua,
     gray = M.gruvbox.gray,
 }
-M.light = {
-    bg0 = M.gruvbox.light0,
-    bg1 = M.gruvbox.light1,
-    bg2 = M.gruvbox.light2,
-    bg3 = M.gruvbox.light3,
-    bg4 = M.gruvbox.light4,
-    fg0 = M.gruvbox.dark0,
-    fg1 = M.gruvbox.dark1,
-    fg2 = M.gruvbox.dark2,
-    fg3 = M.gruvbox.dark3,
-    fg4 = M.gruvbox.dark4,
-    red = M.gruvbox.faded_red,
-    green = M.gruvbox.faded_green,
-    yellow = M.gruvbox.faded_yellow,
-    blue = M.gruvbox.faded_blue,
-    purple = M.gruvbox.faded_purple,
-    aqua = M.gruvbox.faded_aqua,
-    orange = M.gruvbox.faded_orange,
-    neutral_red = M.gruvbox.neutral_red,
-    neutral_green = M.gruvbox.neutral_green,
-    neutral_yellow = M.gruvbox.neutral_yellow,
-    neutral_blue = M.gruvbox.neutral_blue,
-    neutral_purple = M.gruvbox.neutral_purple,
-    neutral_aqua = M.gruvbox.neutral_aqua,
-    dark_red = M.gruvbox.light_red,
-    dark_green = M.gruvbox.light_green,
-    dark_aqua = M.gruvbox.light_aqua,
-    gray = M.gruvbox.gray,
-}
 
-function M.transform(palette, is_dark)
+function M.transform(palette)
     local compute = function(m)
         return 0xff000000 + tonumber(m:sub(2), 16)
     end
     return function()
-        local colors = nil
-        if is_dark then
-            colors = {
-                transparent = 0x00000000,
-                visible = 0x60000000,
-                base = compute(palette.bg0),
-                dark = compute(palette.dark),
-                surface = compute(palette.fg0),
-                surface0 = compute(palette.fg1),
-                text = compute(palette.green),
-                blue = compute(palette.blue),
-                orange = compute(palette.orange),
-                purple = compute(palette.purple),
-                green = compute(palette.green),
-                yellow = compute(palette.yellow),
-                red = compute(palette.red),
-                neutral_yellow = compute(palette.neutral_yellow),
-                neutral_purple = compute(palette.neutral_purple),
-                neutral_green = compute(palette.neutral_green),
-                dark_green = compute(palette.dark_green),
-            }
-            colors['timer_active_color'] = colors.orange
-            colors['timer_paused_color'] = colors.red
-            colors['timer_inactive_color'] = colors.green
-            colors['active_color'] = colors.orange
-            colors['inactive_color'] = colors.green
-            colors['border_color_inactive'] = colors.blue
-            colors['border_color_active'] = colors.orange
-            colors['icon_color'] = colors.blue
-        else
-            colors = {
-                transparent = 0x00000000,
-                visible = 0x60000000,
-                base = compute(palette.bg0),
-                surface = compute(palette.fg0),
-                surface0 = compute(palette.fg1),
-                text = compute(palette.neutral_green),
-                blue = compute(palette.blue),
-                orange = compute(palette.orange),
-                purple = compute(palette.purple),
-                green = compute(palette.neutral_green),
-                yellow = compute(palette.yellow),
-                red = compute(palette.red),
-                neutral_yellow = compute(palette.neutral_yellow),
-                neutral_purple = compute(palette.neutral_purple),
-                neutral_green = compute(palette.neutral_green),
-                dark_green = compute(palette.dark_green),
-            }
-            colors['timer_active_color'] = colors.orange
-            colors['timer_paused_color'] = colors.yellow
-            colors['timer_inactive_color'] = colors.green
-            colors['active_color'] = colors.neutral_yellow
-            colors['inactive_color'] = colors.green
-            colors['border_color_inactive'] = colors.green
-            colors['border_color_active'] = colors.neutral_yellow
-            colors['icon_color'] = colors.dark_green
-        end
+        local colors = {
+            transparent = 0x00000000,
+            visible = 0x60000000,
+            base = compute(palette.bg0),
+            dark = compute(palette.dark),
+            surface = compute(palette.fg0),
+            surface0 = compute(palette.fg1),
+            text = compute(palette.green),
+            blue = compute(palette.blue),
+            orange = compute(palette.orange),
+            purple = compute(palette.purple),
+            green = compute(palette.green),
+            yellow = compute(palette.yellow),
+            red = compute(palette.red),
+            neutral_yellow = compute(palette.neutral_yellow),
+            neutral_purple = compute(palette.neutral_purple),
+            neutral_green = compute(palette.neutral_green),
+            dark_green = compute(palette.dark_green),
+        }
+        colors['timer_active_color'] = colors.orange
+        colors['timer_paused_color'] = colors.red
+        colors['timer_inactive_color'] = colors.green
+        colors['active_color'] = colors.orange
+        colors['inactive_color'] = colors.green
+        colors['border_color_inactive'] = colors.blue
+        colors['border_color_active'] = colors.orange
+        colors['icon_color'] = colors.blue
 
         return colors
     end

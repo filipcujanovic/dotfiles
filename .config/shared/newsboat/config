@@ -1,12 +1,19 @@
-color article           color223 color235
-color background        color100 color235
-color info              color142 color235
-color listfocus         default  color239
-color listfocus_unread  yellow   color239
-color listnormal        color241 color235
-color listnormal_unread blue     color235
+color article           color142 default
+color background        default default
+color info              color142 default
+color listfocus         color241 color239
+color listfocus_unread  color208 color239
+color listnormal        color241 default
+color listnormal_unread color208 default
 color title             color241 default reverse
 
+highlight article     "^Feed:.*"            color175 color237
+highlight article     "^Title:.*"           color214 color237 bold
+highlight article     "^Author:.*"          color167 color237
+highlight article     "^Link:.*"            color109 color237
+highlight article     "^Date:.*"            color142 color237
+highlight feedlist    "^ +[0-9]+\. "        color242 color235
+highlight articlelist "^ +[0-9]+\. "        color242 color235
 
 bind-key h quit
 bind-key j down
@@ -18,15 +25,6 @@ bind-key B bookmark
 
 bookmark-cmd ~/projects/dotfiles/bin/shared/bookmark-cmd
 bookmark-autopilot yes
-
-
-highlight article     "^Feed:.*"            color175 color237
-highlight article     "^Title:.*"           color214 color237 bold
-highlight article     "^Author:.*"          color167 color237
-highlight article     "^Link:.*"            color109 color237
-highlight article     "^Date:.*"            color142 color237
-highlight feedlist    "^ +[0-9]+\. "        color242 color235
-highlight articlelist "^ +[0-9]+\. "        color242 color235
 
 feed-sort-order latestunread
 refresh-on-startup yes

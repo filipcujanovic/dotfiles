@@ -2,3 +2,6 @@
 image_bound = [ 10000, 10000 ]
 [mgr]
 show_hidden = true
+[[previewers]]
+mime = "text/*"
+run = "bat --color=always --style=plain --paging=never {input}"

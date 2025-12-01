@@ -1,6 +1,7 @@
 .DS_Store
 .config/shared/tmux/private.keymap.conf
 .config/shared/tmux/private.theme.options.conf
+.config/shared/tmux/theme-options.sh
 .config/shared/tmux/plugins/
 .config/macos/files/
 .config/shared/nvim/lua/work-settings.lua

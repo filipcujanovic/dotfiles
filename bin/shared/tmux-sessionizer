@@ -44,6 +44,8 @@ if ! tmux has-session -t="$session_name" 2>/dev/null; then
         tmux split-window -v -l 50% -c "$path" -t "$session_name:1"
     elif [ "$session_name" == "newsboat" ]; then
         tmux new-session -d -c "~/" -s "$session_name" newsboat
+    elif [ "$session_name" == "yazi" ]; then
+        tmux new-session -d -s "$session_name" -c "$3" "yazi --chooser-file=/tmp/current-yazi-file"
     else
         tmux new-session -d -s "$session_name" -c "$path" "nvim"
     fi

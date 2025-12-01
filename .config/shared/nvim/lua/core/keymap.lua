@@ -9,6 +9,8 @@ vim.keymap.set('n', '<leader>wa', vim.cmd.wa, { desc = 'write all' })
 vim.keymap.set('n', '<leader>x', ':quit!<CR>', { desc = 'force quit' })
 vim.keymap.set('n', '<leader>q', ':quit<CR>', { desc = 'quit' })
 vim.keymap.set('n', '<leader>w', ':write<CR>', { desc = 'write' })
+vim.keymap.set('n', '<leader>n', ':tabn<CR>', { desc = 'tab next' })
+vim.keymap.set('n', '<leader>p', ':tabp<CR>', { desc = 'tab previous' })
 
 vim.keymap.set('n', 'k', 'v:count == 0 ? \'gk\' : \'k\'', { expr = true, silent = true })
 vim.keymap.set('n', 'j', 'v:count == 0 ? \'gj\' : \'j\'', { expr = true, silent = true })
@@ -40,7 +42,32 @@ vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by 
 --    end
 --end, { desc = 'open netrw' })
 
-vim.keymap.set('n', '<leader>b', function()
+local open_file_from_yazi = function(yazi_current_file)
+    if vim.fn.filereadable(yazi_current_file) == 1 then
+        local selection = vim.fn.readfile(yazi_current_file)
+        vim.fn.delete(yazi_current_file)
+        if selection and #selection > 0 and selection[1] ~= '' then
+            local file_to_open = vim.fn.fnameescape(selection[1])
+            vim.cmd(string.format('edit %s', file_to_open))
+        end
+    end
+end
+
+local yazi_in_tmux = function()
+    local yazi_current_file = '/tmp/current-yazi-file'
+    local current_file_path = vim.fn.expand('%')
+    vim.fn.delete(yazi_current_file)
+    vim.fn.system(
+        string.format(
+            'tmux display-popup -w 90%% -h 90%% -E "tmux new-session -d -s yazi \\"yazi --chooser-file=%s %s\\"; tmux set-option -t yazi detach-on-destroy on; tmux a -t yazi"',
+            yazi_current_file,
+            current_file_path
+        )
+    )
+    open_file_from_yazi(yazi_current_file)
+end
+
+local yazi_in_nvim_terminal = function()
     local yazi_current_file = '/tmp/current-yazi-file'
     local current_file_path = vim.fn.expand('%')
     vim.fn.delete(yazi_current_file)
@@ -76,19 +103,15 @@ vim.keymap.set('n', '<leader>b', function()
             if vim.api.nvim_win_is_valid(win) then
                 vim.api.nvim_win_close(win, true)
             end
-
-            if vim.fn.filereadable(yazi_current_file) == 1 then
-                local selection = vim.fn.readfile(yazi_current_file)
-                vim.fn.delete(yazi_current_file)
-                if selection and #selection > 0 and selection[1] ~= '' then
-                    local file_to_open = vim.fn.fnameescape(selection[1])
-                    vim.cmd(string.format('edit %s', file_to_open))
-                end
-            end
+            open_file_from_yazi(yazi_current_file)
         end,
     })
 
     vim.cmd('startinsert')
+end
+
+vim.keymap.set('n', '<leader>b', function()
+    yazi_in_nvim_terminal()
 end, { desc = 'Open yazi in floating window' })
 
 vim.keymap.set('n', '<leader>gch', ':Ghdiffsplit!<cr>', { desc = 'git conflict horizontal' })
@@ -137,9 +160,9 @@ end, { desc = 'visidata' })
 
 vim.keymap.set('n', 'gf', function()
     local word = vim.fn.expand('<cWORD>')
-    local match = word:match('https?://[%w-_%.%?%.:/%+=&]+')
+    local match = word:match('https?://%w+%.%w+[%w%-%._@%%:%+~#%?&/=]*')
     if match ~= nil then
-        vim.fn.system(string.format('open %s', match))
+        vim.fn.system(string.format('open "%s"', match))
     else
         return 'gf'
     end

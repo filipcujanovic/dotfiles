@@ -34,8 +34,8 @@ config = {
     default_cursor_style = 'SteadyBar',
     enable_kitty_graphics = true,
     window_decorations = 'RESIZE',
-    window_background_opacity = 1.0,
-    --window_background_opacity = 0.7,
+    --window_background_opacity = 1.0,
+    window_background_opacity = 0.9,
     color_scheme = 'GruvboxDarkHard',
     macos_window_background_blur = 25,
     window_close_confirmation = 'NeverPrompt',
@@ -45,6 +45,9 @@ config = {
     --font = wezterm.font('Iosevka Nerd Font'),
     --font = wezterm.font('FiraCode Nerd Font'),
     font = wezterm.font('VictorMono Nerd Font', { weight = 'Medium' }),
+    --colors = {
+    --    background = '#000000',
+    --},
 }
 
 return config

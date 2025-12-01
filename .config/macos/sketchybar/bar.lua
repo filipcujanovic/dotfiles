@@ -3,7 +3,8 @@ local opts = require('opts')
 
 sbar.bar({
     height = opts.height,
-    color = opts.color.dark,
+    --color = opts.color.dark,
+    color = opts.color.visible,
     margin = 0,
     sticky = true,
     padding_left = 5,

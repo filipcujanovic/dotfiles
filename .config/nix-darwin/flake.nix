@@ -53,6 +53,7 @@
             pkgs.maccy
             pkgs.marksman
             pkgs.mkcert
+            pkgs.mpremote
             pkgs.mycli
             pkgs.mysql84
             pkgs.neovim
@@ -75,6 +76,7 @@
             pkgs.thonny
             pkgs.timewarrior
             pkgs.tmux
+            pkgs.gitmux
             pkgs.tree-sitter
             pkgs.typescript-language-server
             pkgs.visidata
@@ -101,7 +103,6 @@
             ];
             brews = [
               "choose-gui"
-              "gitmux"
               "lua"
               "newsboat"
               "nvm"
@@ -115,7 +116,7 @@
               "hammerspoon"
               "hiddenbar"
               "lulu"
-              "mouseless"
+              "mouseless@preview"
               "mysql-shell"
               "pearcleaner"
               "sf-symbols"
@@ -208,6 +209,7 @@
             stateVersion = 6;
             startup.chime = false;
           };
+          environment.etc."pkgs-version".text = pkgs.lib.version;
 
           nix.settings.experimental-features = "nix-command flakes";
 

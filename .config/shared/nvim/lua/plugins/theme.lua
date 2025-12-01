@@ -2,6 +2,21 @@ return {
     'ellisonleao/gruvbox.nvim',
     priority = 1000,
     config = function()
+        local colors = require('gruvbox').palette
+        local custom_highlights = {
+            StatuslineTitle = { bg = 'none', fg = colors.bright_green, bold = true },
+            StatuslineSpinner = { bg = 'none', fg = colors.bright_orange, bold = true },
+            StatuslineItalic = { bg = 'none', fg = colors.bright_orange, italic = true, bold = true },
+            StatuslineModeSeparator = { bg = 'none', fg = colors.bright_orange, bold = true },
+            StatuslineModeCommand = { bg = 'none', fg = colors.bright_orange, bold = true },
+            StatuslineModeInsert = { bg = 'none', fg = colors.bright_blue, bold = true },
+            StatuslineModeNormal = { bg = 'none', fg = colors.bright_green, bold = true },
+            StatuslineModeOther = { bg = 'none', fg = colors.bright_red, bold = true },
+            StatuslineModeVisual = { bg = 'none', fg = colors.bright_yellow, bold = true },
+        }
+        for group, opts in pairs(custom_highlights) do
+            vim.api.nvim_set_hl(0, group, opts)
+        end
         require('gruvbox').setup({
             italic = {
                 strings = false,
@@ -11,12 +26,8 @@ return {
                 folds = false,
             },
             overrides = {
-                LineNr = { fg = '#b8bb26' },
-                CursorLineNr = { fg = '#fe8019' },
-                DashboardHeader = { fg = '#d65d0e' },
-                DashboardKey = { fg = '#fb4934' },
-                DashboardDesc = { fg = '#fabd2f' },
-                DashboardIcon = { fg = '#83a598' },
+                LineNr = { fg = colors.bright_green },
+                CursorLineNr = { fg = colors.bright_orange },
                 StatusLine = { fg = 'none', bg = 'none' },
                 StatusLineNC = { fg = 'none', bg = 'none' },
                 TabLine = { fg = 'none', bg = 'none' },
