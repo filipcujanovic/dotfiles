@@ -1,6 +1,5 @@
 {
-  "print-inspect": {
-    "prefix": "pin",
+  "print-inspect": {"prefix": "pin",
     "body": [
       "print(vim.inspect($0))"
     ]

@@ -34,6 +34,7 @@ config = {
     default_cursor_style = 'SteadyBar',
     enable_kitty_graphics = true,
     window_decorations = 'RESIZE',
+    --underline_thickness = '2pt',
     --window_background_opacity = 1.0,
     window_background_opacity = 0.9,
     color_scheme = 'GruvboxDarkHard',

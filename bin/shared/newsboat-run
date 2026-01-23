@@ -1,0 +1,37 @@
+#!/bin/bash
+
+LIMIT_FILE="$HOME/newsboat-counter"
+DATE_FILE="$HOME/newsboat-reset-date"
+
+limit=$(cat "$LIMIT_FILE" 2>/dev/null)
+limit=${limit:-0}
+
+current_date=$(date +%Y-%m-%d)
+current_hour=$(date +%-H)
+
+last_reset=$(cat "$DATE_FILE" 2>/dev/null)
+
+if [[ "$current_date" != "$last_reset" && "$current_hour" -ge 8 ]]; then
+    echo "0" >"$LIMIT_FILE"
+    limit=0
+    echo "$current_date" >"$DATE_FILE"
+fi
+
+#if ((current_hour < 18 || current_hour >= 19 || limit > 20)); then
+if ((limit >= 20)); then
+    echo "Focus"
+    exit 1
+fi
+
+#BLOCKED_DAYS="1 2 3 4 5 6"
+#current_day=$(date +%u)
+#for d in $BLOCKED_DAYS; do
+#    if [ "$current_day" -eq "$d" ]; then
+#        echo "Focus"
+#        exit 1
+#    fi
+#done
+
+limit=$((limit + 5))
+echo "$limit" >"$LIMIT_FILE"
+exec timeout 5m newsboat "$@"

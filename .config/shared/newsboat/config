@@ -22,6 +22,7 @@ bind-key l open
 bind-key ^U halfpageup
 bind-key ^D halfpagedown
 bind-key B bookmark
+bind-key O open-all-unread-in-browser-and-mark-read
 
 bookmark-cmd ~/projects/dotfiles/bin/shared/bookmark-cmd
 bookmark-autopilot yes

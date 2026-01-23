@@ -26,9 +26,10 @@ return {
     root_markers = { '.git' },
     settings = {
         ['harper-ls'] = {
-            userDictPath = '~/projects/dotfiles/.config/nvim/shared/spell/harper_dict.txt',
+            userDictPath = '~/projects/dotfiles/.config/shared/nvim/spell/harper_dict.txt',
             linters = {
                 SentenceCapitalization = false,
+                --OrthographicConsistency = false,
             },
         },
     },

@@ -9,7 +9,14 @@ selected_item=$(
     {
         printf '%s\n' "${files}"
         printf '%s\n' "${dirs[@]}"
-    } | fzf
+    } | fzf \
+        --color=fg+:#b8bb26 \
+        --color=hl:#fb4934,hl+:#fb4934,info:#83a598,marker:#fe8019 \
+        --color=prompt:#fb4934,spinner:#fb4934,pointer:#fe8019,header:#b8bb26 \
+        --color=border:#fe8019,scrollbar:#fabd2f,label:#fe8019 \
+        --color=query:#b8bb26 \
+        --border="rounded" --border-label-pos="0" --preview-window="border-rounded"
+
 )
 
 if [ ! -z "${selected_item}" ]; then

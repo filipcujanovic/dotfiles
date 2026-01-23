@@ -138,7 +138,7 @@ end
 
 --- The buffer's filetype.
 ---@return string
-function M.filetype_component()
+function M.file_name_component()
     local buf_name = vim.api.nvim_buf_get_name(0)
     local name, ext = vim.fn.fnamemodify(buf_name, ':t'), vim.fn.fnamemodify(buf_name, ':e')
 
@@ -180,12 +180,14 @@ function M.render()
     return table.concat({
         concat_components({
             M.mode_component(),
+            M.file_name_component(),
             M.lsp_progress_component(),
         }),
         '%#StatusLine#%=',
         concat_components({
+            --vim.diagnostic.status(),
             M.kulala_component(),
-            M.filetype_component(),
+            --M.encoding_component(),
             M.position_component(),
         }),
         ' ',

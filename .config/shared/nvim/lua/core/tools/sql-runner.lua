@@ -39,32 +39,39 @@ if string.match(db_dir, 'db%-collection') then
         return nil
     end
 
-    -- Common function to run queries with any backend
+    --Common function to run queries with any backend
     local function run_query(name, cmd)
+        local filetype = vim.bo.filetype
         local outfile = db_dir .. '/sql.out'
         local abs_out = vim.fn.fnamemodify(outfile, ':p')
 
-        -- Status: running
-        vim.api.nvim_echo({ { '[sql-runner] Running ' .. name .. ' query…', 'ModeMsg' } }, false, {})
+        --Status: running
+        vim.api.nvim_echo({ { '[db-runner] Running ' .. name .. ' query…', 'ModeMsg' } }, false, {})
         local t0 = vim.loop.hrtime()
 
-        -- Run the command
-        local full_cmd = cmd .. ' > ' .. vim.fn.shellescape(outfile)
+        --Run the command
         local start_visual_selection = vim.fn.line('\'<')
         local end_visial_selection = vim.fn.line('\'>')
 
         local lines = vim.api.nvim_buf_get_lines(0, start_visual_selection - 1, end_visial_selection, false)
         local text = table.concat(lines, ' ')
         local processed = text:gsub(';', '\\G')
-
+        local full_cmd = cmd .. ' > ' .. vim.fn.shellescape(outfile)
         local vim_cmd = string.format('!echo "%s" | %s', processed, full_cmd)
 
-        -- Debug: show exact command being run
-        -- vim.api.nvim_echo({ { '[sql-runner] Executing: ' .. vim_cmd, 'Comment' } }, false, {})
+        if filetype == 'javascript' then
+            outfile = db_dir .. '/output.json'
+            full_cmd = string.format('%s | jq > %s ', cmd, vim.fn.shellescape(outfile))
+            processed = string.format('print(JSON.stringify(%s))', processed)
+            vim_cmd = string.format(string.format('!%s | jq', full_cmd), processed)
+        end
+
+        --Debug: show exact command being run
+        vim.api.nvim_echo({ { '[sql-runner] Executing: ' .. vim_cmd, 'Comment' } }, false, {})
 
         vim.cmd(vim_cmd)
 
-        -- Open or focus existing results split, then reload contents
+        --Open or focus existing results split, then reload contents
         local win = find_win_by_path(abs_out)
         if win then
             vim.api.nvim_set_current_win(win)
@@ -73,13 +80,13 @@ if string.match(db_dir, 'db%-collection') then
             vim.cmd('rightbelow vsplit ' .. vim.fn.fnameescape(outfile))
         end
 
-        -- Done message with timing
+        --Done message with timing
         local ms = math.floor((vim.loop.hrtime() - t0) / 1e6)
-        vim.api.nvim_echo({ { string.format('[sql-runner] %s query done in %d ms', name, ms), 'ModeMsg' } }, false, {})
+        vim.api.nvim_echo({ { string.format('[db-runner] %s query done in %d ms', name, ms), 'ModeMsg' } }, false, {})
     end
 
     -- Run SQL with the selected command based on file name
-    function M.run_sql()
+    function M.run_query()
         local file_name = vim.fn.expand('%:r')
         run_query(file_name, load_commands()[file_name])
     end
@@ -88,10 +95,10 @@ if string.match(db_dir, 'db%-collection') then
     --vim.api.nvim_create_user_command('AddSqlCmd', M.add_command, {})
     --vim.api.nvim_create_user_command('RemoveSqlCmd', M.remove_command, {})
     --vim.api.nvim_create_user_command('SelectSqlCmd', M.select_command, {})
-    vim.api.nvim_create_user_command('RunSQL', M.run_sql, { range = true })
+    vim.api.nvim_create_user_command('RunQuery', M.run_query, { range = true })
 
     -- Set up keymaps
-    vim.keymap.set('v', '<leader>rq', ':RunSQL<CR>', { silent = true, desc = 'Run SQL with selected backend' })
+    vim.keymap.set('v', '<leader>rq', ':RunQuery<CR>', { silent = true, desc = 'Run query ' })
     --vim.keymap.set('n', '<leader>ps', ':SelectSqlCmd<CR>', { silent = true, desc = 'Select SQL backend' })
     --vim.keymap.set('n', '<leader>pa', ':AddSqlCmd<CR>', { silent = true, desc = 'Add SQL command' })
     --vim.keymap.set('n', '<leader>px', ':RemoveSqlCmd<CR>', { silent = true, desc = 'Remove SQL command' })

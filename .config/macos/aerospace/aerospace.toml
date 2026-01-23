@@ -210,9 +210,9 @@ run = 'move-node-to-workspace misc'
 if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace misc'
 
-[[on-window-detected]]
-if.app-id = 'com.apple.Safari'
-run = 'move-node-to-workspace work'
+#[[on-window-detected]]
+#if.app-id = 'com.apple.Safari'
+#run = 'move-node-to-workspace work'
 
 [[on-window-detected]]
 if.app-id = 'com.vivaldi.Vivaldi'
@@ -235,6 +235,10 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'WhatsApp Web'
+run = 'move-node-to-workspace chats'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Messenger'
 run = 'move-node-to-workspace chats'
 
 [[on-window-detected]]

@@ -1,0 +1,18 @@
+toggle_hotkey = "ALT+SPACE"
+placeholder = ""
+search_url = "https://duckduckgo.com/search?q=%s"
+haptic_feedback = false
+show_trayicon = true
+shells = []
+
+[buffer_rules]
+clear_on_hide = true
+clear_on_enter = true
+
+[theme]
+font = "VictorMono Nerd Font"
+text_color = [0.95, 0.95, 0.96]
+background_color = [0.09, 0.09, 0.09]
+blur = false
+show_icons = false
+show_scroll_bar = true

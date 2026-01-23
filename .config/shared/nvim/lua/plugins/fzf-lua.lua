@@ -8,7 +8,12 @@ return {
             winopts = {
                 preview = {
                     layout = 'vertical',
+                    border = 'rounded',
                 },
+                border = 'rounded',
+            },
+            fzf_opts = {
+                ['--color'] = 'fg:#b8bb26,fg+:#fe8019,hl:#fb4934,hl+:#fb4934,info:#83a598,marker:#fe8019,prompt:#fb4934,spinner:#fb4934,pointer:#fe8019,header:#b8bb26,border:#fe8019,scrollbar:#fabd2f,label:#fe8019,query:#b8bb26,fg:#b8bb26,fg+:#fe8019,hl:#fb4934,hl+:#fb4934,info:#83a598,marker:#fe8019,prompt:#fb4934,spinner:#fb4934,pointer:#fe8019,header:#b8bb26,border:#fe8019,scrollbar:#fabd2f,label:#fe8019,query:#b8bb26',
             },
             keymap = {
                 fzf = {

@@ -27,7 +27,7 @@
             pkgs.bat
             pkgs.btop
             pkgs.chafa
-            pkgs.choose-gui
+            #pkgs.choose-gui
             pkgs.coreutils
             pkgs.delta
             pkgs.espanso
@@ -38,6 +38,7 @@
             pkgs.ghostty-bin
             pkgs.git
             pkgs.git-extras
+            pkgs.gitmux
             pkgs.gopls
             pkgs.harper
             pkgs.htop
@@ -51,10 +52,11 @@
             pkgs.lua-language-server
             pkgs.lua5_4_compat
             pkgs.maccy
-            pkgs.marksman
+            #pkgs.marksman
             pkgs.mkcert
             pkgs.mpremote
             pkgs.mycli
+            pkgs.mysql-shell
             pkgs.mysql84
             pkgs.neovim
             pkgs.ngrok
@@ -76,8 +78,8 @@
             pkgs.thonny
             pkgs.timewarrior
             pkgs.tmux
-            pkgs.gitmux
             pkgs.tree-sitter
+            pkgs.typescript-go
             pkgs.typescript-language-server
             pkgs.visidata
             pkgs.vscode-extensions.xdebug.php-debug
@@ -100,12 +102,19 @@
             enable = true;
             taps = [
               "acsandmann/tap"
+              "mongodb/brew"
+              "tonisives/tap"
             ];
             brews = [
               "choose-gui"
               "lua"
+              "marksman"
+              "media-control"
+              "mongodb-database-tools"
+              "mongosh"
               "newsboat"
               "nvm"
+              "nx"
               "pipx"
             ];
             casks = [
@@ -117,7 +126,8 @@
               "hiddenbar"
               "lulu"
               "mouseless@preview"
-              "mysql-shell"
+              #"mysql-shell"
+              #"ovim"
               "pearcleaner"
               "sf-symbols"
             ];
@@ -193,7 +203,9 @@
                 ShowSeconds = true;
               };
               trackpad = {
+                Dragging = true;
                 ActuationStrength = 0;
+                TrackpadThreeFingerDrag = true;
               };
               universalaccess.reduceTransparency = false;
               NSGlobalDomain = {

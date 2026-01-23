@@ -18,7 +18,7 @@ return {
             sql_formatter = {
                 append_args = {
                     '--config',
-                    vim.fn.expand('~/projects/dotfiles/.config/shared/nvim/formatters/sql-formatter/config.json'),
+                    vim.fn.expand('~/projects/dotfiles/.config/shared/nvim/formatters/configs/sql-formatter/config.json'),
                 },
             },
             --black = {

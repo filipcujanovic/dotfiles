@@ -6,8 +6,9 @@ tmux_session_list="tmux ls -F '#{session_name}' | grep -v \"^$current_session\""
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(eval "$tmux_session_list" | fzf --no-preview \
-        --bind "ctrl-x:execute-silent(tmux kill-session -t {})+reload($tmux_session_list)")
+    selected=$(
+        eval "$tmux_session_list" | fzf --no-preview --border-label=session-picker --bind "ctrl-x:execute-silent(tmux kill-session -t {})+reload($tmux_session_list)" --color=fg:#b8bb26,fg+:#fe8019 --color=hl:#fb4934,hl+:#fb4934,info:#83a598,marker:#fe8019 --color=prompt:#fb4934,spinner:#fb4934,pointer:#fe8019,header:#b8bb26 --color=scrollbar:#fabd2f,label:#fe8019 --color=query:#b8bb26
+    )
 fi
 
 if [[ -z $selected ]]; then

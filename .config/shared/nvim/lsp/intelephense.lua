@@ -25,12 +25,19 @@
 --- }
 --- ```
 
+local get_intelephense_license = function()
+    local f = assert(io.open(os.getenv('HOME') .. '/intelephense/license.txt', 'rb'))
+    local content = f:read('*a')
+    f:close()
+    return string.gsub(content, '%s+', '')
+end
+
 ---@type vim.lsp.Config
 return {
     cmd = { 'intelephense', '--stdio' },
     filetypes = { 'php' },
     root_markers = { '.git', 'composer.json' },
     init_options = {
-        licenceKey = '~/intelephense/licence.txt',
+        licenceKey = get_intelephense_license(),
     },
 }

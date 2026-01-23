@@ -2,7 +2,16 @@
 
 ~/bin/focus-wezterm-picker $1
 
-selected_wallpaper=$(eza -1 -X --no-quotes --absolute ~/projects/dotfiles/wallpapers/ | fzf --preview="~/bin/wallpaper-preview {}")
+selected_wallpaper=$(
+    eza -1 -X --no-quotes --absolute ~/projects/dotfiles/wallpapers/ | fzf --preview="~/bin/wallpaper-preview {}" \
+        --color=fg+:#b8bb26 \
+        --color=hl:#fb4934,hl+:#fb4934,info:#83a598,marker:#fe8019 \
+        --color=prompt:#fb4934,spinner:#fb4934,pointer:#fe8019,header:#b8bb26 \
+        --color=border:#fe8019,scrollbar:#fabd2f,label:#fe8019 \
+        --color=query:#b8bb26 \
+        --color=preview-border:#fe8019 \
+        --border="rounded" --border-label-pos="0" --preview-window="border-rounded"
+)
 
 if [ ! -z "${selected_wallpaper}" ]; then
     osascript -e "tell application \"System Events\" to tell every desktop to set picture to POSIX file \"$selected_wallpaper\""
