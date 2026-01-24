@@ -126,7 +126,7 @@ alt-shift-q = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-
 cmd-space = 'exec-and-forget app-launcher'
 cmd-shift-w = 'exec-and-forget terminal-picker change-wallpaper'
 cmd-shift-s = 'exec-and-forget terminal-picker file-search'
-alt-f = 'exec-and-forget open -a "Finder"'
+alt-f = 'exec-and-forget open ~'
 
 #cmd-shift-space = 'exec-and-forget ~/bin/terminal-picker ~/bin/clipboard-manager'
 #cmd-space = 'exec-and-forget ~/bin/terminal-picker ~/bin/app-launcher'

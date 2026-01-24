@@ -30,6 +30,7 @@
             #pkgs.choose-gui
             pkgs.coreutils
             pkgs.delta
+            pkgs.docker-compose
             pkgs.espanso
             pkgs.eza
             pkgs.fd
@@ -109,6 +110,7 @@
               "choose-gui"
               "lua"
               "marksman"
+              "mas"
               "media-control"
               "mongodb-database-tools"
               "mongosh"
@@ -118,18 +120,30 @@
               "pipx"
             ];
             casks = [
+              "affinity"
+              "balenaetcher"
+              "betterdisplay"
+              "docker-desktop"
               "espanso"
               "font-sf-mono"
               "font-sf-mono-nerd-font-ligaturized"
               "font-sf-pro"
+              "hakuneko"
               "hammerspoon"
               "hiddenbar"
+              "homerow"
+              #"karabiner-elements" # i need only this on my laptop
               "lulu"
+              "macs-fan-control"
               "mouseless@preview"
-              #"mysql-shell"
-              #"ovim"
               "pearcleaner"
               "sf-symbols"
+              "signal"
+              "spotify"
+              "viber"
+              "vlc"
+              #"mysql-shell"
+              #"ovim"
             ];
             masApps = {
               "AdBlock Pro" = 1018301773;
@@ -141,6 +155,7 @@
               "The Unarchiver" = 425424353;
               "Wipr" = 1662217862;
               "WireGuard" = 1451685025;
+              "ScreenBrush" = 1233965871;
               "Xcode" = 497799835;
             };
             onActivation.cleanup = "zap";
@@ -181,6 +196,7 @@
                 show-process-indicators = false;
                 show-recents = false;
                 launchanim = false;
+                magnification = true;
                 static-only = true;
                 tilesize = 10;
                 wvous-bl-corner = 1;
@@ -203,17 +219,19 @@
                 ShowSeconds = true;
               };
               trackpad = {
-                Dragging = true;
+                Dragging = false;
                 ActuationStrength = 0;
-                TrackpadThreeFingerDrag = true;
+                TrackpadThreeFingerDrag = false;
               };
               universalaccess.reduceTransparency = false;
+
               NSGlobalDomain = {
                 AppleInterfaceStyle = "Dark";
                 _HIHideMenuBar = true;
                 KeyRepeat = 2;
                 InitialKeyRepeat = 12;
                 ApplePressAndHoldEnabled = false;
+                "com.apple.swipescrolldirection" = false;
               };
             };
             configurationRevision = self.rev or self.dirtyRev or null;
