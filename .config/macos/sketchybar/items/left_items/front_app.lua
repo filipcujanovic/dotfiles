@@ -22,11 +22,14 @@ local label = opts.item_options.front_app.show_label
         }
     or {}
 
-local icon = opts.item_options.front_app.show_icon and {
-    padding_right = 0,
-    padding_left = 0,
-    font = opts.font.front_app_icon,
-} or {}
+local icon = opts.item_options.front_app.show_icon
+        and {
+            color = opts.color.active_color,
+            padding_right = 0,
+            padding_left = 10,
+            font = opts.font.front_app_icon,
+        }
+    or {}
 
 local front_app = sbar.add('item', 'front_app', {
     position = 'left',

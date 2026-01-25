@@ -1,8 +1,5 @@
 os_name=$(uname -s)
 
-if [[ $os_name == "Darwin" ]]; then
-  alias docker-compose="docker compose"
-fi
 alias jsonencode="awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' $0"
 alias fastfetch="fastfetch; printf '\n\n'"
 alias cat="bat"

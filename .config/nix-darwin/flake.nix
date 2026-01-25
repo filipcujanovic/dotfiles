@@ -132,7 +132,7 @@
               "hammerspoon"
               "hiddenbar"
               "homerow"
-              #"karabiner-elements" # i need only this on my laptop
+              "karabiner-elements" # i need only this on my laptop
               "lulu"
               "macs-fan-control"
               "mouseless@preview"
@@ -197,6 +197,7 @@
                 show-recents = false;
                 launchanim = false;
                 magnification = true;
+                largesize = 30;
                 static-only = true;
                 tilesize = 10;
                 wvous-bl-corner = 1;
