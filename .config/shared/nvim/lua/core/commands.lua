@@ -8,6 +8,7 @@ vim.api.nvim_create_user_command('RmJsonData', '%s/\\\\"/"/g', { desc = 'remove 
 vim.api.nvim_create_user_command('DecodeJson', '%!jq -sR .', { desc = 'decode json string' })
 vim.api.nvim_create_user_command('ConvertToJson', '%!jq -sR .', { desc = 'convert string to json' })
 vim.api.nvim_create_user_command('FindConflict', '/<<<<<<<', { desc = 'find conflict' })
+
 local complete_client = function(arg)
     return vim.iter(vim.lsp.get_clients())
         :map(function(client)
@@ -18,6 +19,7 @@ local complete_client = function(arg)
         end)
         :totable()
 end
+
 vim.api.nvim_create_user_command('LspRestart', function(info)
     local client_names = info.fargs
 

@@ -12,14 +12,22 @@ local get_device_icon = function(device)
             string = icons.laptop,
         }
     end
+
     if string.match(device, 'AirPods') then
         return {
             string = icons.airpods,
         }
     end
-    if string.match(device, 'Headphones') then
+
+    if string.match(device, 'Headphone') then
         return {
             string = icons.headphones,
+        }
+    end
+
+    if string.match(device, 'Mac mini') then
+        return {
+            string = icons.mac_mini,
         }
     end
 

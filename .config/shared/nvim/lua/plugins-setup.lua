@@ -25,6 +25,18 @@ require('lazy').setup({
     change_detection = {
         notify = false,
     },
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                'netrwPlugin',
+                'gzip',
+                'tarPlugin',
+                'tohtml',
+                'tutor',
+                'zipPlugin',
+            },
+        },
+    },
     ui = {
         custom_keys = {
             ['<localleader>r'] = {

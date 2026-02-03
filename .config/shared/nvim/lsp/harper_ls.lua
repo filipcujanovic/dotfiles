@@ -29,6 +29,7 @@ return {
             userDictPath = '~/projects/dotfiles/.config/shared/nvim/spell/harper_dict.txt',
             linters = {
                 SentenceCapitalization = false,
+                UseTitleCase = false,
                 --OrthographicConsistency = false,
             },
         },

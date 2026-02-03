@@ -168,3 +168,78 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
         vim.opt_local.formatoptions:remove({ 'c', 'r', 'o' })
     end,
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'markdown',
+    callback = function()
+        local function task_newline()
+            local line = vim.api.nvim_get_current_line()
+            local result = ''
+
+            if line:match('%-%s%[%s?([ x])]%s%-%s.+') then
+                result = '- [ ] - '
+            end
+
+            return result
+        end
+
+        local function mark_item_as_completed()
+            local line = vim.api.nvim_get_current_line()
+            local new_line = line:gsub('%-%s%[%s?([ x])]%s%-', function(mark)
+                return mark == ' ' and '- [x] -' or '- [ ] -'
+            end)
+            vim.api.nvim_set_current_line(new_line)
+        end
+
+        vim.keymap.set('v', '<leader>ch', function()
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'x', true)
+
+            local start_line = vim.fn.line('\'<')
+            local end_line = vim.fn.line('\'>')
+
+            for lnum = start_line, end_line do
+                local line = vim.api.nvim_buf_get_lines(0, lnum - 1, lnum, false)[1]
+                local new_line = line:gsub('%- %[%s?([ x])%s?%] %-', function(mark)
+                    return mark == ' ' and '- [x] -' or '- [ ] -'
+                end)
+                vim.api.nvim_buf_set_lines(0, lnum - 1, lnum, false, { new_line })
+            end
+        end, { noremap = true, silent = true })
+
+        vim.keymap.set('i', '<CR>', function()
+            return '<CR>' .. task_newline()
+        end, {
+            expr = true,
+            buffer = true,
+        })
+
+        vim.keymap.set('n', 'o', function()
+            return 'o' .. task_newline()
+        end, {
+            expr = true,
+            buffer = true,
+        })
+        vim.keymap.set('n', '<leader>ch', mark_item_as_completed)
+
+        vim.api.nvim_create_autocmd('BufWritePost', {
+            callback = function()
+                local bufnr = vim.api.nvim_get_current_buf()
+                local buffer_name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ':t:r')
+
+                local first = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1]
+
+                local header = {
+                    '---',
+                    string.format('id: %s', buffer_name),
+                    'aliases: []',
+                    'tags: []',
+                    '---',
+                }
+
+                if first ~= '---' then
+                    vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, header)
+                end
+            end,
+        })
+    end,
+})

@@ -14,7 +14,6 @@ ln -s -f ~/projects/dotfiles/bin/shared/* ~/bin/
 
 if [[ $os == "Darwin" ]]; then
     defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
-    #brew bundle --file=~/projects/dotfiles/Brewfile
     ln -s -f ~/projects/dotfiles/bin/macos/* ~/bin/
     ln -s -f ~/projects/dotfiles/.config/macos/* ~/.config/
     #ln -s -f ~/projects/dotfiles/.config/macos/karabiner/karabiner.json ~/.config/karabiner/karabiner.json

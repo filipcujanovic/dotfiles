@@ -19,6 +19,7 @@ local label = opts.item_options.front_app.show_label
             font = opts.font.default,
             padding_left = opts.item_options.front_app.show_icon and 5 or 0,
             padding_right = 0,
+            color = opts.color.active_color,
         }
     or {}
 

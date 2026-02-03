@@ -3,3 +3,7 @@ kettlebell
 sdk
 api
 js
+pronation
+supination
+deadlift
+delt

@@ -124,7 +124,7 @@ vim.keymap.set('n', '<leader>sj', ':SortJson<cr>', { desc = 'sort json' })
 vim.keymap.set('n', '<leader>cj', ':ConvertToJson<cr>', { desc = 'convert string to json string' })
 vim.keymap.set('n', '<leader>crp', ':CopyRelPath<cr>', { desc = 'copy relative path of buffer' })
 vim.keymap.set('n', '<leader>fc', ':FindConflict<cr>', { desc = 'find conflict' })
-vim.keymap.set('n', '<leader>mp', ':MarkdownPreviewToggle<cr>', { desc = 'markdown preview toggle' })
+--vim.keymap.set('n', '<leader>mp', ':MarkdownPreviewToggle<cr>', { desc = 'markdown preview toggle' })
 vim.keymap.set('n', '<leader>gt', function()
     local line_num = vim.fn.line('.')
     local file_path = vim.fn.expand('%:p')
@@ -142,13 +142,18 @@ end, { desc = 'open git file in browser ' })
 
 vim.keymap.set('n', '<leader>ot', ':ObsidianTags<cr>', { desc = 'open obsidian tags' })
 
-vim.keymap.set('n', '<leader>rr', function()
-    require('kulala').run()
-end, { desc = 'run request' })
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'http',
+    callback = function()
+        vim.keymap.set('n', '<leader>rr', function()
+            require('kulala').run()
+        end, { desc = 'run request' })
 
-vim.keymap.set('n', '<leader>re', function()
-    require('kulala').set_selected_env()
-end, { desc = 'select env' })
+        vim.keymap.set('n', '<leader>re', function()
+            require('kulala').set_selected_env()
+        end, { desc = 'select env' })
+    end,
+})
 
 vim.keymap.set('n', '<leader>lg', function()
     vim.fn.system('tmux display-popup -w 95% -h 90% -E -d ' .. vim.fn.shellescape(vim.fn.getcwd()) .. ' lazygit')

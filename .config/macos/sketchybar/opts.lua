@@ -9,7 +9,7 @@ M.height = 37
 M.item_options = {
     front_app = {
         enabled = true,
-        show_icon = true,
+        show_icon = false,
         show_label = true,
     },
     volume = {

@@ -43,7 +43,7 @@
             pkgs.gopls
             pkgs.harper
             pkgs.htop
-            pkgs.intelephense
+            #pkgs.intelephense
             pkgs.jankyborders
             pkgs.jq
             pkgs.kanata
@@ -132,7 +132,6 @@
               "hammerspoon"
               "hiddenbar"
               "homerow"
-              "karabiner-elements" # i need only this on my laptop
               "lulu"
               "macs-fan-control"
               "mouseless@preview"
@@ -140,6 +139,7 @@
               "sf-symbols"
               "signal"
               "spotify"
+              "the-unarchiver"
               "viber"
               "vlc"
               #"mysql-shell"
@@ -150,9 +150,6 @@
               "AdGuard for Safari" = 1440147259;
               "Adblock Plus" = 1432731683;
               "Noko" = 879917538;
-              "Numbers" = 409203825;
-              "Pages" = 409201541;
-              "The Unarchiver" = 425424353;
               "Wipr" = 1662217862;
               "WireGuard" = 1451685025;
               "ScreenBrush" = 1233965871;
@@ -190,14 +187,16 @@
 
           system = {
             defaults = {
+
               dock = {
                 autohide = true;
+                expose-group-apps = true;
+                largesize = 50;
+                launchanim = false;
+                magnification = true;
                 orientation = "left";
                 show-process-indicators = false;
                 show-recents = false;
-                launchanim = false;
-                magnification = true;
-                largesize = 30;
                 static-only = true;
                 tilesize = 10;
                 wvous-bl-corner = 1;
@@ -218,6 +217,7 @@
               menuExtraClock = {
                 Show24Hour = true;
                 ShowSeconds = true;
+                ShowDate = 2;
               };
               trackpad = {
                 Dragging = false;
@@ -232,6 +232,7 @@
                 KeyRepeat = 2;
                 InitialKeyRepeat = 12;
                 ApplePressAndHoldEnabled = false;
+                "com.apple.sound.beep.feedback" = 1;
                 "com.apple.swipescrolldirection" = false;
               };
             };
@@ -248,6 +249,22 @@
         };
     in
     {
+      darwinConfigurations."macmini" = nix-darwin.lib.darwinSystem {
+        modules = [
+          configuration
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              enableRosetta = true;
+              user = "cujanovic";
+              autoMigrate = true;
+            };
+          }
+          { homebrew.casks = [ "obs" ]; }
+        ];
+      };
+
       darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
         modules = [
           configuration
@@ -259,6 +276,9 @@
               user = "cujanovic";
               autoMigrate = true;
             };
+          }
+          {
+            homebrew.casks = [ "karabiner-elements" ];
           }
         ];
       };

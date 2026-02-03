@@ -81,11 +81,12 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 -- netrw config
-vim.g.netrw_localcopydircmd = 'cp -r'
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 15
-vim.g.netrw_liststyle = 0
-vim.g.netrw_browse_split = 0
+-- disable netrw
+--vim.g.netrw_localcopydircmd = 'cp -r'
+--vim.g.netrw_banner = 0
+--vim.g.netrw_winsize = 15
+--vim.g.netrw_liststyle = 0
+--vim.g.netrw_browse_split = 0
 
 vim.o.list = true
 -- Set the char for the indent line

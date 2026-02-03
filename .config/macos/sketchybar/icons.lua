@@ -15,6 +15,7 @@ local sf_symbols = {
     charging = '󱐋',
     clock = '􀐫',
     headphones = '􀑈',
+    mac_mini = '􂶹',
     hide = '􀋯',
     keyboard = '􀇳',
     laptop = '􀟛',
