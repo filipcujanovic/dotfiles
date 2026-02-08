@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+session_name=$1
+path=$2
+
+case "$session_name" in
+"log")
+    tmux new-session -d -s "$session_name" -c "$path"
+    tmux send-keys -t $session_name "phplogs" C-m
+    tmux split-window -h -t "$session_name:1"
+    tmux send-keys -t $session_name "locallogs" C-m
+    ;;
+"test")
+    tmux new-session -d -s "$session_name" -c "$path"
+    tmux send-keys -t $session_name "nvim" C-m
+    tmux split-window -h -l 30% -c "$path" -t "$session_name:1"
+    tmux send-keys -t $session_name "runlocalserver" C-m
+    tmux split-window -v -l 50% -c "$path" -t "$session_name:1"
+    ;;
+"newsboat")
+    tmux new-session -d -c "~/" -s "$session_name" newsboat
+    ;;
+"yazi")
+    tmux new-session -d -s "$session_name" -c "$3" "yazi --chooser-file=/tmp/current-yazi-file"
+    ;;
+*)
+    tmux-session-layouts-private "$session_name" "$path"
+    ;;
+esac

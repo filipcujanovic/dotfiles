@@ -50,13 +50,17 @@ return {
         })
     end,
     trigger_events = function()
-        battery_watcher:subscribe('routine', update_battery)
-        battery_watcher:subscribe('forced', update_battery)
-        battery_watcher:subscribe('power_source_change', function(env)
-            local charging = (env.INFO == 'AC')
-            if battery.charging ~= charging then
-                battery.charging = charging
-                sbar.trigger('battery_change', { percentage = battery.percentage, charging = charging })
+        sbar.exec('system_profiler SPHardwareDataType -json', function(result, exit_code)
+            if string.find(result.SPHardwareDataType[1]['machine_name'], 'Mac mini') == nil then
+                battery_watcher:subscribe('routine', update_battery)
+                battery_watcher:subscribe('forced', update_battery)
+                battery_watcher:subscribe('power_source_change', function(env)
+                    local charging = (env.INFO == 'AC')
+                    if battery.charging ~= charging then
+                        battery.charging = charging
+                        sbar.trigger('battery_change', { percentage = battery.percentage, charging = charging })
+                    end
+                end)
             end
         end)
     end,

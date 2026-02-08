@@ -47,13 +47,17 @@ if string.match(db_dir, 'db%-collection') then
 
         local node = vim.treesitter.get_node()
         while node do
-            if node:type() == 'statement' then
+            if node:type() == 'statement' or node:type() == 'ERROR' then
+                local statement = vim.treesitter.get_node_text(node, bufnr):gsub('\n', ' '):gsub('%s+', ' ') .. '\\G'
+                if node:type() == 'ERROR' and not statement:match('^CALL%s') then
+                    break
+                end
                 vim.api.nvim_buf_clear_namespace(bufnr, visual_selection_namespace, 0, -1)
                 local sr, _, er, _ = node:range()
                 for line = sr, er do
                     vim.api.nvim_buf_add_highlight(bufnr, visual_selection_namespace, 'Visual', line, 0, -1)
                 end
-                return vim.treesitter.get_node_text(node, bufnr):gsub('\n', ' '):gsub('%s+', ' ') .. '\\G'
+                return node:type() == 'ERROR' and statement:gsub(';', '') or statement
             end
             node = node:parent()
         end
