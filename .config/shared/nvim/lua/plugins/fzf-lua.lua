@@ -69,6 +69,11 @@ return {
         vim.keymap.set('n', '<leader>sh', fzf.helptags, { desc = '[S]earch [H]elp' })
         vim.keymap.set('n', '<leader>sw', fzf.grep_cword, { desc = '[S]earch current [W]ord' })
         vim.keymap.set('n', '<leader>sg', fzf.live_grep, { desc = '[S]earch by [G]rep' })
+        vim.keymap.set('n', '<leader>sc', function()
+            fzf.live_grep({
+                rg_opts = '--column --line-number --no-heading --case-sensitive --max-columns=4096',
+            })
+        end, { desc = 'search case sensitive' })
         vim.keymap.set('n', '<leader>sd', fzf.diagnostics_document, { desc = '[S]earch [D]iagnostics' })
         vim.keymap.set('n', '<leader>ss', fzf.spell_suggest, { desc = '[S]ell [S]suggest' })
         vim.keymap.set('n', '<leader>sr', fzf.resume, { desc = '[S]earch [R]esume' })

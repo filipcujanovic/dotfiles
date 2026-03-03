@@ -11,9 +11,12 @@ background-blur-radius = 20
 window-padding-x = 10,10
 window-padding-y = 10,10
 cursor-text = 000000
+cursor-color = d65d0e
 link-url = true
 confirm-close-surface = false
 quit-after-last-window-closed = true
 macos-option-as-alt = true
+
+custom-shader = shaders/cursor_tail.glsl
 
 keybind = super+r=reload_config

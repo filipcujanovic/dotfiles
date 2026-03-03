@@ -88,17 +88,18 @@ if string.match(db_dir, 'db%-collection') then
         --local t0 = vim.loop.hrtime()
 
         local processed = get_query_string(bufnr)
-        local full_cmd = cmd .. ' > ' .. vim.fn.shellescape(outfile)
-        local vim_cmd = string.format('silent !echo "%s" | %s', processed, full_cmd)
+        local full_cmd = cmd .. ' > ' .. vim.fn.shellescape(outfile) .. ' 2>&1'
+        local vim_cmd = string.format('silent !echo "%s" | %s ', processed, full_cmd)
 
         if filetype == 'javascript' then
             outfile = db_dir .. '/output.json'
             processed = processed:gsub('\'', '"')
-            full_cmd = string.format('%s | jq > %s ', cmd, vim.fn.shellescape(outfile))
+            full_cmd = string.format('%s | jq > %s 2>&1', cmd, vim.fn.shellescape(outfile))
             processed = string.format('JSON.stringify(%s)', processed)
             vim_cmd = string.format(string.format('silent !%s | jq', full_cmd), processed)
         end
         local abs_out = vim.fn.fnamemodify(outfile, ':p')
+        vim.cmd(string.format('silent !echo "%s" > /tmp/sql-runner-log', processed))
 
         --vim.api.nvim_echo({ { '[sql-runner] Executing: ' .. vim_cmd, 'Comment' } }, false, {})
 

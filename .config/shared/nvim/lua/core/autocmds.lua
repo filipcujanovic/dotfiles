@@ -172,6 +172,9 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'markdown',
     callback = function()
+        if vim.bo.filetype ~= 'markdown' then
+            return
+        end
         local function task_newline()
             local line = vim.api.nvim_get_current_line()
             local result = ''
@@ -222,7 +225,11 @@ vim.api.nvim_create_autocmd('FileType', {
         vim.keymap.set('n', '<leader>ch', mark_item_as_completed)
 
         vim.api.nvim_create_autocmd('BufWritePost', {
+            pattern = '*.md',
             callback = function()
+                if vim.bo.filetype ~= 'markdown' then
+                    return
+                end
                 local bufnr = vim.api.nvim_get_current_buf()
                 local buffer_name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ':t:r')
 

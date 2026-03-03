@@ -2,6 +2,7 @@ local tmux_directions = { ['h'] = 'L', ['j'] = 'D', ['k'] = 'U', ['l'] = 'R' }
 
 local function vim_navigate_windows(direction)
     vim.cmd(string.format('wincmd %s', direction))
+    --vim.cmd('startinsert')
 end
 
 local function vim_navigate_tab(direction)
@@ -22,6 +23,7 @@ local function tmux_navigate_window(direction)
 end
 
 local function navigate(direction)
+    --vim.cmd('stopinsert')
     if direction == 'n' or direction == 'p' then
         local tabnr = vim.fn.tabpagenr()
         local last_tab_number = vim.fn.tabpagenr('$')
@@ -62,9 +64,14 @@ local navigate_previous_tab = function()
     navigate('p')
 end
 
-vim.keymap.set('n', '<C-s>l', navigate_right, { silent = true })
-vim.keymap.set('n', '<C-s>h', navigate_left, { silent = true })
-vim.keymap.set('n', '<C-s>k', navigate_up, { silent = true })
-vim.keymap.set('n', '<C-s>j', navigate_down, { silent = true })
+local modes = {
+    'n',
+    --'t',
+}
+
+vim.keymap.set(modes, '<C-s>l', navigate_right, { silent = true })
+vim.keymap.set(modes, '<C-s>h', navigate_left, { silent = true })
+vim.keymap.set(modes, '<C-s>k', navigate_up, { silent = true })
+vim.keymap.set(modes, '<C-s>j', navigate_down, { silent = true })
 --vim.keymap.set('n', '<C-s>n', navigate_next_tab, { silent = true })
 --vim.keymap.set('n', '<C-s>p', navigate_previous_tab, { silent = true })

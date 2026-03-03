@@ -1,5 +1,4 @@
 local sf_symbols = {
-    --separator = '􀆊',
     airpod_left = '􀲎',
     airpod_right = '􀲍',
     airpods = '􀪷',
@@ -26,6 +25,7 @@ local sf_symbols = {
     play = '􀊃',
     previous = '􀊍',
     reset = '􀅉',
+    --separator = '􀆊',
     separator = '􀆓',
     show = '􀋭',
     speaker = '􀝎',

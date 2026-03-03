@@ -6,6 +6,8 @@ export SAVEHIST=$HISTSIZE
 export HISTFILE=~/.zsh_history
 export VISUAL=nvim
 export EDITOR=nvim
+unset TERMINFO
+export TERMINFO_DIRS=$TERMINFO_DIRS":/Applications/kitty.app/Contents/Resources/kitty/terminfo:/Applications/Nix Apps/Ghostty.app/Contents/Resources/terminfo"
 
 #export SQL_EDITOR=lazy-sql-editor
 #export SQL_TERMINAL=lazy-sql-terminal

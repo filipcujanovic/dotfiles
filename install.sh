@@ -18,7 +18,6 @@ if [[ $os == "Darwin" ]]; then
     ln -s -f ~/projects/dotfiles/.config/macos/* ~/.config/
     #ln -s -f ~/projects/dotfiles/.config/macos/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
     #ln -s -f ~/projects/dotfiles/.config/macos/lazysql/config.yaml ~/Library/Application\ Support/lazysql/config.toml
-    #curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/latest/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
 else
     ln -s -f ~/projects/dotfiles/.config/linux/* ~/.config/
     ln -s -f ~/projects/dotfiles/bin/linux/* ~/bin/

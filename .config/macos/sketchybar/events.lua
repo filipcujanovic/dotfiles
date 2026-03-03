@@ -38,6 +38,7 @@ return {
         sbar.add('event', 'timew-start')
         sbar.add('event', 'timew-stop')
         sbar.add('event', 'builtin_display_change')
+        sbar.add('event', 'media_stream_changed')
         sbar.add('event', 'spotify_change', 'com.spotify.client.PlaybackStateChanged')
         sbar.add('event', 'battery_change')
         battery_watcher = sbar.add('item', {

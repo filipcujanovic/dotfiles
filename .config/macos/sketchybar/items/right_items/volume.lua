@@ -25,6 +25,12 @@ local get_device_icon = function(device)
         }
     end
 
+    if string.match(device, 'EH11') then
+        return {
+            string = icons.headphones,
+        }
+    end
+
     if string.match(device, 'Mac mini') then
         return {
             string = icons.mac_mini,

@@ -22,3 +22,5 @@ selected_item=$(
 if [ ! -z "${selected_item}" ]; then
     open "$selected_item"
 fi
+
+kill $PPID

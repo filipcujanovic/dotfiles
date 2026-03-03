@@ -21,13 +21,16 @@
         {
           nixpkgs.config.allowUnfree = true;
           environment.systemPackages = [
+            #pkgs.choose-gui
+            #pkgs.intelephense
+            #pkgs.marksman
+            #pkgs.sketchybar
             pkgs.android-tools
-            pkgs.aerospace
             pkgs.bash-language-server
             pkgs.bat
             pkgs.btop
             pkgs.chafa
-            #pkgs.choose-gui
+            pkgs.commitizen
             pkgs.coreutils
             pkgs.delta
             pkgs.docker-compose
@@ -43,18 +46,21 @@
             pkgs.gopls
             pkgs.harper
             pkgs.htop
-            #pkgs.intelephense
             pkgs.jankyborders
             pkgs.jq
             pkgs.kanata
             pkgs.keycastr
+            pkgs.keymap-drawer
+            pkgs.lazydocker
             pkgs.lazygit
             pkgs.lazysql
+            pkgs.localtunnel
             pkgs.lua-language-server
             pkgs.lua5_4_compat
             pkgs.maccy
-            #pkgs.marksman
+            pkgs.markdown-oxide
             pkgs.mkcert
+            pkgs.mongosh
             pkgs.mpremote
             pkgs.mycli
             pkgs.mysql-shell
@@ -63,19 +69,18 @@
             pkgs.ngrok
             pkgs.nixfmt
             pkgs.php
-            pkgs.pkgs.commitizen
+            pkgs.prettier
             pkgs.pyright
             pkgs.rar
             pkgs.ripgrep
             pkgs.rust-analyzer
             pkgs.shfmt
-            pkgs.sketchybar
-            pkgs.spotify-player
             pkgs.sql-formatter
             pkgs.sqlitebrowser
             pkgs.sqls
             pkgs.stylua
             pkgs.switchaudio-osx
+            pkgs.taplo
             pkgs.thonny
             pkgs.timewarrior
             pkgs.tmux
@@ -85,6 +90,7 @@
             pkgs.visidata
             pkgs.vscode-extensions.xdebug.php-debug
             pkgs.vscode-langservers-extracted
+            pkgs.watch
             pkgs.wezterm
             pkgs.wireguard-tools
             pkgs.yazi
@@ -102,43 +108,49 @@
           homebrew = {
             enable = true;
             taps = [
+              "FelixKratz/formulae"
               "acsandmann/tap"
               "mongodb/brew"
               "tonisives/tap"
+              "nikitabobko/tap"
             ];
             brews = [
+              "acsandmann/tap/rift"
               "choose-gui"
               "lua"
               "marksman"
               "mas"
               "media-control"
               "mongodb-database-tools"
-              "mongosh"
               "newsboat"
               "nvm"
-              "nx"
               "pipx"
+              "sketchybar"
             ];
             casks = [
+              "aerospace"
               "affinity"
               "balenaetcher"
               "betterdisplay"
+              "calibre"
+              "claude-code"
               "docker-desktop"
               "espanso"
               "font-sf-mono"
               "font-sf-mono-nerd-font-ligaturized"
               "font-sf-pro"
+              "font-sketchybar-app-font"
               "hakuneko"
               "hammerspoon"
-              "hiddenbar"
               "homerow"
+              "kitty"
               "lulu"
               "macs-fan-control"
+              "mongodb-compass"
               "mouseless@preview"
               "pearcleaner"
               "sf-symbols"
               "signal"
-              "spotify"
               "the-unarchiver"
               "viber"
               "vlc"
@@ -168,13 +180,6 @@
           };
 
           services = {
-            aerospace = {
-              enable = true;
-              settings = pkgs.lib.importTOML ../macos/aerospace/aerospace.toml;
-            };
-            sketchybar = {
-              enable = true;
-            };
             jankyborders = {
               enable = false;
               style = "round";
@@ -227,6 +232,7 @@
               universalaccess.reduceTransparency = false;
 
               NSGlobalDomain = {
+                NSWindowShouldDragOnGesture = true;
                 AppleInterfaceStyle = "Dark";
                 _HIHideMenuBar = true;
                 KeyRepeat = 2;
@@ -278,7 +284,10 @@
             };
           }
           {
-            homebrew.casks = [ "karabiner-elements" ];
+            homebrew.casks = [
+              "karabiner-elements"
+              "hiddenbar"
+            ];
           }
         ];
       };

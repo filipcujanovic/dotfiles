@@ -2,7 +2,7 @@
 after-login-command = []
 
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+after-startup-command = ['exec-and-forget media-stream']
 
 #after-startup-command = ['exec-and-forget sketchybar']
 
@@ -103,25 +103,26 @@ alt-right = 'move right'
 #alt-shift-l = 'resize smart-opposite +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-p = 'workspace personal'
 alt-c = 'workspace chats'
-alt-m = 'workspace misc'
+alt-m = 'workspace music'
+alt-p = 'workspace personal'
 alt-t = 'workspace terminal'
 alt-w = 'workspace work'
-alt-q = 'workspace q'
+alt-z = 'workspace zone'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-p = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window personal && sketchybar --trigger custom_space_windows_change'
 alt-shift-c = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window chats && sketchybar --trigger custom_space_windows_change'
-alt-shift-m = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window misc && sketchybar --trigger custom_space_windows_change'
+alt-shift-m = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window musci && sketchybar --trigger custom_space_windows_change'
+alt-shift-p = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window personal && sketchybar --trigger custom_space_windows_change'
 alt-shift-t = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window terminal && sketchybar --trigger custom_space_windows_change'
 alt-shift-w = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window work && sketchybar --trigger custom_space_windows_change'
-alt-shift-q = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window q && sketchybar --trigger custom_space_windows_change'
-#alt-shift-p = 'move-node-to-workspace --focus-follows-window personal'
+alt-shift-z = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window zone && sketchybar --trigger custom_space_windows_change'
 #alt-shift-c = 'move-node-to-workspace --focus-follows-window chats'
-#alt-shift-m = 'move-node-to-workspace --focus-follows-window misc'
+#alt-shift-m = 'move-node-to-workspace --focus-follows-window music'
+#alt-shift-p = 'move-node-to-workspace --focus-follows-window personal'
 #alt-shift-t = 'move-node-to-workspace --focus-follows-window terminal'
 #alt-shift-w = 'move-node-to-workspace --focus-follows-window work'
+#alt-shift-z = 'move-node-to-workspace --focus-follows-window zone'
 
 cmd-space = 'exec-and-forget app-launcher'
 cmd-shift-w = 'exec-and-forget terminal-picker change-wallpaper'
@@ -199,20 +200,28 @@ if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace terminal'
 
 [[on-window-detected]]
+if.app-id = 'net.kovidgoyal.kitty'
+run = 'move-node-to-workspace terminal'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = 'move-node-to-workspace misc'
+run = 'move-node-to-workspace music'
 
 [[on-window-detected]]
-if.app-id = 'com.spotify.client'
-run = 'move-node-to-workspace misc'
+if.app-name-regex-substring = 'Spotify'
+run = 'move-node-to-workspace music'
 
-#[[on-window-detected]]
-#if.app-id = 'com.apple.Safari'
-#run = 'move-node-to-workspace work'
+[[on-window-detected]]
+if.app-name-regex-substring = 'Slack'
+run = 'move-node-to-workspace chats'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Discord'
+run = 'move-node-to-workspace chats'
 
 [[on-window-detected]]
 if.app-id = 'com.vivaldi.Vivaldi'
@@ -220,8 +229,13 @@ run = 'move-node-to-workspace personal'
 
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
-if.window-title-regex-substring = 'private'
+if.window-title-regex-substring = 'personal'
 run = 'move-node-to-workspace personal'
+
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
+if.window-title-regex-substring = 'zone'
+run = 'move-node-to-workspace zone'
 
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
@@ -243,7 +257,7 @@ run = 'move-node-to-workspace chats'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'YouTube'
-run = 'move-node-to-workspace misc'
+run = 'move-node-to-workspace music'
 
 [[on-window-detected]]
 if.app-id = 'com.alienator88.Pearcleaner'
@@ -277,14 +291,9 @@ run = 'layout floating'
 if.window-title-regex-substring = 'file-search'
 run = 'layout floating'
 
-[[on-window-detected]]
-if.app-name-regex-substring = 'kitty'
-run = 'layout floating'
-
 [workspace-to-monitor-force-assignment]
     'personal' = 'main'
     'chats' = 'main'
     'terminal' = 'main'
     'work' = 'main'
-    'misc' = 'main'
-    'q' = 'secondary'
+    'music' = 'main'

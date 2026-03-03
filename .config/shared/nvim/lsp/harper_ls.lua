@@ -27,6 +27,7 @@ return {
     settings = {
         ['harper-ls'] = {
             userDictPath = '~/projects/dotfiles/.config/shared/nvim/spell/harper_dict.txt',
+            excludePatterns = { '*ideje*' },
             linters = {
                 SentenceCapitalization = false,
                 UseTitleCase = false,

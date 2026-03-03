@@ -16,3 +16,4 @@ background_color = [0.09, 0.09, 0.09]
 blur = false
 show_icons = false
 show_scroll_bar = true
+background_opacity = 0.7

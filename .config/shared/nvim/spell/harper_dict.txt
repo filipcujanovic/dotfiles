@@ -7,3 +7,5 @@ pronation
 supination
 deadlift
 delt
+hypers
+hyperextensions
