@@ -2,15 +2,20 @@
 after-login-command = []
 
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = ['exec-and-forget media-stream']
+after-startup-command = [
+  'exec-and-forget media-stream',
+  'exec-and-forget sketchybar',
+]
 
 #after-startup-command = ['exec-and-forget sketchybar']
 
 # Notify Sketchybar about workspace change
-exec-on-workspace-change = ['/bin/bash', '-c',
-    #'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE; aerospace list-windows --all | grep "Picture in Picture" | cut -d"|" -f1 | xargs aerospace move-node-to-workspace $AEROSPACE_FOCUSED_WORKSPACE --window-id',
-    #'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE; aerospace list-windows --all | grep "zsh" | cut -d"|" -f1 | xargs aerospace move-node-to-workspace $AEROSPACE_FOCUSED_WORKSPACE --window-id',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE;',
+exec-on-workspace-change = [
+  '/bin/bash',
+  '-c',
+  #'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE; aerospace list-windows --all | grep "Picture in Picture" | cut -d"|" -f1 | xargs aerospace move-node-to-workspace $AEROSPACE_FOCUSED_WORKSPACE --window-id',
+  #'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE; aerospace list-windows --all | grep "zsh" | cut -d"|" -f1 | xargs aerospace move-node-to-workspace $AEROSPACE_FOCUSED_WORKSPACE --window-id',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE;',
 ]
 
 #start-at-login = true
@@ -32,7 +37,10 @@ key-mapping.preset = 'qwerty'
 
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # enable this to show apps per workspace
-on-focus-changed = ['exec-and-forget sketchybar --trigger custom_space_windows_change', 'move-mouse window-lazy-center']
+on-focus-changed = [
+  'exec-and-forget sketchybar --trigger custom_space_windows_change',
+  'move-mouse window-lazy-center',
+]
 #on-focus-changed = ['move-mouse window-lazy-center']
 
 
@@ -44,10 +52,10 @@ gaps.outer.left = 0
 gaps.outer.right = 0
 gaps.outer.bottom = 0
 gaps.outer.top = [
-    { monitor."built-in" = 10 },
-    { monitor.main = 37 }, # sketchybar height is 37
-    { monitor.secondary = 5 },
-    20
+  { monitor."built-in" = 10 },
+  { monitor.main = 37 },       # sketchybar height is 37
+  { monitor.secondary = 5 },
+  20,
 ]
 
 
@@ -124,7 +132,7 @@ alt-shift-z = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-
 #alt-shift-w = 'move-node-to-workspace --focus-follows-window work'
 #alt-shift-z = 'move-node-to-workspace --focus-follows-window zone'
 
-cmd-space = 'exec-and-forget app-launcher'
+#cmd-space = 'exec-and-forget app-launcher'
 cmd-shift-w = 'exec-and-forget terminal-picker change-wallpaper'
 cmd-shift-s = 'exec-and-forget terminal-picker file-search'
 alt-f = 'exec-and-forget open ~'
@@ -138,33 +146,84 @@ alt-enter = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-shift-semicolon = ['mode service', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=service']
+alt-shift-semicolon = [
+  'mode service',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=service',
+]
 
-alt-r = ['mode resize', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=resize']
+alt-r = [
+  'mode resize',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=resize',
+]
 
 [mode.resize.binding]
 h = 'resize smart -50'
 l = 'resize smart +50'
 j = 'resize smart-opposite -50'
 k = 'resize smart-opposite +50'
-enter = ['mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
-esc = ['mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
-q = ['mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
-space = ['mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
+
+enter = [
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+esc = [
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+q = [
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+space = [
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-esc = ['reload-config', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
-r = ['flatten-workspace-tree', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main'] # reset layout
+esc = [
+  'reload-config',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+r = [
+  'flatten-workspace-tree',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+] # reset layout
 #s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = ['layout floating tiling', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main'] # Toggle between floating and tiling layout
-backspace = ['close-all-windows-but-current', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
+f = [
+  'layout floating tiling',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+] # Toggle between floating and tiling layout
+backspace = [
+  'close-all-windows-but-current',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
 
-alt-h = ['join-with left', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
-alt-j = ['join-with down', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
-alt-k = ['join-with up', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
-alt-l = ['join-with right', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
+alt-h = [
+  'join-with left',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+alt-j = [
+  'join-with down',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+alt-k = [
+  'join-with up',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+alt-l = [
+  'join-with right',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
 enter = 'mode main'
 q = 'mode main'
 
@@ -288,12 +347,24 @@ if.app-id = 'com.apple.iWork.Numbers'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.valvesoftware.steam'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.valvesoftware.steam.helper'
+run = 'layout floating'
+
+#[[on-window-detected]]
+#if.app-id = 'com.innersloth.amongus'
+#run = 'layout floating'
+
+[[on-window-detected]]
 if.window-title-regex-substring = 'file-search'
 run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
-    'personal' = 'main'
-    'chats' = 'main'
-    'terminal' = 'main'
-    'work' = 'main'
-    'music' = 'main'
+'personal' = 'main'
+'chats' = 'main'
+'terminal' = 'main'
+'work' = 'main'
+'music' = 'main'

@@ -1,7 +1,7 @@
 require('items.right_items.calendar')
 require('items.right_items.keyboard-layout')
 require('items.right_items.battery')
-require('items.right_items.volume')
+require('items.right_items.sound_device')
 require('items.right_items.media-control')
 --require('items.right_items.spotify-app')
 --require('items.right_items.spotify-player')

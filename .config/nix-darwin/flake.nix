@@ -81,6 +81,7 @@
             pkgs.stylua
             pkgs.switchaudio-osx
             pkgs.taplo
+            pkgs.terminal-notifier
             pkgs.thonny
             pkgs.timewarrior
             pkgs.tmux
@@ -103,6 +104,7 @@
           fonts.packages = [
             pkgs.nerd-fonts.victor-mono
             pkgs.nerd-fonts.caskaydia-cove
+            pkgs.nerd-fonts.symbols-only
           ];
 
           homebrew = {
@@ -110,13 +112,16 @@
             taps = [
               "FelixKratz/formulae"
               "acsandmann/tap"
+              "chojs23/tap"
+              "mikker/tap"
               "mongodb/brew"
-              "tonisives/tap"
               "nikitabobko/tap"
+              "tonisives/tap"
             ];
             brews = [
               "acsandmann/tap/rift"
               "choose-gui"
+              "ec"
               "lua"
               "marksman"
               "mas"
@@ -131,6 +136,7 @@
               "aerospace"
               "affinity"
               "balenaetcher"
+              "tuna"
               "betterdisplay"
               "calibre"
               "claude-code"
@@ -154,6 +160,7 @@
               "the-unarchiver"
               "viber"
               "vlc"
+              #"helium-browser"
               #"mysql-shell"
               #"ovim"
             ];
@@ -161,10 +168,11 @@
               "AdBlock Pro" = 1018301773;
               "AdGuard for Safari" = 1440147259;
               "Adblock Plus" = 1432731683;
+              "Better Clipboard" = 6756281636;
               "Noko" = 879917538;
+              "ScreenBrush" = 1233965871;
               "Wipr" = 1662217862;
               "WireGuard" = 1451685025;
-              "ScreenBrush" = 1233965871;
               "Xcode" = 497799835;
             };
             onActivation.cleanup = "zap";

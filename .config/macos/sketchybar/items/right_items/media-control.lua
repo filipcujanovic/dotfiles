@@ -80,7 +80,7 @@ media:subscribe('media_stream_changed', function(env)
     local artist = env.artist ~= nil and env.artist or ''
     local title = env.title ~= nil and env.title or ''
     local label = string.format('%s - %s', artist, title)
-    label = io.popen(string.format('echo "%s" | awk \'{print tolower($0)}\'', label)):read('*a')
+    label = io.popen(string.format('echo "%s" | LC_ALL=en_US.UTF-8 awk \'{print tolower($0)}\'', label)):read('*a')
     local icon_drawing = false
 
     if env.playing == 'true' then

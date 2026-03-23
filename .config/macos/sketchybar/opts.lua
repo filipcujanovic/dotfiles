@@ -38,8 +38,8 @@ M.item_options = {
 }
 
 M.window_manager = {
-    aerospace = false,
-    rift = true,
+    aerospace = true,
+    rift = false,
 }
 
 M.notch_width = {

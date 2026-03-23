@@ -4,7 +4,7 @@ local opts = require('opts')
 local sbar = require('sketchybar')
 local icons = require('icons')
 local window_manager_commands = require('items.left_items.window-manager-commands')
-local active_color = opts.color.neutral_green
+local active_color = opts.color.green
 
 local separator = sbar.add('item', 'separator', {
     padding_left = 0,

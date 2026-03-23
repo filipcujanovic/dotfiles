@@ -7,45 +7,55 @@ local inactive_color = opts.color.inactive_color
 local current_device = io.popen('SwitchAudioSource -c -t output'):read('*a'):gsub('^%s*(.-)%s*$', '%1')
 
 local get_device_icon = function(device)
-    if string.match(device, 'MacBook Pro') then
+    device = string.lower(device)
+    if string.match(device, 'macbook pro') then
         return {
             string = icons.laptop,
         }
     end
 
-    if string.match(device, 'AirPods') then
+    if string.match(device, 'airpods') then
         return {
             string = icons.airpods,
         }
     end
 
-    if string.match(device, 'Headphone') then
-        return {
-            string = icons.headphones,
-        }
-    end
-
-    if string.match(device, 'EH11') then
-        return {
-            string = icons.headphones,
-        }
-    end
-
-    if string.match(device, 'Mac mini') then
-        return {
-            string = icons.mac_mini,
-        }
-    end
-
-    if string.match(device, 'EMBERTON') or string.match(device, 'Dock') then
+    if string.match(device, 'emberton') or string.match(device, 'dock') or string.match(device, 'headphone jack') then
         return {
             string = icons.speaker,
+            padding_left = 10,
+        }
+    end
+
+    if string.match(device, 'headphone') then
+        return {
+            string = icons.headphones,
+        }
+    end
+
+    if string.match(device, 'eh11') then
+        return {
+            string = icons.headphones,
+        }
+    end
+
+    if string.match(device, 'mac mini') then
+        return {
+            string = icons.mac_mini,
         }
     end
 
     return {
         string = icons.monitor,
     }
+end
+
+local get_device_string = function(device)
+    device = string.lower(device)
+    if string.match(device, 'headphone jack') then
+        return 'headphone jack adapter'
+    end
+    return device
 end
 
 local current_device_icon = get_device_icon(current_device).string
@@ -181,13 +191,14 @@ local show_all_devices = function(env)
                 position = 'popup.' .. device.name,
                 icon = get_device_icon(input_device),
                 label = {
-                    string = input_device,
+                    string = get_device_string(input_device),
                     padding_left = 20,
                     color = color,
                 },
                 background = { color = opts.color.transparent },
             })
-            bar_device:subscribe('mouse.clicked', function(env)
+            bar_device:subscribe('mouse.clicked', function(mouse_click_env)
+                print(utils.json.encode(mouse_click_env))
                 sbar.exec('SwitchAudioSource -s "' .. input_device .. '"')
                 device:set({ popup = { drawing = 'toggle' } })
                 device:set({ icon = { string = get_device_icon(input_device).string } })

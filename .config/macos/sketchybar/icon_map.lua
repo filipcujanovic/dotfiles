@@ -49,7 +49,7 @@ M.get_icon = function(app, is_front_app)
     }
     return {
         string = icons_map[app] ~= nil and icons_map[app] or ':default:',
-        font = app == 'Rakuten Viber' and fonts.viber or fonts.other,
+        font = app == 'rakuten viber' and fonts.viber or fonts.other,
     }
 end
 

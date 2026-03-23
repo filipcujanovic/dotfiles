@@ -24,10 +24,13 @@ config = {
     --background = wallpaper,
     window_padding = {
         bottom = 0,
+        right = 10,
+        left = 10,
+        top = 5,
     },
     keys = keys,
     max_fps = 120,
-    font_size = 14,
+    font_size = 16,
     front_end = 'WebGpu',
     animation_fps = 120,
     enable_tab_bar = false,
@@ -45,7 +48,7 @@ config = {
     --font = wezterm.font('Liga SFono Nerd Font'),
     --font = wezterm.font('Iosevka Nerd Font'),
     --font = wezterm.font('FiraCode Nerd Font'),
-    font = wezterm.font('VictorMono Nerd Font', { weight = 'Medium' }),
+    font = wezterm.font('Liga SFMono Nerd Font', {}),
     --colors = {
     --    background = '#000000',
     --},

@@ -172,7 +172,8 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'markdown',
     callback = function()
-        if vim.bo.filetype ~= 'markdown' then
+        local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+        if vim.bo.filetype ~= 'markdown' or dir_name ~= 'the-never-ending-hole' then
             return
         end
         local function task_newline()

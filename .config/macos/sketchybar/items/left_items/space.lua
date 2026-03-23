@@ -4,8 +4,8 @@ local window_manager_commands = require('items.left_items.window-manager-command
 
 local focused_space = window_manager_commands.get_focused_workspace()
 local all_spaces = window_manager_commands.get_workspaces_list()
-local active_color = opts.color.blue
-local inactive_color = opts.color.red
+local active_color = opts.color.dark_green
+local inactive_color = opts.color.neutral_yellow
 local space_border_items = {}
 local spaces = {}
 
@@ -17,17 +17,17 @@ for space_id, space_name in pairs(all_spaces) do
         position = 'left',
         padding_left = 0,
         padding_right = 0,
+        icon = {
+            font = opts.font.default,
+            string = space_name:sub(1, 1),
+            color = space_name == focused_space and active_color or inactive_color,
+        },
         label = {
             align = 'center',
             string = space_name:sub(2),
             font = opts.font.default,
             padding_left = 0,
             color = space_name == focused_space and active_color or inactive_color,
-        },
-        icon = {
-            font = opts.font.default,
-            string = space_name:sub(1, 1),
-            color = space_name == focused_space and active_color or opts.color.red,
         },
     })
 
@@ -43,7 +43,7 @@ for space_id, space_name in pairs(all_spaces) do
         local inactive_conf = {
             drawing = spaces[space_name].drawing,
             label = { color = inactive_color },
-            icon = { color = opts.color.red },
+            icon = { color = inactive_color },
         }
 
         if env.FOCUSED_WORKSPACE == space_name then
@@ -61,8 +61,11 @@ for space_id, space_name in pairs(all_spaces) do
 
     space:subscribe('custom_space_windows_change', function(_)
         space:set({
+            icon = {
+                string = space_name:sub(1, 1),
+            },
             label = {
-                string = space_name,
+                string = space_name:sub(2),
             },
         })
     end)
