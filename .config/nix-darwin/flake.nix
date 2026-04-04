@@ -65,7 +65,7 @@
             pkgs.mycli
             pkgs.mysql-shell
             pkgs.mysql84
-            pkgs.neovim
+            #pkgs.neovim
             pkgs.ngrok
             pkgs.nixfmt
             pkgs.php
@@ -113,6 +113,7 @@
               "FelixKratz/formulae"
               "acsandmann/tap"
               "chojs23/tap"
+              "daipeihust/tap"
               "mikker/tap"
               "mongodb/brew"
               "nikitabobko/tap"
@@ -122,11 +123,14 @@
               "acsandmann/tap/rift"
               "choose-gui"
               "ec"
+              "gh"
+              "im-select"
               "lua"
               "marksman"
-              "mas"
+              #"mas"
               "media-control"
               "mongodb-database-tools"
+              "neovim"
               "newsboat"
               "nvm"
               "pipx"
@@ -136,7 +140,6 @@
               "aerospace"
               "affinity"
               "balenaetcher"
-              "tuna"
               "betterdisplay"
               "calibre"
               "claude-code"
@@ -165,18 +168,18 @@
               #"ovim"
             ];
             masApps = {
-              "AdBlock Pro" = 1018301773;
-              "AdGuard for Safari" = 1440147259;
-              "Adblock Plus" = 1432731683;
-              "Better Clipboard" = 6756281636;
-              "Noko" = 879917538;
-              "ScreenBrush" = 1233965871;
-              "Wipr" = 1662217862;
-              "WireGuard" = 1451685025;
-              "Xcode" = 497799835;
+              #"Better Clipboard" = 6756281636;
+              #"ScreenBrush" = 1233965871;
+              #"AdBlock Pro" = 1018301773;
+              #"AdGuard for Safari" = 1440147259;
+              #"Adblock Plus" = 1432731683;
+              #"Noko" = 879917538;
+              #"Wipr" = 1662217862;
+              #"WireGuard" = 1451685025;
+              #"Xcode" = 497799835;
             };
             onActivation.cleanup = "zap";
-            onActivation.autoUpdate = true;
+            #onActivation.autoUpdate = true;
             onActivation.upgrade = true;
           };
 

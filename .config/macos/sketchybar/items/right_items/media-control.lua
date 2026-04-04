@@ -1,4 +1,4 @@
-local opts = require('opts')
+local options = require('options')
 local sbar = require('sketchybar')
 local icons = require('icons')
 local utils = require('utils')
@@ -8,18 +8,19 @@ local media = sbar.add('item', 'media', {
     scroll_texts = true,
     updates = true,
     padding_left = 10,
-    padding_right = 0,
+    padding_right = 10,
     update_freq = 1,
     icon = {
         padding_left = 0,
         padding_right = 0,
         string = icons.media_icon,
         drawing = false,
+        color = options.color.green,
     },
     label = {
         padding_left = 0,
         padding_right = 0,
-        color = opts.color.orange,
+        color = options.color.orange,
         max_chars = 30,
         string = '',
     },
@@ -36,7 +37,7 @@ sbar.add('item', {
         padding_left = 10,
         padding_right = 10,
     },
-    background = { color = opts.color.transparent },
+    background = { color = options.color.transparent },
 }):subscribe('mouse.clicked', function()
     sbar.exec('media-control prevous-track')
     media:set({ popup = { drawing = false } })
@@ -48,7 +49,7 @@ local playpause = sbar.add('item', {
         padding_left = 10,
         padding_right = 10,
     },
-    background = { color = opts.color.transparent },
+    background = { color = options.color.transparent },
 })
 playpause:subscribe('mouse.clicked', function()
     sbar.exec('media-control toggle-play-pause')
@@ -62,7 +63,7 @@ sbar.add('item', {
         padding_left = 10,
         padding_right = 10,
     },
-    background = { color = opts.color.transparent },
+    background = { color = options.color.transparent },
 }):subscribe('mouse.clicked', function()
     sbar.exec('media-control next-track')
     media:set({ popup = { drawing = false } })

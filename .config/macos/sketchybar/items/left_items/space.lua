@@ -1,11 +1,11 @@
-local opts = require('opts')
+local options = require('options')
 local sbar = require('sketchybar')
 local window_manager_commands = require('items.left_items.window-manager-commands')
 
 local focused_space = window_manager_commands.get_focused_workspace()
 local all_spaces = window_manager_commands.get_workspaces_list()
-local active_color = opts.color.dark_green
-local inactive_color = opts.color.neutral_yellow
+local active_color = options.color.dark_green
+local inactive_color = options.color.neutral_yellow
 local space_border_items = {}
 local spaces = {}
 
@@ -18,14 +18,14 @@ for space_id, space_name in pairs(all_spaces) do
         padding_left = 0,
         padding_right = 0,
         icon = {
-            font = opts.font.default,
+            font = options.font.default,
             string = space_name:sub(1, 1),
             color = space_name == focused_space and active_color or inactive_color,
         },
         label = {
             align = 'center',
             string = space_name:sub(2),
-            font = opts.font.default,
+            font = options.font.default,
             padding_left = 0,
             color = space_name == focused_space and active_color or inactive_color,
         },

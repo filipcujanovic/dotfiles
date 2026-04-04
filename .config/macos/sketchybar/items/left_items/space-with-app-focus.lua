@@ -1,5 +1,5 @@
 local icon_map = require('icon_map')
-local opts = require('opts')
+local options = require('options')
 local sbar = require('sketchybar')
 local utils = require('utils')
 local icons = require('icons')
@@ -7,8 +7,8 @@ local separator = require('items.right_items.separator')
 
 local focused_space = io.popen('aerospace list-workspaces --focused'):read('*a'):gsub('%s+', '')
 local all_spaces = utils.split_string(io.popen('aerospace list-workspaces --all'):read('*a'), '[^%s]+')
-local active_color = opts.color.active_color
-local inactive_color = opts.color.inactive_color
+local active_color = options.color.active_color
+local inactive_color = options.color.inactive_color
 local space_border_items = {}
 local space_apps_items = {}
 
@@ -93,13 +93,13 @@ local change_focused_app = function(workspace, space)
                 if focused_app ~= nil and id == focused_app['window-id'] then
                     app:set({
                         icon = {
-                            color = opts.color.border_color_active,
+                            color = options.color.border_color_active,
                         },
                     })
                 else
                     app:set({
                         icon = {
-                            color = opts.color.border_color_inactive,
+                            color = options.color.border_color_inactive,
                         },
                     })
                 end
@@ -127,7 +127,7 @@ local change_focused_app = function(workspace, space)
             icon = {
                 string = current_app.string,
                 font = current_app.font,
-                color = opts.color.label_color,
+                color = options.color.label_color,
                 padding_left = label_padding.left,
             },
         })
@@ -146,7 +146,7 @@ for index, space_id in pairs(all_spaces) do
         padding_left = index == 1 and 10 or icon_padding.left,
         padding_right = index == #all_spaces and string.len(space_apps_string) == 0 and 10 or icon_padding.right,
         string = space_name,
-        font = opts.sf_pro_text_small,
+        font = options.sf_pro_text_small,
         color = label_color,
     }
     space_name = utils.count(space_apps_table) ~= 0 and space_id .. ' -' or space_id
@@ -155,7 +155,7 @@ for index, space_id in pairs(all_spaces) do
         padding_left = index == 1 and 10 or icon_padding.left,
         padding_right = icon_padding.right,
         string = space_name,
-        font = opts.sf_pro_text_small,
+        font = options.sf_pro_text_small,
         color = label_color,
     }
     icon = {}
@@ -176,7 +176,7 @@ for index, space_id in pairs(all_spaces) do
                 drawing = utils.count(space_apps_table) ~= 0,
                 string = active_app.string,
                 font = active_app.font,
-                color = opts.color.icon_color,
+                color = options.color.icon_color,
                 padding_left = label_padding.left,
                 padding_right = index == #all_spaces and 15 or label_padding.right,
             },
@@ -191,12 +191,12 @@ for index, space_id in pairs(all_spaces) do
     space:subscribe('aerospace_workspace_change', function(env)
         change_focused_app(env.FOCUSED_WORKSPACE)
         local active_conf = {
-            background = { border_color = opts.color.border_color_active },
+            background = { border_color = options.color.border_color_active },
             label = { color = active_color },
         }
 
         local inactive_conf = {
-            background = { border_color = opts.color.border_color_inactive },
+            background = { border_color = options.color.border_color_inactive },
             label = { color = inactive_color },
         }
 

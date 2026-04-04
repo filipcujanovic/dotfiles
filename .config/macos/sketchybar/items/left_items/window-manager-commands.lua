@@ -1,8 +1,8 @@
-local opts = require('opts')
+local options = require('options')
 local utils = require('utils')
 local sbar = require('sketchybar')
 
-if opts.window_manager.aerospace then
+if options.window_manager.aerospace then
     return {
         get_focused_workspace = function()
             return io.popen('aerospace list-workspaces --focused'):read('*a'):gsub('%s+', '')
@@ -28,7 +28,7 @@ if opts.window_manager.aerospace then
         end,
     }
 end
-if opts.window_manager.rift then
+if options.window_manager.rift then
     return {
         get_focused_workspace = function()
             return io.popen('rift-cli query workspaces | jq -r ".[] | select(.is_active == true) | .name"'):read('*a'):gsub('%s+', '')

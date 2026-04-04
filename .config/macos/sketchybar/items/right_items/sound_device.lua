@@ -1,10 +1,11 @@
-local opts = require('opts')
+local options = require('options')
 local sbar = require('sketchybar')
 local utils = require('utils')
 local icons = require('icons')
-local active_color = opts.color.active_color
-local inactive_color = opts.color.inactive_color
+local active_color = options.color.active_color
+local inactive_color = options.color.inactive_color
 local current_device = io.popen('SwitchAudioSource -c -t output'):read('*a'):gsub('^%s*(.-)%s*$', '%1')
+local all_devices = utils.split_string(io.popen('SwitchAudioSource -a -t output'):read('*a'), '[^\r\n]+')
 
 local get_device_icon = function(device)
     device = string.lower(device)
@@ -62,15 +63,14 @@ local current_device_icon = get_device_icon(current_device).string
 
 local volume = sbar.add('item', 'volume', {
     position = 'right',
-    padding_left = 5,
-    padding_right = 5,
+    padding_left = 0,
+    padding_right = 0,
     label = {
         padding_right = 0,
         padding_left = 0,
     },
     icon = {
         align = 'center',
-        drawing = false,
     },
     popup = {
         align = 'center',
@@ -84,15 +84,17 @@ local volume_slider = sbar.add('slider', 'volume_slider', 220, {
 
 local device = sbar.add('item', 'device', {
     position = 'right',
-    padding_left = 10,
+    padding_left = 0,
     padding_right = 0,
     icon = {
-        string = current_device_icon,
+        font = options.font.default,
+        string = '-',
+        color = options.color.green,
         padding_left = 0,
         padding_right = 5,
     },
     label = {
-        drawing = false,
+        string = current_device_icon,
     },
     popup = {
         align = 'center',
@@ -102,7 +104,7 @@ local device = sbar.add('item', 'device', {
 local volume_changed = function(env)
     local icon = icons.volume_mute
     local volume_level = tonumber(env.INFO)
-    if opts.item_options.volume.enable_dynamic_icon then
+    if options.item_options.volume.enable_dynamic_icon then
         if volume_level > 68 then
             icon = icons.volume_full
         elseif volume_level > 31 then
@@ -120,7 +122,13 @@ local volume_changed = function(env)
     else
         volume:set({
             label = {
-                string = volume_level .. '%',
+                string = string.format('%s%%', volume_level),
+            },
+            icon = {
+                string = '-',
+                font = options.font.default,
+                color = options.color.green,
+                padding_right = 10,
             },
         })
     end
@@ -140,6 +148,9 @@ local change_device = function()
     current_device_icon = get_device_icon(current_device).string
     device:set({
         icon = {
+            string = '-',
+        },
+        label = {
             string = current_device_icon,
         },
     })
@@ -149,13 +160,13 @@ local show_device_battery_level = function()
     if string.match(current_device, 'AirPods') then
         sbar.exec(
             'system_profiler SPBluetoothDataType -json -detailLevel basic 2>/dev/null | jq -rc \'.SPBluetoothDataType[0].device_connected[] | select ( .[] | .device_minorType == "Headphones")\' | jq \'.[]\'',
-            function(device_data, exit_code)
+            function(device_data, _)
                 local battery_level_case = ''
                 if device_data.device_batteryLevelCase ~= nil then
                     battery_level_case = icons.airpods_case .. device_data.device_batteryLevelCase
                 end
                 device:set({
-                    icon = {
+                    label = {
                         string = icons.airpod_left
                             .. device_data.device_batteryLevelLeft
                             .. ' '
@@ -171,48 +182,45 @@ end
 
 local hide_device_battery_level = function()
     device:set({
-        icon = get_device_icon(current_device),
+        label = get_device_icon(current_device),
     })
 end
 
-local show_all_devices = function(env)
+local create_popup_items = function()
+    for _, input_device in pairs(all_devices) do
+        local bar_device = sbar.add('item', input_device, {
+            position = 'popup.' .. device.name,
+            icon = get_device_icon(input_device),
+            label = {
+                string = get_device_string(input_device),
+                padding_left = 20,
+                color = input_device == current_device and active_color or inactive_color,
+            },
+            background = { color = options.color.transparent },
+        })
+        bar_device:subscribe('mouse.clicked', function()
+            sbar.exec('SwitchAudioSource -s "' .. input_device .. '"')
+            device:set({ popup = { drawing = 'toggle' } })
+            device:set({ label = { string = get_device_icon(input_device).string } })
+            current_device = input_device
+        end)
+        bar_device:subscribe('volume_change', function()
+            bar_device:set({ label = { color = current_device == bar_device.name and active_color or inactive_color } })
+        end)
+    end
+end
+
+local handle_click = function(env)
     if env.INFO.button_code == 0 then
-        local all_devices = utils.split_string(io.popen('SwitchAudioSource -a -t output'):read('*a'), '[^\r\n]+')
-        local color = nil
-        if sbar.query(device.name).popup ~= nil then
-            sbar.remove('/volume.device\\.*/')
-        end
-        for counter, input_device in pairs(all_devices) do
-            color = inactive_color
-            if device == current_device then
-                color = active_color
-            end
-            local bar_device = sbar.add('item', 'volume.device.' .. counter, {
-                position = 'popup.' .. device.name,
-                icon = get_device_icon(input_device),
-                label = {
-                    string = get_device_string(input_device),
-                    padding_left = 20,
-                    color = color,
-                },
-                background = { color = opts.color.transparent },
-            })
-            bar_device:subscribe('mouse.clicked', function(mouse_click_env)
-                print(utils.json.encode(mouse_click_env))
-                sbar.exec('SwitchAudioSource -s "' .. input_device .. '"')
-                device:set({ popup = { drawing = 'toggle' } })
-                device:set({ icon = { string = get_device_icon(input_device).string } })
-                current_device = input_device
-            end)
-        end
         device:set({ popup = { drawing = 'toggle' } })
     elseif env.INFO.button_code == 1 then
         show_device_battery_level()
     end
 end
 
-device:subscribe('mouse.clicked', show_all_devices)
-device:subscribe('volume', change_device)
+create_popup_items()
+
+device:subscribe('mouse.clicked', handle_click)
 device:subscribe('volume_change', change_device)
 --device_icon:subscribe('mouse.entered', show_device_battery_level)
 device:subscribe('mouse.exited', hide_device_battery_level)

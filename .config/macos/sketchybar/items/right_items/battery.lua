@@ -1,4 +1,4 @@
-local opts = require('opts')
+local options = require('options')
 local sbar = require('sketchybar')
 local icons = require('icons')
 
@@ -27,7 +27,7 @@ battery:subscribe('battery_change', function(env)
             string = '',
         },
     })
-    if opts.item_options.battery.enable_dynamic_icon then
+    if options.item_options.battery.enable_dynamic_icon then
         if env.charging == 'on' then
             battery:set({
                 icon = {

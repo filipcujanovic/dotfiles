@@ -1,5 +1,5 @@
 local icon_map = require('icon_map')
-local opts = require('opts')
+local options = require('options')
 local sbar = require('sketchybar')
 local utils = require('utils')
 local icons = require('icons')
@@ -7,8 +7,8 @@ local separator = require('items.right_items.separator')
 
 local focused_space = io.popen('aerospace list-workspaces --focused'):read('*a'):gsub('%s+', '')
 local all_spaces = utils.split_string(io.popen('aerospace list-workspaces --all'):read('*a'), '[^%s]+')
-local active_color = opts.color.active_color
-local inactive_color = opts.color.inactive_color
+local active_color = options.color.active_color
+local inactive_color = options.color.inactive_color
 local space_border_items = {}
 
 local item_padding = {
@@ -49,8 +49,8 @@ for index, space_id in pairs(all_spaces) do
     local label = {
         drawing = string.len(space_apps_string) ~= 0,
         string = space_apps_string,
-        font = opts.font.front_app_icon_small,
-        color = opts.color.icon_color,
+        font = options.font.front_app_icon_small,
+        color = options.color.icon_color,
         padding_left = label_padding.left,
         padding_right = index == #all_spaces and 15 or label_padding.right,
     }
@@ -59,7 +59,7 @@ for index, space_id in pairs(all_spaces) do
         padding_left = index == 1 and 10 or icon_padding.left,
         padding_right = index == #all_spaces and string.len(space_apps_string) == 0 and 10 or icon_padding.right,
         string = space_name,
-        font = opts.sf_pro_text_small,
+        font = options.sf_pro_text_small,
         color = label_color,
     }
     local space = sbar.add('item', space_id, {

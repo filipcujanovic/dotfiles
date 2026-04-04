@@ -120,7 +120,7 @@ function M.transform(palette)
         colors['inactive_color'] = colors.green
         colors['border_color_inactive'] = colors.blue
         colors['border_color_active'] = colors.orange
-        colors['icon_color'] = colors.blue
+        colors['icon_color'] = colors.red
 
         return colors
     end

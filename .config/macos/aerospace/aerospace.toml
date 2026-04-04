@@ -132,7 +132,7 @@ alt-shift-z = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-
 #alt-shift-w = 'move-node-to-workspace --focus-follows-window work'
 #alt-shift-z = 'move-node-to-workspace --focus-follows-window zone'
 
-#cmd-space = 'exec-and-forget app-launcher'
+cmd-space = 'exec-and-forget app-launcher'
 cmd-shift-w = 'exec-and-forget terminal-picker change-wallpaper'
 cmd-shift-s = 'exec-and-forget terminal-picker file-search'
 alt-f = 'exec-and-forget open ~'

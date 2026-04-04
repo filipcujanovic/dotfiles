@@ -1,4 +1,4 @@
-local opts = require('opts')
+local options = require('options')
 local sbar = require('sketchybar')
 
 local label_padding = {
@@ -24,10 +24,10 @@ aerospace_mode:subscribe('aerospace_mode_change', function(env)
         drawing = not is_main_mode,
         label = {
             string = env.MODE,
-            color = is_main_mode and opts.color.inactive_color or opts.color.active_color,
+            color = is_main_mode and options.color.inactive_color or options.color.active_color,
         },
         background = {
-            border_color = is_main_mode and opts.color.border_color_inactive or opts.color.border_color_active,
+            border_color = is_main_mode and options.color.border_color_inactive or options.color.border_color_active,
         },
     })
 end)

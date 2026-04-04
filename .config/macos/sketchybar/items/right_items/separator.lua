@@ -1,4 +1,4 @@
-local opts = require('opts')
+local options = require('options')
 local sbar = require('sketchybar')
 
 return {

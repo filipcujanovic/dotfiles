@@ -1,4 +1,4 @@
-local opts = require('opts')
+local options = require('options')
 local sbar = require('sketchybar')
 
 local get_current_timer = function()
@@ -15,10 +15,10 @@ local timew = sbar.add('item', 'timew', {
     padding_left = 0,
     padding_right = 0,
     label = {
-        font = opts.font.default,
+        font = options.font.default,
         drawing = run_on_start,
         string = current_timer,
-        color = opts.color.blue,
+        color = options.color.blue,
         padding_left = 0,
         padding_right = 0,
         width = 140,
@@ -55,12 +55,12 @@ timew:subscribe('timew-stop', timew_stop)
 
 local update_timew = function()
     current_timer = get_current_timer()
-    local color = opts.color.blue
+    local color = options.color.blue
     if string.match(current_timer, 'waste') then
-        color = opts.color.red
+        color = options.color.red
     end
     if string.match(current_timer, 'dotfiles') then
-        color = opts.color.yellow
+        color = options.color.yellow
     end
     timew:set({
         label = {

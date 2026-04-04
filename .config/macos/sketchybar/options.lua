@@ -27,6 +27,7 @@ M.item_options = {
     calendar = {
         enabled = true,
         enable_icon = false,
+        show_full_date_time = true,
     },
     spotify = {
         use_app = true,

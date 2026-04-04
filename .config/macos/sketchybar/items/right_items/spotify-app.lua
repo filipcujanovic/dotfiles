@@ -1,4 +1,4 @@
-local opts = require('opts')
+local options = require('options')
 local sbar = require('sketchybar')
 local icons = require('icons')
 local utils = require('utils')
@@ -25,7 +25,7 @@ local media = sbar.add('item', 'media', {
     label = {
         padding_left = 0,
         padding_right = 0,
-        color = opts.color.orange,
+        color = options.color.orange,
         max_chars = 30,
         string = current_state == 'paused' and '' or current_track,
     },
@@ -42,7 +42,7 @@ sbar.add('item', {
         padding_left = 10,
         padding_right = 10,
     },
-    background = { color = opts.color.transparent },
+    background = { color = options.color.transparent },
 }):subscribe('mouse.clicked', function()
     sbar.exec('osascript -e \'tell application "Spotify" to previous track\'')
     media:set({ popup = { drawing = false } })
@@ -54,7 +54,7 @@ local playpause = sbar.add('item', {
         padding_left = 10,
         padding_right = 10,
     },
-    background = { color = opts.color.transparent },
+    background = { color = options.color.transparent },
 })
 playpause:subscribe('mouse.clicked', function()
     sbar.exec('osascript -e \'tell application "Spotify" to playpause\'')
@@ -68,7 +68,7 @@ sbar.add('item', {
         padding_left = 10,
         padding_right = 10,
     },
-    background = { color = opts.color.transparent },
+    background = { color = options.color.transparent },
 }):subscribe('mouse.clicked', function()
     sbar.exec('osascript -e \'tell application "Spotify" to next track\'')
     media:set({ popup = { drawing = false } })

@@ -1,5 +1,4 @@
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -39,7 +38,7 @@ require('lazy').setup({
     },
     ui = {
         custom_keys = {
-            ['<localleader>r'] = {
+            ['<leader>gd'] = {
                 function(_)
                     local plugins = require('lazy.core.config').plugins
                     local file_content = {

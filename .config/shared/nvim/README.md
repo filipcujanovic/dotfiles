@@ -8,7 +8,9 @@
 
 # plugins
 
+- [99](https://github.com/ThePrimeagen/99)
 - [blink.cmp](https://github.com/saghen/blink.cmp)
+- [blink.compat](https://github.com/saghen/blink.compat)
 - [conform.nvim](https://github.com/stevearc/conform.nvim)
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
@@ -16,9 +18,9 @@
 - [kulala.nvim](https://github.com/mistweaverco/kulala.nvim)
 - [lazy.nvim](https://github.com/folke/lazy.nvim)
 - [mini.ai](https://github.com/nvim-mini/mini.ai)
-- [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
-- [nvim-surround](https://github.com/kylechui/nvim-surround)
-- [nvim-tmux-navigation](https://github.com/alexghergh/nvim-tmux-navigation)
+- [mini.pairs](https://github.com/nvim-mini/mini.pairs)
+- [mini.surround](https://github.com/nvim-mini/mini.surround)
+- [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
 - [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)

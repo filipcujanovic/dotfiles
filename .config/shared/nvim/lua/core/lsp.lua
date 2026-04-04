@@ -17,3 +17,5 @@ vim.lsp.enable({
     'sqls',
     'ts_ls',
 })
+
+vim.lsp.document_color.enable(true, nil, { style = 'virtual' })

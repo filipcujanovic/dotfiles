@@ -88,8 +88,9 @@ if string.match(db_dir, 'db%-collection') then
         --local t0 = vim.loop.hrtime()
 
         local processed = get_query_string(bufnr)
+        processed = vim.fn.shellescape(processed):gsub('%%', '\\%%')
         local full_cmd = cmd .. ' > ' .. vim.fn.shellescape(outfile) .. ' 2>&1'
-        local vim_cmd = string.format('silent !echo "%s" | %s ', processed, full_cmd)
+        local vim_cmd = string.format('silent !echo %s | %s ', processed, full_cmd)
 
         if filetype == 'javascript' then
             outfile = db_dir .. '/output.json'

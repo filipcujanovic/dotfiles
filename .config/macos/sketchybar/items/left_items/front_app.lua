@@ -1,10 +1,10 @@
 local utils = require('utils')
 local icon_map = require('icon_map')
-local opts = require('opts')
+local options = require('options')
 local sbar = require('sketchybar')
 local icons = require('icons')
 local window_manager_commands = require('items.left_items.window-manager-commands')
-local active_color = opts.color.green
+local active_color = options.color.green
 
 local separator = sbar.add('item', 'separator', {
     padding_left = 0,
@@ -16,22 +16,22 @@ local separator = sbar.add('item', 'separator', {
     },
 })
 
-local label = opts.item_options.front_app.show_label
+local label = options.item_options.front_app.show_label
         and {
             string = '',
-            font = opts.font.default,
-            padding_left = opts.item_options.front_app.show_icon and 5 or 0,
+            font = options.font.default,
+            padding_left = options.item_options.front_app.show_icon and 5 or 0,
             padding_right = 0,
             color = active_color,
         }
     or {}
 
-local icon = opts.item_options.front_app.show_icon
+local icon = options.item_options.front_app.show_icon
         and {
             color = active_color,
             padding_right = 0,
             padding_left = 10,
-            font = opts.font.front_app_icon,
+            font = options.font.front_app_icon,
         }
     or {}
 
@@ -45,8 +45,8 @@ local front_app = sbar.add('item', 'front_app', {
 
 front_app:subscribe('front_app_switched', function(env)
     if env.INFO ~= nil then
-        label = opts.item_options.front_app.show_label and { string = string.lower(env.INFO) } or {}
-        icon = opts.item_options.front_app.show_icon and icon_map.get_icon(string.lower(env.INFO), true) or {}
+        label = options.item_options.front_app.show_label and { string = string.lower(env.INFO) } or {}
+        icon = options.item_options.front_app.show_icon and icon_map.get_icon(string.lower(env.INFO), true) or {}
         front_app:set({
             icon = icon,
             label = label,

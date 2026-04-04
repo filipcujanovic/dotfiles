@@ -99,4 +99,6 @@ vim.opt.listchars = {
     extends = '›',
 }
 
+require('vim._core.ui2').enable({ msg = { target = 'cmd' } })
+
 vim.cmd('filetype indent off')

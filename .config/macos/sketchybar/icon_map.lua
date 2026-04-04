@@ -1,4 +1,4 @@
-local opts = require('opts')
+local options = require('options')
 local icons = require('icons')
 M = {}
 
@@ -44,8 +44,8 @@ M.get_icon = function(app, is_front_app)
         wezterm = ':wezterm:',
     }
     local fonts = {
-        viber = is_front_app and opts.font.icon_font_normal or opts.font.icon_font_small,
-        other = is_front_app and opts.font.front_app_icon or opts.font.front_app_icon_small,
+        viber = is_front_app and options.font.icon_font_normal or options.font.icon_font_small,
+        other = is_front_app and options.font.front_app_icon or options.font.front_app_icon_small,
     }
     return {
         string = icons_map[app] ~= nil and icons_map[app] or ':default:',

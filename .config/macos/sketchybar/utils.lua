@@ -363,14 +363,24 @@ end
 
 local count = function(table)
     local n = 0
-    for k, v in pairs(table) do
+    for _, _ in pairs(table) do
         n = n + 1
     end
     return n
 end
 
+local function index_of(table, value)
+    for i, v in ipairs(table) do
+        if v == value then
+            return i
+        end
+    end
+    return nil
+end
+
 return {
     split_string = split_string,
+    index_of = index_of,
     json = json,
     dump = dump,
     count = count,
