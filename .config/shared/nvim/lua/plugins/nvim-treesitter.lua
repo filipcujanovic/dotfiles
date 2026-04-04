@@ -75,80 +75,80 @@ return {
             end)
         end,
     },
-    {
-        'windwp/nvim-ts-autotag',
-        config = function()
-            require('nvim-ts-autotag').setup()
-        end,
-    },
-    {
-        'nvim-treesitter/nvim-treesitter',
-        lazy = false,
-        branch = 'main',
-        build = ':TSUpdate',
-        opts = {
-            ensure_installed = {
-                'bash',
-                'cpp',
-                'devicetree',
-                'git_config',
-                'gitignore',
-                'graphql',
-                'html',
-                'http',
-                'javascript',
-                'json',
-                'lua',
-                'markdown',
-                'markdown_inline',
-                'nix',
-                'php',
-                'php_only',
-                'phpdoc',
-                'python',
-                'regex',
-                'rust',
-                'scss',
-                'sql',
-                'tmux',
-                'toml',
-                'tsx',
-                'twig',
-                'typescript',
-                'vim',
-                'vimdoc',
-                'xml',
-            },
-            --incremental_selection = {
-            --    enable = true,
-            --    keymaps = {
-            --        init_selection = '<c-space>',
-            --        node_incremental = '<c-space>',
-            --        scope_incremental = '<c-s>',
-            --        node_decremental = '<M-space>',
-            --    },
-            --},
-        },
-        config = function(_, opts)
-            vim.api.nvim_create_autocmd('FileType', {
-                callback = function(args)
-                    local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
-                    if lang and pcall(vim.treesitter.language.add, lang) then
-                        vim.bo[args.buf].indentexpr = 'v:lua.require\'nvim-treesitter\'.indentexpr()'
-                    end
-                end,
-            })
-
-            local treesitter = require('nvim-treesitter')
-            treesitter.setup(opts)
-            treesitter.install(opts.ensure_installed)
-            vim.api.nvim_create_autocmd('FileType', {
-                callback = function(args)
-                    if vim.list_contains(treesitter.get_installed(), vim.treesitter.language.get_lang(args.match)) then
-                        vim.treesitter.start(args.buf)
-                    end
-                end,
-            })
-        end,
-    },
+    --{
+    --    'windwp/nvim-ts-autotag',
+    --    config = function()
+    --        require('nvim-ts-autotag').setup()
+    --    end,
+    --},
+    --{
+    --    'nvim-treesitter/nvim-treesitter',
+    --    lazy = false,
+    --    branch = 'main',
+    --    build = ':TSUpdate',
+    --    opts = {
+    --        ensure_installed = {
+    --            'bash',
+    --            'cpp',
+    --            'devicetree',
+    --            'git_config',
+    --            'gitignore',
+    --            'graphql',
+    --            'html',
+    --            'http',
+    --            'javascript',
+    --            'json',
+    --            'lua',
+    --            'markdown',
+    --            'markdown_inline',
+    --            'nix',
+    --            'php',
+    --            'php_only',
+    --            'phpdoc',
+    --            'python',
+    --            'regex',
+    --            'rust',
+    --            'scss',
+    --            'sql',
+    --            'tmux',
+    --            'toml',
+    --            'tsx',
+    --            'twig',
+    --            'typescript',
+    --            'vim',
+    --            'vimdoc',
+    --            'xml',
+    --        },
+    --        --incremental_selection = {
+    --        --    enable = true,
+    --        --    keymaps = {
+    --        --        init_selection = '<c-space>',
+    --        --        node_incremental = '<c-space>',
+    --        --        scope_incremental = '<c-s>',
+    --        --        node_decremental = '<M-space>',
+    --        --    },
+    --        --},
+    --    },
+    --    config = function(_, opts)
+    --        --vim.api.nvim_create_autocmd('FileType', {
+    --        --    callback = function(args)
+    --        --        local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+    --        --        if lang and pcall(vim.treesitter.language.add, lang) then
+    --        --            vim.bo[args.buf].indentexpr = 'v:lua.require\'nvim-treesitter\'.indentexpr()'
+    --        --        end
+    --        --    end,
+    --        --})
+    --
+    --        local treesitter = require('nvim-treesitter')
+    --        treesitter.setup(opts)
+    --        treesitter.install(opts.ensure_installed)
+    --        vim.api.nvim_create_autocmd('FileType', {
+    --            callback = function(args)
+    --                if vim.list_contains(treesitter.get_installed(), vim.treesitter.language.get_lang(args.match)) then
+    --                    vim.treesitter.start(args.buf)
+    --                end
+    --            end,
+    --        })
+    --    end,
+    --},
 }

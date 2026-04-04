@@ -56,7 +56,6 @@
             pkgs.lazysql
             pkgs.localtunnel
             pkgs.lua-language-server
-            pkgs.lua5_4_compat
             pkgs.maccy
             pkgs.markdown-oxide
             pkgs.mkcert
@@ -126,6 +125,7 @@
               "gh"
               "im-select"
               "lua"
+              "luarocks"
               "marksman"
               #"mas"
               "media-control"
@@ -203,7 +203,6 @@
 
           system = {
             defaults = {
-
               dock = {
                 autohide = true;
                 expose-group-apps = true;
