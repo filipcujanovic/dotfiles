@@ -4,7 +4,7 @@ local options = require('options')
 sbar.bar({
     height = options.height,
     --color = options.color.dark,
-    color = options.color.visible,
+    color = options.color.transparent,
     margin = 0,
     sticky = true,
     padding_left = 5,
@@ -19,7 +19,7 @@ sbar.default({
     background = {
         height = 26,
         color = options.color.transparent,
-        corner_radius = 5,
+        corner_radius = 0,
     },
     icon = {
         color = options.color.icon_color,

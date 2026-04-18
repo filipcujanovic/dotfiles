@@ -71,6 +71,4 @@ sbar.exec('system_profiler SPHardwareDataType -json', function(result, exit_code
     end
 end)
 
-return {
-    battery = battery,
-}
+return battery

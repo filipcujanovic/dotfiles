@@ -17,7 +17,7 @@ if options.window_manager.aerospace then
             return tonumber(io.popen(string.format('aerospace list-windows --count --workspace %s', space_id)):read('*a'))
         end,
         move_focus_to_workspace = function(space_name, space_id)
-            return sbar.exec(string.format('aerospace workspace %s', space_name))
+            return sbar.exec(string.format('aerospace workspace %s --fail-if-noop', space_name))
         end,
         trigger_focused_window_event = function()
             sbar.exec('aerospace list-windows --focused', function(window)

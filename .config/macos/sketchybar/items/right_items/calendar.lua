@@ -13,7 +13,7 @@ local date_format = options.item_options.calendar.show_full_date_time and '- %d 
 local calendar = sbar.add('item', 'calendar', {
     position = 'right',
     padding_left = 10,
-    padding_right = 5,
+    padding_right = 10,
     update_freq = 1,
     label = {
         padding_left = 0,
@@ -64,6 +64,4 @@ if not options.item_options.calendar.show_full_date_time then
     calendar:subscribe('mouse.clicked', calendar_click)
 end
 
-return {
-    calendar = calendar,
-}
+return calendar

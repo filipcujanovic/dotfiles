@@ -136,6 +136,8 @@ cmd-space = 'exec-and-forget app-launcher'
 cmd-shift-w = 'exec-and-forget terminal-picker change-wallpaper'
 cmd-shift-s = 'exec-and-forget terminal-picker file-search'
 alt-f = 'exec-and-forget open ~'
+alt-b = 'exec-and-forget m1ddc display 1 set input 18'
+alt-n = 'exec-and-forget m1ddc display 1 set input 27'
 
 #cmd-shift-space = 'exec-and-forget ~/bin/terminal-picker ~/bin/clipboard-manager'
 #cmd-space = 'exec-and-forget ~/bin/terminal-picker ~/bin/app-launcher'
@@ -229,6 +231,10 @@ q = 'mode main'
 
 [exec.env-vars]
 PATH = '${HOME}/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/run/current-system/sw/bin/:${PATH}:'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'change-wallpaper'
+run = 'move-node-to-workspace terminal'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'wezterm-gui'
@@ -352,6 +358,10 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.valvesoftware.steam.helper'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.riotgames.RiotGames.RiotClient'
 run = 'layout floating'
 
 #[[on-window-detected]]

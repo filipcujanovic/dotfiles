@@ -109,6 +109,4 @@ keyboard_layout_item:subscribe('keyboard_change', function()
     })
 end)
 
-return {
-    keyboard_layout = keyboard_layout_item,
-}
+return keyboard_layout_item

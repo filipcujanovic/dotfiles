@@ -38,7 +38,7 @@ local icon = options.item_options.front_app.show_icon
 local front_app = sbar.add('item', 'front_app', {
     position = 'left',
     padding_left = -10,
-    padding_right = 0,
+    padding_right = 10,
     icon = icon,
     label = label,
 })

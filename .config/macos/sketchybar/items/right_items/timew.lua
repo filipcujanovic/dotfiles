@@ -78,6 +78,4 @@ timew:subscribe('mouse.clicked', function()
     timew:set({ popup = { drawing = 'toggle' } })
 end)
 
-return {
-    timew = timew,
-}
+return timew
