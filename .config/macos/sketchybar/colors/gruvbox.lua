@@ -97,7 +97,7 @@ function M.transform(palette)
         local colors = {
             transparent = 0x00000000,
             visible = 0x60000000,
-            base = compute(palette.bg0),
+            base = compute(palette.dark),
             dark = compute(palette.dark),
             surface = compute(palette.fg0),
             surface0 = compute(palette.fg1),

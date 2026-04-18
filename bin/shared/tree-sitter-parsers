@@ -1,0 +1,54 @@
+#!/bin/bash
+
+ensure_installed=(
+    bash
+    cpp
+    devicetree
+    git_config
+    gitignore
+    graphql
+    html
+    http
+    javascript
+    json
+    lua
+    markdown
+    markdown_inline
+    nix
+    php
+    php_only
+    phpdoc
+    python
+    regex
+    rust
+    scss
+    sql
+    tmux
+    toml
+    tsx
+    twig
+    typescript
+    vim
+    vimdoc
+    xml
+)
+
+tree="$HOME/.local/share/nvim/site"
+rocks_dir="$tree/lib/luarocks/rocks-5.1"
+action=$1
+
+for parser in "${ensure_installed[@]}"; do
+    parser_path="$rocks_dir/tree-sitter-$parser"
+
+    if [[ $action == "install" ]]; then
+        if [ -d "$parser_path" ]; then
+            echo "✓ tree-sitter-$parser already installed"
+        else
+            echo "→ installing tree-sitter-$parser"
+            luarocks --lua-version=5.1 --tree="$tree" $action "tree-sitter-$parser"
+        fi
+    else
+        echo "→ removing tree-sitter-$parser"
+        luarocks --lua-version=5.1 --tree="$tree" $action "tree-sitter-$parser"
+    fi
+done

@@ -56,7 +56,6 @@
             pkgs.lazysql
             pkgs.localtunnel
             pkgs.lua-language-server
-            pkgs.lua5_4_compat
             pkgs.maccy
             pkgs.markdown-oxide
             pkgs.mkcert
@@ -125,9 +124,11 @@
               "ec"
               "gh"
               "im-select"
+              "imagemagick"
               "lua"
+              "luarocks"
+              "m1ddc"
               "marksman"
-              #"mas"
               "media-control"
               "mongodb-database-tools"
               "neovim"
@@ -135,6 +136,7 @@
               "nvm"
               "pipx"
               "sketchybar"
+              #"mas"
             ];
             casks = [
               "aerospace"
@@ -144,7 +146,6 @@
               "calibre"
               "claude-code"
               "docker-desktop"
-              "espanso"
               "font-sf-mono"
               "font-sf-mono-nerd-font-ligaturized"
               "font-sf-pro"
@@ -203,7 +204,6 @@
 
           system = {
             defaults = {
-
               dock = {
                 autohide = true;
                 expose-group-apps = true;

@@ -2,7 +2,7 @@ local options = require('options')
 local sbar = require('sketchybar')
 
 local label_padding = {
-    left = 5,
+    left = 0,
     right = 10,
 }
 
@@ -36,6 +36,4 @@ aerospace_mode:subscribe('mouse.clicked', function(_)
     sbar.exec('aerospace reload-config')
 end)
 
-return {
-    aerospace_mode = aerospace_mode,
-}
+return aerospace_mode

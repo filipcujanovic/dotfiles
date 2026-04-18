@@ -84,7 +84,7 @@ M.fonts = {
 }
 
 M.font = {
-    default = M.fonts.jet_brains,
+    default = M.fonts.victor_mono,
     icon_font_large = {
         family = 'Symbols Nerd Font Mono',
         style = 'Regular',

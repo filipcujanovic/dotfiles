@@ -1,20 +1,18 @@
 local options = require('options')
 local sbar = require('sketchybar')
 local icons = require('icons')
-local utils = require('utils')
 
 local media = sbar.add('item', 'media', {
     position = 'right',
     scroll_texts = true,
     updates = true,
-    padding_left = 10,
+    padding_left = 5,
     padding_right = 10,
     update_freq = 1,
     icon = {
         padding_left = 0,
         padding_right = 0,
         string = icons.media_icon,
-        drawing = false,
         color = options.color.green,
     },
     label = {
@@ -102,6 +100,4 @@ media:subscribe('media_stream_changed', function(env)
     })
 end)
 
-return {
-    media = media,
-}
+return media

@@ -1,6 +1,7 @@
 require('core.options')
 require('plugins-setup')
 require('core.lsp')
+require('core.treesitter')
 require('core.autocmds')
 require('core.work-keymap')
 require('core.keymap')

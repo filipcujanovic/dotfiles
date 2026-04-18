@@ -41,7 +41,13 @@ if string.match(db_dir, 'db%-collection') then
     end
 
     local function get_query_under_current_line(bufnr)
+        vim.api.nvim_buf_clear_namespace(bufnr, visual_selection_namespace, 0, -1)
         if vim.bo.filetype == 'javascript' then
+            local cursor = vim.api.nvim_win_get_cursor(0)
+            local sr = cursor[1] - 1
+            local er = sr
+
+            vim.hl.range(bufnr, visual_selection_namespace, 'Visual', { sr, 0 }, { er, -1 })
             return vim.api.nvim_get_current_line()
         end
 
@@ -52,12 +58,13 @@ if string.match(db_dir, 'db%-collection') then
                 if node:type() == 'ERROR' and not statement:match('^CALL%s') then
                     break
                 end
-                vim.api.nvim_buf_clear_namespace(bufnr, visual_selection_namespace, 0, -1)
                 local sr, _, er, _ = node:range()
-                for line = sr, er do
-                    vim.api.nvim_buf_add_highlight(bufnr, visual_selection_namespace, 'Visual', line, 0, -1)
+                local line_number = sr + 1
+                vim.hl.range(bufnr, visual_selection_namespace, 'Visual', { sr, 0 }, { er, -1 })
+                if statement:match('^CALL%s') then
+                    statement = vim.api.nvim_buf_get_lines(bufnr, line_number - 1, line_number, false)[1]:gsub(';', '\\G')
                 end
-                return node:type() == 'ERROR' and statement:gsub(';', '') or statement
+                return statement
             end
             node = node:parent()
         end
@@ -75,7 +82,8 @@ if string.match(db_dir, 'db%-collection') then
     local function get_query_string(bufnr)
         local mode = vim.fn.mode()
         if mode == 'n' then
-            return get_query_under_current_line(bufnr)
+            local statement = get_query_under_current_line(bufnr)
+            return statement
         elseif mode == 'v' then
             return get_query_from_visual_selection()
         end
@@ -88,7 +96,9 @@ if string.match(db_dir, 'db%-collection') then
         --local t0 = vim.loop.hrtime()
 
         local processed = get_query_string(bufnr)
-        processed = vim.fn.shellescape(processed):gsub('%%', '\\%%')
+        if filetype == 'sql' then
+            processed = vim.fn.shellescape(processed):gsub('%%', '\\%%')
+        end
         local full_cmd = cmd .. ' > ' .. vim.fn.shellescape(outfile) .. ' 2>&1'
         local vim_cmd = string.format('silent !echo %s | %s ', processed, full_cmd)
 
