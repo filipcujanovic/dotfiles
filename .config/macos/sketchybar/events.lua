@@ -53,6 +53,7 @@ return {
     trigger_events = function()
         sbar.exec('system_profiler SPHardwareDataType -json', function(result, exit_code)
             if string.find(result.SPHardwareDataType[1]['machine_name'], 'Mac mini') == nil then
+                update_battery()
                 battery_watcher:subscribe('routine', update_battery)
                 battery_watcher:subscribe('forced', update_battery)
                 battery_watcher:subscribe('power_source_change', function(env)

@@ -18,6 +18,15 @@ local battery = sbar.add('item', 'battery', {
     updates = true,
 })
 
+local separator = sbar.add('item', {
+    position = 'right',
+    padding_left = 0,
+    padding_right = 0,
+    label = {
+        string = '-',
+    },
+})
+
 battery:subscribe('battery_change', function(env)
     battery:set({
         label = {
