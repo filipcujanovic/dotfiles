@@ -9,8 +9,6 @@ M.height = 37
 M.item_options = {
     front_app = {
         enabled = true,
-        show_icon = true,
-        show_label = true,
     },
     volume = {
         enabled = true,
@@ -27,10 +25,10 @@ M.item_options = {
     calendar = {
         enabled = true,
         enable_icon = false,
-        show_full_date_time = true,
     },
-    spotify = {
-        use_app = true,
+    clock = {
+        enabled = true,
+        enable_icon = false,
     },
     space = {
         only_spaces_with_windows = true,

@@ -4,8 +4,8 @@ local window_manager_commands = require('items.left_items.window-manager-command
 
 local focused_space = window_manager_commands.get_focused_workspace()
 local all_spaces = window_manager_commands.get_workspaces_list()
-local active_color = options.color.green
-local inactive_color = options.color.orange
+local active_color = options.color.orange
+local inactive_color = options.color.green
 local space_border_items = {}
 local spaces = {}
 

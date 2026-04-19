@@ -9,6 +9,7 @@ return {
             padding_right = 0,
             padding_left = 0,
             icon = {
+                color = options.color.green,
                 --string = icons.separator,
                 --string = '❘',
                 --string = '|',

@@ -237,6 +237,10 @@ if.app-name-regex-substring = 'change-wallpaper'
 run = 'move-node-to-workspace terminal'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.clock'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'wezterm-gui'
 run = 'layout floating'
 
