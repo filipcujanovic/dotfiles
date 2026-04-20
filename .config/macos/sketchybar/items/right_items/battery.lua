@@ -77,6 +77,7 @@ end)
 sbar.exec('system_profiler SPHardwareDataType -json', function(result, exit_code)
     if string.find(result.SPHardwareDataType[1]['machine_name'], 'Mac mini') ~= nil then
         battery:set({ drawing = false })
+        separator:set({ drawing = false })
     end
 end)
 
