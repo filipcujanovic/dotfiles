@@ -78,7 +78,7 @@ end)
 media:subscribe('media_stream_changed', function(env)
     local artist = env.artist ~= nil and env.artist or ''
     local title = env.title ~= nil and env.title or ''
-    local label = string.format('%s - %s', artist, title)
+    local label = string.format('%s - %s', artist:gsub('"', '\\"'), title:gsub('"', '\\"'))
     label = io.popen(string.format('echo "%s" | LC_ALL=en_US.UTF-8 awk \'{print tolower($0)}\'', label)):read('*a')
     local icon_drawing = false
 
@@ -98,6 +98,12 @@ media:subscribe('media_stream_changed', function(env)
             drawing = icon_drawing,
         },
     })
+end)
+
+sbar.exec('system_profiler SPHardwareDataType -json', function(result, exit_code)
+    if string.find(result.SPHardwareDataType[1]['machine_name'], 'Mac mini') ~= nil then
+        media:set({ label = { max_chars = 20 } })
+    end
 end)
 
 return media

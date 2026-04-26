@@ -42,27 +42,23 @@ if string.match(db_dir, 'db%-collection') then
 
     local function get_query_under_current_line(bufnr)
         vim.api.nvim_buf_clear_namespace(bufnr, visual_selection_namespace, 0, -1)
-        if vim.bo.filetype == 'javascript' then
-            local cursor = vim.api.nvim_win_get_cursor(0)
-            local sr = cursor[1] - 1
-            local er = sr
-
-            vim.hl.range(bufnr, visual_selection_namespace, 'Visual', { sr, 0 }, { er, -1 })
-            return vim.api.nvim_get_current_line()
-        end
-
         local node = vim.treesitter.get_node()
+        local is_javascript_filetype = vim.bo.filetype == 'javascript'
+        local node_types = is_javascript_filetype and { 'expression_statement' } or { 'statement', 'comment' }
+
         while node do
-            if node:type() == 'statement' or node:type() == 'ERROR' then
-                local statement = vim.treesitter.get_node_text(node, bufnr):gsub('\n', ' '):gsub('%s+', ' ') .. '\\G'
-                if node:type() == 'ERROR' and not statement:match('^CALL%s') then
+            if vim.tbl_contains(node_types, node:type()) then
+                local statement = vim.treesitter.get_node_text(node, bufnr):gsub('\n', ' ')
+                if not is_javascript_filetype then
+                    statement = statement:gsub('%s+', ' ') .. '\\G'
+                end
+                if node:type() == 'comment' and not statement:match('CALL%s') then
                     break
                 end
                 local sr, _, er, _ = node:range()
-                local line_number = sr + 1
                 vim.hl.range(bufnr, visual_selection_namespace, 'Visual', { sr, 0 }, { er, -1 })
-                if statement:match('^CALL%s') then
-                    statement = vim.api.nvim_buf_get_lines(bufnr, line_number - 1, line_number, false)[1]:gsub(';', '\\G')
+                if node:type() == 'comment' then
+                    statement = statement:gsub('%-%-', ''):gsub(';', '')
                 end
                 return statement
             end
