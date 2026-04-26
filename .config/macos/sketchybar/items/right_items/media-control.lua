@@ -101,8 +101,8 @@ media:subscribe('media_stream_changed', function(env)
 end)
 
 sbar.exec('system_profiler SPHardwareDataType -json', function(result, exit_code)
-    if string.find(result.SPHardwareDataType[1]['machine_name'], 'Mac mini') ~= nil then
-        media:set({ label = { max_chars = 20 } })
+    if string.find(result.SPHardwareDataType[1]['machine_name'], 'Mac mini') == nil then
+        media:set({ label = { max_chars = 18 } })
     end
 end)
 
