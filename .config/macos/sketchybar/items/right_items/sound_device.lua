@@ -140,7 +140,11 @@ local volume_changed = function(env)
 end
 
 local toggle_volume_popup = function(env)
-    volume:set({ popup = { drawing = 'toggle' } })
+    if env.INFO.button_code == 0 then
+        volume:set({ popup = { drawing = 'toggle' } })
+    elseif env.INFO.button_code == 1 then
+        sbar.exec('osascript -e \'set volume output volume 0\'')
+    end
 end
 
 local change_device = function()

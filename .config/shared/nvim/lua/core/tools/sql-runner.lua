@@ -52,7 +52,7 @@ if string.match(db_dir, 'db%-collection') then
                 if not is_javascript_filetype then
                     statement = statement:gsub('%s+', ' ') .. '\\G'
                 end
-                if node:type() == 'comment' and not statement:match('CALL%s') then
+                if node:type() == 'comment' and vim.fn.match(statement, [[\v(CALL|DESCRIBE)\s]]) == -1 then
                     break
                 end
                 local sr, _, er, _ = node:range()

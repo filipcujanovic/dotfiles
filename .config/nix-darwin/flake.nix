@@ -25,6 +25,7 @@
             #pkgs.intelephense
             #pkgs.marksman
             #pkgs.sketchybar
+            #pkgs.neovim
             pkgs.android-tools
             pkgs.bash-language-server
             pkgs.bat
@@ -64,7 +65,6 @@
             pkgs.mycli
             pkgs.mysql-shell
             pkgs.mysql84
-            #pkgs.neovim
             pkgs.ngrok
             pkgs.nixfmt
             pkgs.php
@@ -130,6 +130,7 @@
               "m1ddc"
               "marksman"
               "media-control"
+              #"mikker/tap/tuna"
               "mongodb-database-tools"
               "neovim"
               "newsboat"

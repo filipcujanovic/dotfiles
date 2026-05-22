@@ -12,7 +12,7 @@ return {
             jq = {
                 append_args = {
                     '--indent',
-                    '2',
+                    '4',
                 },
             },
             sql_formatter = {

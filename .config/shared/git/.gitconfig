@@ -1,5 +1,5 @@
 [user]
-	name = filipcujanovic
+	name = Filip Cujanovic
 	email = 29860740+filipcujanovic@users.noreply.github.com
 [pager]
 	diff = delta
@@ -25,3 +25,8 @@
 	tool = nvimdiff
 [init]
 	defaultBranch = main
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

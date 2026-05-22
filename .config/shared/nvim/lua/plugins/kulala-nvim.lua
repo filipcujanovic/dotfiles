@@ -5,6 +5,7 @@ return {
     ft = { 'http', 'rest' },
     opts = {
         debug = true,
+        default_env = 'dev',
         global_keymaps = false,
         environment_scope = 'g',
         show_request_summary = false,

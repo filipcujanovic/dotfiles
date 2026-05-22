@@ -368,6 +368,10 @@ run = 'layout floating'
 if.app-id = 'com.riotgames.RiotGames.RiotClient'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-id = 'com.google.android.mtpviewer'
+run = 'layout floating'
+
 #[[on-window-detected]]
 #if.app-id = 'com.innersloth.amongus'
 #run = 'layout floating'
