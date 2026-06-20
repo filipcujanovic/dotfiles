@@ -5,7 +5,11 @@ local icons = require('icons')
 local active_color = options.color.active_color
 local inactive_color = options.color.inactive_color
 local current_device = io.popen('SwitchAudioSource -c -t output'):read('*a'):gsub('^%s*(.-)%s*$', '%1')
-local all_devices = utils.split_string(io.popen('SwitchAudioSource -a -t output'):read('*a'), '[^\r\n]+')
+local items = {}
+
+local get_all_devices = function()
+    return utils.split_string(io.popen('SwitchAudioSource -a -t output'):read('*a'), '[^\r\n]+')
+end
 
 local get_device_icon = function(device)
     device = string.lower(device)
@@ -191,8 +195,8 @@ local hide_device_battery_level = function()
 end
 
 local create_popup_items = function()
-    for _, input_device in pairs(all_devices) do
-        local bar_device = sbar.add('item', input_device, {
+    for _, input_device in pairs(get_all_devices()) do
+        local popup_device = sbar.add('item', input_device, {
             position = 'popup.' .. device.name,
             icon = get_device_icon(input_device),
             label = {
@@ -202,34 +206,44 @@ local create_popup_items = function()
             },
             background = { color = options.color.transparent },
         })
-        bar_device:subscribe('mouse.clicked', function()
+        popup_device:subscribe('mouse.clicked', function()
             sbar.exec('SwitchAudioSource -s "' .. input_device .. '"')
-            device:set({ popup = { drawing = 'toggle' } })
             device:set({ label = { string = get_device_icon(input_device).string } })
             current_device = input_device
+            popup_device:set({ label = { color = active_color } })
         end)
-        bar_device:subscribe('volume_change', function()
-            bar_device:set({ label = { color = current_device == bar_device.name and active_color or inactive_color } })
+        popup_device:subscribe('volume_change', function()
+            popup_device:set({ label = { color = current_device == popup_device.name and active_color or inactive_color } })
         end)
+        table.insert(items, input_device)
+    end
+end
+
+local remove_popup_items = function()
+    for _, input_device in pairs(items) do
+        sbar.exec(string.format('sketchybar --remove "%s"', input_device))
     end
 end
 
 local handle_click = function(env)
     if env.INFO.button_code == 0 then
-        device:set({ popup = { drawing = 'toggle' } })
+        if device:query().popup == nil then
+            create_popup_items()
+            device:set({ popup = { drawing = true } })
+        else
+            remove_popup_items()
+        end
     elseif env.INFO.button_code == 1 then
         show_device_battery_level()
     end
 end
-
-create_popup_items()
 
 device:subscribe('mouse.clicked', handle_click)
 device:subscribe('volume_change', change_device)
 --device_icon:subscribe('mouse.entered', show_device_battery_level)
 device:subscribe('mouse.exited', hide_device_battery_level)
 device:subscribe('mouse.exited.global', function()
-    device:set({ popup = { drawing = false } })
+    remove_popup_items()
 end)
 
 volume:subscribe('mouse.clicked', toggle_volume_popup)

@@ -302,6 +302,16 @@ if.window-title-regex-substring = 'personal'
 run = 'move-node-to-workspace personal'
 
 [[on-window-detected]]
+if.app-id = 'net.imput.helium'
+if.window-title-regex-substring = 'personal'
+run = 'move-node-to-workspace personal'
+
+[[on-window-detected]]
+if.app-id = 'net.imput.helium'
+if.window-title-regex-substring = 'work'
+run = 'move-node-to-workspace work'
+
+[[on-window-detected]]
 if.app-id = 'com.brave.Browser'
 if.window-title-regex-substring = 'zone'
 run = 'move-node-to-workspace zone'
@@ -312,7 +322,6 @@ if.window-title-regex-substring = 'work'
 run = 'move-node-to-workspace work'
 
 [[on-window-detected]]
-if.app-id = 'com.brave.Browser'
 if.window-title-regex-substring = 'Bitwarden'
 run = 'layout floating'
 

@@ -30,7 +30,6 @@ return {
                 '^adminrebuild',
                 -- '^admin/',
                 'v/1.*',
-                'v/0.*',
                 --'^.git/',
                 -- '.git*',
             },

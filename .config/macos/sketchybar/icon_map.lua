@@ -25,6 +25,7 @@ M.get_icon = function(app, is_front_app)
         facetime = ':face_time:',
         finder = ':finder:',
         ghostty = ':ghostty:',
+        helium = ':helium:',
         kitty = ':terminal:',
         lulu = ':lulu:',
         messages = ':messages:',

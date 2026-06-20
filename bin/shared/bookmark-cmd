@@ -2,5 +2,13 @@
 
 title=$(echo $2 | tr '[:upper:]' '[:lower:]')
 url=$1
+channel=$4
+channel_file=$(echo "$channel" | tr '[:upper:]' '[:lower:]' | sed -E 's/[[:space:]]+/-/g')
 
-echo "- $title - $url" >>~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/the-never-ending-hole/personal/bookmarks.md
+file="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/the-never-ending-hole/personal/fun/yt-videos/${channel_file}.md"
+
+if [ -e "$file" ]; then
+    echo "- $title - $url" >>"$file"
+else
+    echo "- $title - $url" >>~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/the-never-ending-hole/personal/fun/yt-videos/bookmarks.md
+fi

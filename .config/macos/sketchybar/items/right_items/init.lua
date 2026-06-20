@@ -5,8 +5,8 @@ local calendar = require('items.right_items.calendar')
 local keyboard_layout = require('items.right_items.keyboard-layout')
 local battery = require('items.right_items.battery')
 local sound_device_items = require('items.right_items.sound_device')
-local media_control = require('items.right_items.media-control')
 local timew = require('items.right_items.timew')
+local media_control = require('items.right_items.media-control')
 
 sbar.add('bracket', {
     clock.name,

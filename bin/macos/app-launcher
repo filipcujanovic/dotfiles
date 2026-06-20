@@ -7,6 +7,7 @@ settings_file=~/projects/dotfiles/app-launcher/mac-os-settings-list.json
 applications=$(
     eza -1 -X --no-quotes \
         ~/Applications/Brave\ Browser\ Apps.localized/ \
+        ~/Applications/Chromium\ Apps.localized/ \
         /System/Volumes/Data/Applications/KiCad/ \
         ~/Applications/ \
         /Applications/ \

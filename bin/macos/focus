@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CATEGORIES=(
+    "continue-last"
     "dotfiles"
     "projects"
     "stop"
@@ -16,6 +17,8 @@ fi
 
 if [[ "$selected" == "stop" ]]; then
     timew stop | sketchybar --trigger timew-stop
+elif [[ "$selected" == "continue-last" ]]; then
+    timew continue | sketchybar --trigger timew-start
 else
     timew start "$selected" | sketchybar --trigger timew-start
 fi

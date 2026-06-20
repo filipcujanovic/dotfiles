@@ -2,10 +2,13 @@ return {
     'saghen/blink.cmp',
     dependencies = {
         --'rafamadriz/friendly-snippets',
-        { 'saghen/blink.compat', version = '2.*' },
+        --{ 'saghen/blink.compat', version = '2.*' },
     },
     version = 'v1.*',
     opts = {
+        fuzzy = {
+            implementation = 'rust',
+        },
         completion = {
             accept = { auto_brackets = { enabled = true } },
             list = {
@@ -31,7 +34,7 @@ return {
             providers = {
                 lsp = {
                     async = true,
-                    fallbacks = {},
+                    --fallbacks = {},
                 },
             },
         },

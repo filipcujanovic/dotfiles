@@ -1,5 +1,6 @@
 return {
     'ThePrimeagen/99',
+    enabled = false,
     version = '*',
     config = function()
         local _99 = require('99')
