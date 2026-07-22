@@ -76,9 +76,9 @@ media:subscribe('mouse.exited.global', function()
 end)
 
 media:subscribe('media_stream_changed', function(env)
-    local artist = env.artist ~= nil and env.artist or ''
-    local title = env.title ~= nil and env.title or ''
-    local label = string.format('%s - %s', artist:gsub('"', '\\"'), title:gsub('"', '\\"'))
+    local artist = env.artist ~= nil and env.artist:gsub('"', '\\"') or ''
+    local title = env.title ~= nil and env.title:gsub('"', '\\"') or ''
+    local label = string.format('%s%s%s', artist, string.len(artist) ~= 0 and ' - ' or '', title)
     label = io.popen(string.format('echo "%s" | LC_ALL=en_US.UTF-8 awk \'{print tolower($0)}\'', label)):read('*a')
     local icon_drawing = false
 

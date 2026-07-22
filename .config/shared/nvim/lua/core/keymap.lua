@@ -11,7 +11,11 @@ vim.keymap.set('n', '<leader>n', ':tabn<CR>', { desc = 'tab next' })
 vim.keymap.set('n', '<leader>p', ':tabp<CR>', { desc = 'tab previous' })
 vim.keymap.set('n', '<leader>x', function()
     --require('nvim-tree.api').tree.close()
-    vim.cmd('q!')
+    if vim.bo.buftype == 'terminal' then
+        vim.cmd('bd!')
+    else
+        vim.cmd('q!')
+    end
 end, { desc = 'force quit' })
 vim.keymap.set('n', '<leader>q', function()
     --require('nvim-tree.api').tree.close()

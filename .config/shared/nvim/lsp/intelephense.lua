@@ -40,4 +40,11 @@ return {
     init_options = {
         licenceKey = get_intelephense_license(),
     },
+    settings = {
+        intelephense = {
+            telemetry = {
+                enabled = false,
+            },
+        },
+    },
 }

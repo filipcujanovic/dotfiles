@@ -22,10 +22,17 @@
           nixpkgs.config.allowUnfree = true;
           environment.systemPackages = [
             #pkgs.choose-gui
+            #pkgs.ghostty-bin
+            #pkgs.gopls
             #pkgs.intelephense
+            #pkgs.jankyborders
+            #pkgs.kanata
+            #pkgs.lazysql
+            #pkgs.localtunnel
             #pkgs.marksman
-            #pkgs.sketchybar
+            #pkgs.mysql-shell
             #pkgs.neovim
+            #pkgs.sketchybar
             pkgs.android-tools
             pkgs.bash-language-server
             pkgs.bat
@@ -35,38 +42,30 @@
             pkgs.coreutils
             pkgs.delta
             pkgs.docker-compose
-            pkgs.espanso
             pkgs.eza
             pkgs.fd
             pkgs.ffmpeg
             pkgs.fzf
-            pkgs.ghostty-bin
             pkgs.git
             pkgs.git-extras
             pkgs.gitmux
-            pkgs.gopls
             pkgs.harper
             pkgs.htop
-            pkgs.jankyborders
             pkgs.jq
-            pkgs.kanata
             pkgs.keycastr
             pkgs.keymap-drawer
             pkgs.lazydocker
             pkgs.lazygit
-            pkgs.lazysql
-            pkgs.localtunnel
             pkgs.lua-language-server
-            pkgs.maccy
             pkgs.markdown-oxide
             pkgs.mkcert
             pkgs.mongosh
             pkgs.mpremote
             pkgs.mycli
-            pkgs.mysql-shell
             pkgs.mysql84
             pkgs.ngrok
             pkgs.nixfmt
+            pkgs.nodejs
             pkgs.php
             pkgs.prettier
             pkgs.pyright
@@ -113,29 +112,25 @@
               "acsandmann/tap"
               "chojs23/tap"
               "daipeihust/tap"
-              "mikker/tap"
-              "mongodb/brew"
               "nikitabobko/tap"
               "tonisives/tap"
             ];
             brews = [
-              "acsandmann/tap/rift"
               "choose-gui"
               "ec"
               "gh"
               "im-select"
-              "imagemagick"
               "lua"
               "luarocks"
               "m1ddc"
-              "marksman"
               "media-control"
-              "mongodb-database-tools"
               "neovim"
               "newsboat"
               "nvm"
               "pipx"
               "sketchybar"
+              #"imagemagick"
+              #"marksman"
               #"mas"
             ];
             casks = [
@@ -157,15 +152,15 @@
               "kitty"
               "lulu"
               "macs-fan-control"
-              "mongodb-compass"
               "mouseless@preview"
               "pearcleaner"
               "sf-symbols"
               "signal"
               "the-unarchiver"
               "viber"
+              "vicinae"
               "vlc"
-              #"mikker/tap/tuna"
+              #"mongodb-compass"
               #"mysql-shell"
               #"ovim"
             ];
@@ -277,6 +272,18 @@
               enableRosetta = true;
               user = "cujanovic";
               autoMigrate = true;
+              trust = {
+                taps = [
+                  "FelixKratz/formulae"
+                  "acsandmann/tap"
+                  "chojs23/tap"
+                  "daipeihust/tap"
+                  "nikitabobko/tap"
+                  "tonisives/tap"
+                  #"mongodb/brew"
+                ];
+              };
+
             };
           }
           { homebrew.casks = [ "obs" ]; }

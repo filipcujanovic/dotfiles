@@ -110,7 +110,7 @@ return {
                 'rust',
                 'scss',
                 'sql',
-                'tmux',
+                --'tmux',
                 'toml',
                 'tsx',
                 'twig',
