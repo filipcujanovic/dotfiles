@@ -180,6 +180,24 @@
             onActivation.upgrade = true;
           };
 
+          nix-homebrew = {
+            enable = true;
+            enableRosetta = true;
+            user = "cujanovic";
+            autoMigrate = true;
+            trust = {
+              taps = [
+                "FelixKratz/formulae"
+                "acsandmann/tap"
+                "chojs23/tap"
+                "daipeihust/tap"
+                "nikitabobko/tap"
+                "tonisives/tap"
+                #"mongodb/brew"
+              ];
+            };
+          };
+
           programs.zsh = {
             enable = true;
             enableAutosuggestions = true;
@@ -266,26 +284,6 @@
         modules = [
           configuration
           nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              enable = true;
-              enableRosetta = true;
-              user = "cujanovic";
-              autoMigrate = true;
-              trust = {
-                taps = [
-                  "FelixKratz/formulae"
-                  "acsandmann/tap"
-                  "chojs23/tap"
-                  "daipeihust/tap"
-                  "nikitabobko/tap"
-                  "tonisives/tap"
-                  #"mongodb/brew"
-                ];
-              };
-
-            };
-          }
           { homebrew.casks = [ "obs" ]; }
         ];
       };
@@ -294,14 +292,6 @@
         modules = [
           configuration
           nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              enable = true;
-              enableRosetta = true;
-              user = "cujanovic";
-              autoMigrate = true;
-            };
-          }
           {
             homebrew.casks = [
               "karabiner-elements"
