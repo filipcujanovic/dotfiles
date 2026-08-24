@@ -254,7 +254,7 @@
                 ActuationStrength = 0;
                 TrackpadThreeFingerDrag = false;
               };
-              universalaccess.reduceTransparency = false;
+              universalaccess.reduceTransparency = true;
 
               NSGlobalDomain = {
                 NSWindowShouldDragOnGesture = true;

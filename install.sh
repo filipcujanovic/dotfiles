@@ -15,6 +15,7 @@ ln -s -f ~/projects/dotfiles/bin/shared/* ~/bin/
 if [[ $os == "Darwin" ]]; then
     defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
     ln -s -f ~/projects/dotfiles/bin/macos/* ~/bin/
+    #ln -s -f ~/projects/dotfiles/.config/macos/finicky/.finicky.js ~/.finicky.js
     ln -s -f ~/projects/dotfiles/.config/macos/* ~/.config/
     #ln -s -f ~/projects/dotfiles/.config/macos/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
     #ln -s -f ~/projects/dotfiles/.config/macos/lazysql/config.yaml ~/Library/Application\ Support/lazysql/config.toml
