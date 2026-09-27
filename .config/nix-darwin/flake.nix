@@ -36,6 +36,7 @@
             pkgs.android-tools
             pkgs.bash-language-server
             pkgs.bat
+            pkgs.beets
             pkgs.btop
             pkgs.chafa
             pkgs.commitizen
@@ -110,13 +111,14 @@
             taps = [
               "FelixKratz/formulae"
               "acsandmann/tap"
-              "chojs23/tap"
               "daipeihust/tap"
               "nikitabobko/tap"
               "tonisives/tap"
             ];
             brews = [
               "choose-gui"
+              "colima"
+              "docker"
               "ec"
               "gh"
               "im-select"
@@ -129,6 +131,7 @@
               "nvm"
               "pipx"
               "sketchybar"
+              "tree-sitter-cli"
               #"imagemagick"
               #"marksman"
               #"mas"
@@ -140,7 +143,6 @@
               "betterdisplay"
               "calibre"
               "claude-code"
-              "docker-desktop"
               "font-sf-mono"
               "font-sf-mono-nerd-font-ligaturized"
               "font-sf-pro"
@@ -160,6 +162,7 @@
               "viber"
               "vicinae"
               "vlc"
+              #"Sikarugir-App/sikarugir/sikarugir"
               #"mongodb-compass"
               #"mysql-shell"
               #"ovim"
@@ -175,7 +178,7 @@
               #"WireGuard" = 1451685025;
               #"Xcode" = 497799835;
             };
-            onActivation.cleanup = "zap";
+            #onActivation.cleanup = "zap";
             #onActivation.autoUpdate = true;
             onActivation.upgrade = true;
           };
@@ -188,8 +191,8 @@
             trust = {
               taps = [
                 "FelixKratz/formulae"
+                "Sikarugir-App/sikarugir"
                 "acsandmann/tap"
-                "chojs23/tap"
                 "daipeihust/tap"
                 "nikitabobko/tap"
                 "tonisives/tap"

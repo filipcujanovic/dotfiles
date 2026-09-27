@@ -1,5 +1,6 @@
 # Available commands: https://nikitabobko.github.io/AeroSpace/commands
 after-login-command = []
+config-version = 2
 
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
@@ -111,6 +112,7 @@ alt-right = 'move right'
 #alt-shift-l = 'resize smart-opposite +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+alt-a = 'workspace additional'
 alt-c = 'workspace chats'
 alt-m = 'workspace music'
 alt-p = 'workspace personal'
@@ -119,12 +121,14 @@ alt-w = 'workspace work'
 alt-z = 'workspace zone'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+alt-shift-a = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window additional && sketchybar --trigger custom_space_windows_change'
 alt-shift-c = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window chats && sketchybar --trigger custom_space_windows_change'
 alt-shift-m = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window musci && sketchybar --trigger custom_space_windows_change'
 alt-shift-p = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window personal && sketchybar --trigger custom_space_windows_change'
 alt-shift-t = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window terminal && sketchybar --trigger custom_space_windows_change'
 alt-shift-w = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window work && sketchybar --trigger custom_space_windows_change'
 alt-shift-z = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window zone && sketchybar --trigger custom_space_windows_change'
+#alt-shift-a = 'move-node-to-workspace --focus-follows-window additional'
 #alt-shift-c = 'move-node-to-workspace --focus-follows-window chats'
 #alt-shift-m = 'move-node-to-workspace --focus-follows-window music'
 #alt-shift-p = 'move-node-to-workspace --focus-follows-window personal'
@@ -132,15 +136,11 @@ alt-shift-z = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-
 #alt-shift-w = 'move-node-to-workspace --focus-follows-window work'
 #alt-shift-z = 'move-node-to-workspace --focus-follows-window zone'
 
-#cmd-space = 'exec-and-forget app-launcher'
-cmd-shift-w = 'exec-and-forget terminal-picker change-wallpaper'
-#cmd-shift-s = 'exec-and-forget terminal-picker file-search'
-alt-f = 'exec-and-forget open ~'
+cmd-shift-w = 'exec-and-forget vicinae-wallpaper-picker'
 alt-b = 'exec-and-forget m1ddc display 1 set input 18'
 alt-n = 'exec-and-forget m1ddc display 1 set input 27'
-
-#cmd-shift-space = 'exec-and-forget ~/bin/terminal-picker ~/bin/clipboard-manager'
-#cmd-space = 'exec-and-forget ~/bin/terminal-picker ~/bin/app-launcher'
+alt-f = 'exec-and-forget open ~'
+alt-y = 'exec-and-forget focus'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-enter = 'workspace-back-and-forth'
@@ -400,3 +400,4 @@ run = 'layout floating'
 'terminal' = 'main'
 'work' = 'main'
 'music' = 'main'
+'additional' = 'secondary'

@@ -1,5 +1,5 @@
 return {
-    'mistweaverco/kulala.nvim',
+    'dont-be-evil-company/kulala.nvim',
     lazy = true,
     branch = 'main',
     ft = { 'http', 'rest' },
@@ -11,6 +11,7 @@ return {
         show_request_summary = false,
         ui = {
             display_mode = 'split',
+            --split_direction = 'below',
             icons = {
                 lualine = '',
             },

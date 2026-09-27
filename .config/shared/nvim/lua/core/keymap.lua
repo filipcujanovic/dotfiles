@@ -37,13 +37,20 @@ end, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>d', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
-vim.keymap.set('n', '<leader>b', function()
-    require('../core/tools.yazi-file-explorer').open_file_explorer('yazi', true)
-end, { desc = 'open file explorer' })
+--vim.keymap.set('n', '<leader>b', function()
+--    require('../core/tools.yazi-file-explorer').open_file_explorer('yazi', true)
+--end, { desc = 'open file explorer' })
 --vim.keymap.set('n', '<leader>tr', function()
 --    require('nvim-tree.api').tree.toggle({ focus = false })
 --end, { desc = 'toggle nvim tree' })
-
+local function minifiles_open_current()
+    if vim.fn.filereadable(vim.fn.bufname('%')) > 0 then
+        require('mini.files').open(vim.api.nvim_buf_get_name(0), false)
+    else
+        require('mini.files').open()
+    end
+end
+vim.keymap.set('n', '<leader>b', minifiles_open_current, {})
 vim.keymap.set('n', '<leader>gch', ':Ghdiffsplit!<cr>', { desc = 'git conflict horizontal' })
 vim.keymap.set('n', '<leader>gcv', ':Gvdiffsplit!<cr>', { desc = 'git conflict vertical' })
 
@@ -87,6 +94,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.keymap.set('n', '<leader>lg', function()
+    --vim.fn.system('tmux display-popup -w 95% -h 90% -E tmux new-session -A -s float')
     vim.fn.system('tmux display-popup -w 95% -h 90% -E -d ' .. vim.fn.shellescape(vim.fn.getcwd()) .. ' lazygit')
 end, { desc = 'lazygit' })
 

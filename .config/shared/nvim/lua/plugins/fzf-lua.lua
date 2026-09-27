@@ -23,15 +23,29 @@ return {
             files = {
                 cwd_prompt = false,
             },
+            git = {
+                status = {
+                    --path_shorten = 1,
+                    --formatter = 'filename_first',
+                    winopts = {
+                        height = 1,
+                        width = 1,
+                        preview = {
+                            layout = 'horizontal',
+                            horizontal = 'right:73%',
+                        },
+                    },
+                },
+            },
             file_ignore_patterns = {
                 '.obsidian/',
                 --'node_modules',
                 --'vendor',
-                '^adminrebuild',
-                -- '^admin/',
-                'v/1.*',
-                --'^.git/',
-                -- '.git*',
+                'v/2.0.0/',
+                'v/1.0.0/',
+                'v/1.1.0/',
+                '^.git/',
+                --'.git*',
             },
             defaults = {
                 actions = {
@@ -62,6 +76,7 @@ return {
         end, { desc = '[ ] Find existing buffers' })
         vim.keymap.set('n', '<leader>?', fzf.oldfiles, { desc = '[?] Find recently opened files' })
         vim.keymap.set('n', '<leader>gf', fzf.git_files, { desc = 'Search [G]it [F]iles' })
+        vim.keymap.set('n', '<leader>gs', fzf.git_status, { desc = 'Search [G]it [S]tatus' })
         vim.keymap.set('n', '<leader>sf', function()
             fzf.files({ previewer = false })
         end, { desc = '[S]earch [F]iles' })

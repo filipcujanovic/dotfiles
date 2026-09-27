@@ -9,7 +9,7 @@ CATEGORIES=(
     "work"
 )
 
-selected=$(printf "%s\n" "${CATEGORIES[@]}" | fzf)
+selected=$(printf "%s\n" "${CATEGORIES[@]}" | vicinae dmenu --width 200 --height 300 --no-metadata --no-section --no-footer -p "select timer")
 
 if [[ -z "$selected" ]]; then
     exit 0
