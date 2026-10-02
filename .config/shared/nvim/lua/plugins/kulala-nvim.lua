@@ -4,6 +4,9 @@ return {
     branch = 'main',
     ft = { 'http', 'rest' },
     opts = {
+        treesitter = {
+            enable = false,
+        },
         debug = true,
         default_env = 'dev',
         global_keymaps = false,

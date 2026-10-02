@@ -41,7 +41,7 @@ return {
                 '.obsidian/',
                 --'node_modules',
                 --'vendor',
-                'v/2.0.0/',
+                --'v/2.0.0/',
                 'v/1.0.0/',
                 'v/1.1.0/',
                 '^.git/',

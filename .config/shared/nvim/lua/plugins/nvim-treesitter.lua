@@ -96,6 +96,7 @@ return {
                 'graphql',
                 'html',
                 'http',
+                'kulala_http',
                 'javascript',
                 'json',
                 'lua',
@@ -110,7 +111,6 @@ return {
                 'rust',
                 'scss',
                 'sql',
-                --'tmux',
                 'toml',
                 'tsx',
                 'twig',
@@ -118,6 +118,7 @@ return {
                 'vim',
                 'vimdoc',
                 'xml',
+                'tmux',
             },
             --incremental_selection = {
             --    enable = true,
@@ -141,6 +142,26 @@ return {
 
             local treesitter = require('nvim-treesitter')
             treesitter.setup(opts)
+            vim.api.nvim_create_autocmd('User', {
+                pattern = 'TSUpdate',
+                callback = function()
+                    require('nvim-treesitter.parsers').tmux = {
+                        install_info = {
+                            url = 'https://github.com/Freed-Wu/tree-sitter-tmux',
+                            queries = 'queries/',
+                        },
+                        tier = 2,
+                    }
+
+                    require('nvim-treesitter.parsers').kulala_http = {
+                        install_info = {
+                            url = 'https://github.com/dont-be-evil-company/tree-sitter-kulala-http',
+                            queries = 'queries/kulala_http',
+                        },
+                        tier = 2,
+                    }
+                end,
+            })
             treesitter.install(opts.ensure_installed)
             vim.api.nvim_create_autocmd('FileType', {
                 callback = function(args)
