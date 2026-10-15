@@ -9,7 +9,7 @@ vim.opt.swapfile = false
 
 vim.o.winborder = 'rounded'
 
-vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
+vim.o.sessionoptions = 'blank,buffers,options,curdir,folds,help,tabpages,winsize,winpos,terminal'
 
 vim.o.wrap = true
 

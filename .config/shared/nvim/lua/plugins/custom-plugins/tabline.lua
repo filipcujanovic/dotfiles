@@ -18,7 +18,6 @@ function M.render()
     s = string.format('%s%%#TabLineFill#', s)
     return s
 end
-
-vim.o.tabline = '%!v:lua.require\'core.tools.tabline\'.render()'
+vim.o.tabline = '%!v:lua.require\'plugins.custom-plugins.tabline\'.render()'
 
 return M

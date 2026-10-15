@@ -13,7 +13,6 @@ vim.keymap.set('n', '<leader>w', ':write<CR>', { desc = 'write' })
 vim.keymap.set('n', '<leader>n', ':tabn<CR>', { desc = 'tab next' })
 vim.keymap.set('n', '<leader>p', ':tabp<CR>', { desc = 'tab previous' })
 vim.keymap.set('n', '<leader>x', function()
-    --require('nvim-tree.api').tree.close()
     if vim.bo.buftype == 'terminal' then
         vim.cmd('bd!')
     else
@@ -21,7 +20,6 @@ vim.keymap.set('n', '<leader>x', function()
     end
 end, { desc = 'force quit' })
 vim.keymap.set('n', '<leader>q', function()
-    --require('nvim-tree.api').tree.close()
     vim.cmd('confirm q')
 end, { desc = 'quit' })
 
@@ -80,18 +78,11 @@ end, { desc = 'open git file in browser ' })
 
 vim.keymap.set('n', '<leader>ot', ':ObsidianTags<cr>', { desc = 'open obsidian tags' })
 
-vim.api.nvim_create_autocmd('FileType', {
-    pattern = 'http',
-    callback = function()
-        vim.keymap.set('n', '<leader>rr', function()
-            require('kulala').run()
-        end, { desc = 'run request' })
-
-        vim.keymap.set('n', '<leader>re', function()
-            require('kulala').set_selected_env()
-        end, { desc = 'select env' })
-    end,
-})
+--vim.api.nvim_create_autocmd('FileType', {
+--    pattern = 'http',
+--    callback = function()
+--    end,
+--})
 
 vim.keymap.set('n', '<leader>lg', function()
     --vim.fn.system('tmux display-popup -w 95% -h 90% -E tmux new-session -A -s float')
@@ -118,3 +109,52 @@ end, {
     expr = true,
     desc = 'go to file',
 })
+
+vim.keymap.set('n', '<leader>ur', function()
+    local plugins = vim.pack.get()
+    local file_content = {
+        [[
+# nvim
+
+<img src="/assets/images/dotfiles-smaller.png" width="49%" height="50%"> <img src="/assets/images/code.png" width="49%" height="50%"> <img src="/assets/images/file-search.png" width="49%" height="50%"> <img src="/assets/images/keymaps.png" width="49%" height="50%">
+]],
+        '# plugins',
+        '',
+    }
+    local custom_plugins_path = '/lua/plugins/custom-plugins/'
+    local custom_plugins_local_path = string.format('%s%s', vim.fn.stdpath('config'), custom_plugins_path)
+    local git_path = string.format('.config/shared/nvim%s', custom_plugins_path)
+    local custom_plugins = {}
+    for name, type in vim.fs.dir(custom_plugins_local_path) do
+        if type == 'file' then
+            table.insert(custom_plugins, { name = name, src = string.format('%s%s', git_path, name) })
+        end
+    end
+    local plugins_md = {}
+    for _, plugin in pairs(plugins) do
+        if plugin.spec.src then
+            table.insert(plugins_md, ('- [%s](%s)'):format(plugin.spec.name, plugin.spec.src:gsub('%.git$', '')))
+        end
+    end
+    table.sort(plugins_md, function(a, b)
+        return a:lower() < b:lower()
+    end)
+
+    for _, p in ipairs(plugins_md) do
+        table.insert(file_content, p)
+    end
+
+    table.insert(file_content, '\n# custom plugins\n')
+    for _, custom_plugin in pairs(custom_plugins) do
+        table.insert(file_content, ('- [%s](%s)'):format(custom_plugin.name, custom_plugin.src:gsub('%.git$', '')))
+    end
+
+    local file, err = io.open(vim.fn.stdpath('config') .. '/README.md', 'w')
+    if not file then
+        vim.notify('didn\'t work!', vim.log.levels.ERROR, {})
+        error(err)
+    end
+    file:write(table.concat(file_content, '\n'))
+    file:close()
+    vim.notify('README.md succesfully generated', vim.log.levels.INFO, {})
+end)

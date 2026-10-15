@@ -59,6 +59,16 @@ gaps.outer.top = [
   20,
 ]
 
+persistent-workspaces = [
+  'additional',
+  'chats',
+  'music',
+  'personal',
+  'terminal',
+  'work',
+  'zone',
+]
+
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.main.binding]
@@ -139,7 +149,7 @@ alt-shift-z = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-
 cmd-shift-w = 'exec-and-forget vicinae-wallpaper-picker'
 alt-b = 'exec-and-forget m1ddc display 1 set input 18'
 alt-n = 'exec-and-forget m1ddc display 1 set input 27'
-alt-f = 'exec-and-forget open ~'
+alt-f = 'exec-and-forget open-finder'
 alt-y = 'exec-and-forget focus'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth

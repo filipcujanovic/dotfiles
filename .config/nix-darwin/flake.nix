@@ -62,7 +62,6 @@
             pkgs.mkcert
             pkgs.mongosh
             pkgs.mpremote
-            pkgs.mycli
             pkgs.mysql84
             pkgs.ngrok
             pkgs.nixfmt

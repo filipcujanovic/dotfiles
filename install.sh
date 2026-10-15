@@ -5,7 +5,6 @@ ln -s -f ~/projects/dotfiles/.config/shared/* ~/.config/
 
 ln -s -f ~/projects/dotfiles/.config/shared/git/.gitconfig ~/.gitconfig
 ln -s -f ~/projects/dotfiles/.config/shared/gitmux/.gitmux.conf ~/.gitmux.conf
-ln -s -f ~/projects/dotfiles/.config/shared/mycli/.myclirc ~/.myclirc
 ln -s -f ~/projects/dotfiles/.config/shared/tmux/.tmux.conf ~/.tmux.conf
 ln -s -f ~/projects/dotfiles/.config/shared/visidata/.visidatarc ~/.visidatarc
 ln -s -f ~/projects/dotfiles/.config/shared/zsh/.zshenv ~/.zshenv
@@ -17,8 +16,6 @@ if [[ $os == "Darwin" ]]; then
     ln -s -f ~/projects/dotfiles/bin/macos/* ~/bin/
     #ln -s -f ~/projects/dotfiles/.config/macos/finicky/.finicky.js ~/.finicky.js
     ln -s -f ~/projects/dotfiles/.config/macos/* ~/.config/
-    #ln -s -f ~/projects/dotfiles/.config/macos/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
-    #ln -s -f ~/projects/dotfiles/.config/macos/lazysql/config.yaml ~/Library/Application\ Support/lazysql/config.toml
 else
     ln -s -f ~/projects/dotfiles/.config/linux/* ~/.config/
     ln -s -f ~/projects/dotfiles/bin/linux/* ~/bin/

@@ -193,6 +193,6 @@ function M.render()
         ' ',
     })
 end
-vim.o.statusline = '%!v:lua.require\'core.tools.statusline\'.render()'
+vim.o.statusline = '%!v:lua.require\'plugins.custom-plugins.statusline\'.render()'
 
 return M

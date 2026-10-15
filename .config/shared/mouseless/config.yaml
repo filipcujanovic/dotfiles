@@ -1,7 +1,7 @@
-app_version: 0.4.0-preview.2
+app_version: 1.1.0-preview.1
 behavior_configs:
 - base_move_speed: 20.0
-  base_wheel_speed: 16.0
+  base_wheel_speed: 10.0
   free_mode_auto_off_s: 10
   grid_action_level: subgrid
   hide_cursor_on_click: false
@@ -10,20 +10,29 @@ behavior_configs:
   initial_overlay_monitor: with_mouse
   move_duration_ms: 100
   move_real_cursor_with_virtual: false
-  move_speed_multiplier: 8.0
-  movement_easing: 0.1
+  move_speed_multiplier: 100.0
+  movement_easing: 0.9
   multi_action_timeout_ms: 400
   name: main_behavior
   send_escape_after_global_alt_tap__windows: true
   tap_threshold_ms: 250
-  wheel_easing: 0.1
-  wheel_speed_multiplier: 4.0
+  wheel_easing: 0.9
+  wheel_speed_multiplier: 32.0
   wheel_step_size: 50.0
   wheel_step_size_large: 500.0
 classname: AppConfig
 custom_monitor_assignments: []
+custom_mouse_scaling: 1.0
+custom_mouse_screen_offset_scaling: 1.0
+custom_overlay_scaling: 1.0
+debug_options: {}
 display_input: none
 event_tap_location: hid_head
+general_settings:
+  automatically_check_for_updates: true
+  check_for_preview_releases: true
+  hide_welcome_screen: false
+  ignore_update_to_version: null
 grid_configs:
 - always_show_subgrid: false
   grid_defn:
@@ -44,231 +53,220 @@ grid_configs:
     num_cells_y: 1
   hold_subgrid_key_for_nudge: false
   name: position_based
-  nudges_per_cell: 4
+  nudges_per_cell: 8
   strategy: subgrid
-  subgrid_dims:
-  - 8
-  - 3
+  subgrid_cols: 8
   subgrid_mouse_action_keys: QWER UIOP ASDF JKL; ZXCV M,./
+  subgrid_rows: 3
 keyboard_layout:
-  id: com.apple.keylayout.ABC
-  name: ABC
-  vk_to_char:
-    0:
-    - a
-    - A
-    1:
-    - s
-    - S
-    2:
-    - d
-    - D
-    3:
-    - f
-    - F
-    4:
-    - h
-    - H
-    5:
-    - g
-    - G
-    6:
-    - z
-    - Z
-    7:
-    - x
-    - X
-    8:
-    - c
-    - C
-    9:
-    - v
-    - V
-    10:
-    - "\xA7"
-    - "\xB1"
-    11:
-    - b
-    - B
-    12:
-    - q
-    - Q
-    13:
-    - w
-    - W
-    14:
-    - e
-    - E
-    15:
-    - r
-    - R
-    16:
-    - y
-    - Y
-    17:
-    - t
-    - T
-    18:
-    - '1'
-    - '!'
-    19:
-    - '2'
-    - '@'
-    20:
-    - '3'
-    - '#'
-    21:
-    - '4'
-    - $
-    22:
-    - '6'
-    - ^
-    23:
-    - '5'
-    - '%'
-    24:
-    - '='
-    - +
-    25:
-    - '9'
-    - (
-    26:
-    - '7'
-    - '&'
-    27:
-    - '-'
-    - _
-    28:
-    - '8'
-    - '*'
-    29:
-    - '0'
-    - )
-    30:
-    - ']'
-    - '}'
-    31:
-    - o
-    - O
-    32:
-    - u
-    - U
-    33:
-    - '['
-    - '{'
-    34:
-    - i
-    - I
-    35:
-    - p
-    - P
-    36: "\r"
-    37:
-    - l
-    - L
-    38:
-    - j
-    - J
-    39:
-    - ''''
-    - '"'
-    40:
-    - k
-    - K
-    41:
-    - ;
-    - ':'
-    42:
-    - \
-    - '|'
-    43:
-    - ','
-    - <
-    44:
-    - /
-    - '?'
-    45:
-    - n
-    - N
-    46:
-    - m
-    - M
-    47:
-    - .
-    - '>'
-    48: "\t"
-    49: ' '
-    50:
-    - '`'
-    - '~'
-    51: "\b"
-    52: "\x03"
-    53: "\e"
-    65: .
-    66:
-    - "\x1D"
-    - '*'
-    67: '*'
-    69: +
-    70:
-    - "\x1C"
-    - +
-    71: "\e"
-    72:
+  code_to_char:
+    ArrowDown: "\x1F"
+    ArrowLeft: "\x1C"
+    ArrowRight: "\x1D"
+    ArrowUp: "\x1E"
+    AudioVolumeUp:
     - "\x1F"
     - '='
-    75: /
-    76: "\x03"
-    77:
-    - "\x1E"
+    Backquote:
+    - '`'
+    - '~'
+    Backslash:
+    - \
+    - '|'
+    Backspace: "\b"
+    BracketLeft:
+    - '['
+    - '{'
+    BracketRight:
+    - ']'
+    - '}'
+    Comma:
+    - ','
+    - <
+    ContextMenu: "\x10"
+    Delete: "\x7F"
+    Digit0:
+    - '0'
+    - )
+    Digit1:
+    - '1'
+    - '!'
+    Digit2:
+    - '2'
+    - '@'
+    Digit3:
+    - '3'
+    - '#'
+    Digit4:
+    - '4'
+    - $
+    Digit5:
+    - '5'
+    - '%'
+    Digit6:
+    - '6'
+    - ^
+    Digit7:
+    - '7'
+    - '&'
+    Digit8:
+    - '8'
+    - '*'
+    Digit9:
+    - '9'
+    - (
+    End: "\x04"
+    Enter: "\r"
+    Equal:
+    - '='
+    - +
+    Escape: "\e"
+    F1: "\x10"
+    F10: "\x10"
+    F11: "\x10"
+    F12: "\x10"
+    F13: "\x10"
+    F14: "\x10"
+    F15: "\x10"
+    F16: "\x10"
+    F2: "\x10"
+    F3: "\x10"
+    F4: "\x10"
+    F5: "\x10"
+    F6: "\x10"
+    F7: "\x10"
+    F8: "\x10"
+    F9: "\x10"
+    Home: "\x01"
+    Insert: "\x05"
+    IntlBackslash:
+    - "\xA7"
+    - "\xB1"
+    KeyA:
+    - a
+    - A
+    KeyB:
+    - b
+    - B
+    KeyC:
+    - c
+    - C
+    KeyD:
+    - d
+    - D
+    KeyE:
+    - e
+    - E
+    KeyF:
+    - f
+    - F
+    KeyG:
+    - g
+    - G
+    KeyH:
+    - h
+    - H
+    KeyI:
+    - i
+    - I
+    KeyJ:
+    - j
+    - J
+    KeyK:
+    - k
+    - K
+    KeyL:
+    - l
+    - L
+    KeyM:
+    - m
+    - M
+    KeyN:
+    - n
+    - N
+    KeyO:
+    - o
+    - O
+    KeyP:
+    - p
+    - P
+    KeyQ:
+    - q
+    - Q
+    KeyR:
+    - r
+    - R
+    KeyS:
+    - s
+    - S
+    KeyT:
+    - t
+    - T
+    KeyU:
+    - u
+    - U
+    KeyV:
+    - v
+    - V
+    KeyW:
+    - w
+    - W
+    KeyX:
+    - x
+    - X
+    KeyY:
+    - y
+    - Y
+    KeyZ:
+    - z
+    - Z
+    Lang1: "\x10"
+    Lang2: "\x10"
+    Minus:
+    - '-'
+    - _
+    NumLock: "\e"
+    Numpad0: '0'
+    Numpad1: '1'
+    Numpad2: '2'
+    Numpad3: '3'
+    Numpad4: '4'
+    Numpad5: '5'
+    Numpad6: '6'
+    Numpad7: '7'
+    Numpad8: '8'
+    Numpad9: '9'
+    NumpadAdd: +
+    NumpadDecimal: .
+    NumpadDivide: /
+    NumpadEnter: "\x03"
+    NumpadEqual: '='
+    NumpadMultiply: '*'
+    NumpadSubtract: '-'
+    PageDown: "\f"
+    PageUp: "\v"
+    Period:
+    - .
+    - '>'
+    Quote:
+    - ''''
+    - '"'
+    Semicolon:
+    - ;
+    - ':'
+    Slash:
     - /
-    78: '-'
-    81: '='
-    82: '0'
-    83: '1'
-    84: '2'
-    85: '3'
-    86: '4'
-    87: '5'
-    88: '6'
-    89: '7'
-    91: '8'
-    92: '9'
-    96: "\x10"
-    97: "\x10"
-    98: "\x10"
-    99: "\x10"
-    100: "\x10"
-    101: "\x10"
-    102: "\x10"
-    103: "\x10"
-    104: "\x10"
-    105: "\x10"
-    106: "\x10"
-    107: "\x10"
-    108: "\x10"
-    109: "\x10"
-    110: "\x10"
-    111: "\x10"
-    112: "\x10"
-    113: "\x10"
-    114: "\x05"
-    115: "\x01"
-    116: "\v"
-    117: "\x7F"
-    118: "\x10"
-    119: "\x04"
-    120: "\x10"
-    121: "\f"
-    122: "\x10"
-    123: "\x1C"
-    124: "\x1D"
-    125: "\x1F"
-    126: "\x1E"
+    - '?'
+    Space: ' '
+    Tab: "\t"
+  id: com.apple.keylayout.ABC
+  name: ABC
 keymaps:
 - entries:
+    back click: null
     back mouse button: null
     back mouse button (w/o overlay): null
+    clear keyboard state: null
     close UI element: Escape
     cycle click count: null
     cycle font: '3'
@@ -277,11 +275,13 @@ keymaps:
     cycle mouse action type: null
     cycle mouse button: null
     decrease overlay opacity: ArrowDown
-    edit config: Tab
+    edit config: null
     enter free mode: null
     execute mouse action: Space
-    execute mouse move: null
+    execute mouse move: Tab
     exit free mode: Escape
+    force overlay resize: null
+    forward click: null
     forward mouse button: null
     forward mouse button (w/o overlay): null
     hide overlay: Escape
@@ -290,16 +290,18 @@ keymaps:
     hold for forward button: null
     hold for middle button: ShiftLeft
     hold for move: OptionLeft
-    hold for right button: Tab
+    hold for right button: ControlLeft
     hold for speed decrease: null
     hold for speed increase: CommandLeft
     increase overlay opacity: ArrowUp
+    invert colors: null
     jump to bottom: null
     jump to left edge: null
     jump to right edge: null
     jump to top: null
     left mouse button: null
     left mouse button (w/o overlay): null
+    middle click: null
     middle mouse button: null
     middle mouse button (w/o overlay): null
     move down: null
@@ -308,6 +310,7 @@ keymaps:
     move up: null
     release hold/drag: Escape
     repeat last mouse action: null
+    right click: null
     right mouse button: null
     right mouse button (w/o overlay): null
     show overlay: ctrl+b
@@ -317,45 +320,65 @@ keymaps:
     subgrid nudge up: null
     switch monitor left: ShiftLeft tap
     switch monitor right: ShiftRight tap
+    toggle app enabled: null
     toggle continuous mode: null
     toggle continuous mode until closed: '1'
-    toggle free mode: OptionLeft tap
+    toggle free mode: null
     toggle overlay: null
     toggle overlay lock: null
     undo last key: Backspace
-    wheel down: K
+    wheel down: null
     wheel down fast: null
-    wheel left: L
+    wheel left: null
     wheel left fast: null
-    wheel right: ;
+    wheel right: null
     wheel right fast: null
     wheel step down: null
-    wheel step down large: null
+    wheel step down large: J
     wheel step left: null
-    wheel step left large: null
+    wheel step left large: H
     wheel step right: null
-    wheel step right large: null
+    wheel step right large: L
     wheel step up: null
-    wheel step up large: null
-    wheel up: J
+    wheel step up large: K
+    wheel up: null
     wheel up fast: null
   name: mac
+log_level: info
 monitor_assignment_mode: auto
+mouse_scaling: auto
+mouse_screen_offset_scaling: auto
 name: ''
+overlay_scaling: auto
 style_configs:
 - always_on_subgrid_rgba:
   - 1.0
   - 1.0
   - 1.0
   - 0.2
-  background_rgba:
-  - 0.47843137254901963
-  - 1
-  - 0.00392156862745098
-  - 0.35
+  background_colors:
+  - - 0.7215686274509804
+    - 0.7333333333333333
+    - 0.14901960784313725
+    - 0.5
+  bg_color_block_size: 1
+  bg_color_transforms_level_1:
+  - - hsla_add
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+  bg_color_transforms_level_2:
+  - - hsla_add
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+  char_display: all
   char_spacing_cell_width_ratio: 0.5
   char_spacing_font_size_ratio: 0.5
   char_spacing_strategy: cell_width_relative
+  colorParamInput: rgbHex
   cursor_drag_rgba:
   - 0.0
   - 0.5
@@ -374,18 +397,18 @@ style_configs:
   cursor_rgba:
   - 0.9921568627450981
   - 0.09803921568627451
-  - 0
-  - 1
+  - 0.0
+  - 1.0
   cursor_right_button_rgba:
   - 0.03137254901960784
   - 0.9921568627450981
-  - 0
+  - 0.0
   - 0.7
   cursor_size: 7
-  font_family: FiraCode-Retina
+  font_family: VictorMonoNF-Bold
   font_size_multiplier: 0.4
   font_weight: 500
-  grid_line_style: dots
+  grid_line_style: lines
   grid_rgba:
   - 1.0
   - 1.0
@@ -393,10 +416,10 @@ style_configs:
   - 0.5
   highlight_animation_ms: 0
   highlight_rgba:
-  - 0.027450980392156862
-  - 0.4
-  - 0.47058823529411764
-  - 0.25
+  - 0.984313725490196
+  - 0.28627450980392155
+  - 0.20392156862745098
+  - 0.5
   name: default
   show_initial_highlight: false
   subgrid_font_size_multiplier: 0.75
@@ -414,7 +437,7 @@ style_configs:
   - 0.996078431372549
   - 0.996078431372549
   - 0.996078431372549
-  - 1
+  - 1.0
   text_shadow_blur_radius: 2.0
   text_shadow_offset:
   - 0.0
@@ -423,6 +446,7 @@ style_configs:
   - 0.00392156862745098
   - 0.00392156862745098
   - 0.00392156862745098
-  - 1
+  - 1.0
   text_y_offset: 0.0
-  window_opacity: 1
+  use_bg_color_transforms: false
+  window_opacity: 1.0

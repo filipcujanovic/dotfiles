@@ -1,0 +1,10 @@
+#!/bin/bash
+
+osascript -e 'tell application "Finder"
+    activate
+    if (count of windows) is 0 then
+        open home
+    else
+        set target of front window to home
+    end if
+end tell'
