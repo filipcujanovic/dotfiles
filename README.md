@@ -1,24 +1,25 @@
-# personal dotfiles
+## dotfiles
 ![desktop](./assets/images/desktop.png)
 
-# installation
+## installation
 
 - I would not suggest installing everything since this is a config that I personally use and many things here are tailored to my needs. You can check the code and use whatever you find here in your dotfiles. But if you really want to install them here are the steps:
     - install [nix](https://github.com/NixOS/nix) and [nix-darwin](https://github.com/nix-darwin/nix-darwin) - run `sudo darwin-rebuild switch --flake ~/projects/dotfiles/.config/nix-darwin#macbook`
     - run the `install.sh` script that should install everything that's needed.
 
-# software
-- editor - [neovim](https://github.com/neovim/neovim) - [config](.config/shared/nvim/)
-- theme - [gruvbox-dark](https://github.com/ellisonleao/gruvbox.nvim)
-- terminal - [kitty](https://github.com/kovidgoyal/kitty/)
-- shell - [zsh](https://github.com/zsh-users/zsh)
-- font - [victormono nerd font mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/VictorMono)
-- launcher - [vicinae](https://github.com/vicinaehq/vicinae)
-- tiling manager - [aerospace](https://github.com/nikitabobko/AeroSpace) - really good alternative to aerospace - [rift](https://github.com/acsandmann/rift)
-- bar - [sketchybar](https://github.com/FelixKratz/SketchyBar)
-- package manager - [nix-darwin](https://github.com/nix-darwin/nix-darwin)
+## software
+- **editor -** [neovim](https://github.com/neovim/neovim) ∘ [config](.config/shared/nvim/)
+- **theme -** [gruvbox dark](https://github.com/ellisonleao/gruvbox.nvim)
+- **terminal -** [kitty](https://github.com/kovidgoyal/kitty) ∘ [config](.config/shared/kitty/kitty.conf)
+- **shell -** [zsh](https://github.com/zsh-users/zsh) ∘ [config](.config/shared/zsh/)
+- **font -** [victormono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/VictorMono)
+- **launcher -** [vicinae](https://github.com/vicinaehq/vicinae) ∘ [config](.config/shared/vicinae/settings.json)
+- **tilling manager -** [aerospace](https://github.com/nikitabobko/aerospace) ∘ [config](.config/macos/aerospace/aerospace.toml)
+  - really good alternative: [rift](https://github.com/acsandmann/rift)
+- **menu bar -** [sketchybar](https://github.com/felixkratz/sketchybar) ∘ [config](.config/macos/sketchybar/)
+- **package manager -** [nix-darwin](https://github.com/nix-darwin/nix-darwin) ∘ [config](.config/nix-darwin/flake.nix)
 
-# [wallpapers](wallpapers)
+## [wallpapers](wallpapers/README.md)
 <p align="center">
     <img src="./wallpapers/berserk.png" width="200" />
     <img src="./wallpapers/canyon.jpg" width="200" />
