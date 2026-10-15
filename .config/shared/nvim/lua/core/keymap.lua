@@ -78,12 +78,6 @@ end, { desc = 'open git file in browser ' })
 
 vim.keymap.set('n', '<leader>ot', ':ObsidianTags<cr>', { desc = 'open obsidian tags' })
 
---vim.api.nvim_create_autocmd('FileType', {
---    pattern = 'http',
---    callback = function()
---    end,
---})
-
 vim.keymap.set('n', '<leader>lg', function()
     --vim.fn.system('tmux display-popup -w 95% -h 90% -E tmux new-session -A -s float')
     vim.fn.system('tmux display-popup -w 95% -h 90% -E -d ' .. vim.fn.shellescape(vim.fn.getcwd()) .. ' lazygit')
@@ -116,7 +110,12 @@ vim.keymap.set('n', '<leader>ur', function()
         [[
 # nvim
 
-<img src="/assets/images/dotfiles-smaller.png" width="49%" height="50%"> <img src="/assets/images/code.png" width="49%" height="50%"> <img src="/assets/images/file-search.png" width="49%" height="50%"> <img src="/assets/images/keymaps.png" width="49%" height="50%">
+<p>
+<img src="../../../assets/images/dotfiles-smaller.png" width="49%" height="50%"> <img src="../../../assets/images/code.png" width="49%" height="50%">
+</p>
+<p align="center">
+    <img src="../../../assets/images/keymaps.png" width="50%" height="50%">
+</p>
 ]],
         '# plugins',
         '',

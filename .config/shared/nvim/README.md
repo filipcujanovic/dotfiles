@@ -1,6 +1,11 @@
 # nvim
 
-<img src="/assets/images/dotfiles-smaller.png" width="49%" height="50%"> <img src="/assets/images/code.png" width="49%" height="50%"> <img src="/assets/images/file-search.png" width="49%" height="50%"> <img src="/assets/images/keymaps.png" width="49%" height="50%">
+<p>
+<img src="../../../assets/images/dotfiles-smaller.png" width="49%" height="50%"> <img src="../../../assets/images/code.png" width="49%" height="50%">
+</p>
+<p align="center">
+    <img src="../../../assets/images/keymaps.png" width="50%" height="50%">
+</p>
 
 # plugins
 
@@ -9,6 +14,7 @@
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 - [gruvbox.nvim](https://github.com/ellisonleao/gruvbox.nvim)
+- [kulala.nvim](https://github.com/dont-be-evil-company/kulala.nvim)
 - [mini.ai](https://github.com/nvim-mini/mini.ai)
 - [mini.files](https://github.com/nvim-mini/mini.files)
 - [mini.icons](https://github.com/nvim-mini/mini.icons)
