@@ -5,8 +5,15 @@ M.color = colors.current
 
 M.laptop_resolution = 1512
 M.height = 37
+M.small_display_uuid = '264AC558-102A-4CC4-9833-97B7EEAEC182'
 
 M.item_options = {
+    left_items = {
+        enabled = true,
+    },
+    right_items = {
+        enabled = true,
+    },
     front_app = {
         enabled = true,
     },

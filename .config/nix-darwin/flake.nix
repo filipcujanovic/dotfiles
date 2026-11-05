@@ -117,6 +117,7 @@
             brews = [
               "choose-gui"
               "colima"
+              "displayplacer"
               "docker"
               "ec"
               "gh"

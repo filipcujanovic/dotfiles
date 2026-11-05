@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$1" = "work" ]; then
+    m1ddc display 2FB1C33B-A9A7-45E8-BBFB-5102539185BD set input 27
+    displayplacer "id:2FB1C33B-A9A7-45E8-BBFB-5102539185BD res:2560x1440 hz:60 color_depth:8 enabled:true scaling:on origin:(0,0) degree:0" "id:264AC558-102A-4CC4-9833-97B7EEAEC182 res:1080x1920 hz:60 color_depth:8 enabled:true scaling:off origin:(2560,0) degree:90"
+    sketchybar --trigger change_max_chars max_chars=30
+fi
+if [ "$1" = "gaming" ]; then
+    m1ddc display 2FB1C33B-A9A7-45E8-BBFB-5102539185BD set input 17
+    displayplacer "id:264AC558-102A-4CC4-9833-97B7EEAEC182 res:1080x1920 hz:60 color_depth:8 enabled:true scaling:off origin:(0,0) degree:90" "id:2FB1C33B-A9A7-45E8-BBFB-5102539185BD res:2560x1440 hz:60 color_depth:8 enabled:true scaling:on origin:(-2560,0) degree:0"
+    sketchybar --trigger change_max_chars max_chars=15
+fi

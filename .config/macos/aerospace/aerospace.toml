@@ -147,8 +147,6 @@ alt-shift-z = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-
 #alt-shift-z = 'move-node-to-workspace --focus-follows-window zone'
 
 cmd-shift-w = 'exec-and-forget vicinae-wallpaper-picker'
-alt-b = 'exec-and-forget m1ddc display 1 set input 18'
-alt-n = 'exec-and-forget m1ddc display 1 set input 27'
 alt-f = 'exec-and-forget open-finder'
 alt-y = 'exec-and-forget focus'
 
@@ -166,6 +164,40 @@ alt-shift-semicolon = [
 alt-r = [
   'mode resize',
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=resize',
+]
+
+alt-d = [
+  'mode display',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=display',
+]
+
+[mode.display.binding]
+w = [
+  'exec-and-forget switch-mode work',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+] # work
+g = [
+  'exec-and-forget switch-mode gaming',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+] # gaming
+
+enter = [
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+esc = [
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+q = [
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+space = [
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
 ]
 
 [mode.resize.binding]
@@ -409,5 +441,5 @@ run = 'layout floating'
 'chats' = 'main'
 'terminal' = 'main'
 'work' = 'main'
-'music' = 'main'
+'music' = 'secondary'
 'additional' = 'secondary'

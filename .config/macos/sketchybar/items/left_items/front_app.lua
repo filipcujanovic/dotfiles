@@ -35,6 +35,13 @@ front_app:subscribe('front_app_switched', function(env)
     end
 end)
 
+front_app:subscribe('aerospace_mode_change', function(env)
+    local is_main_mode = env.MODE == 'main'
+    front_app:set({
+        drawing = is_main_mode,
+    })
+end)
+
 front_app:subscribe('forced', function()
     window_manager_commands.trigger_focused_window_event()
 end)

@@ -10,11 +10,11 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "fzf-lua": {
-      "rev": "d5c12c6d72ed84554f0f8dacb84f20da094b6a2d",
+      "rev": "5beb1bf72b0810da6ccee50f6087c2f005aeb737",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
-      "rev": "070a5d7b985546cc57e1fc61e5bc507fecac6045",
+      "rev": "fd780920613e541cbdfac41bf711583ed49f9249",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "gruvbox.nvim": {
@@ -22,31 +22,31 @@
       "src": "https://github.com/ellisonleao/gruvbox.nvim"
     },
     "kulala.nvim": {
-      "rev": "1517fd8779b5d83ef7064709a3a7d03e72a899bf",
+      "rev": "125751ea9f41c1ee966c5c7e3032e3539dd2f33e",
       "src": "https://github.com/dont-be-evil-company/kulala.nvim"
     },
     "mini.ai": {
-      "rev": "c2c4278beb759aa24b9506f56a67186a6cc2209c",
+      "rev": "d0c4987a1ead2bcf4eb22cc9815c662d76677c08",
       "src": "https://github.com/nvim-mini/mini.ai"
     },
     "mini.files": {
-      "rev": "f1cfece89892274f4f4a59d71f24eb90dcfe1b5a",
+      "rev": "638b80cb985c89ca2a98eed72c552c8d485a3d5b",
       "src": "https://github.com/nvim-mini/mini.files"
     },
     "mini.icons": {
-      "rev": "f642e3ba8c12afbc8f32f6d77ef6597eac56786f",
+      "rev": "9e4c1645ce2b78afd6191b6be2c38bc0f998dd48",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "mini.pairs": {
-      "rev": "b1c5a726921b7a8c9321e9a7a208aa0571de5810",
+      "rev": "03eb1f0062a2cee5314d1ac3939246e4bb21352e",
       "src": "https://github.com/nvim-mini/mini.pairs"
     },
     "mini.surround": {
-      "rev": "72feeaa0f984646efde875cc775a97b6f8a8be9b",
+      "rev": "59ce0acf79e1d930756ef3a7cb4c2369560cf548",
       "src": "https://github.com/nvim-mini/mini.surround"
     },
     "nvim-treesitter": {
-      "rev": "910fdf6f49e9dee7e7257c7d11a76b040fdfb9de",
+      "rev": "29212d826054bb2948fa9d3a99eca9bf6a050eb2",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-textobjects": {
@@ -54,7 +54,7 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
     },
     "nvim-ts-autotag": {
-      "rev": "88c1453db4ba7dd24131086fe51fdf74e587d275",
+      "rev": "d7220b55e16ed3c04e88086256def5d282429493",
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
     "vim-fugitive": {

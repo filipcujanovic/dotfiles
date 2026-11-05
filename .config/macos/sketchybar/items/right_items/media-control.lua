@@ -1,6 +1,7 @@
 local options = require('options')
 local sbar = require('sketchybar')
 local icons = require('icons')
+local displays = sbar.query('displays')
 
 local media = sbar.add('item', 'media', {
     position = 'right',
@@ -19,7 +20,7 @@ local media = sbar.add('item', 'media', {
         padding_left = 0,
         padding_right = 0,
         color = options.color.orange,
-        max_chars = 30,
+        max_chars = displays[1]['UUID'] == options.small_display_uuid and 12 or 30,
         string = '',
     },
     popup = {
@@ -98,6 +99,10 @@ media:subscribe('media_stream_changed', function(env)
             drawing = icon_drawing,
         },
     })
+end)
+
+media:subscribe('change_max_chars', function(env)
+    media:set({ label = { max_chars = env.max_chars } })
 end)
 
 sbar.exec('system_profiler SPHardwareDataType -json', function(result, exit_code)

@@ -3,7 +3,7 @@ local sbar = require('sketchybar')
 
 local label_padding = {
     left = 0,
-    right = 10,
+    right = 0,
 }
 
 local aerospace_mode = sbar.add('item', 'aerospace-mode', {
@@ -23,7 +23,7 @@ aerospace_mode:subscribe('aerospace_mode_change', function(env)
     aerospace_mode:set({
         drawing = not is_main_mode,
         label = {
-            string = env.MODE,
+            string = string.format('􀇿 %s', env.MODE),
             color = is_main_mode and options.color.inactive_color or options.color.active_color,
         },
         background = {
